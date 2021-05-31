@@ -1,0 +1,167 @@
+%% LaTeX2e class for student theses
+%% thesis.tex
+%% 
+%% Based on SDQ KIT Template by Erik Burger
+%%
+%% Karlsruhe Institute of Technology
+%% Institute for Automation and Applied Informatics
+%% AIDA Research Group
+%%
+%% Nicole Ludwig
+%% nicole.ludwig@kit.edu
+%%
+%% Version 1.2, 2018-10-11
+
+%% Available page modes: oneside, twoside
+%% Available languages: english, ngerman
+%% Available modes: draft, final
+\documentclass[twoside, english, 12pt]{thesisIAI}
+
+%% ---------------------------------
+%% | Additonal Packages |
+%% ---------------------------------
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pdfpages}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage[utf8]{inputenc}
+\usepackage{footnote}
+\usepackage{tocloft}
+\usepackage{hyperref}
+
+\input{tex/preamble}
+
+%% ---------------------------------
+%% | Information about the thesis  |
+%% ---------------------------------
+
+%% Name of the author
+\author{Vivien Geenen}
+
+%% Title (and possibly subtitle) of the thesis
+\title{Title}
+
+%% Type of the thesis 
+\thesistype{Master's thesis}
+%\thesistype{Seminar Paper}
+
+%% Change here the faculty 
+%\faculty{Seminar}
+\faculty{Engineering}
+%\faculty{Informatics}
+
+%% The advisors are PhDs or Postdocs
+\advisorone{Moritz Frahm, M.Sc., Frederik Zahn, M.Sc.}
+%% The second advisor can be omitted
+%\advisortwo{}
+
+%% Please enter the start end end time of your thesis
+\editingtime{June}{November 2021}
+
+\settitle
+
+%% Please do not change anything in this tex file without talking to your supervisor
+\input{tex/formats}
+
+%% --------------------------------
+%% | Settings for word separation |
+%% --------------------------------
+
+%% Describe separation hints here.
+%% For more details, see 
+%% http://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation
+\hyphenation{
+% me-ta-mo-del
+}
+
+%% --------------------------------
+%% | Bibliography                 |
+%% --------------------------------
+
+% Please make sure your bibfiles name is thesis.bib and is located in the tex subfolder
+\input{tex/bibliography} 
+
+%% Set PDF metadata, must be set BEFORE \begin{document}
+\setpdf
+
+%% ====================================
+%% ====================================
+%% ||                                ||
+%% || Beginning of the main document ||
+%% ||                                ||
+%% ====================================
+%% ====================================
+\begin{document}
+
+\hypersetup{pageanchor=false}
+
+%% Set the title
+\maketitle
+
+%% The Preamble begins here
+\frontmatter
+
+\input{sections/declaration.tex}
+
+\setcounter{page}{1}
+\pagenumbering{roman}
+
+%% ----------------
+%% |   Abstract   |
+%% ----------------
+ 
+%% For theses written in English, an abstract both in English
+%% and German is mandatory.
+%%
+%% Seminar Papers written in English need only an English abstract.
+%%
+%% For theses written in German, a German abstract is sufficient.
+%%
+%% The text is included from the following files:
+%% - sections/abstract
+%% - sections/zusammenfassung
+\input{sections/Kurzfassung}
+\input{sections/abstract}
+
+\newpage
+
+\hypersetup{pageanchor=true}
+%% ------------------------
+%% |   Table of Contents  |
+%% ------------------------
+\tableofcontents
+\listoffigures
+\listoftables
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+%% -----------------
+%% |   Main part   |
+%% -----------------
+
+\mainmatter
+
+\input{sections/introduction.tex}
+\input{sections/foundations.tex}
+\input{sections/modeling.tex}
+\input{sections/mpc.tex}
+\input{sections/results.tex}
+\input{sections/conclusion.tex}
+\input{sections/outlook.tex}
+
+
+%% --------------------
+%% |   Bibliography   |
+%% --------------------
+
+%% Add entry to the table of contents for the bibliography
+\printbibliography[heading=bibintoc]
+%% ----------------
+%% |   Appendix   |
+%% ----------------
+\appendix
+\input{sections/appendix.tex}
+
+\end{document}

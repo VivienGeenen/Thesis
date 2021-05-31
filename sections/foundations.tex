@@ -1,0 +1,91 @@
+\chapter{Foundations}
+\label{ch:foundations}
+For the development of this work, some foundations about thermal modeling and model predictive control (MPC) are needed, which are explained in this chapter.
+
+\section{Thermal basics}
+\label{section:thermalbasics}
+\subsection{Conduction}
+\label{subsection:conduction}
+\subsection{Convection}
+\label{subsection:convection}
+\subsection{Irradiation}
+\label{subsection:irradiation}
+\section{Modeling}
+\label{section:modeling}
+Transmission to a electrical network RC-model 
+\section{Using methods}
+\label{section:usingmethods}
+empty
+\section{Model predictive control (MPC)}
+\label{section:mpc}
+"The idea of model predictive control [...] is [..] to utilize a model of the process in order to predict and optimize the future system behavior."
+\cite{Grune.2017}
+Applied to a thermal control of a building with the aim of grid- supporting, a model of the thermal behavior of the building is required to predict the reaction of the system behavior in the next $N$ time steps, called the prediction horizon. Every time step $k$, the current state \textbf{$x_k$}, the output \textbf{$y_k$} and the future system behavior is obtained via measurements and computation. The computation of the future system behavior includes water forecast, occupant schedule  and the optimization of the control signal \textbf{$u_k$} over the optimization horizon \textbf{$u_{k+N}$}. But, only the first calculated control signal is adopt as input for the plant.
+Then, the proceeding repeat every time step the calculations. Concluded, the MPC is "an iterative online optimization over the predictions"
+\cite{Grune.2017} 
+compiled by the thermal model of the building. Mathematically explained, the optimizer needs to reduce the following equation according to
+\cite{Kouvaritakis.2018}
+and
+\cite{Oldewurtel.2012}:
+\begin{align}
+\label{eq:costfunc}
+\textrm{Cost function} && minimize \sum_{k=1}^{N-1} c_k(x_k,u_k,y_k)
+\end{align}
+subject to 
+\begin{align*}
+\textrm{Current state} && x_0 &=& x \\	
+\textrm{Dynamics} && x_{k+1}&=& f(x_k,u_k,d_k)		&&	y_k = g(x_k,u_k,d_k)\\				
+\textrm{Constraints} && y_{min}&\leq& y_k \leq y_{max}\\		
+\textrm{} && u_{min}&\leq& u_k \leq u_{max}	
+\end{align*}
+$c_k$ represents the cost function, which is nearly explained in the next subsection  \ref{subsection:costfunction}
+. In therms of building control, $y$ is the internal temperature.
+%Störungen noch erklären
+\subsection{Cost function}
+\label{subsection:costfunction}
+The cost function $c_k$ optimize the control signal $u_k$ for the current state $x_k$, which is mathematically described in equation
+\ref{eq:costfunc}
+, with:
+\begin{equation}
+\label{eq:c_k}
+c_k = (x_k^TQx_k+u_k^TRu_k)
+\end{equation}
+Here $Q$ and $R$ are matrices over which individual elements of the state vector or control signal vector can be weighted differently.  
+\cite{Kouvaritakis.2016}
+linear, quadratisch, gewichtet 
+reduziert Zustand, stellsignal
+\subsection{Current state}
+\label{subsection:currentstate}
+The current state $x_k$ is a vector of measured state variables of a building. Every prediction starts form this initial state\cite{Oldewurtel.2012}.
+\subsection{Dynamics}
+\label{subsection:dynamics}
+\begin{align}
+\label{eq:statespace}
+\dot{x}=Ax+B_1u+B_2d\\
+y=Cx+D_1u+D_2d
+\end{align}
+
+
+\subsection{Constraints}
+\label{subsection:constraints}
+
+
+
+%Abbildung zu Regelsstrecke erstellen. Eingänge/Ausgänge, Modell, Optimierer usw
+
+%This chapter is supposed to summarize previous work of other researchers related to your topic.
+%The aim is to give an overview of existing literature while highlighting differences and similarities to this thesis.
+%
+%Please choose a coherent citation style throughout the thesis. For example
+%
+%\begin{itemize}
+%	\item Direct citation of results, an approach or similar
+%	\item[] \Textcite{Fan.2015} find that their method improves the benchmark.
+%	\item Indirect citation
+%	\item[] Recent research highlights the importance of this method \Parencite{Fan.2015}.
+%	\item Direct citation
+%	\item[] \textquote{\emph{Energy optimisation in buildings is important}} \Parencite{Fan.2015}.
+%\end{itemize}
+
+
+

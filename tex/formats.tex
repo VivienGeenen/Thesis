@@ -1,0 +1,24 @@
+%% LaTeX2e class for student theses
+%% format.tex
+%% 
+%% Based on SDQ KIT Template by Erik Burger
+%%
+%% Karlsruhe Institute of Technology
+%% Institute for Automation and Applied Informatics
+%% AIDA Research Group
+%%
+%% Nicole Ludwig
+%% nicole.ludwig@kit.edu
+%%
+%% Version 1.2.1, 2018-10-11
+
+%% This file switches between the official reviewers and addresses of the faculties 
+
+\ifthenelse{\equal{\thefaculty}{Seminar}}{\uppertitleback}{\ifthenelse{\equal{\thefaculty}{Engineering}}{\uppertitleback{Karlsruher Institut für Technologie\\ Fakultät für Maschinenbau\\ Postfach 6980\\ 76128 Karlsruhe}}{\uppertitleback{Karlsruher Institut für Technologie\\ Fakultät für Informatik\\ Postfach 6980\\ 76128 Karlsruhe}}}
+
+
+\ifthenelse{\equal{\thefaculty}{Engineering}}{\reviewerone{Prof. Dr. Veit Hagenmeyer}}{\reviewertwo{apl. Prof. Dr. Jörg Matthes}}
+
+\ifthenelse{\equal{\thefaculty}{Seminar}}{\reviewertwo{}}{\ifthenelse{\equal{\thefaculty}{Informatics}}{\reviewertwo{Prof. Dr. Achim Streit}}{\reviewertwo{apl. Prof. Dr. Jörg Matthes}}}
+
+\ifthenelse{\equal{\thefaculty}{Seminar}}{\facultyname{Energy Informatics Seminar}}{\ifthenelse{\equal{\thefaculty}{Engineering}}{\facultyname{\iflanguage{english}{at the Department of Mechanical Engineering}{an der Fakultät für Maschinenbau}}}{\facultyname{\iflanguage{english}{at the Department of Informatics}{an der Fakultät für Informatik}}}}
