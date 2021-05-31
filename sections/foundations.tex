@@ -1,11 +1,31 @@
 \chapter{Foundations}
 \label{ch:foundations}
-For the development of this work, some foundations about thermal modeling and model predictive control (MPC) are needed, which are explained in this chapter.
+For the development of this work, some foundations about thermal modeling and model predictive control (MPC) are needed, which are explained in this chapter. Note, that in the following all vectors are in thick print, like \textbf{x}.
 
 \section{Thermal basics}
 \label{section:thermalbasics}
+There are three different mechanism, which describe physically the heat transfer: Heat conduction, heat convection and heat irradiation\cite{.2013}. Every mechanism is used for thermal modelling of buildings. For example, conduction is the main part of heat transfer through walls or floors. Convection takes place inside and outside between the walls and the air and irradiation is needed for the integration of the impact of the sun, for example.
+
 \subsection{Conduction}
 \label{subsection:conduction}
+Conduction means, that heat energy is directed in a solid or fluid . Molecules within the solid or fluid have higher energy when the temperature is higher. They transfer the energy to neighbour molecules with smaller energy. Without a heat source, the temperature difference between the a hot and a cold location of the molecules decrease.\cite{Kuchling.2007}
+\newline The equation \ref{eq:fourier} describes the conduction according to Fourier \cite{.2013}. There is $\lambda$ the thermal conductivity with the assumption of being constant and $\dot{\textbf{q}}$ and $T$ represent the specific thermal heat flux and the temperature. 
+\begin{equation}
+\label{eq:fourier}
+    \dot{\textbf{q}} = - \lambda grad T
+\end{equation}
+For the further work, it will be relevant to expand the above equation with the area $A$, the thickness of the conductive medium $d$ and an temperature difference $\Delta T$ assuming one significant direction of the thermal heat flux $\dot{Q}$ to:
+\begin{equation}
+\label{eq:conduction}
+    \dot{Q} = \frac{A\lambda}{d} \Delta T
+\end{equation}
+Further, the Ohm's law 
+\cite{Kuchling.2007} 
+determine the thermal resistance $R$ as
+\begin{equation}
+    R = \frac{d}{A\lambda}
+\end{equation}
+what is required for the RC- modeling of buildings, which is nearly explained in \ref{section:modeling}.
 \subsection{Convection}
 \label{subsection:convection}
 \subsection{Irradiation}
