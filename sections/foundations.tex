@@ -12,12 +12,12 @@ There are three different mechanism, which describe physically the heat transfer
 \label{subsection:conduction}
 
     Conduction means, that heat energy is directed in a solid or fluid. Molecules within the solid or fluid have higher energy when the temperature is higher. They transfer the energy to neighbour molecules with smaller energy. Without a heat source, the temperature difference between the a hot and a cold location of the molecules decrease.\cite{Kuchling.2007}
-    \newline The equation \ref{eq:fourier} describes the conduction according to Fourier \cite{.2013}. There is $\lambda$ the thermal conductivity with the assumption of being constant and $\dot{\textbf{q}}$ and $T$ represent the specific thermal heat flux and the temperature. The thermal conductivity is dependent on the material, such as concrete, wood or bricks. 
+    \newline The equation \ref{eq:fourier} describes the conduction according to Fourier \cite{.2013}. There is $\lambda$ the thermal conductivity with the assumption of being constant and $\dot{\textbf{q}}$ and $T$ represent the specific heat flux and the temperature. The thermal conductivity is dependent on the material, such as concrete, wood or bricks. 
     \begin{equation}
     \label{eq:fourier}
         \dot{\textbf{q}} = - \lambda grad T
     \end{equation}
-    For the further work, it will be relevant to expand the above equation with the area $A$, the thickness of the conductive medium $d$ and an temperature difference $\Delta T$ assuming one significant direction of the thermal heat flux $\dot{Q}$ to:
+    For the further work, it will be relevant to expand the above equation with the area $A$, the thickness of the conductive medium $d$ and an temperature difference $\Delta T$ assuming one significant direction of the heat flux $\dot{Q}$ to:
     \begin{equation}
     \label{eq:conduction}
         \dot{Q} = \frac{A\lambda}{d} \Delta T
@@ -68,16 +68,18 @@ There are three different mechanism, which describe physically the heat transfer
     Especially, heat radiation only does not need matter for energy transportation.\cite{.2013}
     \newline
     The best known source of heat radiation is the sun, which plays an important roll in thermal modeling of buildings. Objectives in the building, such as radiators, also  radiate heat. For example, Radiators have equal parts convective and radiative energy transport \cite{Hazyuk.2012}. 
+  %hier noch näher auf Absorbtion, Transsmission und REflexion eingehen, wird reflexion vllt bei fenstern gebraucht, absorbtion beim Aufheizen von boden oder ähnlichem  
     
     
-    
-\section{Modeling}
+\section{Lumped capacitance model}
 \label{section:modeling}
-    Transmission to a electrical network RC-model 
+For modeling the thermal behavior of buildings, the lumped capacitance model is often used. With this approach, using the electrical analogy, building elements can be easily represented by resistors $R$ and capacitors $C$. \cite{Kramer.2012}
 
-\section{Using methods}
-\label{section:usingmethods}
-empty
+\subsection{Electrical analogy}
+\label{electricalanalogy}
+
+    Similar to a electrical network, thermal resistances $R$ comply with electrical resistors and thermal capacitance $C$ with electrical capacitors. The thermal capacitance is the specific heat capacity $c$ multiplied by the mass $m$ ($C=cm$). The heat flux corresponds to the current and the temperature to the voltage.
+    An exampling thermal network is mapped in the next figure. 
 
 \section{Model predictive control (MPC)}
 \label{section:mpc}
