@@ -78,15 +78,19 @@ For modeling the thermal behavior of buildings, the lumped capacitance model is 
 \subsection{Electrical analogy}
 \label{electricalanalogy}
 
-    Similar to a electrical network, thermal resistances $R$ comply with electrical resistors and thermal capacitance $C$ with electrical capacitors. The thermal capacitance is the specific heat capacity $c$ multiplied by the mass $m$ ($C=cm$). The heat flux corresponds to the current and the temperature to the voltage.
-    An exampling thermal network is mapped in the next figure.
+    Similar to an electrical network, the potential is represented by the temperature at one node, the heat flux corresponds to the current and thermal resistances $R$ comply with electrical resistors and thermal capacitance $C$ with electrical capacitors. The thermal capacitance is the specific heat capacity $c$ multiplied by the mass $m$ ($C=cm$). All connections in a network have impact on each other. For a better explanation, a simple exampling thermal network is mapped in the next figure, which represents a heated wall of a building.
     \begin{figure}[h]
     \centering
     \includegraphics{figure/beispiel Netzwerk.png}
     \caption{Sample RC- network}
     \label{fig:sampleRCnetwork}
     \end{figure}
-
+    The heat flux $\dot{Q}$, for example from an radiator, influence the temperature $T_wall$, as well as the capacity $C$, the temperature inside and outside $T_inside$ and $T_outside$ with their resistances $R_\alpha,inside$ and $R_\alpha,outside$. In the shown figure, the thermal resistances are serial connected. According to the electrical network, a summary resistance is the sum of these two resistance 
+    \begin{equation}
+    \label{eq:resistanceseriel}
+    
+    \end{equation}
+    A parallel circuitry  
 \section{Model predictive control (MPC)}
 \label{section:mpc}
 "The idea of model predictive control [...] is [..] to utilize a model of the process in order to predict and optimize the future system behavior."
