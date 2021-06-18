@@ -85,7 +85,7 @@ For modeling the thermal behavior of buildings, the lumped capacitance model is 
     Similar to an electrical network, the potential is represented by the temperature at one node, the heat flux corresponds to the current and thermal resistances $R$ comply with electrical resistors and thermal capacitance $C$ with electrical capacitors. The thermal capacitance is the specific heat capacity $c$ multiplied by the mass $m$ ($C=cm$). All connections in a network have impact on each other. For a better explanation, a simple exampling thermal network is mapped in the next figure, which represents a heated wall of a building.
     \begin{figure}[h]
     \centering
-    \includegraphics{figure/beispiel Netzwerk.png}
+    \includegraphics[scale=0.8]{figure/beispiel Netzwerk.png}
     \caption{Sample RC- network}
     \label{fig:sampleRCnetwork}
     \end{figure}
@@ -119,7 +119,15 @@ For modeling the thermal behavior of buildings, the lumped capacitance model is 
 "The idea of model predictive control [...] is [..] to utilize a model of the process in order to predict and optimize the future system behavior."
 \cite{Grune.2017}
 Applied to a thermal control of a building with the aim of grid- supporting, a model of the thermal behavior of the building is required to predict the reaction of the system behavior in the next $N$ time steps, called the prediction horizon. Every time step $k$, the current state \textbf{$x_k$}, the output \textbf{$y_k$} and the future system behavior is obtained via measurements and computation. The computation of the future system behavior includes water forecast, occupant schedule  and the optimization of the control signal \textbf{$u_k$} over the optimization horizon \textbf{$u_{k+N}$}. But, only the first calculated control signal is adopt as input for the plant.
-Then, the proceeding repeat every time step the calculations. Concluded, the MPC is "an iterative online optimization over the predictions"
+Then, the proceeding repeat every time step the calculations. 
+ \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.8]{figure/MPC beispiel2.png}
+    \caption{MPC structure of the control loop}
+    \label{fig:sampleMPC}
+    \end{figure}
+\newline
+Concluded, the MPC is "an iterative online optimization over the predictions"
 \cite{Grune.2017} 
 compiled by the thermal model of the building. Mathematically explained, the optimizer needs to reduce the following equation according to
 \cite{Kouvaritakis.2018}
