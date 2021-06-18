@@ -114,12 +114,15 @@ For modeling the thermal behavior of buildings, the lumped capacitance model is 
     \end{equation}
     The serial circuitry of capacities will not used in this work, thus it is not nealy explained.
 %maschenregel noch erklären?
+
+
 \section{Model predictive control (MPC)}
 \label{section:mpc}
+
 "The idea of model predictive control [...] is [..] to utilize a model of the process in order to predict and optimize the future system behavior."
 \cite{Grune.2017}
-Applied to a thermal control of a building with the aim of grid- supporting, a model of the thermal behavior of the building is required to predict the reaction of the system behavior in the next $N$ time steps, called the prediction horizon. Every time step $k$, the current state \textbf{$x_k$}, the output \textbf{$y_k$} and the future system behavior is obtained via measurements and computation. The computation of the future system behavior includes water forecast, occupant schedule  and the optimization of the control signal \textbf{$u_k$} over the optimization horizon \textbf{$u_{k+N}$}. But, only the first calculated control signal is adopt as input for the plant.
-Then, the proceeding repeat every time step the calculations. 
+Applied to a thermal control of a building with the aim of grid- supporting, a model of the thermal behavior of the building is required to predict the reaction of the system behavior in the next $N$ time steps, called the prediction horizon. Every time step $k$, the current state \textbf{$x_k$}, the output \textbf{$y_k$} and the future system behavior is obtained via measurements and computation. The computation of the future system behavior includes weather forecast, occupant schedule  and the optimization of the control signal \textbf{$u_k$} over the optimization horizon \textbf{$u_{k+N}$}. But, only the first calculated control signal is adopt as input for the plant.
+Then, the proceeding repeat every time step the calculations. The following figure visualise the MPC control loop.
  \begin{figure}[h]
     \centering
     \includegraphics[scale=0.8]{figure/MPC beispiel2.png}
@@ -147,34 +150,45 @@ subject to
 $c_k$ represents the cost function, which is nearly explained in the next subsection  \ref{subsection:costfunction}
 . In therms of building control, $y$ is the internal temperature.
 %Störungen noch erklären
+
 \subsection{Cost function}
 \label{subsection:costfunction}
-The cost function $c_k$ optimize the control signal $u_k$ for the current state $x_k$, which is mathematically described in equation
-\ref{eq:costfunc}
-, with:
-\begin{equation}
-\label{eq:c_k}
-c_k = (x_k^TQx_k+u_k^TRu_k)
-\end{equation}
-Here $Q$ and $R$ are matrices over which individual elements of the state vector or control signal vector can be weighted differently.  
-\cite{Kouvaritakis.2016}
-%linear, quadratisch, gewichtet 
-%reduziert Zustand, stellsignal
+
+    The cost function $c_k$ optimize the control signal $u_k$ and the current state $x_k$, which is mathematically described in equation
+    \ref{eq:costfunc}
+    , with:
+    \begin{equation}
+    \label{eq:c_k}
+    c_k = (x_k^TQx_k+u_k^TRu_k)
+    \end{equation}
+    Here $Q$ and $R$ are matrices over which individual elements of the state vector or control signal vector can be weighted differently.  
+    \cite{Kouvaritakis.2016}
+    %linear, quadratisch, gewichtet 
+    %reduziert Zustand, stellsignal
+
 \subsection{Current state}
 \label{subsection:currentstate}
-The current state $x_k$ is a vector of measured state variables of a building. Every prediction starts form this initial state\cite{Oldewurtel.2012}.
+
+    The current state $x_k$ is a vector of measured state variables of a building. Every prediction starts form this initial state\cite{Oldewurtel.2012}.
+    
 \subsection{Dynamics}
 \label{subsection:dynamics}
-\begin{align}
-\label{eq:statespace}
-\dot{x}=Ax+B_1u+B_2d\\
-y=Cx+D_1u+D_2d
-\end{align}
+%physikalische Beschreibung der Dynamik- Erklären welche Bedeutung welche Größe bei Gebäuden hat
+    
+    The state space formulation (SSF) contains the differential equations, which describe a physically system. In this work, it is used for the formulation of the thermal model, which is required for the MPC. The SSF consists of the state $\textbf{x}$, the control signal $\textbf{u}$, the disturbances $\textbf{d}$ and the output of the system $\textbf{y}$ represented in equation \ref{eq:statespace}. The system matrix is $A$, $B_1$ and $B_2$ are called the input matrices, $C$ is the output matrix, $D_1$ and $D_2$ are the pass- through matrices.  
+    \begin{align}
+    \label{eq:statespace}
+    \dot{\textbf{x}}=A\textbf{x}+B_1\textbf{u}+B_2\textbf{d}\\
+    \textbf{y}=C\textbf{x}+D_1\textbf{u}+D_2\textbf{d} \notag
+    \end{align}
+    In a thermal model of a building, some authors (\cite{Hazyuk.2012}, \cite{Siroky.2011},...) use the state as a vector of some temperatures, the control signal as a signal for the heating system, the disturbances can describe the influence by the weather or occupants and the output of the system contains frequently the temperature inside of the building.
+    
 
 
 \subsection{Constraints}
 \label{subsection:constraints}
 
+%es gibt constraints auf der eingangs und ausgansseite, es gibt harte und weiche constraints. wichtig ist, dass man nicht auf beiden seiten harte constraints einstellt
 
 
 %Abbildung zu Regelsstrecke erstellen. Eingänge/Ausgänge, Modell, Optimierer usw
