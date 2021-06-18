@@ -22,11 +22,15 @@ There are three different mechanism, which describe physically the heat transfer
     \label{eq:conduction}
         \dot{Q} = \frac{A\lambda}{d} \Delta T
     \end{equation}
-    (In therms of buildings, the conductive medium could be walls, floors or roofs.)
+    In therms of buildings, the conductive medium could be walls, floors or roofs.
     \newline
-    Further, the Ohm's law 
-    \cite{Kuchling.2007} 
-    determine the thermal resistance $R$ as
+    Further, the Ohm's law of thermodynamics describes the above equation as 
+     \begin{equation}
+    \label{eq:conduction}
+        \dot{Q} = \frac{\Delta T}{R_\lambda} 
+    \end{equation}
+    and determine the thermal resistance $R_\lambda$ as
+    \cite{Kuchling.2007}
     \begin{equation}
     \label{eq:r_lambda}
         R_\lambda = \frac{d}{A\lambda}
@@ -85,12 +89,31 @@ For modeling the thermal behavior of buildings, the lumped capacitance model is 
     \caption{Sample RC- network}
     \label{fig:sampleRCnetwork}
     \end{figure}
-    The heat flux $\dot{Q}$, for example from an radiator, influence the temperature $T_wall$, as well as the capacity $C$, the temperature inside and outside $T_inside$ and $T_outside$ with their resistances $R_\alpha,inside$ and $R_\alpha,outside$. In the shown figure, the thermal resistances are serial connected. According to the electrical network, a summary resistance is the sum of these two resistance 
+    The heat flux $\dot{Q}$, for example from an radiator, influence the temperature $T_wall$, as well as the capacity $C$, the temperature inside and outside $T_inside$ and $T_outside$ with their resistances $R_\alpha,inside$ and $R_\alpha,outside$.
+    For creating the differential equation, the Kirchhoff's Current Law is required. It states that the sum of the flowing current to the node is equal to the sum of the flowing current off the node 
+    \cite{Kuchling.2007}. 
+    Since there is a thermal modeling case, the current is replaced by the heat flux. The following differential equation results for the node  $T_{wall}$ using the Ohm's law ($\dot{Q}=\Delta T/R$) and the relationship $\dot{Q}=C\frac{\partial T}{\partial t}$.     
+    \begin{equation}
+    \label{eq:sampledifferential}
+    C \frac{\partial T_{wall}}{\partial t} = \dot{Q} + \frac{T_{inside}-T{wall}}{R_\alpha,inside} - \frac{T_{wall}-T{outside}}{R_\alpha,outside}
+    \end{equation}
+    In the shown figure, the thermal resistances are serial connected. According to the electrical network, the summary resistance is the sum of these two resistance. 
     \begin{equation}
     \label{eq:resistanceseriel}
-    
+        R_{sum} = R_{\alpha,inside} + R_{\alpha,outside}
     \end{equation}
-    A parallel circuitry  
+    A parallel circuitry has windows and walls in buildings, for example. Here the resistances are calculated according to the following schema:
+    \begin{equation}
+    \label{eq:resistancesparallel}
+        \frac{1}{R_{sum}} = \frac{1}{R_{wall}} + \frac{1}{R_{window}}
+    \end{equation}
+    In terms of needed more capacities for describing the thermal model, the summary capacity are added in a parallel circuitry as: 
+    \begin{equation}
+    \label{eq:capacity}
+         C_{sum} = C_1 + C_2
+    \end{equation}
+    The serial circuitry of capacities will not used in this work, thus it is not nealy explained.
+%maschenregel noch erklären?
 \section{Model predictive control (MPC)}
 \label{section:mpc}
 "The idea of model predictive control [...] is [..] to utilize a model of the process in order to predict and optimize the future system behavior."
@@ -127,8 +150,8 @@ c_k = (x_k^TQx_k+u_k^TRu_k)
 \end{equation}
 Here $Q$ and $R$ are matrices over which individual elements of the state vector or control signal vector can be weighted differently.  
 \cite{Kouvaritakis.2016}
-linear, quadratisch, gewichtet 
-reduziert Zustand, stellsignal
+%linear, quadratisch, gewichtet 
+%reduziert Zustand, stellsignal
 \subsection{Current state}
 \label{subsection:currentstate}
 The current state $x_k$ is a vector of measured state variables of a building. Every prediction starts form this initial state\cite{Oldewurtel.2012}.
