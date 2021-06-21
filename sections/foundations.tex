@@ -59,7 +59,7 @@ There are three different mechanism, which describe physically the heat transfer
 \subsection{Radiation}
 \label{subsection:radiation}
 
-    Every body emits heat radiation at the environment with electromagnetic waves. As shown in the following equation, the temperature $T$ of the body influences highly the heat radiation.\cite{.2013} 
+    Every body emits heat radiation at the environment with electromagnetic waves. Especially, heat radiation only does not need matter for energy transportation. As shown in the following equation, the temperature $T$ of the body influences highly the heat radiation.\cite{.2013} 
     \begin{equation}
     \label{eq:radiation}
         \dot{q} = \sigma T^4
@@ -69,11 +69,11 @@ There are three different mechanism, which describe physically the heat transfer
     \label{eq:realbodyradiation}
         \dot{q} = \epsilon \sigma T^4
     \end{equation}
-    Especially, heat radiation only does not need matter for energy transportation.\cite{.2013}
+    In General, a body absorbs, transmits and reflects radiation with the appropriate coefficients $a$, $\tau$ and $r$. In summary, all coefficients are one ($a + \tau + r = 1)$
+    \cite{Baehr.2016}.
+    In particular, the reflection coefficient is needed for describing the influence radiation via the environment in building modeling.
     \newline
-    The best known source of heat radiation is the sun, which plays an important roll in thermal modeling of buildings. Objectives in the building, such as radiators, also  radiate heat. For example, Radiators have equal parts convective and radiative energy transport \cite{Hazyuk.2012}. 
-  %hier noch näher auf Absorbtion, Transsmission und REflexion eingehen, wird reflexion vllt bei fenstern gebraucht, absorbtion beim Aufheizen von boden oder ähnlichem  
-    
+    The best known source of heat radiation is the sun, which plays an important roll in thermal modeling of buildings. Objectives in the building, such as radiators, also  radiate heat. For example, radiators have equal parts convective and radiative energy transport \cite{Hazyuk.2012}. 
     
 \section{Lumped capacitance model}
 \label{section:modeling}
@@ -112,7 +112,7 @@ For modeling the thermal behavior of buildings, the lumped capacitance model is 
     \label{eq:capacity}
          C_{sum} = C_1 + C_2
     \end{equation}
-    The serial circuitry of capacities will not used in this work, thus it is not nealy explained.
+    The serial circuitry of capacities will not used in this work, thus it is not nearly explained.
 %maschenregel noch erklären?
 
 
@@ -173,7 +173,6 @@ $c_k$ represents the cost function, which is nearly explained in the next subsec
     
 \subsection{Dynamics}
 \label{subsection:dynamics}
-%physikalische Beschreibung der Dynamik- Erklären welche Bedeutung welche Größe bei Gebäuden hat
     
     The state space formulation (SSF) contains the differential equations, which describe a physically system. In this work, it is used for the formulation of the thermal model, which is required for the MPC. The SSF consists of the state $\textbf{x}$, the control signal $\textbf{u}$, the disturbances $\textbf{d}$ and the output of the system $\textbf{y}$ represented in equation \ref{eq:statespace}. The system matrix is $A$, $B_1$ and $B_2$ are called the input matrices, $C$ is the output matrix, $D_1$ and $D_2$ are the pass- through matrices.  
     \begin{align}
@@ -188,24 +187,6 @@ $c_k$ represents the cost function, which is nearly explained in the next subsec
 \subsection{Constraints}
 \label{subsection:constraints}
 
-%es gibt constraints auf der eingangs und ausgansseite, es gibt harte und weiche constraints. wichtig ist, dass man nicht auf beiden seiten harte constraints einstellt
-
-
-%Abbildung zu Regelsstrecke erstellen. Eingänge/Ausgänge, Modell, Optimierer usw
-
-%This chapter is supposed to summarize previous work of other researchers related to your topic.
-%The aim is to give an overview of existing literature while highlighting differences and similarities to this thesis.
-%
-%Please choose a coherent citation style throughout the thesis. For example
-%
-%\begin{itemize}
-%	\item Direct citation of results, an approach or similar
-%	\item[] \Textcite{Fan.2015} find that their method improves the benchmark.
-%	\item Indirect citation
-%	\item[] Recent research highlights the importance of this method \Parencite{Fan.2015}.
-%	\item Direct citation
-%	\item[] \textquote{\emph{Energy optimisation in buildings is important}} \Parencite{Fan.2015}.
-%\end{itemize}
-
-
-
+Dealing with constraints is one of the most important advantages of MPC. Thereby, constraints can be used for the state, the output, and the input. In terms of building control, output constraints and input constraints are reasonable, as mathematically described in the equation \ref{eq:costfunc}. That means, the output constraints could be a temperature range, which feels comfortable for occupants. And the constraints for the input orients at minimal (= 0) and maximal values of the possible performances. General, logical and physical ranges are constrained. There are different forms of constraints, but linear constraints are mostly used for MPC, because they simplify the optimization problem. Constraints can also be time- invariant. This is beneficial for embedding diverse temperature range during the night and the day or during the working time of occupants, when they are not at home.
+\cite{Siroky.2011}
+%es gibt harte und weiche constraints. wichtig ist, dass man nicht auf beiden seiten harte constraints einstellt. konvexe Constraints bei bedarf
