@@ -11,13 +11,13 @@ There are three different mechanism, which describe physically the heat transfer
 \subsection{Conduction}
 \label{subsection:conduction}
 
-    Conduction means, that heat energy is directed in a solid or fluid. Molecules within the solid or fluid have higher energy when the temperature is higher. They transfer the energy to neighbour molecules with smaller energy. Without a heat source, the temperature difference between the a hot and a cold location of the molecules decrease.\cite{Kuchling.2007}
+    Conduction means, that heat energy is directed in a solid or fluid. Molecules within the solid or fluid have higher energy when the temperature is higher. They transfer the energy to neighbour molecules with smaller energy. Without a heat source, the temperature difference between a hot and a cold location of the molecules decrease.\cite{Kuchling.2007}
     \newline The equation \ref{eq:fourier} describes the conduction according to Fourier \cite{.2013}. There is $\lambda$ the thermal conductivity with the assumption of being constant and $\dot{\textbf{q}}$ and $T$ represent the specific heat flux and the temperature. The thermal conductivity is dependent on the material, such as concrete, wood or bricks. 
     \begin{equation}
     \label{eq:fourier}
         \dot{\textbf{q}} = - \lambda grad T
     \end{equation}
-    For the further work, it will be relevant to expand the above equation with the area $A$, the thickness of the conductive medium $d$ and an temperature difference $\Delta T$ assuming one significant direction of the heat flux $\dot{Q}$ to:
+    For the further work, it will be relevant to expand the above equation with the area $A$, the thickness of the conductive medium $d$ and a temperature difference $\Delta T$ assuming one significant direction of the heat flux $\dot{Q}$ to:
     \begin{equation}
     \label{eq:conduction}
         \dot{Q} = \frac{A\lambda}{d} \Delta T
@@ -69,7 +69,7 @@ There are three different mechanism, which describe physically the heat transfer
     \label{eq:realbodyradiation}
         \dot{q} = \epsilon \sigma T^4
     \end{equation}
-    In General, a body absorbs, transmits and reflects radiation with the appropriate coefficients $a$, $\tau$ and $r$. In summary, all coefficients are one ($a + \tau + r = 1)$
+    In general, a body absorbs, transmits and reflects radiation with the appropriate coefficients $a$, $\tau$ and $r$. In summary, all coefficients are one ($a + \tau + r = 1)$
     \cite{Baehr.2016}.
     In particular, the reflection coefficient is needed for describing the influence radiation via the environment in building modeling.
     \newline
@@ -89,15 +89,15 @@ For modeling the thermal behavior of buildings, the lumped capacitance model is 
     \caption{Sample RC- network}
     \label{fig:sampleRCnetwork}
     \end{figure}
-    The heat flux $\dot{Q}$, for example from an radiator, influence the temperature $T_wall$, as well as the capacity $C$, the temperature inside and outside $T_inside$ and $T_outside$ with their resistances $R_\alpha,inside$ and $R_\alpha,outside$.
+    The heat flux $\dot{Q}$, for example from an radiator, influence the temperature $T_{wall}$, as well as the capacity $C$, the temperature inside and outside $T_{inside}$ and $T_{outside}$ with their resistances $R_{\alpha,inside}$ and $R_{\alpha,outside}$.
     For creating the differential equation, the Kirchhoff's Current Law is required. It states that the sum of the flowing current to the node is equal to the sum of the flowing current off the node 
     \cite{Kuchling.2007}. 
     Since there is a thermal modeling case, the current is replaced by the heat flux. The following differential equation results for the node  $T_{wall}$ using the Ohm's law ($\dot{Q}=\Delta T/R$) and the relationship $\dot{Q}=C\frac{\partial T}{\partial t}$.     
     \begin{equation}
     \label{eq:sampledifferential}
-    C \frac{\partial T_{wall}}{\partial t} = \dot{Q} + \frac{T_{inside}-T{wall}}{R_\alpha,inside} - \frac{T_{wall}-T{outside}}{R_\alpha,outside}
+    C \frac{\partial T_{wall}}{\partial t} = \dot{Q} + \frac{T_{inside}-T{wall}}{R_{\alpha,inside}} - \frac{T_{wall}-T{outside}}{R_{\alpha,outside}}
     \end{equation}
-    In the shown figure, the thermal resistances are serial connected. According to the electrical network, the summary resistance is the sum of these two resistance. 
+    In the shown figure \ref{fig:sampleRCnetwork}, the thermal resistances are serial connected. According to the electrical network, the summary resistance is the sum of these two resistance. 
     \begin{equation}
     \label{eq:resistanceseriel}
         R_{sum} = R_{\alpha,inside} + R_{\alpha,outside}
@@ -119,7 +119,7 @@ For modeling the thermal behavior of buildings, the lumped capacitance model is 
 \section{Model predictive control (MPC)}
 \label{section:mpc}
 
-"The idea of model predictive control [...] is [..] to utilize a model of the process in order to predict and optimize the future system behavior."
+"The idea of model predictive control [...] is [...] to utilize a model of the process in order to predict and optimize the future system behavior."
 \cite{Grune.2017}
 Applied to a thermal control of a building with the aim of grid- supporting, a model of the thermal behavior of the building is required to predict the reaction of the system behavior in the next $N$ time steps, called the prediction horizon. Every time step $k$, the current state \textbf{$x_k$}, the output \textbf{$y_k$} and the future system behavior is obtained via measurements and computation. The computation of the future system behavior includes weather forecast, occupant schedule  and the optimization of the control signal \textbf{$u_k$} over the optimization horizon \textbf{$u_{k+N}$}. But, only the first calculated control signal is adopt as input for the plant.
 Then, the proceeding repeat every time step the calculations. The following figure visualise the MPC control loop.
