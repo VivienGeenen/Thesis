@@ -1,7 +1,7 @@
 \chapter{Foundations}
 \label{ch:foundations}
 
-For the development of this work, some foundations about thermal modeling and model predictive control (MPC) are needed, which are explained in this chapter. Note, that in the following all vectors denoted as bold letters, e.g. \textbf{x}.
+The main foundations on which this work is based are summarised in this chapter. This includes thermal basics, foundations about thermal modeling and model predictive control (MPC). Note, that in the following all vectors are denoted as bold letters, e.g. \textbf{x}.
 
 \section{Thermal basics}
 \label{section:thermalbasics}
@@ -19,25 +19,12 @@ There are three different mechanism of heat transfer: Heat conduction, heat conv
     \end{equation}
     describes the conduction according to Fourier \cite{.2013}. There is $\lambda$ the thermal conductivity with the assumption of being constant and $\dot{\textbf{q}}$ and $T$ represent the specific heat flux and the temperature. The thermal conductivity is dependent on the material, such as concrete, wood or bricks. 
     \newline
-    In order to know the heat flux $\dot{Q}$, it will be relevant to expand the above equation with the area $A$, the thickness of the conductive medium $d$ and a temperature difference $\Delta T$ assuming one significant direction of the heat flux $\dot{Q}$ to:
+    In order to know the heat flux $\dot{Q}$, it is necessary to expand the above equation with the area $A$, the thickness of the conductive medium $d$ and a temperature difference $\Delta T$ assuming one significant direction of the heat flux $\dot{Q}$ to:
     \begin{equation}
-    \label{eq:conduction}
+    \label{eq:conduction1}
         \dot{Q} = \frac{A\lambda}{d} \Delta T
     \end{equation}
     In terms of buildings, the conductive medium could be walls, floors or roofs.
-    \newline
-    Further, the Ohm's law of thermodynamics describes the above equation as 
-     \begin{equation}
-    \label{eq:conduction}
-        \dot{Q} = \frac{\Delta T}{R_\lambda} 
-    \end{equation}
-    and determine the thermal resistance $R_\lambda$ as
-    \cite{Kuchling.2007}
-    \begin{equation}
-    \label{eq:r_lambda}
-        R_\lambda = \frac{d}{A\lambda}
-    \end{equation}
-    what is required for the RC- modeling of buildings, which is nearly explained in \autoref{section:modeling}.
 
 \subsection{Convection}
 \label{subsection:convection}
@@ -52,11 +39,6 @@ There are three different mechanism of heat transfer: Heat conduction, heat conv
     with the heat transfer coefficient $\alpha$, especially for building modeling the wall temperature $T_w$ and the environment temperature $T_\infty$ \cite{Griesinger.2019}
     . There are two possibilities to determine the heat transfer coefficient. Both require a temperature difference $\Delta T$ and either a temperature gradient $\partial T/\partial x$ or a heat flux $\dot{Q}$.
     \cite{.2013} 
-    \newline
-    The conversion of the \autoref{eq:newton} leads to the thermal resistance for convection, shown in the next equation.\cite{Griesinger.2019}
-    \begin{equation}
-        R_\alpha = \frac{\Delta T}{\dot{Q}} = \frac{1}{\alpha A}
-    \end{equation}
 
 \subsection{Radiation}
 \label{subsection:radiation}
@@ -84,7 +66,24 @@ For modeling the thermal behavior of buildings, the lumped capacitance model is 
 \subsection{Electrical analogy}
 \label{electricalanalogy}
 
-    Similar to an electrical network, the potential is represented by the temperature at one node, the heat flux corresponds to the current and thermal resistances $R$ comply with electrical resistors and thermal capacitance $C$ with electrical capacitors. The thermal capacitance is the specific heat capacity $c$ multiplied by the mass $m$ ($C=cm$). For a better explanation, a simple example thermal network is depicted in \autoref{fig:sampleRCnetwork}, which represents a heated wall of a building.
+    Similar to an electrical network, the potential is represented by the temperature at one node and the heat flux corresponds to the current. We can also use the Ohm's law, which is formulated in the thermal way as:  
+     \begin{equation}
+    \label{eq:Ohm}
+        \dot{Q} = \frac{\Delta T}{R} 
+    \end{equation}
+    Combining the above equation with \autoref{eq:conduction1} or \autoref{eq:newton}, the thermal resistance $R$ is determined in conductive cases as \cite{Kuchling.2007}:
+    \begin{equation}
+    \label{eq:r_lambda}
+        R_\lambda = \frac{d}{A\lambda}
+    \end{equation}
+   and in convective cases as\cite{Griesinger.2019}:
+    \begin{equation}
+        R_\alpha = \frac{1}{\alpha A}
+    \end{equation}
+    In sum, the thermal resistances $R$ comply with electrical resistors.
+    In addiction for modeling thermal networks the thermal capacitance $C$ is needed. It is calculated from the specific heat capacity $c$ multiplied by the mass $m$ ($C=cm$).
+    \newline
+    For a better explanation of the structure of a thermal network, a simple example is depicted in \autoref{fig:sampleRCnetwork}. It represents a heated wall of a building.
     \begin{figure}[h]
     \centering
     \includegraphics[scale=0.8]{figure/beispiel Netzwerk.png}
@@ -117,7 +116,7 @@ For modeling the thermal behavior of buildings, the lumped capacitance model is 
     The serial circuitry of capacitances is calculated as follows:
     \begin{equation}
     \label{eq:capacityseriell}
-         C_{sum} = \frac{1}{C_1} + \frac{1}{C_2}
+         \frac{1}{C_{sum}} = \frac{1}{C_1} + \frac{1}{C_2}
     \end{equation}
     
 %maschenregel noch erklären?
