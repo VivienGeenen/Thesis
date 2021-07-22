@@ -26,7 +26,6 @@
 %%
 
 \begingroup%
-\DeclareUnicodeCharacter
   \makeatletter%
   \providecommand\color[2][]{%
     \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
