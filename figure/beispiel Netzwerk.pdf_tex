@@ -55,14 +55,14 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{beispiel Netzwerk.pdf}}%
-    \put(0.40754901,0.26410131){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}T_{wall}\end{tabular}}}}%
-    \put(0.89876136,0.27325269){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}T_{inside}\end{tabular}}}}%
-    \put(0.00010626,0.27245346){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}T_{outside}\end{tabular}}}}%
+    \put(0.40754901,0.26410131){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{wall}$\end{tabular}}}}%
+    \put(0.89876136,0.27325269){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{inside}$\end{tabular}}}}%
+    \put(0.00010626,0.27245346){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{outside}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{beispiel Netzwerk.pdf}}%
     \put(0.59480097,0.10244627){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C\end{tabular}}}}%
-    \put(0.18807544,0.23605376){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}R_{\alpha},outside\end{tabular}}}}%
-    \put(0.68234065,0.23617081){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}R_{\alpha},inside\end{tabular}}}}%
+    \put(0.18807544,0.23605376){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{\alpha,outside}$\end{tabular}}}}%
+    \put(0.68234065,0.23617081){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{\alpha,inside}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{beispiel Netzwerk.pdf}}%
-    \put(0.57174285,0.39067253){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\dot{Q}\end{tabular}}}}%
+    \put(0.57174285,0.39067253){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{Q}$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
