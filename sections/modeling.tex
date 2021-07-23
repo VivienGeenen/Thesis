@@ -1,12 +1,12 @@
 \chapter{Modelling}
 \label{ch:modelling}
-After explaining thermal basics and the electrical analogy, the foundations are used in this chapter. How I obtain a thermal model and the resulting thermal model, is introduced. Later the model is required for the MPC to predict the thermal reactions of the building. 
+After explaining thermal basics and the electrical analogy, the foundations are used in this chapter. How I obtain a thermal model and the resulting thermal model is introduced. Later the model is required for the MPC to predict the thermal reactions of the building. 
 
 \section{The building}
 \label{section:building}
-Because of Da sich diese ganze arbeit auf ein reales Gebäude bezieht, wird im folgenden das Gebäude näher beschrieben.
+Since the thermal model and the MPC are based on a real building, the building is described in more detail below.
 \newline
-The building stands at the "Campus Nord" from the "Karlsruher Institut für Technologie (KIT)" and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bath room, five rooms and a technical room over with. In \autoref{fig:Bauplan}, you can see a part of the construction plan of the building
+The building stands at the "Campus Nord" from the "Karlsruher Institut für Technologie (KIT)" and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bath room, five rooms and a technical room. For a better orientation you can see in \autoref{fig:Bauplan} a part of the construction plan of the building. The living area is around 100 $m^2$. The building has the option to use a ground-source heat pump or a air heat pump for heating and cooling. The focus is set on the air heat pump, because the most used heat pumps are air heat pumps in Germany \cite{bwp.2021}. Further information about the air heat pump you can read in the "Technische Unterlagen Montageanleiung" 
 
 \begin{figure}
     \centering
@@ -15,6 +15,7 @@ The building stands at the "Campus Nord" from the "Karlsruher Institut für Tech
     \caption{construction plan of the building \cite{Bauplan}}
     \label{fig:Bauplan}
 \end{figure}
+
 \section{The thermal model}
 \label{thermalmodel}
 
