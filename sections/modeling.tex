@@ -4,23 +4,34 @@ After explaining thermal basics and the electrical analogy, the foundations are 
 
 \section{The building}
 \label{section:building}
-Since the thermal model and the MPC are based on a real building, the building is described in more detail below.
-\newline
-The building stands at the "Campus Nord" from the "Karlsruher Institut für Technologie (KIT)" and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bathroom, five rooms and a technical room. For a better orientation, you can see in \autoref{fig:Bauplan} a part of the construction plan of the building. It can be noted that the building is designed as a single-family house, but for practical reasons, it is used as an office. The living area is around 100 $m^2$. In the building are two options to heat or cool with a ground-source heat pump or an air heat pump. The focus is placed on the air heat pump because the most commonly used heat pumps in Germany are air heat pumps \cite{bwp.2021}. Further information about the air heat pump you can read in the "Technische Unterlagen Montageanleiung" \cite{TUM}. In cooperation with the heat pump, there is an water reservoir for the saving energy. The volume is 1000 liter (further information in \cite{Oskar}).However, the heating system is not completely installed. So heating or cooling is not possible actual. 
-One of the main features of the building is the number of sensors. The air temperature is measured in every room, as well as the temperature in the middle of the exterior wall, the screed temperature, the floor plate temperature, and the temperature of the inner wall between the rooms three and four (see \autoref{fig:Bauplan}). Furthermore, the consumption of the actual electrical power is also detected. There are much more sensors, but in this case, are only needed the mentioned sensors. 
-%Himmelsrichtung noch beschreiben
-\begin{figure}
-    \centering
-    \def\svgwidth{320pt}
-    \input{figure/Bauplan_WärmepumpenhausAuschnitt.pdf_tex}
-    \caption{construction plan of the building \cite{Bauplan}}
-    \label{fig:Bauplan}
-\end{figure}
-
+    Since the thermal model and the MPC are based on a real building, the building is described in more detail below.
+    \newline
+    The building stands at the "Campus Nord" from the "Karlsruher Institut für Technologie (KIT)" and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bathroom, five rooms and a technical room. For a better orientation, you can see in \autoref{fig:Bauplan} a part of the construction plan of the building. It can be noted that the building is designed as a single-family house, but for practical reasons, it is used as an office. The living area is around 100 $m^2$. In the building are two options to heat or cool with a ground-source heat pump or an air heat pump. The focus is placed on the air heat pump because the most commonly used heat pumps in Germany are air heat pumps \cite{bwp.2021}. Further information about the air heat pump you can read in the "Technische Unterlagen Montageanleiung" \cite{TUM}. In cooperation with the heat pump, there is a water reservoir for saving energy. The volume is 1000 litres (further information in \cite{Oskar}). However, the heating system is not completely installed. So heating or cooling is not possible actual.
+    \newline
+    One of the main features of the building is the number of sensors. The air temperature is measured in every room, as well as the temperature in the middle of the exterior wall, the screed temperature, the floor plate temperature, and the temperature of the inner wall between room three and room four (see \autoref{fig:Bauplan}). Furthermore, the consumption of the actual electrical power is also detected. There are much more sensors, but in this case, are only needed the mentioned sensors. 
+    %Himmelsrichtung noch beschreiben
+    \begin{figure}
+        \centering
+        \def\svgwidth{320pt}
+        \input{figure/Bauplan_WärmepumpenhausAuschnitt.pdf_tex}
+        \caption{construction plan of the building \cite{Bauplan}}
+        \label{fig:Bauplan}
+    \end{figure}
+    
 \section{The thermal model}
 \label{thermalmodel}
 
+\section{Grey-box modelling}
+\label{Grey-box modelling}
+
+Creating a model can be made with three types of models, the so-called white-box models, grey-box models or black-box models. White-box models describe the real system only physically. Black-box models, on the other hand, have no physical description. They are created with data. And grey-box models are in between these two options \cite{Statusseminar.ForschungfurEnergieoptimiertesBauen.2009}. All possibilities are used in the thermal modelling of buildings \cite{Kramer.2012}.
+
+The chosen approach for the MPC is the grey-box model because of its advantages.    
+%Vorteile von Greybox 
+%vllt doch auch vor und nachteile von den anderen Ansätzen
+
 \section{Data collection}
+\label{datacollection}
 
 \section{Validation of the thermal Model}
 \label{validationthermalmodel}
