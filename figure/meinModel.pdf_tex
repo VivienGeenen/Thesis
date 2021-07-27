@@ -55,21 +55,21 @@
     \setlength\tabcolsep{0pt}%
     \put(0.53946585,0.25774436){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Q̇sun\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{meinModel.pdf}}%
-    \put(0.42035657,0.16296345){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Tenvelope\end{tabular}}}}%
-    \put(0.78143598,0.16200052){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Tinside\end{tabular}}}}%
-    \put(0.00008435,0.16005864){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Toutside\end{tabular}}}}%
+    \put(0.42035657,0.16296345){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{envelope}$\end{tabular}}}}%
+    \put(0.78143598,0.16200052){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{inside}$\end{tabular}}}}%
+    \put(0.00008435,0.16005864){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{outside}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{meinModel.pdf}}%
-    \put(0.4755613,0.0813234){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Cenvelope\end{tabular}}}}%
-    \put(0.12781638,0.18738304){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Renvelope\end{tabular}}}}%
-    \put(0.58506799,0.18747596){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Rinside\end{tabular}}}}%
+    \put(0.4755613,0.0813234){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_{envelope}$\end{tabular}}}}%
+    \put(0.12781638,0.18738304){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{envelope}$\end{tabular}}}}%
+    \put(0.58506799,0.18747596){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{inside}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{meinModel.pdf}}%
-    \put(0.83797771,0.0813234){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Cinside\end{tabular}}}}%
+    \put(0.83797771,0.0813234){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_{inside}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{meinModel.pdf}}%
-    \put(0.90633505,0.14079022){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Q̇heating\end{tabular}}}}%
+    \put(0.90633505,0.14079022){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{Q}-_{heating}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{meinModel.pdf}}%
-    \put(0.35431431,0.40702964){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Rwindow\end{tabular}}}}%
+    \put(0.35431431,0.40702964){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{window}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{meinModel.pdf}}%
-    \put(0.89950567,0.26255484){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Q̇sun\end{tabular}}}}%
+    \put(0.89950567,0.26255484){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{Q}-_{sun}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{meinModel.pdf}}%
   \end{picture}%
 \endgroup%
