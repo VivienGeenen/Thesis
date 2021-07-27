@@ -30,9 +30,12 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         \caption{structure of the thermal model in RC- analogy}
         \label{fig:structureThermalModel}
     \end{figure}
-%    \begin{align}
-        
-   % \end{align}
+    \begin{align}
+       \label{eq:meinModel} 
+       C_{inside}*\frac{\partial T_{inside}}{\partial t} &=& \dot{Q}_{heating} + \dot{Q}_{sun,inside} - \frac{T_{inside}-T_{envelope}}{R_{inside}} - \frac{T_{inside}-T_{outside}}{R_{window}}\\
+       C_{envelope}*\frac{\partial T_{envelope}}{\partial t} &=& \dot{Q}_{sun,envelope} - \frac{T_{envelope}-T_{outside}}{R_{envelope}} + \frac{T_{inside}-T_{envelope}}{R_{inside}} \nonumber \\
+       \dot{Q}_{WR}&=& \dot{Q}_{heating} + \dot{Q}_{HP} - \dot{Q}_{loss} - \dot{Q}_{SW} \nonumber
+    \end{align}
 
 \section{Grey-box modelling}
 \label{Grey-box modelling}
