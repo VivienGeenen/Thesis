@@ -1,10 +1,10 @@
 \chapter{Introduction}
 \label{ch:introduction}
-Climate change is challenging the entire world. In the Paris Agreement, the United Nations (UN) agrees to keep the rise in global average temperature significant under two degrees Celsius \cite{UnitedNations.2015}. To achieve this aim every nation must reduce its greenhouse gas emissions. This calls for changes e.g. in the mobility sector, industry, and energy production. Germany intends to implement this by promoting electromobility, using hydrogen in industry, and energy transition \cite{Deutschlandfunk.24.06.2021}. Especially  the energy transition that has already been initiated must be driven forward. That means the expansion of renewable energies and decreasing conventional power plants. The German government is aiming to phase out coal-fired power plants by 2038 \cite{bundesregierung.2021}. For covering the energy demand, a high increase in photovoltaics and wind power is necessary in a few years. 
+Climate change is challenging the entire world. In the Paris Agreement, the United Nations (UN) agrees to keep the rise in global average temperature significant under two degrees Celsius \cite{UnitedNations.2015}. To achieve this aim every nation must reduce its greenhouse gas emissions. This calls for changes e.g. in the mobility sector, industry, and energy production. Germany intends to implement this by promoting electromobility, using hydrogen in industry, and energy transition \cite{Deutschlandfunk.24.06.2021}. Especially the energy transition that has already been initiated must be driven forward. That means the expansion of renewable energies and decreasing conventional power plants. The German government is aiming to phase out coal-fired power plants by 2038 \cite{bundesregierung.2021}. For covering the energy demand, a high increase in photovoltaics and wind power is necessary in a few years. 
 \newline
-Since a disadvantage of this renewable energy is that they fluctuate with the weather and do not release energy by demand. In addition, more renewable energies lead to more intense instabilities in the grid. Energy storage and load shifting are to be used to implement the stable grid in the future. Batteries, pumped hydroelectric energy storage, or thermal energy storage could store an excess of power during a sunny or windy day. On the other hand, load shifting is clever adding and removing loads from the grid and results in smoothing the grid. Load shifting is already used industrial. A new approach is to use residential buildings as thermal storage and demand response to contribute to grid stability. Particularly the idea of controlling the heat pumps of buildings has great potential. As at least 1.25 million heat pumps are already installed in Germany, and the tendency is increasing \cite{BMW.2021}.
+Since a disadvantage of this renewable energy is that they fluctuate with the weather and do not release energy by demand. In addition, more renewable energies lead to more intense instabilities in the grid. Energy storage and load shifting are to be used to implement the stable grid in the future. Batteries, pumped hydroelectric energy storage, thermal energy storage, and much more could store an excess of power during a sunny or windy day. On the other hand, load shifting is clever adding and removing loads from the grid and results in smoothing the grid. Load shifting is already used industrial. A new approach is to use residential buildings as thermal storage and demand response to contribute to grid stability. Particularly the idea of controlling the heat pumps of buildings has great potential. As at least 1.25 million heat pumps are already installed in Germany, and the tendency is increasing \cite{BMW.2021}.
 \newline
-The implementation of this approach needs a control strategy during consumer comfort is ensured. Using the weather forecasts and prediction of the grid fluctuations improve the control. Model predictive control is one suitable instrument to realize this and the issue of this work. 
+The implementation of this approach needs a control strategy during consumer comfort is ensured. Using the weather forecasts and prediction of the grid fluctuations improve the control. Model predictive control (MPC) is one suitable instrument to realize this and the issue of this work. (also letzter Satz wird halb gestrichen hier folgt dann noch genauer was das Ziel ist)
 
 \section{Objective of this work}
 \label{section:obejective}
@@ -13,23 +13,20 @@ The implementation of this approach needs a control strategy during consumer com
 
 \section{Related work}
 \label{section:relatedwork}
-Bezug zu bestehenden Arbeiten
+
+Thermal modelling and controlling of buildings are of great interest in research (weil?). Kramer et al. 
+\cite{Kramer.2012}
+summarizes thermal modelling approaches such as white-box, grey-box, and black-box models and presents how researchers apply these approaches. Some authors such as \cite{JiriCigler.} %in MPC paper Tabelle 11 oder so suchen (On the Selection of the Most Appropriate MPC Problem Formulation for Buildings(vllt),
+use grey-box models for MPC for thermal management in buildings. 
+Besonders in der MPC für temperaturregelung nutzen viele Autoren ( ...) Grey-box modelle. Autor bla untersucht blub und verwendet grey-box aus folgenden gründen.
+
+
+%Zur thermischen Modellierung gibt es die Ansätze white grey and black bos modelling. Die Anwendung der verschiedenen Modellarten wurde schon getestet in blabla und in verbindung mit MPC stellt sich heraus, dass einfache, grey box Modelle sehr gut geeignet sind. 
+
+
+
+viele Nutzen Grey-box Modelle für thermische Gebäudemodelle. Viele Nutzen MPC für Regelung von HVAC systemen. Viele wollen Energiesparen. Ich will Netz stabilisieren.
+
 \section{Content structuring}
 \label{section:contentstructuring}
 Stukturierung meiner Thesis erläutern
-
-%Your thesis should start with an introduction. The introduction is supposed to motivate your thesis.
-%Discuss the relevance of your topic, why are you looking into it, why is it relevant in the field? Cite important research related to your motivation.
-%Briefly state the problem as in the abstract and repeat the contribution, for example in the form of research questions. 
-%
-%Give an outline of your thesis.
-%
-%
-%\begin{itemize}
-%	\item Direct citation of results, an approach or similar
-%	\item[] \Textcite{Fan.2015} find that their method improves the benchmark.
-%	\item Indirect citation
-%	\item[] Recent research highlights the importance of this method \Parencite{Fan.2015}.
-%	\item Direct citation
-%	\item[] \textquote{\emph{Energy optimisation in buildings is important}} \Parencite{Fan.2015}.
-%\end{itemize}
