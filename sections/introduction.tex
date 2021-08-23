@@ -4,7 +4,7 @@ Climate change is challenging the entire world. In the Paris Agreement, the Unit
 \newline
 Since a disadvantage of this renewable energy is that they fluctuate with the weather and do not release energy by demand. In addition, more renewable energies lead to more intense instabilities in the grid. Energy storage and load shifting are to be used to implement the stable grid in the future. Batteries, pumped hydroelectric energy storage, thermal energy storage, and much more could store an excess of power during a sunny or windy day. On the other hand, load shifting is clever adding and removing loads from the grid and results in smoothing the grid. Load shifting is already used industrial. A new approach is to use residential buildings as thermal storage and demand response to contribute to grid stability. Particularly the idea of controlling the heat pumps of buildings has great potential. As at least 1.25 million heat pumps are already installed in Germany, and the tendency is increasing \cite{BMW.2021}.
 \newline
-The implementation of this approach needs a control strategy during consumer comfort is ensured. Using the weather forecasts and prediction of the grid fluctuations improve the control. Model predictive control (MPC) is one suitable instrument to realize this and the issue of this work. (also letzter Satz wird halb gestrichen hier folgt dann noch genauer was das Ziel ist)
+The implementation of this approach needs a control strategy during consumer comfort is ensured. Using the weather forecasts and prediction of the grid fluctuations improve the control. Model predictive control (MPC) is one suitable instrument to realize this and the issue of this work.
 
 \section{Objective of this work}
 \label{section:obejective}
@@ -14,22 +14,20 @@ The implementation of this approach needs a control strategy during consumer com
 \section{Related work}
 \label{section:relatedwork}
 
-Thermal modelling and controlling of buildings are of great research interest  (weil?). Kramer et al. 
-\cite{Kramer.2012}
-summarize thermal modelling approaches such as white-box, grey-box, and black-box models and presents how researchers apply these approaches. Many authors identify their thermal model parameters with measurements \cite{Siroky.2011},\cite{Hazyuk.2012}, \cite{Park.2011}, like a grey-box model or use grey-box models \cite{Freund.2020}, \cite{EvelynSperber.2019}. Coakley et al. \cite{Coakley.2014} see the advantages in the short development time for the model, fidelity of predictions, and the interaction of building, system and environmental parameters. One disadvantage is that modellers need a high level of knowledge in physical and statistical modelling.
-Further, some authors work with such thermal models in their MPC applications for thermal management in buildings \cite{JiriCigler.}, \cite{Hazyuk.2012b}.
+Thermal modelling and controlling of buildings are of great research interest. Kramer et al. \cite{Kramer.2012} summarize thermal modelling approaches such as white-box, grey-box, and black-box models and presents how researchers apply these approaches. Many authors identify their thermal model parameters with measurements \cite{Siroky.2011},\cite{Hazyuk.2012}, \cite{Park.2011}, like a grey-box model or use grey-box models \cite{Freund.2020}, \cite{EvelynSperber.2019}. Coakley et al. \cite{Coakley.2014} see the advantages in the short development time for the model, fidelity of predictions, and the interaction of building, system and environmental parameters. One disadvantage is that modellers need a high level of knowledge in physical and statistical modelling.
+Further, some authors work with such thermal models in their MPC applications for thermal management in buildings \cite{JiriCigler.}, \cite{Hazyuk.2012b}. 
 \newline
-Regardless of the type of model, MPC is utilised for control of heating, ventilation and air conditioning (HVAC) systems in buildings for a variety of reasons. Researchers are interested in the reduction of energy consumption, increasing comfort, and saving costs. Some papers present how to decrease or shift the peak load of buildings \cite{Oldewurtel.2010}.
+Regardless of the type of model, MPC is utilised for control of heating, ventilation and air conditioning (HVAC) systems in buildings for a variety of reasons. Researchers are interested in the reduction of energy consumption \cite{Hazyuk.2012b} and saving costs \cite{Zwickel.2019} during obtaining thermal comfort. Some papers present how to decrease or shift the peak load of buildings \cite{Oldewurtel.2010}.
 \newline
-irgendwas mit Wärmepumpen und Speichern, das für die Netzstabilisierung untersucht wurde
+On the other hand, some articles are interested in the potential of heat pumps for grid services.
+The report "Wärmepumpen in Bestandsgebäuden" examines, among other things, the load shifting potential of grouped heat pumps. The researchers determine 4 to 14 GWh load shifting potential for one million heat pumps \cite{WPimBestand.2020}.
+Also \cite{Kohlhepp.2017} analyse the flexibility of heating systems for smart grids, partially of heat pumps. 
 \newline
-forschungslücke: vereinigung der oben genannten punkte:MPC mit Greybox model und wärmepumpe und netzstabiliesierung 
-%Some authors such as \cite{JiriCigler.} %in MPC paper Tabelle 11 oder so suchen (On the Selection of the Most Appropriate MPC Problem Formulation for Buildings(vllt),
-%use grey-box models for MPC for thermal management in buildings. 
-%Besonders in der MPC für temperaturregelung nutzen viele Autoren ( ...) Grey-box modelle. Autor bla untersucht blub und verwendet grey-box aus folgenden gründen.
+As can be seen from the above issues, many studies focus on thermal grey-box modelling, MPC for HVAC control, and heat pumps and thermal storage possibilities for demand side management. However, the combination of these topics is not yet considered. The research question remains open whether an MPC for controlling a heat pump in smart buildings, including a thermal grey-box model, can stabilize the grid.  
+%(vllt kann ich da am Ende noch was zu den verwendeten Daten ergänzen ;) )
+ 
 %the interaction of building, system and environmental parameters vllt umbenennen, weil er es auch so nennt!!!!!!!!!!!!!!
 
-%Zur thermischen Modellierung gibt es die Ansätze white grey and black bos modelling. Die Anwendung der verschiedenen Modellarten wurde schon getestet in blabla und in verbindung mit MPC stellt sich heraus, dass einfache, grey box Modelle sehr gut geeignet sind. 
 
 
 
