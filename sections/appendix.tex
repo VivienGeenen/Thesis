@@ -24,7 +24,47 @@
 %% -------------------
 \section{First Section}
 \label{sec:appendix:FirstSection}
-		
+
+\begin{landscape}
+	
+	\begin{equation}
+	    \label{eq:ZRD Modell}
+	 \left(\begin{array}{c} \frac{\partial T_{inside}}{\partial t} \\ \frac{\partial T_{envelope}}{\partial t} \\ \frac{\partial T_{interior}}{\partial t}\\ \frac{\partial T_{floor}}{\partial t}\\ \dot{Q}_{WR} \end{array}\right) =  
+	\end{equation}
+	\begin{equation*}
+	\begin{pmatrix}
+    \frac{-1}{C_{inside}R_{inside}}-\frac{1}{C_{inside}R_{window}}-\frac{1}{C_{inside}R_{interior}}-\frac{1}{C_{inside}R_{floor}}   & \frac{1}{C_{inside}R_{inside}} & \frac{1}{C_{inside}R_{interior}} & \frac{1}{C_{inside}R_{floor}} & 0 \\
+    \frac{1}{C_{envelope}R_{inside}}& \frac{-1}{C_{envelope}R_{envelope}}- \frac{1}{C_{envelope}R_{inside}} & 0 & 0 & 0 \\
+    \frac{1}{C_{interior}R_{interior}} & 0 & -\frac{1}{C_{interior}R_{interior}} & 0 &0 \\
+    \frac{1}{C_{floor}R_{floor}} & 0 & 0 & -\frac{1}{C_{floor}R_{floor}} &0 \\
+    0 & 0 & 0 & 0 & 0
+    \end{pmatrix} 
+    \left(\begin{array}{c} T_{inside} \\ T_{envelope} \\ T_{interior}\\ T_{floor}\\ Q_{WR} \end{array}\right)
+    \end{equation*}
+    \begin{equation*}
+    + 
+    \begin{pmatrix}
+        1 & 0 \\
+        0 & 0 \\
+        0 & 0 \\
+        0 & 0 \\
+        -1 & 1 
+    \end{pmatrix}
+	\left(\begin{array}{c} \dot{Q}_{heating} \\ \dot{Q}_{HP} \end{array}\right)
+	+
+	\begin{pmatrix}
+         f_{sun,inside} & 0 & \frac{1}{C_{inside}R_{window}} & 0\\
+         0 & f_{sun,envelope} & \frac{1}{C_{envelope}R_{envelope}}&0\\
+         0 & 0 & 0& 0\\
+         0 & 0 & 0& 0\\
+         0 & 0 & 0 & -1
+    \end{pmatrix}
+	\left(\begin{array}{c} I_{sun,inside}\\ I_{sun,envelope}\\ T_{outside} \\ \dot{Q}_{loss} \end{array}\right)
+	\end{equation*}	
+	
+\end{landscape}
+
+
 \setcounter{figure}{0}
 		
 \begin{figure} [ht]

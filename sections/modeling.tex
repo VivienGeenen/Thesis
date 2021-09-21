@@ -1,14 +1,14 @@
 \chapter{Modelling}
 \label{ch:modelling}
-After explaining thermal basics and the electrical analogy, the foundations are used in this chapter. How I obtain a thermal model and the resulting thermal model is introduced. Later the model is required for the MPC to predict the thermal reactions of the building. 
+After explaining thermal basics and the electrical analogy, the foundations are used in this chapter. The creation of a thermal model and the resulting thermal model are presented. Later, the model is needed for the MPC to predict the thermal reactions of the building.
 
 \section{The building}
 \label{section:building}
-    Since the thermal model and the MPC are based on a real building, the building is described in more detail below.
+    Since the thermal model and the MPC are based on a real building, details about the building are described below.
     \newline
-    The building stands at the "Campus Nord" from the "Karlsruher Institut für Technologie (KIT)" and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bathroom, five rooms and a technical room. For a better orientation, you can see in \autoref{fig:Bauplan} a part of the construction plan of the building. It can be noted that the building is designed as a single-family house, but for practical reasons, it is used as an office. The living area is around 100 $m^2$. In the building are two options to heat or cool with a ground-source heat pump or an air heat pump. The focus is placed on the air heat pump because the most commonly used heat pumps in Germany are air heat pumps \cite{bwp.2021}. Further information about the air heat pump you can read in the "Technische Unterlagen Montageanleiung" \cite{TUM}. In cooperation with the heat pump, there is a water reservoir for saving energy. The volume is 1000 litres (further information in \cite{Oskar}). However, the heating system is not completely installed. So heating or cooling is not possible actual.
+    The building is located on the "Campus Nord" of the "Karlsruher Institut für Technologie (KIT)" and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bathroom, five rooms and a technical room. For a better orientation, \autoref{fig:Bauplan} shows a part of the construction plan of the building. The building is designed as a single-family house, but for practical reasons, it is used as an office. The living area is around 100 $m^2$. The building offers two options to heat or cool with a ground-source heat pump or an air heat pump. The focus is on the air heat pump because the most commonly used heat pumps in Germany are air heat pumps \cite{bwp.2021}. In addition to the heat pump, there is a water reservoir for saving energy. The volume is 1000 litres \cite{Oskar}. However, the heating system is not completely installed yet. So heating or cooling is not possible actual.
     \newline
-    One of the main features of the building is the number of sensors. The air temperature is measured in every room, as well as the temperature in the middle of the exterior wall, the screed temperature, the floor plate temperature, and the temperature of the inner wall between room three and room four (see \autoref{fig:Bauplan}). Furthermore, the consumption of the actual electrical power is also detected. There are much more sensors, but in this case, are only needed the mentioned sensors. 
+    One of the main features of the building is the number of sensors. The air temperature is measured in every room, as well as the temperature in the middle of the exterior wall, the screed temperature, the floor plate temperature, and the temperature of the inner wall between room three and room four (see \autoref{fig:Bauplan}). Furthermore, the consumption of the actual electrical power is also detected. Only the mentioned sensors are needed in this case, but there are many more sensors.
     %Himmelsrichtung noch beschreiben
     \begin{figure}
         \centering
@@ -34,7 +34,17 @@ After explaining thermal basics and the electrical analogy, the foundations are 
        \label{eq:meinModel} 
        C_{inside}*\frac{\partial T_{inside}}{\partial t} &=& \dot{Q}_{heating} + \dot{Q}_{sun,inside} - \frac{T_{inside}-T_{envelope}}{R_{inside}} - \frac{T_{inside}-T_{outside}}{R_{window}}\\
        C_{envelope}*\frac{\partial T_{envelope}}{\partial t} &=& \dot{Q}_{sun,envelope} - \frac{T_{envelope}-T_{outside}}{R_{envelope}} + \frac{T_{inside}-T_{envelope}}{R_{inside}} \nonumber \\
-       \dot{Q}_{WR}&=& \dot{Q}_{heating} + \dot{Q}_{HP} - \dot{Q}_{loss} - \dot{Q}_{SW} \nonumber
+       \dot{Q}_{WR}&=& -\dot{Q}_{heating} + \dot{Q}_{HP} - \dot{Q}_{loss} - \dot{Q}_{SW} \nonumber
+    \end{align}
+    
+    \begin{align}
+       \label{eq:meinModel2} 
+       C_{inside}*\frac{\partial T_{inside}}{\partial t} &=& \dot{Q}_{heating} + \dot{Q}_{sun,inside} - \frac{T_{inside}-T_{envelope}}{R_{inside}} - \frac{T_{inside}-T_{outside}}{R_{window}} \nonumber\\
+       & &-\frac{T_{inside}-T_{interior}}{R_{interior}}-\frac{T_{inside}-T_{floor}}{R_{floor}} \nonumber\\
+       C_{envelope}*\frac{\partial T_{envelope}}{\partial t} &=& \dot{Q}_{sun,envelope} - \frac{T_{envelope}-T_{outside}}{R_{envelope}} + \frac{T_{inside}-T_{envelope}}{R_{inside}} \nonumber \\
+       C_{interior}*\frac{\partial T_{interior}}{\partial t} &=& \frac{T_{inside}-T_{interior}}{R_{interior}} \nonumber\\
+       C_{floor}*\frac{\partial T_{floor}}{\partial t} &=& \frac{T_{inside}-T_{floor}}{R_{floor}} \nonumber\\
+       \dot{Q}_{WR}&=& -\dot{Q}_{heating} + \dot{Q}_{HP} - \dot{Q}_{loss} - \dot{Q}_{SW} \nonumber
     \end{align}
 
 \section{Grey-box modelling}
@@ -56,6 +66,3 @@ The chosen approach for the MPC is the grey-box model because it combines the ad
 
 \section{Validation of the thermal model}
 \label{validationthermalmodel}
-
-
-
