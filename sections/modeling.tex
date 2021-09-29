@@ -32,19 +32,19 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     \end{figure}
     \begin{align}
        \label{eq:meinModel} 
-       C_{inside}*\frac{\partial T_{inside}}{\partial t} &=& \dot{Q}_{heating} + \dot{Q}_{sun,inside} - \frac{T_{inside}-T_{envelope}}{R_{inside}} - \frac{T_{inside}-T_{outside}}{R_{window}}\\
-       C_{envelope}*\frac{\partial T_{envelope}}{\partial t} &=& \dot{Q}_{sun,envelope} - \frac{T_{envelope}-T_{outside}}{R_{envelope}} + \frac{T_{inside}-T_{envelope}}{R_{inside}} \nonumber \\
+       C_{inside}*\frac{d T_{inside}}{d t} &=& \dot{Q}_{heating} + \dot{Q}_{sun,inside} - \frac{T_{inside}-T_{envelope}}{R_{inside}} - \frac{T_{inside}-T_{outside}}{R_{window}}\\
+       C_{envelope}*\frac{d T_{envelope}}{d t} &=& \dot{Q}_{sun,envelope} - \frac{T_{envelope}-T_{outside}}{R_{envelope}} + \frac{T_{inside}-T_{envelope}}{R_{inside}} \nonumber \\
        \dot{Q}_{WR}&=& -\dot{Q}_{heating} + \dot{Q}_{HP} - \dot{Q}_{loss} - \dot{Q}_{SW} \nonumber
     \end{align}
     
     \begin{align}
        \label{eq:meinModel2} 
-       C_{inside}*\frac{\partial T_{inside}}{\partial t} &=& \dot{Q}_{heating} + \dot{Q}_{sun,inside} - \frac{T_{inside}-T_{envelope}}{R_{inside}} - \frac{T_{inside}-T_{outside}}{R_{window}} \nonumber\\
+       C_{inside}*\frac{d T_{inside}}{d t} &=& \dot{Q}_{heating} + \dot{Q}_{sun,inside} - \frac{T_{inside}-T_{envelope}}{R_{inside}} - \frac{T_{inside}-T_{outside}}{R_{window}} \nonumber\\
        & &-\frac{T_{inside}-T_{interior}}{R_{interior}}-\frac{T_{inside}-T_{floor}}{R_{floor}} \nonumber\\
-       C_{envelope}*\frac{\partial T_{envelope}}{\partial t} &=& \dot{Q}_{sun,envelope} - \frac{T_{envelope}-T_{outside}}{R_{envelope}} + \frac{T_{inside}-T_{envelope}}{R_{inside}} \nonumber \\
-       C_{interior}*\frac{\partial T_{interior}}{\partial t} &=& \frac{T_{inside}-T_{interior}}{R_{interior}} \nonumber\\
-       C_{floor}*\frac{\partial T_{floor}}{\partial t} &=& \frac{T_{inside}-T_{floor}}{R_{floor}} \nonumber\\
-       \dot{Q}_{WR}&=& -\dot{Q}_{heating} + \dot{Q}_{HP} - \dot{Q}_{loss} - \dot{Q}_{SW} \nonumber
+       C_{envelope}*\frac{d T_{envelope}}{d t} &=& \dot{Q}_{sun,envelope} - \frac{T_{envelope}-T_{outside}}{R_{envelope}} + \frac{T_{inside}-T_{envelope}}{R_{inside}} \nonumber \\
+       C_{interior}*\frac{d T_{interior}}{d t} &=& \frac{T_{inside}-T_{interior}}{R_{interior}} \nonumber\\
+       C_{floor}*\frac{d T_{floor}}{d t} &=& \frac{T_{inside}-T_{floor}}{R_{floor}} \nonumber\\
+       \frac{d U_{WR}}{d t}&=& -\dot{Q}_{heating} + \dot{Q}_{HP} - \dot{Q}_{loss} - \dot{Q}_{SW} \nonumber
     \end{align}
 
 \section{Grey-box modelling}
