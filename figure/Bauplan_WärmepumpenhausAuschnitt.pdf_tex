@@ -54,5 +54,15 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{Bauplan_WärmepumpenhausAuschnitt.pdf}}%
+    \put(0.11433135,0.46677714){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}kitchen\end{tabular}}}}%
+    \put(0.31716821,0.4793757){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}technical \\room\end{tabular}}}}%
+    \put(0.11569947,0.26394028){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}floor 1\end{tabular}}}}%
+    \put(0.11433135,0.09763925){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}room 1\end{tabular}}}}%
+    \put(0.31587883,0.09750637){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}room 2\end{tabular}}}}%
+    \put(0.37638145,0.2659531){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}wc\end{tabular}}}}%
+    \put(0.72758613,0.46708718){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}room 5\end{tabular}}}}%
+    \put(0.61071472,0.09763925){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}room 4\end{tabular}}}}%
+    \put(0.84871929,0.09750637){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}room 3\end{tabular}}}}%
+    \put(0.85008742,0.26394028){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}floor 2\end{tabular}}}}%
   \end{picture}%
 \endgroup%
