@@ -54,32 +54,32 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{meinModel.pdf}}%
-    \put(0.32220073,0.09789955){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}T_{envelope}\end{tabular}}}}%
-    \put(0.66070912,0.09457991){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}T_{inside}\end{tabular}}}}%
-    \put(0.00006465,0.09457991){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}T_{outside}\end{tabular}}}}%
-    \put(0.33680186,0.03307697){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C_{envelope}\end{tabular}}}}%
-    \put(0.09797027,0.11832979){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}R_{envelope}\end{tabular}}}}%
-    \put(0.44845026,0.11840101){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}R_{inside}\end{tabular}}}}%
+    \put(0.32220073,0.09789955){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{envelope}$\end{tabular}}}}%
+    \put(0.66070912,0.09457991){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{inside}$\end{tabular}}}}%
+    \put(0.00006465,0.09457991){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{outside}$\end{tabular}}}}%
+    \put(0.33680186,0.03307697){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_{envelope}$\end{tabular}}}}%
+    \put(0.09797027,0.11832979){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{envelope}$\end{tabular}}}}%
+    \put(0.44845026,0.11840101){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{inside}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{meinModel.pdf}}%
-    \put(0.67853549,0.03024856){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C_{inside}\end{tabular}}}}%
+    \put(0.67853549,0.03024856){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_{inside}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{meinModel.pdf}}%
-    \put(0.70128981,0.31427869){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}dot\{Q}_{heating}\end{tabular}}}}%
+    \put(0.70128981,0.31427869){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$dot\{Q}_{heating}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{meinModel.pdf}}%
-    \put(0.27157927,0.35683614){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}R_{window}\end{tabular}}}}%
+    \put(0.27157927,0.35683614){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{window}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{meinModel.pdf}}%
-    \put(0.11852496,0.17656862){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\dot{Q}_{sun,envelope}\end{tabular}}}}%
+    \put(0.11852496,0.17656862){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{Q}_{sun,envelope}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{meinModel.pdf}}%
-    \put(0.75409905,0.17656862){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\dot{Q}_{sun,inside}\end{tabular}}}}%
+    \put(0.75409905,0.17656862){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{Q}_{sun,inside}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{meinModel.pdf}}%
-    \put(0.44095606,0.27184974){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}R_{interior}\end{tabular}}}}%
+    \put(0.44095606,0.27184974){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{interior}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{meinModel.pdf}}%
-    \put(0.29101795,0.28662804){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}T_{interior}\end{tabular}}}}%
+    \put(0.29101795,0.28662804){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{interior}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=9]{meinModel.pdf}}%
-    \put(0.39509029,0.17656862){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C_{interior}\end{tabular}}}}%
-    \put(0.78917233,0.11752211){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}R_{floor}\end{tabular}}}}%
+    \put(0.39509029,0.17656862){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_{interior}$\end{tabular}}}}%
+    \put(0.78917233,0.11752211){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{floor}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=10]{meinModel.pdf}}%
-    \put(0.9312338,0.09457991){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}T_{floor}\end{tabular}}}}%
-    \put(0.95128274,0.03024856){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}C_{floor}\end{tabular}}}}%
-    \put(0.58436869,0.28662804){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}T_{inside}\end{tabular}}}}%
+    \put(0.9312338,0.09457991){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{floor}$\end{tabular}}}}%
+    \put(0.95128274,0.03024856){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_{floor}$\end{tabular}}}}%
+    \put(0.58436869,0.28662804){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{inside}$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
