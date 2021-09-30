@@ -1,6 +1,6 @@
 %% Creator: Inkscape 1.0.2-2 (e86c870879, 2021-01-15), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'meinModel.pdf' (pdf, eps, ps)
+%% Accompanies image file 'meinModel2.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{409.749464bp}%
+    \setlength{\unitlength}{534.57666546bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,26 +50,36 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.45190377)%
+  \begin{picture}(1,0.3912323)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0.53946585,0.25774436){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{Q}_{sun}$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{meinModel.pdf}}%
-    \put(0.42035657,0.16296345){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{envelope}$\end{tabular}}}}%
-    \put(0.78143598,0.16200052){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{inside}$\end{tabular}}}}%
-    \put(0.00008435,0.16005864){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_{outside}$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{meinModel.pdf}}%
-    \put(0.4755613,0.0813234){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_{envelope}$\end{tabular}}}}%
-    \put(0.12781638,0.18738304){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{envelope}$\end{tabular}}}}%
-    \put(0.58506799,0.18747596){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{inside}$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{meinModel.pdf}}%
-    \put(0.83797771,0.0813234){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_{inside}$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=4]{meinModel.pdf}}%
-    \put(0.90633505,0.14079022){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{Q}-_{heating}$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=5]{meinModel.pdf}}%
-    \put(0.35431431,0.40702964){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{window}$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=6]{meinModel.pdf}}%
-    \put(0.89950567,0.26255484){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{Q}-_{sun}$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=7]{meinModel.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{meinModel2.pdf}}%
+    \put(0.32220052,0.09789965){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Tenvelope\end{tabular}}}}%
+    \put(0.66070932,0.09458001){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Tinside\end{tabular}}}}%
+    \put(0.00006465,0.09458001){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Toutside\end{tabular}}}}%
+    \put(0.33680228,0.03307702){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Cenvelope\end{tabular}}}}%
+    \put(0.09797041,0.11832994){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Renvelope\end{tabular}}}}%
+    \put(0.44845073,0.11840116){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Rinside\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{meinModel2.pdf}}%
+    \put(0.6785351,0.03024861){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Cinside\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{meinModel2.pdf}}%
+    \put(0.70128945,0.31427906){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Q̇heating\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{meinModel2.pdf}}%
+    \put(0.27157955,0.35683657){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Rwindow\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{meinModel2.pdf}}%
+    \put(0.18025627,0.17656884){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Q̇sun\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{meinModel2.pdf}}%
+    \put(0.75409876,0.17656884){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Q̇sun\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{meinModel2.pdf}}%
+    \put(0.4409564,0.27185007){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Rinterior\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{meinModel2.pdf}}%
+    \put(0.2910177,0.28662837){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Tinterior\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{meinModel2.pdf}}%
+    \put(0.3950907,0.17656884){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Cinterior\end{tabular}}}}%
+    \put(0.78917208,0.11752226){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Rfloor\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{meinModel2.pdf}}%
+    \put(0.93123432,0.09458001){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Tfloor\end{tabular}}}}%
+    \put(0.95128268,0.03024861){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Cfloor\end{tabular}}}}%
+    \put(0.58436879,0.28662837){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Tinside\end{tabular}}}}%
   \end{picture}%
 \endgroup%
