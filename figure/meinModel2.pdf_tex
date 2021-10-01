@@ -63,7 +63,7 @@
     \put(0,0){\includegraphics[width=\unitlength,page=2]{meinModel2.pdf}}%
     \put(0.67853549,0.03024856){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_\text{inside}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{meinModel2.pdf}}%
-    \put(0.70128981,0.31427869){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$dot\{Q_\text{heating}}$\end{tabular}}}}%
+    \put(0.70128981,0.31427869){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{Q_\text{heating}}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{meinModel2.pdf}}%
     \put(0.27157927,0.35683614){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_\text{window}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{meinModel2.pdf}}%
