@@ -54,7 +54,7 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{Wand um Widerstände zu addieren.pdf}}%
-    \put(0.45575318,0.00056966){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}d\end{tabular}}}}%
+    \put(0.45575318,0.00056966){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$d$\end{tabular}}}}%
     \put(0.21010515,0.41534205){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{q}$\end{tabular}}}}%
     \put(0.60038147,0.24417415){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_\text{1}$\end{tabular}}}}%
     \put(0.14409881,0.24417415){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_\text{2}$\end{tabular}}}}%
