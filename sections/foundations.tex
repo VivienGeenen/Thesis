@@ -1,7 +1,7 @@
 \chapter{Foundations}
 \label{ch:foundations}
 
-The main foundations on which this work is based are summarized in this chapter. This includes thermal basics, foundations about thermal modelling, and model predictive control (MPC). 
+This work is based on foundations, which are summarized in this chapter. This includes thermal basics, foundations about thermal modelling, and model predictive control (MPC). 
 %Note, that in the following all vectors are denoted as bold letters, e.g. \textbf{x}.
 
 \section{Thermal basics}
@@ -16,17 +16,28 @@ The main foundations on which this work is based are summarized in this chapter.
         \sum_i \dot{Q_\text{i}} + \sum_j \dot{W_\text{j}} + \sum_k \dot{m_\text{k}}*(h + \frac{c^2}{2} + gz)_\text{k} = \frac{d}{dt} \sum_l U_\text{l}
     \end{equation}
     
-    In terms of a building as system we set the work $\dot{W}$ to zero according to the relationship $W =\int Pdt - \int pdV$ \cite{Baehr.2016b} because buildings don't change their volume $V$ and we have no further mechanical power $P$. If we have no mass flow $\dot{m}$ in our system, we obtain a closed system. Regarding buildings mass flows could be an airflow through the window, for example. Then we also consider the enthalpie $h$, the fluid velocity $c$, the high $z$ and the gravitational acceleration $g$.
+    In terms of a building, we set the work $\dot{W}$ to zero according to the relationship $W =\int Pdt - \int pdV$ \cite{Baehr.2016b} because a building can't change the volume $V$, and we have no additional mechanical power $P$. If we have no mass flow $\dot{m}$ in our system, we obtain a closed system. Regarding buildings, mass flows could be airflow through the window, for example. Then we also consider the enthalpy $h$, the fluid velocity $c$, the high $z$ and the gravitational acceleration $g$.
     \newline
     Since we do not consider airflow, we use the closed system with the heat flows $\dot{Q_\text{i}}$ and the inner energy $U_\text{l}$.
      \begin{equation}
         \label{eq:1HS}
         \sum_i \dot{Q_\text{i}}  = \frac{d}{dt} \sum_l U_\text{l}
     \end{equation}
-    The inner energy is...
-    We sum the heat flows in the energy balance and what kind of heat transfer is possible is explained in the next few chapters
-    \newline
+    The deduction of the inner energy $U$ starts with the complete differential description of the specific inner energy $du$ as \cite{Baehr.2016b}:
+    \begin {equation} 
+    \label{eq:innerEnergy}
+    du = (\frac{\partial u}{\partial T})_\text{v} dT + (\frac{\partial u}{\partial v})_\text{T} dv
+    \end{equation}
+    The specific volume $dv$ is negligible in buildings, and the specific heat capacity during constant volume has the expression $c_\text{v} = (\frac{\partial u}{\partial T})_\text{v}$ \cite{Baehr.2016b}. After integrating and replacing the specific values by volume, we obtain the relation for the inner energy $U$, with the mass $m$ and the temperature difference $\delta T$. 
+        \begin{equation}
+        \label{eq:innerEnergy}
+        U = m c_\text{v} \Delta T
+    \end{equation}
     
+    It applies to substances with a specific volume regardless of the pressure that $c_\text{v}=c_\text{p}=c$. 
+    We sum the heat flows in the energy balance in \autoref{eq:1HS}. However, what kind of heat transfer is there, the following few chapters explain.
+    
+    \vspace{2cm}
     
     There are three mechanisms of heat transfer: Heat conduction, heat convection, and heat radiation \cite{.2013}. Thermal modelling of buildings requires all of these mechanisms. For example, conduction is the primary part of heat transfer through walls or floors. Convection occurs on the inside and the outside of the building between the walls and the air. To integrated the impact of the sun, radiation is needed, for example.
 
@@ -65,7 +76,7 @@ The main foundations on which this work is based are summarized in this chapter.
 \subsection{Radiation}
 \label{subsection:radiation}
 
-    Every body emits heat radiation to the environment with electromagnetic waves. Especially, heat radiation does not need matter for energy transportation. As shown in the following equation, the temperature $T$ of the body influences highly heat radiation.\cite{.2013} 
+    Every body emits heat radiation to the environment with electromagnetic waves. Especially, heat radiation does not need matter for energy transportation. As shown in the following equation, the temperature $T$ of the body influences heat radiation.\cite{.2013} 
     \begin{equation}
     \label{eq:radiation}
         \dot{q} = \sigma T^4
@@ -77,7 +88,6 @@ The main foundations on which this work is based are summarized in this chapter.
     \end{equation}
     In general, a body absorbs, transmits, and reflects radiation with the appropriate coefficients $a$, $\tau$ and $r$. The sum of three coefficients has to be one ($a + \tau + r = 1)$
     \cite{Baehr.2016}.
-    In particular, the reflection coefficient is needed for describing the influence of radiation from the environment in building modelling.
     \newline
     The primary source of heat radiation is the sun, which plays an important role in the thermal modelling of buildings. Objectives in the building, such as radiators, also radiate heat. For example, radiators have equal parts convective and radiative energy transport \cite{Hazyuk.2012}. 
     
@@ -102,6 +112,15 @@ For modelling the thermal behaviour of buildings, the lumped capacitance model i
     \begin{equation}
         R_\alpha = \frac{1}{\alpha A}
     \end{equation}
+    
+    \begin{figure}[h]
+    \centering
+   \def\svgwidth{320pt}
+    \input{figure/Wand um Widerstände zu addieren.pdf_tex}
+    \caption{Sample of a wall with thermal resistances}
+    \label{fig:sampleWall}
+    \end{figure}
+    
     In sum, the thermal resistances $R$ comply with electrical resistors.
     Further for modelling thermal networks, the thermal capacitance $C$ is needed. It is calculated from the specific heat capacity $c$ multiplied by the mass $m$ ($C=cm$).
     \newline
