@@ -58,8 +58,8 @@
     \put(0.21010515,0.41534205){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{q}$\end{tabular}}}}%
     \put(0.60038147,0.24417415){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_\text{1}$\end{tabular}}}}%
     \put(0.14409881,0.24417415){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_\text{2}$\end{tabular}}}}%
-    \put(-0.00393585,0.16930266){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_\text{\alpha_\text{2}}$\end{tabular}}}}%
-    \put(0.45234684,0.16930266){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_\text{\alpha_\text{1}}$\end{tabular}}}}%
+    \put(-0.00393585,0.16930266){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_\text{\alpha_2}$\end{tabular}}}}%
+    \put(0.45234684,0.16930266){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_\text{\alpha_1}$\end{tabular}}}}%
     \put(0.29971285,0.31733865){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_\text{\lambda}$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
