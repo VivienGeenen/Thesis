@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{181.68947653bp}%
+    \setlength{\unitlength}{182.14880213bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,16 +50,16 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.87303667)%
+  \begin{picture}(1,0.87083513)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{Wand um Widerstände zu addieren.pdf}}%
-    \put(0.27603819,0.00097555){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$d$\end{tabular}}}}%
-    \put(0.03699568,0.71127146){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{q}$\end{tabular}}}}%
-    \put(0.46179468,0.42404419){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_\text{1}$\end{tabular}}}}%
-    \put(0.06077136,0.42404419){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_\text{2}$\end{tabular}}}}%
-    \put(0.06077136,0.30762119){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_\alpha \text{,2}$\end{tabular}}}}%
-    \put(0.46179468,0.30762119){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_\alpha \text{,1}$\end{tabular}}}}%
-    \put(0.2730229,0.54344105){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_\lambda$\end{tabular}}}}%
+    \put(0.2778638,0.00097309){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$d$\end{tabular}}}}%
+    \put(0.0394241,0.70947784){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{q}$\end{tabular}}}}%
+    \put(0.46315187,0.42297488){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_\text{1}$\end{tabular}}}}%
+    \put(0.06313982,0.42297488){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_\text{2}$\end{tabular}}}}%
+    \put(0.06313982,0.30684546){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{\alpha\text{2}}$\end{tabular}}}}%
+    \put(0.46315187,0.30684546){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_{\alpha_\text{1}}$\end{tabular}}}}%
+    \put(0.27485612,0.54207066){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$R_\lambda$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
