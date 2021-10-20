@@ -1,8 +1,8 @@
 \chapter{Modelling}
 \label{ch:modelling}
-After explaining thermal basics and the electrical analogy, the foundations are used in this chapter. The creation of a thermal model and the resulting thermal model are presented. Later, the model is needed for the MPC to predict the thermal reactions of the building.
+After explaining thermal basics and the electrical analogy, the foundations are used in this chapter. The creation of the thermal model of the reference building and the resulting thermal model are presented. Later, the model is needed for the MPC to predict the thermal reactions of the building.
 
-\section{The building}
+\section{The reference building}
 \label{section:building}
     Since the thermal model and the MPC are based on a real building, details about the building are described below.
     \newline
@@ -20,19 +20,59 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     
 \section{The thermal model}
 \label{thermalmodel}
-
-    The focus of this work is on the MPC part, so a simple thermal model is required. Nevertheless, no necessary information must be missing. Therefore, the thermal storage possibilities, the temperature inside of the building, and the heating system's influence have to be represented in the model. The storage allows to heat during the grid has too much power and to save the energy in the building during grid requires power. Hence, this enables the MPC's objective of grid services. The output of the model needs to be the temperature inside since the MPC aims to be in a pleasant temperature range to ensure customer comfort. Last, the influence of the heating system must be recognisable in the model, as it is the input of the plant. 
+    %requirements
+    The focus of this work is on the MPC part, so a simple thermal model is required. Nevertheless, no necessary information must be missing. Therefore, the thermal storage possibilities, the temperature inside of the building, and the heating system's influence have to be represented in the model. The storage allows to heat during the grid has too much power and to save the energy in the building during grid requires power. Hence, this enables the MPC's objective of grid services. The output of the model needs to be the temperature inside since the MPC aims to be in a pleasant temperature range to ensure customer comfort. Last, the influence of the heating system must be recognisable in the model, as it is the input of the plant.
     \newline
-    \begin{figure}
-        \centering
-        \def\svgwidth{320pt}
-        \input{figure/meinModel2.pdf_tex}
-        \caption{structure of the thermal model in RC- analogy}
-        \label{fig:structureThermalModel}
-    \end{figure}
+    The thermal model records the thermal conditions of the reference building. Therefore, the inner energy of the water reservoir and the air temperature inside the building are modelled. The water reservoir and the building behaviour are modelled according to different modelling strategies. The following chapters describe the partial models water reservoir and building model, the kind of modelling, and the conclusion of the partial models.
+    
+    
+    \subsection{The modelling strategies}
+    \label{ModellingStrategies}
+    Creating a model can be made with three types of models, the so-called white-box models, grey-box models or black-box models. White-box models describe the real system only physically. Black-box models, on the other hand, have no physical description. They are created with data. And grey-box models are in between these two options \cite{Statusseminar.ForschungfurEnergieoptimiertesBauen.2009}. All possibilities are used in the thermal modelling of buildings \cite{Kramer.2012}.
+    \newline
+    The chosen approach for the MPC is the grey-box model because it combines the advantages of white-box models and black-box models \cite{EstradaFlores.2006}. The advantages are: \cite{Coakley.2014}
+    \begin{itemize}
+     \item keeping a physical structure of the model, for 
+     \item 
+    \end{itemize}
+
+    %Vorteile von Greybox Coakley erklärt vllt besser die vorteile
+    %vllt doch auch vor und nachteile von den anderen Ansätzen
+
+    \subsection{The water reservoir model}
+    \label{waterModel}
+    
+    
+    
+    
+    
+    
+    
  
     
-    \begin{align}
+   
+
+    \subsection{The building model}
+    \label{building model}
+
+    \begin{figure}
+            \centering
+            \def\svgwidth{320pt}
+            \input{figure/meinModel2.pdf_tex}
+            \caption{structure of the thermal model in RC- analogy}
+            \label{fig:structureThermalModel}
+        \end{figure}
+    
+    \subsubsection{Data collection}
+    \label{datacollection}
+
+    \subsubsection{Validation of the thermal model}
+    \label{validationthermalmodel}
+
+    \subsection{The hole model/Zustandsraumdarstellung}
+    \label{holeModel}
+
+ \begin{align}
        \label{eq:meinModel2} 
        C_\text{inside}*\frac{d T_\text{inside}}{d t} &=& \dot{Q}_\text{heating} + \dot{Q}_\text{sun,inside} - \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}} - \frac{T_\text{inside}-T_\text{outside}}{R_\text{window}} \\
        & &-\frac{T_\text{inside}-T_\text{interior}}{R_\text{interior}}-\frac{T_\text{inside}-T_\text{floor}}{R_\text{floor}} \nonumber\\
@@ -41,23 +81,6 @@ After explaining thermal basics and the electrical analogy, the foundations are 
        C_\text{floor}*\frac{d T_\text{floor}}{d t} &=& \frac{T_\text{inside}-T_\text{floor}}{R_\text{floor}} \nonumber\\
        \frac{d U_\text{WR}}{d t}&=& -\dot{Q}_\text{heating} + \dot{Q}_\text{HP} - \dot{Q}_\text{loss} - \dot{Q}_\text{SW} \nonumber
     \end{align}
-
-\section{Grey-box modelling}
-\label{Grey-box modelling}
-
-Creating a model can be made with three types of models, the so-called white-box models, grey-box models or black-box models. White-box models describe the real system only physically. Black-box models, on the other hand, have no physical description. They are created with data. And grey-box models are in between these two options \cite{Statusseminar.ForschungfurEnergieoptimiertesBauen.2009}. All possibilities are used in the thermal modelling of buildings \cite{Kramer.2012}.
-\newline
-The chosen approach for the MPC is the grey-box model because it combines the advantages of white-box models and black-box models \cite{EstradaFlores.2006}. The advantages are: \cite{Coakley.2014}
-\begin{itemize}
- \item keeping a physical structure of the model, for 
- \item 
-\end{itemize}
-
-%Vorteile von Greybox Coakley erklärt vllt besser die vorteile
-%vllt doch auch vor und nachteile von den anderen Ansätzen
-
-\section{Data collection}
-\label{datacollection}
-
-\section{Validation of the thermal model}
-\label{validationthermalmodel}
+    
+\section{Experiment}
+\label{thermalmodel}
