@@ -21,7 +21,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
 \section{The thermal model}
 \label{thermalmodel}
 
-    The focus of this work is on the MPC part, so a simple thermal model is required. Nevertheless, no necessary information must be missing. In this case, the thermal storage possibilities, the temperature inside of the building, and the heating system's influence have to be represented in the model. The storage is needed because the objective of the MPC is to heat during the grid has too much power and to save the energy in the building during grid requires energy. The output of the model needs to be the temperature inside since the MPC aims to be in a pleasant temperature range to ensure customer comfort. Last, the influence of the heating system must be recognisable in the model, as it is the input of the plant. 
+    The focus of this work is on the MPC part, so a simple thermal model is required. Nevertheless, no necessary information must be missing. Therefore, the thermal storage possibilities, the temperature inside of the building, and the heating system's influence have to be represented in the model. The storage allows to heat during the grid has too much power and to save the energy in the building during grid requires power. Hence, this enables the MPC's objective of grid services. The output of the model needs to be the temperature inside since the MPC aims to be in a pleasant temperature range to ensure customer comfort. Last, the influence of the heating system must be recognisable in the model, as it is the input of the plant. 
     \newline
     \begin{figure}
         \centering
@@ -30,11 +30,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         \caption{structure of the thermal model in RC- analogy}
         \label{fig:structureThermalModel}
     \end{figure}
- %      \label{eq:meinModel} 
-     %  C_{inside}*\frac{d T_{inside}}{d t} &=& \dot{Q}_{heating} + \dot{Q}_{sun,inside} - \frac{T_{inside}-T_{envelope}}{R_{inside}} - \frac{T_{inside}-T_{outside}}{R_{window}}\\
-  %     C_{envelope}*\frac{d T_{envelope}}{d t} &=& \dot{Q}_{sun,envelope} - \frac{T_{envelope}-T_{outside}}{R_{envelope}} + \frac{T_{inside}-T_{envelope}}{R_{inside}} \nonumber \\
-  %     \dot{Q}_{WR}&=& -\dot{Q}_{heating} + \dot{Q}_{HP} - \dot{Q}_{loss} - \dot{Q}_{SW} \nonumber
- %   \end{align}
+ 
     
     \begin{align}
        \label{eq:meinModel2} 
