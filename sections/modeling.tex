@@ -81,20 +81,22 @@ After explaining thermal basics and the electrical analogy, the foundations are 
 
     \subsection{The water reservoir model}
     \label{waterModel}
-    The water reservoire
+    First, all heat flows are regarded for modelling the water reservoir (WR), which influence the water reservoir (see \autoref{fig:Figure of the water reservoir with the heat flows}). The heat pump (HP) feeds the water reservoir with heat $\dot{Q}_\text{HP}$. The service water (SW) and the water for the heating circuit are taken from the storage. Since no service water is currently connected to the reference building, the heat flow $\dot{Q}_\text{SW}$ will be set to zero in the future. The heat losses $\dot{Q}_\text{loss}$ and the heating heat $\dot{Q}_\text{heating}$ are consequently the discharged heat. The resulting energy balance according to \autoref{eq:1HS} follows below.
     \begin{equation}
         \label{waterReservoir}
-        \frac{d U_\text{WR}}{d t}= -\dot{Q}_\text{heating} + \dot{Q}_\text{HP} - \dot{Q}_\text{loss} - \dot{Q}_\text{SW}
+        \frac{d U_\text{WR}}{d t}= -\dot{Q}_\text{heating} + \dot{Q}_\text{HP} - \dot{Q}_\text{loss}
     \end{equation}
     
     \begin{figure}
         \centering
-        \def\svgwidth{150pt}
+        \def\svgwidth{120pt}
         \input{figure/Wasserspeicher.pdf_tex}
         \caption{Figure of the water reservoir with the heat flows}
         \label{fig:Figure of the water reservoir with the heat flows}
     \end{figure}
     
+    Since the model are referred to a real building, the size of the heat flows and the inner energy are limited according to the devices of the building. The heating heat moves in a range according to the calculations of the heating system \cite{Roth_Auslegung.2020} and can also have negative values when cooling is required (than according to the calculations of the cooling load \cite{SEFIngenieurgesellschaftMBH.2019}). The heat losses and the heat pump heat range are taken from the technical data \cite{Oskar}, \cite{TUM}.
+    The maximal inner energy of the water reservoir is calculated according to \autoref{eq:innerEnergy} with the assumptions of a inlet temperature of 35°C and temperature spread of nine degree Celsius. The inlet temperature is chosen because the optimal inlet temperature for surface heating with heat pumps is around 35°C according to a heat pump manufacturer \cite{} and the temperature spread is taken from the calculations of the heating 
     
     
     
