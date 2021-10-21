@@ -30,18 +30,65 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     \label{ModellingStrategies}
     Creating a model can be made with three types of models, the so-called white-box models, grey-box models or black-box models. White-box models describe the real system only physically. Black-box models, on the other hand, have no physical description. They are created with data. And grey-box models are in between these two options \cite{Statusseminar.ForschungfurEnergieoptimiertesBauen.2009}. All possibilities are used in the thermal modelling of buildings \cite{Kramer.2012}.
     \newline
-    The chosen approach for the MPC is the grey-box model because it combines the advantages of white-box models and black-box models \cite{EstradaFlores.2006}. The advantages are: \cite{Coakley.2014}
-    \begin{itemize}
-     \item keeping a physical structure of the model, for 
-     \item 
-    \end{itemize}
+    The chosen approach for the MPC is the \textbf{grey-box model} for two reasons: First, this approach combines the advantages of white-box models and black-box models \cite{EstradaFlores.2006}. Second, there is the possibility to generate the required data from the reference building with the available measurement equipment at the KIT. According to Coakley et al., advantages and disadvantages are among other things\cite{Coakley.2014}:
+    \begin{table}[h!]
+    \label{Advantages and disadvantages of grey-box modelling}
+        \centering
+        \begin{tabular}{p{7.3cm} | p{7.3cm}}
+        \hline
+          Advantages  &  Disadvantages\\
+        \hline
+        \begin{itemize}
+            \item faster development by a combination of physical and statistical model
+        \end{itemize}
+      & \begin{itemize}
+            \item requires knowledge in physical and statistical modelling 
+        \end{itemize}\\
+     \begin{itemize}
+            \item accuracy of the results for the specific use case, provided by qualitative training data
+        \end{itemize} & \begin{itemize}
+            \item changes at the building lead to a re-training
+        \end{itemize}\\
+        \end{tabular}
+        \caption {Advantages and disadvantages of grey-box modelling}
+    \end{table}
+    \newline
+    However, the water reservoir and the heating system are not in use yet. So, no data are available for training a grey-box model. That's the reason why a part of the model needs to create as \textbf{white-box model}.
+    \newline
+    But also, white-box models have some pros and cons (see the following Table \cite{EstradaFlores.2006}).
+    \begin{table}[]
+    \label{tab:wihte-boxpro}
+        \centering
+        \begin{tabular}{p{7.3cm} | p{7.3cm}}
+        \hline
+          Advantages  &  Disadvantages\\
+        \hline
+        \begin{itemize}
+            \item relies on physics
+        \end{itemize}
+      & \begin{itemize}
+            \item needs assumptions to simplify 
+        \end{itemize}\\
+     \begin{itemize}
+            \item applicable for every situation with the same assumptions and requirements 
+        \end{itemize} & \begin{itemize}
+            \item often complex mathematical problems
+        \end{itemize}\\
+        \end{tabular}
+        \caption {Advantages and disadvantages of white-box modelling}
+    \end{table}
 
-    %Vorteile von Greybox Coakley erklärt vllt besser die vorteile
-    %vllt doch auch vor und nachteile von den anderen Ansätzen
 
     \subsection{The water reservoir model}
     \label{waterModel}
     
+    \begin{figure}
+        \centering
+        \def\svgwidth{320pt}
+        \input{figure/Bauplan_WärmepumpenhausAuschnitt.pdf_tex}
+        \caption{construction plan of the building \cite{Bauplan}}
+        \label{fig:Bauplan}
+    \end{figure}
     
     
     
