@@ -54,9 +54,10 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{Wasserspeicher.pdf}}%
-    \put(0.02727652,0.49466628){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{Q}_\text{HP}$\end{tabular}}}}%
-    \put(0.69229212,0.65178423){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{Q}_\text{heating}$\end{tabular}}}}%
-    \put(0.69147171,0.12384423){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{Q}_\text{loss}$\end{tabular}}}}%
-    \put(0.7050463,0.36165628){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\dot{Q}_\text{SW}$\end{tabular}}}}%
+    \put(0.02727652,0.49466628){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}}$\dot{Q}_\text{HP}$\end{tabular}}}}%
+    \put(0.69229212,0.65178423){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}}$\dot{Q}_\text{heating}$\end{tabular}}}}%
+    \put(0.69147171,0.12384423){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}}$\dot{Q}_\text{loss}$\end{tabular}}}}%
+    \put(0.7050463,0.36165628){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}}$\dot{Q}_\text{SW}$\end{tabular}}}}%
+    \put(0.39256187,0.36165628){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$U_\text{WR}$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
