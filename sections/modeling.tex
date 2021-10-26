@@ -153,11 +153,11 @@ After explaining thermal basics and the electrical analogy, the foundations are 
             \label{fig:structureThermalModel}
         \end{figure}
         
-    
-
-    \subsubsection{Data collection}
+    \subsubsection{Work flow of grey-box modelling/parameter identification}
     \label{datacollection}
-
+    First, we need data from the reference building. The data are generated in an experiment, but this is explained in a subsequent chapter. When we have the data, they are separated into training data and validation data. From the reference building, we obtain the room temperatures, which we average with the capacitance of each room to one value, the inside temperature. The same procedure is adopted for the outer wall temperature, except that the outer wall temperatures are averaged with their capacitance. The interior and the floor temperatures are determined in the same way. Also, we obtain data of the heating system blba und the weather specially the outside temperature and the diffuse isolation for the blab Wärmestrom \newline
+    The used toolbox from Matlab is the "System Identification Toolbox". For this application the most important commands are "idgrey" and "greyest".
+    With the idgrey-command, we take the building model as initial model for the grey-box estimation. That means the thermal resistances and capacitance, which we determined above, are the initial values for the estimation and they are the values, which the estimator from Matlab can vary. Wir fügen noch zwei Parameter zum schätzen hinzu, weil einfaches Modell. 
     \subsubsection{Validation of the thermal model}
     \label{validationthermalmodel}
 
