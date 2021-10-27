@@ -153,16 +153,25 @@ After explaining thermal basics and the electrical analogy, the foundations are 
             \label{fig:structureThermalModel}
         \end{figure}
         
-    \subsubsection{Work flow of grey-box modelling/parameter identification}
-    \label{datacollection}
+    \subsubsection{Parameter identification}
+    \label{WorkflowModel}
+     \begin{figure}
+            \centering
+            \def\svgwidth{320pt}
+            \input{figure/workflow greybox modelling.pdf_tex}
+            \caption{Work flow of grey-box modelling with Matlab}
+            \label{fig:structureThermalModel}
+        \end{figure}
     First, we need data from the reference building. The data are generated in an experiment, but this is explained in a subsequent chapter. When we have the data, they are separated into training data and validation data. From the reference building, we obtain the room temperatures, which we average with the capacitance of each room to one value, the inside temperature. The same procedure is adopted for the outer wall temperature, except that the outer wall temperatures are averaged with their own capacitance. The interior and the floor temperatures are determined in the same way. Also, we obtain data of the heating system for $\dot{Q}_\text{heating}$ and the weather specially the outside temperature $T_\text{outside}$ and the diffuse insolation $I_\text{sun}$ for determining $\dot{Q}_\text{sun,envelope}$ or $\dot{Q}_\text{sun,inside}$ \newline
-    The used toolbox from Matlab is the "System Identification Toolbox". For this application the most important commands are "idgrey" and "greyest".
-    With the idgrey-command, we take the building model as initial model for the grey-box estimation. That means the thermal resistances and capacitance, which we determined above, are the initial values for the estimation and they are the values, which the estimator from Matlab can vary. We add also the parameters $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ for estimating because we model in the simplest way the heat flow of the sun isolation with the measured $I_\text{sun}$. The initial values for $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ are chosen as $0,25$ like Harb et al. \cite{Harb.2016}. 
-    \begin{equation}
-        \label{eq:sun}
-        \dot{Q}_\text{sun,inside} = f_\text{sol,inside} 
-        \dot{Q}_\text{sun,envelope} = f_\text{sol,envelope}
-    \end{equation}
+    The used toolbox from Matlab is the "System Identification Toolbox". For this application, the most important commands are "idgrey" and "greyest".
+    With the idgrey-command, we can specify the building model as the initial model for the grey-box estimation in state-space formulation. That means the thermal resistances and capacitance, which we determined above, are the initial values for the estimation and they are the values, which the estimator from Matlab can vary. We add also the parameters $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ for estimating because we model in the simplest way the heat flow of the sun isolation with the measured $I_\text{sun}$. The initial values for $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ are chosen as $0,25$ like Harb et al. \cite{Harb.2016}. 
+    \begin{align}
+       \label{eq:sun}
+        \dot{Q}_\text{sun,inside} &= f_\text{sol,inside} I_\text{sun} \\
+        \dot{Q}_\text{sun,envelope} &= f_\text{sol,envelope} I_\text{sun} \nonumber 
+    \end{align}
+    Now, the greyest- command executes the parameter identification (see in Appendix the initial values and the identified values) and we obtain the ready model.
+    
     \subsubsection{Validation of the thermal model}
     \label{validationthermalmodel}
 
