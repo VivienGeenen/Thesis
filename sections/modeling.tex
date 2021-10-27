@@ -122,7 +122,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     %\vspace{0.3cm}
     
     \textbf{Envelope Temperature:}\newline
-    The sun, the contact of the walls with the inner air temperature and with the outer temperature influence the envelope temperature. The sun affects the air temperature in another area ratio than the outer walls. Therefore, we difference the influence of the sun on the inner air temperature and the envelope, and we consider here $\dot{Q}_\text{sun,envelope}$.  
+    The sun, the contact of the walls with the inner air temperature and with the outside temperature influence the envelope temperature. The sun affects the air temperature in another area ratio than the outer walls. Therefore, we difference the influence of the sun on the inner air temperature and the envelope, and we consider here $\dot{Q}_\text{sun,envelope}$.  
     \begin{equation}
         C_\text{envelope}*\frac{d T_\text{envelope}}{d t} = \dot{Q}_\text{sun,envelope} - \frac{T_\text{envelope}-T_\text{outside}}{R_\text{envelope}} + \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}}
     \end{equation}
@@ -155,9 +155,14 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         
     \subsubsection{Work flow of grey-box modelling/parameter identification}
     \label{datacollection}
-    First, we need data from the reference building. The data are generated in an experiment, but this is explained in a subsequent chapter. When we have the data, they are separated into training data and validation data. From the reference building, we obtain the room temperatures, which we average with the capacitance of each room to one value, the inside temperature. The same procedure is adopted for the outer wall temperature, except that the outer wall temperatures are averaged with their capacitance. The interior and the floor temperatures are determined in the same way. Also, we obtain data of the heating system blba und the weather specially the outside temperature and the diffuse isolation for the blab Wärmestrom \newline
+    First, we need data from the reference building. The data are generated in an experiment, but this is explained in a subsequent chapter. When we have the data, they are separated into training data and validation data. From the reference building, we obtain the room temperatures, which we average with the capacitance of each room to one value, the inside temperature. The same procedure is adopted for the outer wall temperature, except that the outer wall temperatures are averaged with their own capacitance. The interior and the floor temperatures are determined in the same way. Also, we obtain data of the heating system for $\dot{Q}_\text{heating}$ and the weather specially the outside temperature $T_\text{outside}$ and the diffuse insolation $I_\text{sun}$ for determining $\dot{Q}_\text{sun,envelope}$ or $\dot{Q}_\text{sun,inside}$ \newline
     The used toolbox from Matlab is the "System Identification Toolbox". For this application the most important commands are "idgrey" and "greyest".
-    With the idgrey-command, we take the building model as initial model for the grey-box estimation. That means the thermal resistances and capacitance, which we determined above, are the initial values for the estimation and they are the values, which the estimator from Matlab can vary. Wir fügen noch zwei Parameter zum schätzen hinzu, weil einfaches Modell. 
+    With the idgrey-command, we take the building model as initial model for the grey-box estimation. That means the thermal resistances and capacitance, which we determined above, are the initial values for the estimation and they are the values, which the estimator from Matlab can vary. We add also the parameters $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ for estimating because we model in the simplest way the heat flow of the sun isolation with the measured $I_\text{sun}$. The initial values for $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ are chosen as $0,25$ like Harb et al. \cite{Harb.2016}. 
+    \begin{equation}
+        \label{eq:sun}
+        \dot{Q}_\text{sun,inside} = f_\text{sol,inside} 
+        \dot{Q}_\text{sun,envelope} = f_\text{sol,envelope}
+    \end{equation}
     \subsubsection{Validation of the thermal model}
     \label{validationthermalmodel}
 
