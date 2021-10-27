@@ -50,19 +50,19 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.32137967)%
+  \begin{picture}(1,0.39178004)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{workflow greybox modelling.pdf}}%
-    \put(0.013894,0.2993542){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Physical \\building model\end{tabular}}}}%
-    \put(0.50953155,0.12680679){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Estimation\end{tabular}}}}%
-    \put(0.82193546,0.14112968){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Identified\\model\end{tabular}}}}%
+    \put(0.01389407,0.3528276){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Physical \\building model\end{tabular}}}}%
+    \put(0.50953155,0.15033154){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Estimation\end{tabular}}}}%
+    \put(0.82193546,0.16465445){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Identified\\model\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{workflow greybox modelling.pdf}}%
-    \put(0.37444744,0.29737919){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Initial\\values\end{tabular}}}}%
-    \put(0.65836223,0.29793869){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}State-space\\formulation\end{tabular}}}}%
+    \put(0.37444744,0.35215387){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Initial\\values\end{tabular}}}}%
+    \put(0.68961212,0.35271334){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}State-space\\formulation\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{workflow greybox modelling.pdf}}%
-    \put(0.59982746,0.05856462){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Trainings\\data\end{tabular}}}}%
-    \put(0.53590564,0.3030684){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}idgrey\end{tabular}}}}%
-    \put(0.59260927,0.20725254){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}greyest\end{tabular}}}}%
+    \put(0.59982746,0.06251413){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Trainings\\data\end{tabular}}}}%
+    \put(0.55415528,0.37413764){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}idgrey\end{tabular}}}}%
+    \put(0.59260927,0.24640225){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}greyest\end{tabular}}}}%
   \end{picture}%
 \endgroup%
