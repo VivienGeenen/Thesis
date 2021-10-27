@@ -138,8 +138,8 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     Hazyuk et al. models for example also the ground floor as one state \cite{Hazyuk.2012}. The explanation is that the ground floor has no convective contact with the environment. Therefore, he is not modelled with the envelope for holding the physical structure, where the wind has an impact on the outer walls.
     The interior is extra modelled to improve the accuracy of the inside temperature equations because the capacitance of the inner walls is specially collected.
     \begin{align}
-    C_\text{interior}*\frac{d T_\text{interior}}{d t} &=& \frac{T_\text{inside}-T_\text{interior}}{R_\text{interior}} \\
-       C_\text{floor}*\frac{d T_\text{floor}}{d t} &=& \frac{T_\text{inside}-T_\text{floor}}{R_\text{floor}} \nonumber\\
+    C_\text{interior} \frac{d T_\text{interior}}{d t} &= \frac{T_\text{inside}-T_\text{interior}}{R_\text{interior}} \\
+       C_\text{floor} \frac{d T_\text{floor}}{d t} &= \frac{T_\text{inside}-T_\text{floor}}{R_\text{floor}} \nonumber\\
     \end{align}
     As above, we need for the calculation of the capacitance $C_\text{floor}$ and $C_\text{interior}$ some material parameters. The material of the floor is reinforced concrete and the interior' material is aerated concrete. The previously unnamed material parameters are the density ($2500 kg/m^3$) \cite{AntonSchweizer.12.10.2021} and the capacity ($880 J/(kg K)$) \cite{AntonSchweizer.12.10.2021b} of reinforced concrete.\newline
      % \vspace{0.3cm}
@@ -154,27 +154,36 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         \end{figure}
         
     \subsubsection{Parameter identification}
-    \label{WorkflowModel}
+    \label{fig:WorkflowModel}
      \begin{figure}
             \centering
-            \def\svgwidth{320pt}
+            \def\svgwidth{400pt}
             \input{figure/workflow greybox modelling.pdf_tex}
             \caption{Work flow of grey-box modelling with Matlab}
             \label{fig:structureThermalModel}
         \end{figure}
-    First, we need data from the reference building. The data are generated in an experiment, but this is explained in a subsequent chapter. When we have the data, they are separated into training data and validation data. From the reference building, we obtain the room temperatures, which we average with the capacitance of each room to one value, the inside temperature. The same procedure is adopted for the outer wall temperature, except that the outer wall temperatures are averaged with their own capacitance. The interior and the floor temperatures are determined in the same way. Also, we obtain data of the heating system for $\dot{Q}_\text{heating}$ and the weather specially the outside temperature $T_\text{outside}$ and the diffuse insolation $I_\text{sun}$ for determining $\dot{Q}_\text{sun,envelope}$ or $\dot{Q}_\text{sun,inside}$ \newline
+    \autoref{fig:workflow} explains the procedure, how to generate the grey-box model from the physical building model.\newline 
     The used toolbox from Matlab is the "System Identification Toolbox". For this application, the most important commands are "idgrey" and "greyest".
-    With the idgrey-command, we can specify the building model as the initial model for the grey-box estimation in state-space formulation. That means the thermal resistances and capacitance, which we determined above, are the initial values for the estimation and they are the values, which the estimator from Matlab can vary. We add also the parameters $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ for estimating because we model in the simplest way the heat flow of the sun isolation with the measured $I_\text{sun}$. The initial values for $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ are chosen as $0,25$ like Harb et al. \cite{Harb.2016}. 
+    With the idgrey-command, we can specify the building model as the initial model for the grey-box estimation in state-space formulation. That means the thermal resistances and capacitance, which we determined above, are the initial values for the estimation and they are the values, which the estimator from Matlab can vary. We add also the parameters $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ for estimating because we model in the simplest way the heat flow of the sun isolation $\dot{Q}_\text{sun,envelope}$ and $\dot{Q}_\text{sun,inside}$ with the measured diffuse insolation $I_\text{sun}$. The initial values for $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ are chosen as $0,25$ like Harb et al. \cite{Harb.2016}. 
     \begin{align}
        \label{eq:sun}
         \dot{Q}_\text{sun,inside} &= f_\text{sol,inside} I_\text{sun} \\
         \dot{Q}_\text{sun,envelope} &= f_\text{sol,envelope} I_\text{sun} \nonumber 
     \end{align}
-    Now, the greyest- command executes the parameter identification (see in Appendix the initial values and the identified values) and we obtain the ready model.
+    After that, we are looking for the data from the reference building. The data are generated in an experiment, but this is explained in a subsequent chapter. When we have the data, they are separated into training data and validation data. The training data are used for the estimation. From the reference building, we obtain the room temperatures, which we average with the capacitance of each room to one value, the inside temperature. The same procedure is adopted for the outer wall temperature, except that the outer wall temperatures are averaged with their own capacitance. The interior and the floor temperatures are determined in the same way. Also, we obtain data of the heating system for $\dot{Q}_\text{heating}$ and the weather specially the outside temperature $T_\text{outside}$ and the diffuse insolation $I_\text{sun}$ for determining $\dot{Q}_\text{sun,envelope}$ or $\dot{Q}_\text{sun,inside}$ \newline
+    Now, the greyest- command executes the parameter identification with the training data (see in Appendix the initial values and the identified values) and we obtain the ready model.
     
     \subsubsection{Validation of the thermal model}
     \label{validationthermalmodel}
 
+     \begin{figure}
+            \centering
+            \def\svgwidth{400pt}
+            \input{figure/Verlauf_inside_ValidierungModell.eps}
+            \caption{Validation of the building model}
+            \label{fig:ValidationModel}
+        \end{figure}
+        
     \subsection{The hole model/Zustandsraumdarstellung}
     \label{holeModel}
     
