@@ -154,34 +154,67 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         \end{figure}
         
     \subsubsection{Parameter identification}
-    \label{fig:WorkflowModel}
+    \label{WorkflowModel}
      \begin{figure}
+     \label{fig:workflowModel}
             \centering
             \def\svgwidth{400pt}
             \input{figure/workflow greybox modelling.pdf_tex}
             \caption{Work flow of grey-box modelling with Matlab}
-            \label{fig:structureThermalModel}
-        \end{figure}
-    \autoref{fig:workflow} explains the procedure, how to generate the grey-box model from the physical building model.\newline 
+    \end{figure}
+    \autoref{fig:WorkflowModel} explains the procedure, how to generate the grey-box model from the physical building model.\newline 
     The used toolbox from Matlab is the "System Identification Toolbox". For this application, the most important commands are "idgrey" and "greyest".
-    With the idgrey-command, we can specify the building model as the initial model for the grey-box estimation in state-space formulation. That means the thermal resistances and capacitance, which we determined above, are the initial values for the estimation and they are the values, which the estimator from Matlab can vary. We add also the parameters $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ for estimating because we model in the simplest way the heat flow of the sun isolation $\dot{Q}_\text{sun,envelope}$ and $\dot{Q}_\text{sun,inside}$ with the measured diffuse insolation $I_\text{sun}$. The initial values for $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ are chosen as $0,25$ like Harb et al. \cite{Harb.2016}. 
+    With the idgrey-command, we can specify the building model as the initial model for the grey-box estimation in state-space formulation. That means the thermal resistances and capacitance, which we determined above, are the initial values for the estimation and they are the values, which the estimator from Matlab can vary. We add also the parameters $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ for estimating because we model in the simplest way the heat flow of the sun isolation $\dot{Q}_\text{sun,envelope}$ and $\dot{Q}_\text{sun,inside}$ with the measured diffuse insolation $I_\text{sun}$ (see the following equation). 
     \begin{align}
        \label{eq:sun}
         \dot{Q}_\text{sun,inside} &= f_\text{sol,inside} I_\text{sun} \\
         \dot{Q}_\text{sun,envelope} &= f_\text{sol,envelope} I_\text{sun} \nonumber 
     \end{align}
-    After that, we are looking for the data from the reference building. The data are generated in an experiment, but this is explained in a subsequent chapter. When we have the data, they are separated into training data and validation data. The training data are used for the estimation. From the reference building, we obtain the room temperatures, which we average with the capacitance of each room to one value, the inside temperature. The same procedure is adopted for the outer wall temperature, except that the outer wall temperatures are averaged with their own capacitance. The interior and the floor temperatures are determined in the same way. Also, we obtain data of the heating system for $\dot{Q}_\text{heating}$ and the weather specially the outside temperature $T_\text{outside}$ and the diffuse insolation $I_\text{sun}$ for determining $\dot{Q}_\text{sun,envelope}$ or $\dot{Q}_\text{sun,inside}$ \newline
-    Now, the greyest- command executes the parameter identification with the training data (see in Appendix the initial values and the identified values) and we obtain the ready model.
+    The initial values for $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ are chosen as $0,25$ according to Harb et al. \cite{Harb.2016}.\newline
+    After that, we are looking for the data from the reference building. The data are generated in an experiment, but this is explained in a subsequent chapter. When we have the data, they are separated into training data and verification data. The training data are used for the estimation. From the reference building, we obtain the room temperatures, which we average with the capacitance of each room to one value, the inside temperature. The same procedure is adopted for the outer wall temperature, except that the outer wall temperatures are averaged with their own capacitance. The interior and the floor temperatures are determined in the same way. Also, we obtain data of the heating system for $\dot{Q}_\text{heating}$ and the weather specially the outside temperature $T_\text{outside}$ and the diffuse insolation $I_\text{sun}$ for determining $\dot{Q}_\text{sun,envelope}$ or $\dot{Q}_\text{sun,inside}$. \newline
+    Now, the greyest-command executes the parameter identification with the training data. The used search method of the greyest-command is subspace Gauss-Newton least squares search. The table below summarizes the modelling parameters for the estimation. The states $T_\text{inside}$ and $T_\text{envelope}$ are also defined as the output to be optimized. For the later MPC is just $T_\text{inside}$ the relevant output. However, we expect better results for the hole model during optimizing the two states with the more complex differential equations. 
+    At last, we obtain the ready model (see in Appendix the initial values and the identified values).
+     
+    \begin{table}[]
+        \centering
+        \begin{tabular}{p{5cm}|p{8cm}}
+        Parameters to be identified &  $C_\text{inside}$,  $C_\text{envelope}$,  $C_\text{interior}$, $C_\text{floor}$, $R_\text{inside}$, $R_\text{window}$, $R_\text{envelope}$, $R_\text{interior}$, $R_\text{floor}$, $R_\text{in}$, $f_\text{sol,inside}$, $f_\text{sol,envelope}$ \\
+        &\\
+        Inputs & $\dot{Q}_\text{heating}, I_\text{sun}, T_\text{outside}$\\
+        &\\
+        Outputs to be optimized & $T_\text{inside}, T_\text{envelope}$
+        \end{tabular}
+        \caption{Conclusion of relevant information about the grey-box model}
+        \label{tab:Greybox}
+    \end{table}
     
-    \subsubsection{Validation of the thermal model}
-    \label{validationthermalmodel}
-
+    \subsubsection{Training and verification of the thermal model}
+    \label{verificationthermalmodel}
+    The training data set comprise twelve days from 23 July to 4 August 2021, including a heating period from 26 July to 1 August 2021. The verification data set is half the size of the training data set (from 13 July to 19 July 2021), also including a heating period from 16 July to 18 July 2021. \newline
+    The Root Mean Square Error (RMSE) and the maximal residual ($\mathrm{R}_\text{max}$) is used as verification measure of the model.\newline
+    The RMSE is calculated with the quadratic difference of the simulated output $y_\text{sim}$ and the measured output $y_\text {meas}$ as follows \cite{Barnston.1992}: 
+    \begin{equation}
+        RMSE = \sqrt{\frac{1}{N} \sum \limits_1^N (y_\text{sim} - y_\text {meas})^2}
+    \end{equation}
+    Here, is $N$ the number of measurements or simulated values. In \autoref{tab:valiresults}, the results of the RMSE and the $\mathrm{R}_\text{max}$ are listed for the two optimized outputs after the training and the verification period.
+    \begin{table}[]
+        \centering
+        \begin{tabular}{c|c|c|c|c}
+             & \multicolumn{2}{|c}{$T_\text{inside}$} & \multicolumn{2}{|c}{$T_\text{envelope}$} \\
+             \hline
+            RMSE & \cellcolor{gray} 0,61 K & \cellcolor{gray90} 0,59 K & \cellcolor{gray} 0,49 K & \cellcolor{gray90} 0,52 K \\
+            $\mathrm{R}_\text{max}$ &\cellcolor{gray} 1,45 K & \cellcolor{gray90} 1,62 K & \cellcolor{gray} 1,22 K & \cellcolor{gray90} 1,03 K
+        \end{tabular}
+        \caption{RMSE and $\mathrm{R}_\text{max}$ of the output for training and verification period}
+        \label{tab:RMSEundR}
+    \end{table}
+    
      \begin{figure}
             \centering
             %\def\svgwidth{100pt}
             \includegraphics[width=7cm,height=5cm]{figure/Verlauf_inside_ValidierungModell.eps}
-           \caption{Validation of the building model}
-           \label{fig:ValidationModel}
+           \caption{Verification of the building model}
+           \label{fig:verificationModel}
        \end{figure}
         
     \subsection{The hole model/Zustandsraumdarstellung}
