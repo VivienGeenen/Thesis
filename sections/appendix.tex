@@ -22,27 +22,11 @@
 %% -------------------
 %% | Example content |
 %% -------------------
-\section{First Section}
-\label{sec:appendix:FirstSection}
-
-\begin{landscape}
-	
-	\begin{equation}
-	    \label{eq:ZRD Modell}
-	 \left(\begin{array}{c} \frac{d T_{inside}}{d t} \\ \frac{d T_{envelope}}{d t} \\ \frac{d T_{interior}}{d t}\\ \frac{d T_{floor}}{d t}\\ \frac{d E_{WR}}{d t} \end{array}\right) =  
-	\end{equation}
-	\begin{equation*}
-	\begin{pmatrix}
-    \frac{-1}{C_{inside}R_{inside}}-\frac{1}{C_{inside}R_{window}}-\frac{1}{C_{inside}R_{interior}}-\frac{1}{C_{inside}R_{floor}}   & \frac{1}{C_{inside}R_{inside}} & \frac{1}{C_{inside}R_{interior}} & \frac{1}{C_{inside}R_{floor}} & 0 \\
-    \frac{1}{C_{envelope}R_{inside}}& \frac{-1}{C_{envelope}R_{envelope}}- \frac{1}{C_{envelope}R_{inside}} & 0 & 0 & 0 \\
-    \frac{1}{C_{interior}R_{interior}} & 0 & -\frac{1}{C_{interior}R_{interior}} & 0 &0 \\
-    \frac{1}{C_{floor}R_{floor}} & 0 & 0 & -\frac{1}{C_{floor}R_{floor}} &0 \\
-    0 & 0 & 0 & 0 & 0
-    \end{pmatrix} 
-    \left(\begin{array}{c} T_{inside} \\ T_{envelope} \\ T_{interior}\\ T_{floor}\\ W_{WR} \end{array}\right)
-    \end{equation*}
-    \begin{equation*}
-    + 
+\section{Matrices of state-space formulation}
+\label{sec:appendix:Matrizen}
+    
+    \begin{equation}
+    B_1 = 
     \begin{pmatrix}
         1 & 0 \\
         0 & 0 \\
@@ -50,8 +34,9 @@
         0 & 0 \\
         -1 & 1 
     \end{pmatrix}
-	\left(\begin{array}{c} \dot{Q}_{heating} \\ \dot{Q}_{HP} \end{array}\right)
-	+
+    \end{equation}
+    \begin{equation}
+	B_2
 	\begin{pmatrix}
          f_{sun,inside} & 0 & \frac{1}{C_{inside}R_{window}} & 0\\
          0 & f_{sun,envelope} & \frac{1}{C_{envelope}R_{envelope}}&0\\
@@ -59,10 +44,26 @@
          0 & 0 & 0& 0\\
          0 & 0 & 0 & -1
     \end{pmatrix}
-	\left(\begin{array}{c} I_{sun,inside}\\ I_{sun,envelope}\\ T_{outside} \\ \dot{Q}_{loss} \end{array}\right)
-	\end{equation*}	
-	
-\end{landscape}
+	\end{equation}
+	\begin{equation}
+	    C = 
+	    \begin{pmatrix}
+        1 & 0 & 0 & 0 & 0 \\
+        \end{pmatrix}
+	\end{equation}
+	\begin{landscape}
+	\begin{align} 
+	A = \nonumber \\ 
+	\begin{pmatrix}
+    \frac{-1}{C_{inside}R_{inside}}-\frac{1}{C_{inside}R_{window}}-\frac{1}{C_{inside}R_{interior}}-\frac{1}{C_{inside}R_{floor}}   & \frac{1}{C_{inside}R_{inside}} & \frac{1}{C_{inside}R_{interior}} & \frac{1}{C_{inside}R_{floor}} & 0 \\
+    \frac{1}{C_{envelope}R_{inside}}& \frac{-1}{C_{envelope}R_{envelope}}- \frac{1}{C_{envelope}R_{inside}} & 0 & 0 & 0 \\
+    \frac{1}{C_{interior}R_{interior}} & 0 & -\frac{1}{C_{interior}R_{interior}} & 0 &0 \\
+    \frac{1}{C_{floor}R_{floor}} & 0 & 0 & -\frac{1}{C_{floor}R_{floor}} &0 \\
+    0 & 0 & 0 & 0 & 0
+    \end{pmatrix} \nonumber\\ 
+    \end{align}
+    \end{landscape}
+
 
 
 \setcounter{figure}{0}

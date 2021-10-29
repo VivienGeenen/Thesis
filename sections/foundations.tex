@@ -224,7 +224,7 @@ $c_\text{k}$ represents the cost function, which is explained in detail in \auto
 \subsection{Dynamics}
 \label{subsection:dynamics}
     
-    The state-space formulation (SSF) is an alternative representation of a linear differential equation, which models a physical system. In this work, it is used for the formulation of the thermal model, which is required for the MPC. The SSF consists of the state $\textbf{x}$, the control signal $\textbf{u}$, the disturbances $\textbf{d}$ and the output of the system $\textbf{y}$ are represented in \autoref{eq:statespace}. The system matrix is $A$, $B_1$ and $B_2$ are called the input matrices, $C$ is the output matrix, $D_1$ and $D_2$ are the pass-through matrices. The \autoref{tab:matrixDim} lists the dimensions of the matrices m x n with m rows and n columns.   
+    The state-space formulation (SSF) is an alternative representation of a linear differential equation, which models a physical system. In this work, it is used for the formulation of the thermal model, which is required for the MPC. The SSF consists of the state $\textbf{x}$, the control signal $\textbf{u}$, the disturbances $\textbf{d}$ and the output of the system $\textbf{y}$ are represented in \autoref{eq:statespace}. The system matrix is $A$, $B_\text{1}$ and $B_\text{2}$ are called the input matrices, $C$ is the output matrix, $D_\text{1}$ and $D_\text{2}$ are the pass-through matrices. The \autoref{tab:matrixDim} lists the dimensions of the matrices m x n with m rows and n columns.   
     \begin{align}
     \label{eq:statespace}
     \dot{\textbf{x}}=A\textbf{x}+B_1\textbf{u}+B_2\textbf{d}\\
@@ -257,3 +257,19 @@ $c_\text{k}$ represents the cost function, which is explained in detail in \auto
 Dealing with constraints is one of the most important advantages of MPC. Thereby, constraints can be used for the state, the output, and the input. In terms of building control, output constraints and input constraints are reasonable, as mathematically described in the \autoref{eq:costfunc}. That means, the output constraints could be a temperature range, which feels comfortable for occupants. And the constraints for the input are given as minimal (= 0) and maximal values of the possible performances. General, logical and physical ranges are constrained. There are different forms of constraints, but linear constraints are frequently used for MPC because they simplify the optimization problem. Constraints can also be time dependant. This is beneficial for embedding diverse temperature ranges during the night and the day or during the working time of occupants when they are not at home.
 \cite{Siroky.2011}
 %es gibt harte und weiche constraints. wichtig ist, dass man nicht auf beiden seiten harte constraints einstellt. konvexe Constraints bei bedarf
+
+\section{The reference building}
+\label{section:building}
+    Since the thermal model and the MPC are based on a real building, details about the building are described below.
+    \newline
+    The building is located on the "Campus Nord" of the "Karlsruher Institut für Technologie (KIT)" and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bathroom, five rooms and a technical room. For a better orientation, \autoref{fig:Bauplan} shows a part of the construction plan of the building. The building is designed as a single-family house, but for practical reasons, it is used as an office. The living area is around 100 $m^2$. The building offers two options to heat or cool with a ground-source heat pump or an air heat pump. The focus is on the air heat pump because the most commonly used heat pumps in Germany are air heat pumps \cite{bwp.2021}. In addition to the heat pump, there is a water reservoir for saving energy. The volume is 1000 litres \cite{Oskar}. However, the heating system is not completely installed yet. So heating or cooling is not possible actual.
+    \newline
+    One of the main features of the building is the number of sensors. The air temperature is measured in every room, as well as the temperature in the middle of the exterior wall, the screed temperature, the floor plate temperature, and the temperature of the inner wall between room three and room four (see \autoref{fig:Bauplan}). Furthermore, the consumption of the actual electrical power is also detected. Only the mentioned sensors are needed in this case, but there are many more sensors.
+    %Himmelsrichtung noch beschreiben
+    \begin{figure}
+        \centering
+        \def\svgwidth{320pt}
+        \input{figure/Bauplan_WärmepumpenhausAuschnitt.pdf_tex}
+        \caption{Construction plan of the building \cite{Bauplan}}
+        \label{fig:Bauplan}
+    \end{figure}
