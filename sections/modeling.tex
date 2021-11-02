@@ -92,7 +92,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     %\vspace{0.3cm}
     
     \textbf{Inside temperature:}\newline
-    A focus lies on the accuracy of the inside temperature since this temperature will be controlled in the later prepared MPC. Therefore, a preciser description of the dynamics is required. We consider the influence of the sun $\dot{Q}_\text{sun,inside}$, the heating system $\dot{Q}_\text{heating}$ and the other states in the way shown in the following equation. $\dot{Q}_\text{heating}$  links the water reservoir model and the building model because the heat flow is the same but leaves the water reservoir model and enters the building model. 
+    A focus lies on the accuracy of the inside temperature since this temperature will be controlled in the later prepared MPC. Therefore, a preciser description of the dynamics is required (see the following equation). We consider the influence of the sun $\dot{Q}_\text{sun,inside}$, the heating system $\dot{Q}_\text{heating}$ and the other states in the way shown in the following equation. $\dot{Q}_\text{heating}$  links the water reservoir model and the building model because the heat flow is the same but leaves the water reservoir model and enters the building model. 
     \begin{align}
         \label{eq:1.state}
         C_\text{inside}*\frac{d T_\text{inside}}{d t} &=& \dot{Q}_\text{heating} + \dot{Q}_\text{sun,inside} - \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}} - \frac{T_\text{inside}-T_\text{outside}}{R_\text{window}} \\
@@ -109,6 +109,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     \textbf{Envelope Temperature:}\newline
     The sun, the contact of the walls with the inner air temperature and with the outside temperature influence the envelope temperature. The sun affects the air temperature in another area ratio than the outer walls. Therefore, we difference the influence of the sun on the inner air temperature and the envelope, and we consider here $\dot{Q}_\text{sun,envelope}$.  
     \begin{equation}
+    \label{eq:diffEnvelope}
         C_\text{envelope}*\frac{d T_\text{envelope}}{d t} = \dot{Q}_\text{sun,envelope} - \frac{T_\text{envelope}-T_\text{outside}}{R_\text{envelope}} + \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}}
     \end{equation}
     The outer wall resistance $R_\text{envelope}$ contains a heat conductivity of aerated concrete ($0,133 W/(m K)$ \cite{GhaziWakili.2015}) and the heat transfer coefficient for air perpendicular to the wall outside $\alpha_\text{envelope}$ according to the rules of thumb 
@@ -147,7 +148,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
             \input{figure/workflow greybox modelling.pdf_tex}
             \caption{Work flow of grey-box modelling with Matlab}
     \end{figure}
-    \autoref{fig:WorkflowModel} explains the procedure, how to generate the grey-box model from the physical building model.\newline 
+    \autoref{fig:workflowModel} explains the procedure, how to generate the grey-box model from the physical building model.\newline 
     The used toolbox from Matlab is the "System Identification Toolbox". For this application, the most important commands are "idgrey" and "greyest".
     With the idgrey-command, we can specify the building model as the initial model for the grey-box estimation in state-space formulation. That means the thermal resistances and capacitance, which we determined above, are the initial values for the estimation and they are the values, which the estimator from Matlab can vary. We add also the parameters $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ for estimating because we model in the simplest way the heat flow of the sun isolation $\dot{Q}_\text{sun,envelope}$ and $\dot{Q}_\text{sun,inside}$ with the measured diffuse insolation $I_\text{sun}$ (see the following equation). 
     \begin{align}
@@ -155,7 +156,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         \dot{Q}_\text{sun,inside} &= f_\text{sol,inside} I_\text{sun} \\
         \dot{Q}_\text{sun,envelope} &= f_\text{sol,envelope} I_\text{sun} \nonumber 
     \end{align}
-    The initial values for $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ are chosen as $0,25$ according to Harb et al. \cite{Harb.2016}.\newline
+    The initial values for $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ are chosen as $0,25$ according to Harb et al. \cite{Harb.2016}. And, we replace in the differential equation of the envelope temperature from \autoref{eq:diffEnvelope} the thermal resistance $R_\text{inside}$ to $R_\text{in}$. The initial values of $R_\text{inside}$ and $R_\text{in}$ are the same, but we obtain more flexibility in the grey-box model, if we estimate both values.\newline
     After that, we are looking for the data from the reference building. The data are generated in an experiment, but this is explained in a subsequent chapter. When we have the data, they are separated into training data and verification data. The training data are used for the estimation. From the reference building, we obtain the room temperatures, which we average with the capacitance of each room to one value, the inside temperature. The same procedure is adopted for the outer wall temperature, except that the outer wall temperatures are averaged with their own capacitance. The interior and the floor temperatures are determined in the same way. Also, we obtain data of the heating system for $\dot{Q}_\text{heating}$ and the weather specially the outside temperature $T_\text{outside}$ and the diffuse insolation $I_\text{sun}$ for determining $\dot{Q}_\text{sun,envelope}$ or $\dot{Q}_\text{sun,inside}$. \newline
     Now, the greyest-command executes the parameter identification with the training data. The used search method of the greyest-command is subspace Gauss-Newton least squares search. The table below summarizes the modelling parameters for the estimation. The states $T_\text{inside}$ and $T_\text{envelope}$ are also defined as the output to be optimized. For the later MPC is just $T_\text{inside}$ the relevant output. However, we expect better results for the hole model during optimizing the two states with the more complex differential equations. 
     At last, we obtain the ready model (see in \autoref{sec:appendix:Modelvalues} the initial values and the identified values).
