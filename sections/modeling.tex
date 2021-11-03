@@ -59,7 +59,6 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         \caption {Advantages and disadvantages of white-box modelling}
     \end{table}
 
-
     \section{The water reservoir model}
     \label{waterModel}
     First, all heat flows are regarded for modelling the water reservoir (WR), which influence the water reservoir (see \autoref{fig:Figure of the water reservoir with the heat flows}). The heat pump (HP) feeds the water reservoir with heat flow $\dot{Q}_\text{HP}$. The service water (SW) and the water for the heating circuit are taken from the storage. Since no service water is currently connected to the reference building, the heat flow $\dot{Q}_\text{SW}$ will be set to zero in the following. The heat losses $\dot{Q}_\text{loss}$ and the heating heat flow  $\dot{Q}_\text{heating}$ are consequently the discharged heat flows. The resulting energy balance according to \autoref{eq:1HS} follows below.
@@ -75,7 +74,6 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         \caption{Figure of the water reservoir with the heat flows}
         \label{fig:Figure of the water reservoir with the heat flows}
     \end{figure}
-    
     Since the model are referred to a real building, the size of the heat flows and the inner energy are limited according to the devices of the building. The heating heat flow moves in a range according to the calculations of the heating system \cite{Roth_Auslegung.2020} and can also have negative values when cooling is required (then according to the calculations of the cooling load \cite{SEFIngenieurgesellschaftMBH.2019}). The heat losses and the heat pump heat range are taken from the technical data \cite{Oskar}, \cite{TUM}.\newline
     Since the reference water reservoir is a stratified storage we determine the maximum inner energy in assumption of two heat layers. According to \autoref{eq:innerEnergy}, we need material parameters of water ($c_\text{v,w}$, $\rho_\text{w}$), the size of the water reservoir ($m = \rho_\text{w} V$), both is known, and a temperature difference, which we define for both layers. We assume that we heat up the storage from ambient temperature $T_\text{amb}$ around 20°C in both layers. Even with negative outside temperatures, the characteristic diagram of the heat pump provides the maximum inlet temperature of 55 °C, which should be the maximum temperature of the upper layer in the water reservoir $T_\text{max,1}$. The maximum temperature of the lower layer $T_\text{max,2}$ orients towards the inlet temperature of the underfloor heating and lies by 35 °C. After that, we calculate the sum of the inner energy as follows.
     \begin{equation}
@@ -88,8 +86,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     First, a physical description of the thermal dynamics of the building must be created. To obtain the condition of a simple model, we model the building as a single zone, as often practised in the literature \cite{Park.2011}, \cite{Hazyuk.2012}. Single zone means that we sum all relevant values of the rooms, such as air temperature or wall temperature, by averaging to one value. 
     \newline
     We consider the air temperature, the temperature of the outer walls, the temperature of the inner walls and floors in the first floor, and the temperature of the floor in the model. In the following, these temperatures are called: inside temperature  $T_\text{inside}$, envelope temperature $T_\text{envelope}$, interior temperature $T_\text{interior}$, and floor temperature $T_\text{floor}$. 
-    Using the state-space formulation (see \autoref{subsection:dynamics}), the temperatures are states in this model. According to the RC-analogy (see \autoref{electricalanalogy}), the model is built and nearly explained in the following for every state. \newline
-    %\vspace{0.3cm}
+    Using the state-space formulation (see \autoref{subsection:dynamics}), the temperatures are states in this model. According to the RC-analogy (see \autoref{electricalanalogy}), the model is built and nearly explained in the following for every state. \newline%
     
     \textbf{Inside temperature:}\newline
     One focus lies on the accuracy of the inside temperature since this temperature will be controlled in the later prepared MPC. Therefore, a more precise description of the dynamics is required (see the following equation). We consider the influence of the sun $\dot{Q}_\text{sun,inside}$, the heating system $\dot{Q}_\text{heating}$ and the other states in the way shown in the following equation. $\dot{Q}_\text{heating}$  links the water reservoir model and the building model because the heat flow is the same but leaves the water reservoir model and enters the building model. 
@@ -98,13 +95,20 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         C_\text{inside}*\frac{d T_\text{inside}}{d t} &=& \dot{Q}_\text{heating} + \dot{Q}_\text{sun,inside} - \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}} - \frac{T_\text{inside}-T_\text{outside}}{R_\text{window}} \\
        & &-\frac{T_\text{inside}-T_\text{interior}}{R_\text{interior}}-\frac{T_\text{inside}-T_\text{floor}}{R_\text{floor}}\nonumber
     \end{align}
-    The detailed explanation for the composition of the thermal resistance and capacitance is in \autoref{electricalanalogy}. In the following, the special material and state dependant values are explained.
-    The thermal capacitance $C_\text{inside}$ is calculated with the mass of the air from all rooms and the capacity of the air (1006 $J/(kg K)$ \cite{Weigand.2016}). The mass can be determined with the volume of the rooms according to the construction plan \cite{Bauplan} and the air density (1,28 $kg/m^3$ \cite{Weigand.2016}). 
-    The thermal resistances $R_\text{inside}$ includes a convective part with the transfer coefficient $\alpha = 0,9 W/(m^2 K)$ special for air perpendicular to the wall in buildings with the assumption of one Kelvin temperature difference between the wall and air \cite{Schweizer-fnalpha}.
-    The window resistance $R_\text{window}$ is determined with the window area and the assumption of a heat transmission coefficient $u = 1 W/(m^2 K)$ \cite{ThorbenFrahm.2021}. 
-    Heat conductivity and heat convection are the regarded mechanisms to determine the floor resistance $R_\text{floor}$. The floor material is reinforced concrete with the thermal conductivity of $2,3 W/(m K)$ \cite{AntonSchweizer.12.10.2021}. For the convection in the inner of the building, the same assumptions are made as for $R_\text{inside}$. 
-    The interior resistance $R_\text{interior}$ is also calculated with the heat transfer coefficient inside.\newline 
-    %\vspace{0.3cm}
+    The detailed explanation for the composition of the thermal resistance and capacitance is in \autoref{electricalanalogy}. In the following table, the special material and state dependant values are explained.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{l p{13cm}}
+            $C_\text{inside}$ & The thermal capacitance $C_\text{inside}$ is calculated with the mass of the air from all rooms and the capacity of the air (1006 $J/(kg K)$ \cite{Weigand.2016}). The mass can be determined with the volume of the rooms according to the construction plan \cite{Bauplan} and the air density (1.28 $kg/m^3$ \cite{Weigand.2016}).\\
+            $R_\text{inside}$ & The thermal resistances $R_\text{inside}$ includes a convective part with the transfer coefficient $\alpha = 0.9 W/(m^2 K)$ special for air perpendicular to the wall in buildings with the assumption of one Kelvin temperature difference between the wall and air \cite{Schweizer-fnalpha}.\\
+            $R_\text{window}$ & The window resistance $R_\text{window}$ is determined with the window area and the assumption of a heat transmission coefficient $u = 1 W/(m^2 K)$ \cite{ThorbenFrahm.2021}.\\
+            $R_\text{floor}$ & Heat conductivity and heat convection are the regarded mechanisms to determine the floor resistance $R_\text{floor}$. The floor material is reinforced concrete with the thermal conductivity of $2.3 W/(m K)$ \cite{AntonSchweizer.12.10.2021}.\\
+            $R_\text{inside}$ & For the convection in the inner of the building, the same assumptions are made as for $R_\text{inside}$.\\
+            $R_\text{interior}$ & The interior resistance $R_\text{interior}$ is also calculated with the heat transfer coefficient inside.
+        \end{tabular}
+        \caption{Explanation of the special material and state dependant values of the differential equation of the inside temperature}
+        \label{tab:valuesOfInsideTemperature}
+    \end{table}
     
     \textbf{Envelope Temperature:}\newline
     The sun, the contact of the walls with the inner air temperature and with the outside temperature influence the envelope temperature. The sun affects the air temperature in another area ratio than the outer walls. Therefore, we difference the influence of the sun on the inner air temperature and the envelope, and we consider here $\dot{Q}_\text{sun,envelope}$.  
@@ -112,13 +116,19 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     \label{eq:diffEnvelope}
         C_\text{envelope}*\frac{d T_\text{envelope}}{d t} = \dot{Q}_\text{sun,envelope} - \frac{T_\text{envelope}-T_\text{outside}}{R_\text{envelope}} + \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}}
     \end{equation}
-    The outer wall resistance $R_\text{envelope}$ contains a heat conductivity of aerated concrete ($0,133 W/(m K)$ \cite{GhaziWakili.2015}) and the heat transfer coefficient for air perpendicular to the wall outside $\alpha_\text{envelope}$ according to the rules of thumb from Schweizer-fn \cite{Schweizer-fnalpha}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{l p{13cm}}
+        $R_\text{envelope}$ & The outer wall resistance $R_\text{envelope}$ contains a heat conductivity of aerated concrete ($0,133 W/(m K)$ \cite{GhaziWakili.2015}) and the heat transfer coefficient for air perpendicular to the wall outside $\alpha_\text{envelope}$ according to the rules of thumb from Schweizer-fn \cite{Schweizer-fnalpha}
     \begin{equation}
         \alpha_\text{envelope} = 3,96 (v / L)^0,5 = 1,669 W/(m^2 K)
     \end{equation}
-    with the average wind velocity of Karlsruhe $v$ \cite{AbteilungKlimaundUmweltberatung.2004} and the length of the building wall.
-    To determine the capacitance $C_\text{envelope}$, we need the volume of the outer walls from the construction plan \cite{Bauplan}, the density of aerated concrete ($485 kg/m^3$) and the capacity (1000 $J/(kg K)$) \cite{GhaziWakili.2015}.\newline  
-   % \vspace{0.3cm}
+    with the average wind velocity of Karlsruhe $v$ \cite{AbteilungKlimaundUmweltberatung.2004} and the length of the building wall.  \\
+        $C_\text{envelope}$ & To determine the capacitance $C_\text{envelope}$, we need the volume of the outer walls from the construction plan \cite{Bauplan}, the density of aerated concrete ($485 kg/m^3$) and the capacity (1000 $J/(kg K)$) \cite{GhaziWakili.2015}. 
+        \end{tabular}
+        \caption{Explanation of the special material and state dependant values of the differential equation of the envelope temperature}
+        \label{tab:valuesOfEnvelopeTemperature}
+    \end{table}
    
     \textbf{Interior and floor temperature:}\newline
     The differential equations for the interior and the floor temperature are as simple as possible. Both states have just an impact on the inside temperature. 
@@ -129,25 +139,25 @@ After explaining thermal basics and the electrical analogy, the foundations are 
        C_\text{floor} \frac{d T_\text{floor}}{d t} &= \frac{T_\text{inside}-T_\text{floor}}{R_\text{floor}} \nonumber\\
     \end{align}
     As above, we need some material parameters for the calculation of the capacitance $C_\text{floor}$ and $C_\text{interior}$. The material of the floor is reinforced concrete and the interior' material is aerated concrete. The previously unnamed material parameters are the density ($2500 kg/m^3$) \cite{AntonSchweizer.12.10.2021} and the capacity ($880 J/(kg K)$) \cite{AntonSchweizer.12.10.2021b} of reinforced concrete.\newline
-     % \vspace{0.3cm}
      
     Summarising, \autoref{fig:structureThermalModel} illustrates the building model with all its connections according to the RC- analogy.
     \begin{figure}
             \centering
-            \def\svgwidth{320pt}
+            \def\svgwidth{410pt}
             \input{figure/meinModel2.pdf_tex}
-            \caption{structure of the thermal model in RC- analogy}
+            \caption{Structure of the thermal model in RC- analogy}
             \label{fig:structureThermalModel}
         \end{figure}
         
     \subsection{Parameter identification}
     \label{WorkflowModel}
+    
      \begin{figure}
-     \label{fig:workflowModel}
             \centering
             \def\svgwidth{400pt}
             \input{figure/workflow greybox modelling.pdf_tex}
             \caption{Work flow of grey-box modelling with Matlab}
+            \label{fig:workflowModel}
     \end{figure}
     \autoref{fig:workflowModel} explains the procedure, how to generate the grey-box model from the physical building model.\newline 
     The used toolbox from Matlab is the "System Identification Toolbox". For this application, the most important commands are "idgrey" and "greyest".
