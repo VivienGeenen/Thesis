@@ -3,7 +3,7 @@
 After explaining thermal basics and the electrical analogy, the foundations are used in this chapter. The creation of the thermal model of the reference building and the resulting thermal model are presented. Later, the model is needed for the MPC to predict the thermal reactions of the building.
 \newline
     
-    The focus of this work is on the MPC part, so a simple thermal model is required. Nevertheless, no necessary information must be missing. Therefore, the thermal storage possibilities, the temperature inside of the building, and the heating system's influence have to be represented in the model. The storage allows to heat during the grid has too much power and to save the energy in the building during grid requires power. Hence, this enables the MPC's objective of grid services. The output of the model needs to be the temperature inside since the MPC aims to be in a pleasant temperature range to ensure customer comfort. Last, the influence of the heating system must be recognisable in the model, as it is the input of the plant.
+    The focus of this work is on the MPC part, so a simple thermal model is required. Nevertheless, no necessary information must be missing. Therefore, the thermal storage possibilities, the temperature inside of the building, and the heating system's influence have to be represented in the model. The storage allows to heat during the grid has too much power and to save energy in the building during the grid requires power. Hence, this enables the MPC's objective of grid services. The output of the model needs to be the temperature inside since the MPC aims to be in a pleasant temperature range to ensure customer comfort. Last, the influence of the heating system must be recognisable in the model, as it is the input of the plant.
     \newline
     The thermal model records the thermal conditions of the reference building. Therefore, the inner energy of the water reservoir and the air temperature inside the building are modelled. The water reservoir and the building behaviour are modelled according to different modelling strategies. The following chapters describe the partial models water reservoir and building model, the kind of modelling, and the conclusion of the partial models.
     
@@ -11,7 +11,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     \label{ModellingStrategies}
     Creating a model can be made with three types of models, the so-called white-box models, grey-box models or black-box models. White-box models describe the real system only physically. Black-box models, on the other hand, have no physical description. They are created with data. And grey-box models are in between these two options \cite{Statusseminar.ForschungfurEnergieoptimiertesBauen.2009}. All possibilities are used in the thermal modelling of buildings \cite{Kramer.2012}.
     \newline
-    The chosen approach for the MPC is the \textbf{grey-box model} for two reasons: First, this approach combines the advantages of white-box models and black-box models \cite{EstradaFlores.2006}. Second, there is the possibility to generate the required data from the reference building with the available measurement equipment at the KIT. According to Coakley et al., further advantages and disadvantages are among other things\cite{Coakley.2014}:
+    The chosen approach for the MPC is the \textbf{grey-box model} for two reasons: First, this approach combines the advantages of white-box models and black-box models \cite{EstradaFlores.2006}. Second, there is the possibility to generate the required data from the reference building with the available measurement equipment at KIT. According to Coakley et al., further advantages and disadvantages are among other things\cite{Coakley.2014}:
     \begin{table}[h!]
     \label{Advantages and disadvantages of grey-box modelling}
         \centering
@@ -62,7 +62,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
 
     \section{The water reservoir model}
     \label{waterModel}
-    First, all heat flows are regarded for modelling the water reservoir (WR), which influence the water reservoir (see \autoref{fig:Figure of the water reservoir with the heat flows}). The heat pump (HP) feeds the water reservoir with heat $\dot{Q}_\text{HP}$. The service water (SW) and the water for the heating circuit are taken from the storage. Since no service water is currently connected to the reference building, the heat flow $\dot{Q}_\text{SW}$ will be set to zero in the following. The heat losses $\dot{Q}_\text{loss}$ and the heating heat $\dot{Q}_\text{heating}$ are consequently the discharged heat. The resulting energy balance according to \autoref{eq:1HS} follows below.
+    First, all heat flows are regarded for modelling the water reservoir (WR), which influence the water reservoir (see \autoref{fig:Figure of the water reservoir with the heat flows}). The heat pump (HP) feeds the water reservoir with heat flow $\dot{Q}_\text{HP}$. The service water (SW) and the water for the heating circuit are taken from the storage. Since no service water is currently connected to the reference building, the heat flow $\dot{Q}_\text{SW}$ will be set to zero in the following. The heat losses $\dot{Q}_\text{loss}$ and the heating heat flow  $\dot{Q}_\text{heating}$ are consequently the discharged heat flows. The resulting energy balance according to \autoref{eq:1HS} follows below.
     \begin{equation}
         \label{waterReservoir}
         \frac{d U_\text{WR}}{d t}= -\dot{Q}_\text{heating} + \dot{Q}_\text{HP} - \dot{Q}_\text{loss}
@@ -76,8 +76,8 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         \label{fig:Figure of the water reservoir with the heat flows}
     \end{figure}
     
-    Since the model are referred to a real building, the size of the heat flows and the inner energy are limited according to the devices of the building. The heating heat moves in a range according to the calculations of the heating system \cite{Roth_Auslegung.2020} and can also have negative values when cooling is required (than according to the calculations of the cooling load \cite{SEFIngenieurgesellschaftMBH.2019}). The heat losses and the heat pump heat range are taken from the technical data \cite{Oskar}, \cite{TUM}.\newline
-    Since the reference water reservoir is a stratified storage we determine the maximal inner energy in assumption of two heat layers. According to \autoref{eq:innerEnergy}, we need material parameters of water ($c_\text{v,w}$, $\rho_\text{w}$), the size of the water reservoir ($m = \rho_\text{w} V$), both is known, and a temperature difference, which we define for both layers. We assume that we heat up the storage from ambient temperature $T_\text{amb}$ around 20°C in both layers. Even with negative outside temperatures, the characteristic diagram of the heat pump provides the maximum inlet temperature of 55 °C, which should be the maximum temperature of the upper layer in the water reservoir $T_\text{max,1}$. The maximal temperature of the lower layer $T_\text{max,2}$ orients at the inlet temperature of the underfloor heating and lies by 35 °C. After that, we calculate the sum of the inner energy as follows.
+    Since the model are referred to a real building, the size of the heat flows and the inner energy are limited according to the devices of the building. The heating heat flow moves in a range according to the calculations of the heating system \cite{Roth_Auslegung.2020} and can also have negative values when cooling is required (then according to the calculations of the cooling load \cite{SEFIngenieurgesellschaftMBH.2019}). The heat losses and the heat pump heat range are taken from the technical data \cite{Oskar}, \cite{TUM}.\newline
+    Since the reference water reservoir is a stratified storage we determine the maximum inner energy in assumption of two heat layers. According to \autoref{eq:innerEnergy}, we need material parameters of water ($c_\text{v,w}$, $\rho_\text{w}$), the size of the water reservoir ($m = \rho_\text{w} V$), both is known, and a temperature difference, which we define for both layers. We assume that we heat up the storage from ambient temperature $T_\text{amb}$ around 20°C in both layers. Even with negative outside temperatures, the characteristic diagram of the heat pump provides the maximum inlet temperature of 55 °C, which should be the maximum temperature of the upper layer in the water reservoir $T_\text{max,1}$. The maximum temperature of the lower layer $T_\text{max,2}$ orients towards the inlet temperature of the underfloor heating and lies by 35 °C. After that, we calculate the sum of the inner energy as follows.
     \begin{equation}
         \label{eq:max.Energie}
         U = \rho_\text{w} c_\text{v,w} ((T_\text{max,1}-T_\text{amb})*\frac{V}{2} + (T_\text{max,2}-T_\text{amb})*\frac{V}{2}) 
@@ -92,7 +92,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     %\vspace{0.3cm}
     
     \textbf{Inside temperature:}\newline
-    A focus lies on the accuracy of the inside temperature since this temperature will be controlled in the later prepared MPC. Therefore, a preciser description of the dynamics is required (see the following equation). We consider the influence of the sun $\dot{Q}_\text{sun,inside}$, the heating system $\dot{Q}_\text{heating}$ and the other states in the way shown in the following equation. $\dot{Q}_\text{heating}$  links the water reservoir model and the building model because the heat flow is the same but leaves the water reservoir model and enters the building model. 
+    One focus lies on the accuracy of the inside temperature since this temperature will be controlled in the later prepared MPC. Therefore, a more precise description of the dynamics is required (see the following equation). We consider the influence of the sun $\dot{Q}_\text{sun,inside}$, the heating system $\dot{Q}_\text{heating}$ and the other states in the way shown in the following equation. $\dot{Q}_\text{heating}$  links the water reservoir model and the building model because the heat flow is the same but leaves the water reservoir model and enters the building model. 
     \begin{align}
         \label{eq:1.state}
         C_\text{inside}*\frac{d T_\text{inside}}{d t} &=& \dot{Q}_\text{heating} + \dot{Q}_\text{sun,inside} - \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}} - \frac{T_\text{inside}-T_\text{outside}}{R_\text{window}} \\
@@ -100,7 +100,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     \end{align}
     The detailed explanation for the composition of the thermal resistance and capacitance is in \autoref{electricalanalogy}. In the following, the special material and state dependant values are explained.
     The thermal capacitance $C_\text{inside}$ is calculated with the mass of the air from all rooms and the capacity of the air (1006 $J/(kg K)$ \cite{Weigand.2016}). The mass can be determined with the volume of the rooms according to the construction plan \cite{Bauplan} and the air density (1,28 $kg/m^3$ \cite{Weigand.2016}). 
-    The thermal resistances $R_\text{inside}$ includes a convective part with the transfer coefficient $\alpha = 0,9 W/(m^2 K)$ special for air perpendicular to the wall in buildings with the assumption of a one Kelvin temperature difference between the wall and air \cite{Schweizer-fnalpha}.
+    The thermal resistances $R_\text{inside}$ includes a convective part with the transfer coefficient $\alpha = 0,9 W/(m^2 K)$ special for air perpendicular to the wall in buildings with the assumption of one Kelvin temperature difference between the wall and air \cite{Schweizer-fnalpha}.
     The window resistance $R_\text{window}$ is determined with the window area and the assumption of a heat transmission coefficient $u = 1 W/(m^2 K)$ \cite{ThorbenFrahm.2021}. 
     Heat conductivity and heat convection are the regarded mechanisms to determine the floor resistance $R_\text{floor}$. The floor material is reinforced concrete with the thermal conductivity of $2,3 W/(m K)$ \cite{AntonSchweizer.12.10.2021}. For the convection in the inner of the building, the same assumptions are made as for $R_\text{inside}$. 
     The interior resistance $R_\text{interior}$ is also calculated with the heat transfer coefficient inside.\newline 
@@ -112,25 +112,26 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     \label{eq:diffEnvelope}
         C_\text{envelope}*\frac{d T_\text{envelope}}{d t} = \dot{Q}_\text{sun,envelope} - \frac{T_\text{envelope}-T_\text{outside}}{R_\text{envelope}} + \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}}
     \end{equation}
-    The outer wall resistance $R_\text{envelope}$ contains a heat conductivity of aerated concrete ($0,133 W/(m K)$ \cite{GhaziWakili.2015}) and the heat transfer coefficient for air perpendicular to the wall outside $\alpha_\text{envelope}$ according to the rules of thumb 
+    The outer wall resistance $R_\text{envelope}$ contains a heat conductivity of aerated concrete ($0,133 W/(m K)$ \cite{GhaziWakili.2015}) and the heat transfer coefficient for air perpendicular to the wall outside $\alpha_\text{envelope}$ according to the rules of thumb from Schweizer-fn \cite{Schweizer-fnalpha}
     \begin{equation}
         \alpha_\text{envelope} = 3,96 (v / L)^0,5 = 1,669 W/(m^2 K)
-    \end{equation} from Schweizer-fn \cite{Schweizer-fnalpha}, with the average wind velocity of Karlsruhe $v$ \cite{AbteilungKlimaundUmweltberatung.2004} and the length of the building wall.
+    \end{equation}
+    with the average wind velocity of Karlsruhe $v$ \cite{AbteilungKlimaundUmweltberatung.2004} and the length of the building wall.
     To determine the capacitance $C_\text{envelope}$, we need the volume of the outer walls from the construction plan \cite{Bauplan}, the density of aerated concrete ($485 kg/m^3$) and the capacity (1000 $J/(kg K)$) \cite{GhaziWakili.2015}.\newline  
    % \vspace{0.3cm}
    
     \textbf{Interior and floor temperature:}\newline
-    The differential equations for the interior and the floor temperature are so simple as possible. Both states have just an impact on the inside temperature. 
+    The differential equations for the interior and the floor temperature are as simple as possible. Both states have just an impact on the inside temperature. 
     Hazyuk et al. models for example also the ground floor as one state \cite{Hazyuk.2012}. The explanation is that the ground floor has no convective contact with the environment. Therefore, he is not modelled with the envelope for holding the physical structure, where the wind has an impact on the outer walls.
     The interior is extra modelled to improve the accuracy of the inside temperature equations because the capacitance of the inner walls is specially collected.
     \begin{align}
     C_\text{interior} \frac{d T_\text{interior}}{d t} &= \frac{T_\text{inside}-T_\text{interior}}{R_\text{interior}} \\
        C_\text{floor} \frac{d T_\text{floor}}{d t} &= \frac{T_\text{inside}-T_\text{floor}}{R_\text{floor}} \nonumber\\
     \end{align}
-    As above, we need for the calculation of the capacitance $C_\text{floor}$ and $C_\text{interior}$ some material parameters. The material of the floor is reinforced concrete and the interior' material is aerated concrete. The previously unnamed material parameters are the density ($2500 kg/m^3$) \cite{AntonSchweizer.12.10.2021} and the capacity ($880 J/(kg K)$) \cite{AntonSchweizer.12.10.2021b} of reinforced concrete.\newline
+    As above, we need some material parameters for the calculation of the capacitance $C_\text{floor}$ and $C_\text{interior}$. The material of the floor is reinforced concrete and the interior' material is aerated concrete. The previously unnamed material parameters are the density ($2500 kg/m^3$) \cite{AntonSchweizer.12.10.2021} and the capacity ($880 J/(kg K)$) \cite{AntonSchweizer.12.10.2021b} of reinforced concrete.\newline
      % \vspace{0.3cm}
      
-    Summarising, \autoref{fig:structureThermalModel} illustrates the building model with its all connections according to the RC- analogy.
+    Summarising, \autoref{fig:structureThermalModel} illustrates the building model with all its connections according to the RC- analogy.
     \begin{figure}
             \centering
             \def\svgwidth{320pt}
@@ -156,9 +157,9 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         \dot{Q}_\text{sun,inside} &= f_\text{sol,inside} I_\text{sun} \\
         \dot{Q}_\text{sun,envelope} &= f_\text{sol,envelope} I_\text{sun} \nonumber 
     \end{align}
-    The initial values for $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ are chosen as $0,25$ according to Harb et al. \cite{Harb.2016}. And, we replace in the differential equation of the envelope temperature from \autoref{eq:diffEnvelope} the thermal resistance $R_\text{inside}$ to $R_\text{in}$. The initial values of $R_\text{inside}$ and $R_\text{in}$ are the same, but we obtain more flexibility in the grey-box model, if we estimate both values.\newline
-    After that, we are looking for the data from the reference building. The data are generated in an experiment, but this is explained in a subsequent chapter. When we have the data, they are separated into training data and verification data. The training data are used for the estimation. From the reference building, we obtain the room temperatures, which we average with the capacitance of each room to one value, the inside temperature. The same procedure is adopted for the outer wall temperature, except that the outer wall temperatures are averaged with their own capacitance. The interior and the floor temperatures are determined in the same way. Also, we obtain data of the heating system for $\dot{Q}_\text{heating}$ and the weather specially the outside temperature $T_\text{outside}$ and the diffuse insolation $I_\text{sun}$ for determining $\dot{Q}_\text{sun,envelope}$ or $\dot{Q}_\text{sun,inside}$. \newline
-    Now, the greyest-command executes the parameter identification with the training data. The used search method of the greyest-command is subspace Gauss-Newton least squares search. The table below summarizes the modelling parameters for the estimation. The states $T_\text{inside}$ and $T_\text{envelope}$ are also defined as the output to be optimized. For the later MPC is just $T_\text{inside}$ the relevant output. However, we expect better results for the hole model during optimizing the two states with the more complex differential equations. 
+    The initial values for $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ are chosen as $0.25$ according to Harb et al. \cite{Harb.2016}. And, we replace in the differential equation of the envelope temperature from \autoref{eq:diffEnvelope} the thermal resistance $R_\text{inside}$ to $R_\text{in}$. The initial values of $R_\text{inside}$ and $R_\text{in}$ are the same, but we obtain more flexibility in the grey-box model, if we estimate both values.\newline
+    After that, we look for the data from the reference building. The data are generated in an experiment, but this is explained in a subsequent chapter. When we have the data, they are separated into training data and verification data. The training data are used for the estimation. From the reference building, we obtain the room temperatures, which we average with the capacitance of each room to one value, the inside temperature. The same procedure is adopted for the outer wall temperature, except that the outer wall temperatures are averaged with their own capacitance. The interior and the floor temperatures are determined in the same way. Also, we obtain data of the heating system for $\dot{Q}_\text{heating}$ and the weather specially the outside temperature $T_\text{outside}$ and the diffuse insolation $I_\text{sun}$ for determining $\dot{Q}_\text{sun,envelope}$ or $\dot{Q}_\text{sun,inside}$. \newline
+    Now, the greyest-command executes the parameter identification with the training data. The used search method of the greyest-command is subspace Gauss-Newton least squares search. The table below summarizes the modelling parameters for the estimation. The states $T_\text{inside}$ and $T_\text{envelope}$ are also defined as the output to be optimized. For the later MPC, $T_\text{inside}$ is the only relevant output. However, we expect better results for the whole model during optimizing the two states with the more complex differential equations. 
     At last, we obtain the ready model (see in \autoref{sec:appendix:Modelvalues} the initial values and the identified values).
      
     \begin{table}[]
@@ -184,12 +185,12 @@ After explaining thermal basics and the electrical analogy, the foundations are 
            \caption{Verification of the building model}
            \label{fig:verificationModel}
     \end{figure}
-   \autoref{fig:verificationModel} shows the curve of the inside temperature of the simulated and the measured values. It is noticeable that the model reflects the dynamic of reality sufficiently. In addition, the Root Mean Square Error (RMSE) and the maximal residual ($\mathrm{R}_\text{max}$) is used as verification measure of the model.\newline
+   \autoref{fig:verificationModel} shows the curve of the inside temperature of the simulated and the measured values. It is noticeable that the model reflects the dynamic of reality sufficiently. In addition, the Root Mean Square Error (RMSE) and the maximum residual ($\mathrm{R}_\text{max}$) is used as verification measure of the model.\newline
     The RMSE is calculated with the quadratic difference of the simulated output $y_\text{sim}$ and the measured output $y_\text {meas}$ as follows \cite{Barnston.1992}: 
     \begin{equation}
         RMSE = \sqrt{\frac{1}{N} \sum \limits_1^N (y_\text{sim} - y_\text {meas})^2}
     \end{equation}
-    Here, is $N$ the number of measurements or simulated values.
+    Here is $N$ the number of measurements or simulated values.
     Based on the \autoref{tab:RMSEundR} presented RSME and $\mathrm{R}_\text{max}$, it can be shown that during the training and verification period, the magnitudes of the RSME and $\mathrm{R}_\text{max}$ are similar. The results of the RMSE and the $\mathrm{R}_\text{max}$ are listed for the two optimized outputs after the training and the verification period.
      \begin{figure}[h]
     \begin{minipage}[t]{0.5\textwidth}
@@ -197,8 +198,8 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         \begin{tabular}{c|c|c|c|c}
              & \multicolumn{2}{|c}{$T_\text{inside}$} & \multicolumn{2}{|c}{$T_\text{envelope}$} \\
              \hline
-            RMSE & \cellcolor{gray} 0,61 K & \cellcolor{gray90} 0,59 K & \cellcolor{gray} 0,49 K & \cellcolor{gray90} 0,52 K \\
-            $\mathrm{R}_\text{max}$ &\cellcolor{gray} 1,45 K & \cellcolor{gray90} 1,62 K & \cellcolor{gray} 1,22 K & \cellcolor{gray90} 1,03 K
+            RMSE & \cellcolor{gray} 0.61 K & \cellcolor{gray90} 0.59 K & \cellcolor{gray} 0.49 K & \cellcolor{gray90} 0.52 K \\
+            $\mathrm{R}_\text{max}$ &\cellcolor{gray} 1.45 K & \cellcolor{gray90} 1.62 K & \cellcolor{gray} 1.22 K & \cellcolor{gray90} 1.03 K
         \end{tabular}
     \end{minipage}
     \hfill
@@ -213,7 +214,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     \caption{RMSE and $\mathrm{R}_\text{max}$ of the output for training and verification period}
     \label{tab:RMSEundR}
     \end{figure}
-    The maximal difference between the training and verification period for the RMSE lies by 0,3 K and for the $\mathrm{R}_\text{max}$ by 0,19 K. So, we can verify the building model.  
+    The maximum difference between the training and verification period for the RMSE lies by 0.3 K and for the $\mathrm{R}_\text{max}$ by 0.19 K. As a result, we can verify the building model.  
 
     \section{The state-space formulation}
     \label{holeModel}
