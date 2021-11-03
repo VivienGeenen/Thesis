@@ -23,7 +23,7 @@
 %% ---------------------------------------------------------------
 %% | Based on KOMAscript by Markus Kohm http://www.komascript.de |
 %% ---------------------------------------------------------------
-\LoadClass[12pt,twoside,headsepline,a4paper,titlepage=true,DIV=15,BCOR=20mm]{scrbook}
+\LoadClass[12pt,oneside,headsepline,a4paper,titlepage=true,DIV=15,BCOR=20mm]{scrbook}
 
 %% -----------------------
 %% | Headers and footers |
