@@ -38,10 +38,24 @@
 \usepackage{colortbl}
 \definecolor{gray90}{gray}{0.9}
 \usepackage{float}
+\usepackage{nomencl}
+\makenomenclature
+
 
 \usepackage{transparent}
 \usepackage{color}
 \graphicspath{{figure/}}
+
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{A}{Acronyms}{%
+  \ifstrequal{#1}{G}{Greek letters}{%
+  \ifstrequal{#1}{P}{Physical size}{}}}%
+]}
+\newcommand{\nomunit}[1]{%
+\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+
 
 
 \input{tex/preamble}
@@ -174,6 +188,7 @@
 
 %% Add entry to the table of contents for the bibliography
 \printbibliography[heading=bibintoc]
+\printnomenclature
 %% ----------------
 %% |   Appendix   |
 %% ----------------

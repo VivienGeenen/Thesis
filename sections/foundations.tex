@@ -23,7 +23,7 @@ This work is based on foundations, which are summarized in this chapter. This in
         \label{eq:1HS}
         \sum_i \dot{Q_\text{i}}  = \frac{d}{dt} \sum_l U_\text{l}
     \end{equation}
-    The deduction of the inner energy $U$ starts with the complete differential description of the specific inner energy $du$ as \cite{Baehr.2016b}:
+    The deduction of the inner energy $U$ \nomenclature[P]{$U$}{inner energy\nomunit{$J$}} starts with the complete differential description of the specific inner energy $du$ as \cite{Baehr.2016b}:
     \begin {equation} 
     \label{eq:innerEnergy}
     du = (\frac{\partial u}{\partial T})_\text{v} dT + (\frac{\partial u}{\partial v})_\text{T} dv
@@ -50,9 +50,9 @@ This work is based on foundations, which are summarized in this chapter. This in
     \label{eq:fourier}
         \dot{\textbf{q}} = - \lambda \nabla T
     \end{equation}
-    describes the conduction according to Fourier \cite{.2013}. There is $\lambda$ the thermal conductivity with the assumption of being constant and $\dot{\textbf{q}}$ and $T$ represent the specific heat flux and the temperature. The thermal conductivity is dependent on the material, such as concrete, wood or bricks. 
+    describes the conduction according to Fourier \cite{.2013}. There is $\lambda$ \nomenclature[G]{$\lambda$}{thermal conductivity\nomunit{$W/(m K)$}} the thermal conductivity with the assumption of being constant and $\dot{\textbf{q}}$ and $T$ represent the specific heat flux and the temperature. The thermal conductivity is dependent on the material, such as concrete, wood or bricks. 
     \newline
-    To know the heat flux $\dot{Q}$, it is necessary to expand the above equation with the area $A$, the thickness of the conductive medium $d$ and a temperature difference $\Delta T$ assuming one significant direction of the heat flux $\dot{Q}$ to:
+    To know the heat flux $\dot{Q}$, it is necessary to expand the above equation with the area $A$, the thickness of the conductive medium $d$ and a temperature difference $\Delta T$ \nomenclature[P]{$\Delta T$}{temperature difference \nomunit{$K$}} assuming one significant direction of the heat flux $\dot{Q}$ to:
     \begin{equation}
     \label{eq:conduction1}
         \dot{Q} = \frac{A\lambda}{d} \Delta T
@@ -69,8 +69,8 @@ This work is based on foundations, which are summarized in this chapter. This in
     \label{eq:newton}
         \dot{Q} = \alpha A (T_w - T_\infty)
     \end{equation}
-    with the heat transfer coefficient $\alpha$, especially for building modelling the wall temperature $T_w$ and the environment temperature $T_\infty$ \cite{Griesinger.2019}
-    . There are two possibilities to determine the heat transfer coefficient. Both require a temperature difference $\Delta T$ and either a temperature gradient $\partial T/\partial x$ or a heat flux $\dot{Q}$.
+    with the heat transfer coefficient $\alpha$ \nomenclature[G]{$\alpha$}{heat transfer coefficient\nomunit{$W/(m^2 K)$}}, especially for building modelling the wall temperature $T_w$ and the environment temperature $T_\infty$ \cite{Griesinger.2019}
+    . There are two possibilities to determine the heat transfer coefficient. Both require a temperature difference $\Delta T$ and either a temperature gradient $\partial T/\partial x$ \nomenclature[P]{$\partial T/\partial x$}{temperature gradient\nomunit{$K/m$}} or a heat flux $\dot{Q}$.
     \cite{.2013} 
 
 \subsection{Radiation}
@@ -262,7 +262,7 @@ Dealing with constraints is one of the most important advantages of MPC. Thereby
 \label{section:building}
     Since this thesis is based on a real building, some necessary details about the building are described below.
     \newline
-    The building is located on the "Campus Nord" of the "Karlsruher Institut für Technologie (KIT)" and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bathroom, five rooms and a technical room. For a better orientation, \autoref{fig:Bauplan} shows a part of the construction plan of the building. The building is designed as a single-family house, but for practical reasons, it is used as an office. The living area is around 100 $m^2$. The building offers two options to heat or cool with a ground-source heat pump or an air heat pump. The focus is on the air heat pump because the most commonly used heat pumps in Germany are air heat pumps \cite{bwp.2021}. In addition to the heat pump, there is a water reservoir for saving energy with stratified storage. The total volume is 1000 litres \cite{Oskar}. The heating system inside the building is provided as underground floor heating. However, the heating system is not completely installed yet. So using the heat pump, the water reservoir or the underground floor heating is not possible actual.
+    The building is located on the "Campus Nord" of the Karlsruhe Institute of Technology and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bathroom, five rooms and a technical room. For a better orientation, \autoref{fig:Bauplan} shows a part of the construction plan of the building. The building is designed as a single-family house, but for practical reasons, it is used as an office. The living area is around 100 $m^2$. The building offers two options to heat or cool with a ground-source heat pump or an air heat pump. The focus is on the air heat pump because the most commonly used heat pumps in Germany are air heat pumps \cite{bwp.2021}. In addition to the heat pump, there is a water reservoir for saving energy with stratified storage. The total volume is 1000 litres \cite{Oskar}. The heating system inside the building is provided as underground floor heating. However, the heating system is not completely installed yet. So using the heat pump, the water reservoir or the underground floor heating is not possible actual.
     \newline
     One of the main features of the building is the number of sensors. The air temperature is measured in every room, as well as the temperature in the middle of the exterior wall, the screed temperature, the floor plate temperature, and the temperature of the inner wall between room three and room four (see \autoref{fig:Bauplan}). Furthermore, the consumption of the actual electrical power is also detected. Only the mentioned sensors are needed in this case, but there are many more sensors.
     %Himmelsrichtung noch beschreiben

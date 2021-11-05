@@ -61,7 +61,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
 
     \section{The water reservoir model}
     \label{waterModel}
-    First, all heat flows are regarded for modelling the water reservoir (WR), which influence the water reservoir (see \autoref{fig:Figure of the water reservoir with the heat flows}). The heat pump (HP) feeds the water reservoir with heat flow $\dot{Q}_\text{HP}$. The service water (SW) and the water for the heating circuit are taken from the storage. Since no service water is currently connected to the reference building, the heat flow $\dot{Q}_\text{SW}$ will be set to zero in the following. The heat losses $\dot{Q}_\text{loss}$ and the heating heat flow  $\dot{Q}_\text{heating}$ are consequently the discharged heat flows. The resulting energy balance according to \autoref{eq:1HS} follows below.
+    First, all heat flows are regarded for modelling the water reservoir (WR) \nomenclature[A]{WR}{Water Reservoir} , which influence the water reservoir (see \autoref{fig:Figure of the water reservoir with the heat flows}). The heat pump (HP) \nomenclature[A]{HP}{Heat Pump} feeds the water reservoir with heat flow $\dot{Q}_\text{HP}$. The service water (SW) \nomenclature[A]{SW}{Service Water} and the water for the heating circuit are taken from the storage. Since no service water is currently connected to the reference building, the heat flow $\dot{Q}_\text{SW}$ will be set to zero in the following. The heat losses $\dot{Q}_\text{loss}$ and the heating heat flow  $\dot{Q}_\text{heating}$ are consequently the discharged heat flows. The resulting energy balance according to \autoref{eq:1HS} follows below.
     \begin{equation}
         \label{waterReservoir}
         \frac{d U_\text{WR}}{d t}= -\dot{Q}_\text{heating} + \dot{Q}_\text{HP} - \dot{Q}_\text{loss}
@@ -195,7 +195,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
            \caption{Verification of the building model}
            \label{fig:verificationModel}
     \end{figure}
-   \autoref{fig:verificationModel} shows the curve of the inside temperature of the simulated and the measured values. It is noticeable that the model reflects the dynamic of reality sufficiently. In addition, the Root Mean Square Error (RMSE) and the maximum residual ($\mathrm{R}_\text{max}$) is used as verification measure of the model.\newline
+   \autoref{fig:verificationModel} shows the curve of the inside temperature of the simulated and the measured values. It is noticeable that the model reflects the dynamic of reality sufficiently. In addition, the Root Mean Square Error (RMSE) \nomenclature[A]{RMSE}{Root Mean Square Error} and the maximum residual ($\mathrm{R}_\text{max}$) is used as verification measure of the model.\newline
     The RMSE is calculated with the quadratic difference of the simulated output $y_\text{sim}$ and the measured output $y_\text {meas}$ as follows \cite{Barnston.1992}: 
     \begin{equation}
         RMSE = \sqrt{\frac{1}{N} \sum \limits_1^N (y_\text{sim} - y_\text {meas})^2}
@@ -236,20 +236,3 @@ After explaining thermal basics and the electrical analogy, the foundations are 
 	 T_{inside} &= C \left(\begin{array}{c} T_{inside} \\ T_{envelope} \\ T_{interior}\\ T_{floor}\\ U_{WR} \end{array}\right) \nonumber
 	\end{align}	
     The hole matrices $A$, $B_\text{1}$, $B_\text{2}$, and $C$ are in \autoref{sec:appendix:Matrizen}. We have no pass-through matrices because neither control signals nor disturbances have a direct impact on the output. 
-     
-    
-    
-
-
-
-
-
-
-%\begin{align}
-  %% C_\text{inside}*\frac{d T_\text{inside}}{d t} &=& \dot{Q}_\text{heating} + \dot{Q}_\text{sun,inside} - \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}} - \frac{T_\text{inside}-T_\text{outside}}{R_\text{window}} \\
-       %& &-\frac{T_\text{inside}-T_\text{interior}}{R_\text{interior}}-\frac{T_\text{inside}-T_\text{floor}}{R_\text{floor}} \nonumber\\
-      % C_\text{envelope}*\frac{d T_\text{envelope}}{d t} &=& \dot{Q}_\text{sun,envelope} - \frac{T_\text{envelope}-T_\text{outside}}{R_\text{envelope}} + \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}} \nonumber \\
-     %  C_\text{interior}*\frac{d T_\text{interior}}{d t} &=& \frac{T_\text{inside}-T_\text{interior}}{R_\text{interior}} \nonumber\\
-    %   C_\text{floor}*\frac{d T_\text{floor}}{d t} &=& \frac{T_\text{inside}-T_\text{floor}}{R_\text{floor}} \nonumber\\
-    %   \frac{d U_\text{WR}}{d t}&=& -\dot{Q}_\text{heating} + \dot{Q}_\text{HP} - \dot{Q}_\text{loss} - \dot{Q}_\text{SW} \nonumber
-  %  \end{align}
