@@ -1,11 +1,14 @@
 \chapter{Experiments}
 \label{ch:experiments}
 In the \autoref{sec:building model} is described how the grey-box model of the building is created. However, it is not nearly explained where the data comes from. Experiments have been conducted specifically to obtain this data. These experiments are explained in this separate chapter. \newline
-This thesis is developed during the summer, thus no data from the reference building with a non-zero control signal $\dot{Q}_\text{heating}$ are available. To acquire data with the varying control signal, we heat the reference building with electric heaters in two experiments, one for verification data and one for training data.
+This thesis is developed during the summer, thus no data from the reference building with a non-zero control signal $\dot{Q}_\text{heating}$ are available. To acquire data with the varying control signal, we heat the reference building with electric heaters in two experiments, one for verification data and one for training data. Therefore, the sensors of the building record the temperature curves in the rooms and the electrical consumption of the building. The experiments are under the assumption that the whole electrical power of the heaters and other consumers of power, such as lights and office devices, is changed in heat.
 
 \section{Experiment 1}
 \label{sec:Experiment1}
-The feasibility of the first experiment on the reference building is unclear. To be able to simply repeat the experiment in the event of an error, the experiment with the smaller data set is conducted at first. Hence, the first experiment aims to obtain the data for the verification period, which is shorter than the training period. Furthermore, the experiment is conducted over a weekend (from 16. July to 18. July 2021), as we reduce interference from occupants, such as opening doors or windows, and we enable the occupants a comfortable working temperature. \newline
+
+\subsection{Background to the experiment 1}
+\label{subsec:Backgroud to experiment 1}
+The feasibility of the first experiment on the reference building is unclear. To be able to simply repeat the experiment in the event of an error, the experiment with the smaller data set is conducted at first. Hence, the first experiment aims to obtain the data for the verification period, which is shorter than the training period. Furthermore, the experiment is conducted over a weekend (from 16. July to 18. July 2021), as we reduce interference from occupants, such as opening doors or windows, and we enable the occupants a comfortable working temperature. At last, there should be no electrical charging of the cars during the experiment, because this electricity consumption has the same measuring point as the electricity consumption of the entire building. This would disrupt the assumption that all electrical power is converted into heat.\newline
 At first, we set up the household heater without a fan in room 1, the household heater with a fan in room 2, and the industrial heater in floor 2 (see \autoref{fig:Bauplan}). The heaters are selected based on availability so that no new equipment has to be purchased. Some technical information and the configuration of the heaters are described in \autoref{tab:HeatersData}.
 \begin{table}[]
     \centering
@@ -37,7 +40,6 @@ At first, we set up the household heater without a fan in room 1, the household 
      \item switch symbol: \begin{tikzpicture} [thick, scale=0.3]
     \fill [black] (0,0) rectangle (1.5cm,0.7cm) ;
     \end{tikzpicture}
-
      \item temperature setting: middle
      \end{itemize}  \\
     \end{tabular}
@@ -48,11 +50,18 @@ At first, we set up the household heater without a fan in room 1, the household 
 \nomenclature[A]{IH}{Indusrial Heater} 
 \nomenclature[A]{HoHeF}{Household Heater with a Fan}
 
+\subsection{Data of the experiment 1}
+\label{subsec:Data of the experiment 1}
 
+\section{Experiment 2}
+\label{sec:Experiment2}
+Programmable logic controller (PLC)
 
-Programmable logic controller (PLC) 
+\subsection{Background to the experiment 2}
+\label{subsec:Backgroud to experiment 2}
 
-\section{}
-\label{}
-\section{}
-\label{}
+\subsection{Data of the experiment 2}
+\label{subsec:Data of the experiment 2}
+
+\section{Findings of the experiments}
+\label{sec:findings of the experiments}
