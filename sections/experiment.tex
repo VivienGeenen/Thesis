@@ -1,11 +1,57 @@
-\chapter{Experiment}
-\label{ch:experiment}
-Industrial heater (IH)
-Household heater with fan (HHF)
-Household heater wtihout fan (HH) 
-SPS
-\section{}
-\label{}
+\chapter{Experiments}
+\label{ch:experiments}
+In the \autoref{sec:building model} is described how the grey-box model of the building is created. However, it is not nearly explained where the data comes from. Experiments have been conducted specifically to obtain this data. These experiments are explained in this separate chapter. \newline
+This thesis is developed during the summer, thus no data from the reference building with a non-zero control signal $\dot{Q}_\text{heating}$ are available. To acquire data with the varying control signal, we heat the reference building with electric heaters in two experiments, one for verification data and one for training data.
+
+\section{Experiment 1}
+\label{sec:Experiment1}
+The feasibility of the first experiment on the reference building is unclear. To be able to simply repeat the experiment in the event of an error, the experiment with the smaller data set is conducted at first. Hence, the first experiment aims to obtain the data for the verification period, which is shorter than the training period. Furthermore, the experiment is conducted over a weekend (from 16. July to 18. July 2021), as we reduce interference from occupants, such as opening doors or windows, and we enable the occupants a comfortable working temperature. \newline
+At first, we set up the household heater without a fan in room 1, the household heater with a fan in room 2, and the industrial heater in floor 2 (see \autoref{fig:Bauplan}). The heaters are selected based on availability so that no new equipment has to be purchased. Some technical information and the configuration of the heaters are described in \autoref{tab:HeatersData}.
+\begin{table}[]
+    \centering
+    \begin{tabular}{p{3.1cm}|c|p{5.3cm}|p{5.7cm}}
+    Heater & Acronym & Technical data & Configuration \\
+    \hline
+     Household Heater without a Fan & HoHe &
+     \begin{itemize}
+     \item maximum power: $2000 W$
+     \item closed-loop control
+     \end{itemize}
+     & \begin{itemize}
+     \item switch symbol: $|$
+     \item temperature setting: $5 - 6$
+     \end{itemize}  \\
+     Household Heater with a Fan & HoHeF &\begin{itemize}
+     \item maximum power: $2000 W$
+     \item open-loop control
+     \end{itemize}
+     & \begin{itemize}
+     \item switch symbol: $750 W$
+     \end{itemize}  \\
+     Industrial Heater & IH &
+     \begin{itemize}
+     \item maximum power: $9000 W$
+     \item closed-loop control
+     \end{itemize}
+     & \begin{itemize}
+     \item switch symbol: \begin{tikzpicture} [thick, scale=0.3]
+    \fill [black] (0,0) rectangle (1.5cm,0.7cm) ;
+    \end{tikzpicture}
+
+     \item temperature setting: middle
+     \end{itemize}  \\
+    \end{tabular}
+    \caption{Technical data and configuration during the experiments}
+    \label{tab:HeatersData}
+\end{table}
+\nomenclature[A]{HoHe}{Household Heater without a fan}
+\nomenclature[A]{IH}{Indusrial Heater} 
+\nomenclature[A]{HoHeF}{Household Heater with a Fan}
+
+
+
+Programmable logic controller (PLC) 
+
 \section{}
 \label{}
 \section{}
