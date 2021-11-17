@@ -8,7 +8,7 @@ This thesis is developed during the summer, thus no data from the reference buil
 
 \subsection{Background to the experiment 1}
 \label{subsec:Backgroud to experiment 1}
-The feasibility of the first experiment on the reference building is unclear. To be able to simply repeat the experiment in the event of an error, the experiment with the smaller data set is conducted at first. Hence, the first experiment aims to obtain the data for the verification period, which is shorter than the training period. Furthermore, the experiment is conducted over a weekend (from 16. July to 18. July 2021), as we reduce interference from occupants, such as opening doors or windows, and we enable the occupants a comfortable working temperature. At last, there should be no electrical charging of the cars during the experiment, because this electricity consumption has the same measuring point as the electricity consumption of the entire building. This would disrupt the assumption that all electrical power is converted into heat.\newline
+The feasibility of the first experiment on the reference building is unclear. To be able to simply repeat the experiment in the event of an error, the experiment with the smaller data set is conducted at first. Hence, the first experiment aims to obtain the data for the verification period, which is shorter than the training period. Furthermore, the experiment is conducted over a weekend (from 16. July to 18. July 2021), as we reduce interference from occupants, such as opening doors or windows, and we enable the occupants a comfortable working temperature. Therefore, all windows and doors are opened after the experiment to cool down the building. At last, there should be no electrical charging of the cars during the experiment, because this electricity consumption has the same measuring point as the electricity consumption of the entire building. This would disrupt the assumption that all electrical power is converted into heat.\newline
 At first, we set up the household heater without a fan in room 1, the household heater with a fan in room 2, and the industrial heater in floor 2 (see \autoref{fig:Bauplan}). The heaters are selected based on availability so that no new equipment has to be purchased. Some technical information and the configuration of the heaters are described in \autoref{tab:HeatersData}.
 \begin{table}[]
     \centering
@@ -52,8 +52,9 @@ At first, we set up the household heater without a fan in room 1, the household 
 
 \subsection{Data of the experiment 1}
 \label{subsec:Data of the experiment 1}
-Der genaue Abfolge dessen was während des Experiments passiert ist, ist im Anhang in einem tabellarischen Laborbuch festgehalten oder wie in der Abbildung bla zu sehen in den Daten. Die Abbildung zeigt die elektrische Leistung und die Lufttemperatur in der küche, dem FOG und Raum 1 und 2 ab dem beginn des Experiments bis zum Ende des Experiments. Der Start ist durch das einschalten aller Heizungen in RAum 1,2 und FOG gekennzeichnet. Das Ende durch das Abschalten aller heizungen in Raum 1,Küche und FOG.
-Das Verhalten der jeweiligen Heizer ist direkt in den Daten zu erkennen.So ist in floor 2 der IH eingeschaltet, welcher durch die closed-loop control sich häufig ein und ausschaltet und daher die fluktuation in der steigenden lufttemperaturkurve aus floor 2 erzeugt. Auch im elektrischen Verbrauch ist zum gleichen Zeitpunkt, das einschalten des heizers an den hohen peaks zu erkennen. Der HoHe weist gleiches Verhalten wie der IH auf, nur mit kleinerer Auswirkung auf die Lufttemperatur in Raum 1. Nur der HoHeF hat eine open-loop control und heizt daher konstant mit $750 W$ die Raumluft auf, wobei auch keine wellenfrom im temperaturanstieg zu erkennen ist. Da sich der HoHe nicht selbstständig abschaltet und das Wochenende des experiments sonnig ist, wird der Raum 2 nur bis Samstag abend geheizt. Der Heater wurde von Raum 2 in die Küche gestellt. Da eine mittelung aller Räume für die Modelschätzung aus \autoref{ch:modelling} vorgesehen ist, ist es nicht relevant welcher Raum geheizt wird.
+A more exact sequence of the experiment is showing in \autoref{tab:Experiment1app} as laboratory journal or in the \autoref{fig:P_elTemperatureExperiment1} with the data. The Figure presents the electrical consumption $P_el$ and the air temperatures in rooms 1 and 2, the kitchen, and floor 2 of the reference building from the beginning to the ending of the experiment. The start is marked by switching on the heaters in floor 2 and rooms 1 and 2. In the end, the heaters are switched off in room 1, the kitchen and floor 2. \newline 
+The data demonstrate the behaviour of the heaters. Consequently, in floor 2, the IH switches often on and off due to the closed-loop control. Therefore, IH generates the fluctuations in the increasing air temperature curve. At the same time, we notice the on and off of the heater in $P_el$ at the high peaks. The HoHe has the same behaviour as the IH but with a smaller influence on the air temperature in room 1 due to its lower power. \newline
+Only the HoHeF is controlled open-loop and heats constantly with $750 W$ the room air, where we remark no fluctuations in the temperature rise. Because the HoHeF does not switch off independently and we have sunny days during the experiment, some temperatures, e.g. the screed temperature, are nearly below 40°C. To avoid a too-hot room for the occupants after the experiment, we stop heating room 2 on Saturday night and rearrange the HoHeF in the kitchen. Since we average the temperature in all rooms for the model estimation from \autoref{ch:modelling}, it is not relevant which room is heated.
 \begin{figure}
             \centering
             %\def\svgwidth{100pt}
@@ -70,6 +71,12 @@ Programmable logic controller (PLC)
 
 \subsection{Data of the experiment 2}
 \label{subsec:Data of the experiment 2}
-
+\begin{figure}
+            \centering
+            %\def\svgwidth{100pt}
+            \includegraphics[width=0.85\textwidth]{figure/P_el_trainingsdaten_latex.eps}
+           \caption{Electrical consumption of the building and air temperature inside the rooms during the experiment 1}
+           \label{fig:P_elTemperatureExperiment1}
+    \end{figure}
 \section{Findings of the experiments}
 \label{sec:findings of the experiments}
