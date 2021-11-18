@@ -197,7 +197,7 @@ and
 subject to 
 \begin{align*}
 \textrm{Current state} && \mathbf{x_0} &=& \mathbf{x} \\	
-\textrm{Dynamics} && \mathbf{x_{k+1}}&=& f(\mathbf{x_k,u_k,d_k})		&&	\mathbf{y_k} = g(\mathbf{x_k,u_k,d_k})\\				
+\textrm{Dynamics} && \mathbf{x_{k+1}}&=& f(\mathbf{x_k,u_k,d_k}),		&&	\mathbf{y_k} = g(\mathbf{x_k,u_k,d_k})\\				
 \textrm{Constraints} && \mathbf{y_{min}}&\leq& \mathbf{y_k} \leq \mathbf{y_{max}}\\		
 \textrm{} && \mathbf{u_{min}}&\leq& \mathbf{u_k} \leq \mathbf{u_{max}}	
 \end{align*}
@@ -258,11 +258,10 @@ Dealing with constraints is one of the most important advantages of MPC. Thereby
 
 \section{The reference building}
 \label{section:building}
-    Since this thesis is based on a real building, some necessary details about the building are described below.
+    Since this thesis is based on a real building, the necessary details about the building will be described below.
+    The building is located on the "Campus Nord" of the KIT and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bathroom, five rooms and a technical room. For a better orientation, \autoref{fig:Bauplan} shows a part of the construction plan of the building. The building is designed as a single-family house, but for practical reasons, it is used as an office. The living area is around 100 $m^2$. The building offers two options to heat or cool with a ground-source heat pump or an air heat pump. The focus is on the air heat pump because the most commonly used heat pumps in Germany are air heat pumps \cite{bwp.2021}. In addition to the heat pump, there is a water reservoir for saving energy with stratified storage. The total volume is 1000 litres \cite{Oskar}. The heating system inside the building is provided as underground floor heating. However, the heating system is not completely installed yet. So using the heat pump, the water reservoir or the underground floor heating is not possible, yet.
     \newline
-    The building is located on the "Campus Nord" of the KIT and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bathroom, five rooms and a technical room. For a better orientation, \autoref{fig:Bauplan} shows a part of the construction plan of the building. The building is designed as a single-family house, but for practical reasons, it is used as an office. The living area is around 100 $m^2$. The building offers two options to heat or cool with a ground-source heat pump or an air heat pump. The focus is on the air heat pump because the most commonly used heat pumps in Germany are air heat pumps \cite{bwp.2021}. In addition to the heat pump, there is a water reservoir for saving energy with stratified storage. The total volume is 1000 litres \cite{Oskar}. The heating system inside the building is provided as underground floor heating. However, the heating system is not completely installed yet. So using the heat pump, the water reservoir or the underground floor heating is not possible actual.
-    \newline
-    One of the main features of the building is the number of sensors. The air temperature is measured in every room, as well as the temperature in the middle of the exterior wall, the screed temperature, the floor plate temperature, and the temperature of the inner wall between room three and room four (see \autoref{fig:Bauplan}). Furthermore, the consumption of the actual electrical power is also detected. Only the mentioned sensors are needed in this case, but there are many more sensors.
+    One of the main features of the building is the number of sensors. The air temperature is measured in every room, as well as the temperature in the middle of the exterior walls, the screed temperature, the floor plate temperature, and the temperature of the inner wall between room three and room four (see \autoref{fig:Bauplan}). Furthermore, the consumption of the actual electrical power is also detected. Only the mentioned sensors are needed in this case, but there are many more sensors.
     %Himmelsrichtung noch beschreiben
     \begin{figure}
         \centering
