@@ -20,7 +20,7 @@ This work is based on foundations, which are summarized in this chapter. This in
     \newline
     Since we do not consider airflow, we use the closed system with the heat flows $\dot{Q_\text{i}}$ and the inner energy $U_\text{l}$.
      \begin{equation}
-        \label{eq:1HS}
+        \label{eq:1HSkurz}
         \sum_i \dot{Q_\text{i}}  = \frac{d}{dt} \sum_l U_\text{l}
     \end{equation}
     The deduction of the inner energy $U$ \nomenclature[P]{$U$}{inner energy\nomunit{$J$}} starts with the complete differential description of the specific inner energy $du$ as \cite{Baehr.2016b}:
@@ -28,10 +28,10 @@ This work is based on foundations, which are summarized in this chapter. This in
     \label{eq:innerEnergy}
     du = (\frac{\partial u}{\partial T})_\text{v} dT + (\frac{\partial u}{\partial v})_\text{T} dv
     \end{equation}
-    The specific volume $dv$ is negligible in buildings, and the specific heat capacity during constant volume has the expression $c_\text{v} = (\frac{\partial u}{\partial T})_\text{v}$ \cite{Baehr.2016b}. After integrating and replacing the specific values by volume, we obtain the relation for the inner energy $U$, with the mass $m$ and the temperature difference $\Delta T$. 
+    The specific volume $dv$ is negligible in buildings, and the specific heat capacity during constant volume has the expression $c_\text{v} = (\frac{\partial u}{\partial T})_\text{v}$ \cite{Baehr.2016b}. After replacing the specific values by volume, we obtain the relation for the inner energy $U$, with the mass $m$. 
         \begin{equation}
         \label{eq:innerEnergy}
-        U = m c_\text{v} \Delta T
+        d U = m c_\text{v} d T
     \end{equation}
     
     It applies to substances with a specific volume regardless of the pressure that $c_\text{v}=c_\text{p}=c$.\newline
@@ -141,10 +141,10 @@ For modelling the thermal behaviour of buildings, the lumped capacitance model i
     The heat flux $\dot{Q}$, for example from a radiator, influences the temperature $T_\text{wall}$, as well as the capacitance $C$. And the temperature $T_\text{wall}$ affects the temperature inside and outside $T_\text{inside}$ and $T_\text{outside}$ with their resistances $R_{\alpha \text{,inside}}$ and $R_{\alpha \text{,outside}}$. The example shows that all connections in the network influence each other.
     To model the dynamics of the wall in differential equations, Kirchhoff's Current Law is required. It states that the sum of the flowing current to the node is equal to the sum of the flowing current of the node 
     \cite{Kuchling.2007}. 
-    Because of the thermal analogy of electrical laws, the current is replaced by heat flux. The following differential equation results for the node  $T_\text{wall}$ using Ohm's law ($\dot{Q}=\Delta T/R$) and the relationship $\dot{Q}=C\frac{\partial T}{\partial t}$.     
+    Because of the thermal analogy of electrical laws, the current is replaced by heat flux. The following differential equation results for the node  $T_\text{wall}$ using Ohm's law ($\dot{Q}=\Delta T/R$) and the first low of thermodynamics as deduced in \autoref{eq:1HSkurz} with the inner energy from \autoref{eq:innerEnergy}.     
     \begin{equation}
     \label{eq:sampledifferential}
-    C \frac{\partial T_\text{wall}}{\partial t} = \dot{Q} + \frac{T_\text{inside}-T_\text{wall}}{R_{\alpha \text{,inside}}} - \frac{T_\text{wall}-T_\text{outside}}{R_{\alpha\text{,outside}}}
+    C \frac{d T_\text{wall}}{d t} = \dot{Q} + \frac{T_\text{inside}-T_\text{wall}}{R_{\alpha \text{,inside}}} - \frac{T_\text{wall}-T_\text{outside}}{R_{\alpha\text{,outside}}}
     \end{equation}
     In \autoref{fig:sampleRCnetwork}, the thermal resistances are serially connected. According to the electrical network, resistances in series are equal to their sum. 
     \begin{equation}
@@ -174,7 +174,7 @@ For modelling the thermal behaviour of buildings, the lumped capacitance model i
 \label{section:mpc}
 
 Model predictive control exploits models of the plant to predict and optimise the behaviour of the plant \cite{Grune.2017}.
-Applied to thermal control of a building with the aim of grid-supporting, a model of the thermal behaviour of the building is required to predict the reaction of the system behaviour in the next $N$ time steps, called the prediction horizon. Every time step $k$, the current state $\mathbf{x_k}$, the output $\mathbf{y_k}$ is measured, and the future system behaviour is obtained by computation. The computation of the future system behaviour may include measurable disturbances such as weather forecast, occupancy schedule and the optimisation of the control signal $\mathbf{u_k}$ over the optimisation horizon $\mathbf{u_{k+N}}$. However, only the first calculated control signal is adopted as input for the plant.
+Applied to thermal control of a building with the aim of grid-supporting, a model of the thermal behaviour of the building is required to predict the reaction of the system behaviour in the next $N$ time steps, called the prediction horizon. Every time step $k$, the current state $\mathbf{x_k}$, the output $\mathbf{y_k}$ is measured, and the future system behaviour is obtained by computation. The computation of the future system behaviour may include measurable disturbances $\mathbf{d_k}$  such as weather forecast, occupancy schedule and the optimisation of the control signal $\mathbf{u_k}$ over the optimisation horizon $\mathbf{u_{k+N}}$. However, only the first calculated control signal is adopted as input for the plant.
 Then, the calculations are repeated at every time step. \autoref{fig:sampleMPC} visualises the MPC control loop.
  \begin{figure}[h]
     \centering
