@@ -13,7 +13,7 @@ This work is based on foundations, which are summarized in this chapter. This in
     It is necessary to comprehend the basics of thermodynamics to understand the structure of a thermal model. The first law of thermodynamics is the general energy balance and is formulated for unsteady and open systems as follows \cite{Baehr.2016b}:
     \begin{equation}
         \label{eq:1HS}
-        \sum_i \dot{Q_\text{i}} + \sum_j \dot{W_\text{j}} + \sum_k \dot{m_\text{k}}*(h + \frac{c^2}{2} + gz)_\text{k} = \frac{d}{dt} \sum_l U_\text{l}
+        \sum_i \dot{Q_\text{i}} + \sum_j \dot{W_\text{j}} + \sum_k \dot{m_\text{k}}\cdot (h + \frac{c^2}{2} + gz)_\text{k} = \frac{d}{dt} \sum_l U_\text{l}
     \end{equation}
     
     In terms of a building, we set the work $\dot{W}$ to zero according to the relationship $W =\int Pdt - \int pdV$ \cite{Baehr.2016b} because a building can't change the volume $V$, and we have no additional mechanical power $P$. If we have no mass flow $\dot{m}$ in our system, we obtain a closed system. Regarding buildings, mass flows could be airflow through the window, for example. Then we also consider the enthalpy $h$, the fluid velocity $c$, the high $z$ and the gravitational acceleration $g$.
@@ -28,18 +28,16 @@ This work is based on foundations, which are summarized in this chapter. This in
     \label{eq:innerEnergy}
     du = (\frac{\partial u}{\partial T})_\text{v} dT + (\frac{\partial u}{\partial v})_\text{T} dv
     \end{equation}
-    The specific volume $dv$ is negligible in buildings, and the specific heat capacity during constant volume has the expression $c_\text{v} = (\frac{\partial u}{\partial T})_\text{v}$ \cite{Baehr.2016b}. After integrating and replacing the specific values by volume, we obtain the relation for the inner energy $U$, with the mass $m$ and the temperature difference $\delta T$. 
+    The specific volume $dv$ is negligible in buildings, and the specific heat capacity during constant volume has the expression $c_\text{v} = (\frac{\partial u}{\partial T})_\text{v}$ \cite{Baehr.2016b}. After integrating and replacing the specific values by volume, we obtain the relation for the inner energy $U$, with the mass $m$ and the temperature difference $\Delta T$. 
         \begin{equation}
         \label{eq:innerEnergy}
         U = m c_\text{v} \Delta T
     \end{equation}
     
-    It applies to substances with a specific volume regardless of the pressure that $c_\text{v}=c_\text{p}=c$. 
-    We sum the heat flows in the energy balance in \autoref{eq:1HS}. However, what kind of heat transfer is there, the following few chapters explain.
+    It applies to substances with a specific volume regardless of the pressure that $c_\text{v}=c_\text{p}=c$.\newline
     
-    \vspace{2cm}
-    
-    There are three mechanisms of heat transfer: Heat conduction, heat convection, and heat radiation \cite{.2013}. Thermal modelling of buildings requires all of these mechanisms. For example, conduction is the primary part of heat transfer through walls or floors. Convection occurs on the inside and the outside of the building between the walls and the air. To integrated the impact of the sun, radiation is needed, for example.
+    We account for different heat flows and for the inner energy in the energy balance in \autoref{eq:1HS}.
+    However, there are three mechanisms of heat transfer, which are explained in the following sections: Heat conduction, heat convection, and heat radiation \cite{.2013}. Thermal modelling of buildings requires all of these mechanisms. For example, conduction is the primary part of heat transfer through walls or floors. Convection occurs on the inside and the outside of the building between the walls and the air. To integrated the impact of the sun, radiation is needed, for example.
 
 \subsection{Conduction}
 \label{subsection:conduction}
@@ -50,7 +48,7 @@ This work is based on foundations, which are summarized in this chapter. This in
     \label{eq:fourier}
         \dot{\textbf{q}} = - \lambda \nabla T
     \end{equation}
-    describes the conduction according to Fourier \cite{.2013}. There is $\lambda$ \nomenclature[G]{$\lambda$}{thermal conductivity\nomunit{$W/(m K)$}} the thermal conductivity with the assumption of being constant and $\dot{\textbf{q}}$ and $T$ represent the specific heat flux and the temperature. The thermal conductivity is dependent on the material, such as concrete, wood or bricks. 
+    describes the conduction according to Fourier \cite{.2013}. $\lambda$ is \nomenclature[G]{$\lambda$}{thermal conductivity\nomunit{$W/(m K)$}} the thermal conductivity with the assumption of being constant and $\dot{\textbf{q}}$ and $T$ represent the specific heat flux and the temperature. The thermal conductivity is dependent on the material, such as concrete, wood or bricks. 
     \newline
     To know the heat flux $\dot{Q}$, it is necessary to expand the above equation with the area $A$, the thickness of the conductive medium $d$ and a temperature difference $\Delta T$ \nomenclature[P]{$\Delta T$}{temperature difference \nomunit{$K$}} assuming one significant direction of the heat flux $\dot{Q}$ to:
     \begin{equation}
@@ -62,7 +60,7 @@ This work is based on foundations, which are summarized in this chapter. This in
 \subsection{Convection}
 \label{subsection:convection}
 
-    Macroscopic movements of a fluid lead to the transport of kinetic energy and enthalpy. This mechanism is called convection. These movements are generated by external forces or by internal forces like balancing the pressure or temperature.\cite{.2013}
+    Macroscopic movements of a fluid lead to the transport of kinetic energy and enthalpy. This mechanism is called convection. These movements are generated by external forces or by internal forces like balancing the pressure or temperature \cite{.2013}.
     \newline
     Newton's law of cooling describes the convective heat transfer $\dot{Q}$ as 
     \begin{equation}
@@ -76,7 +74,7 @@ This work is based on foundations, which are summarized in this chapter. This in
 \subsection{Radiation}
 \label{subsection:radiation}
 
-    Every body emits heat radiation to the environment with electromagnetic waves. Especially, heat radiation does not need matter for energy transportation. As shown in the following equation, the temperature $T$ of the body influences heat radiation.\cite{.2013} 
+    Every body emits heat radiation to the environment with electromagnetic waves. Heat radiation does not need matter for energy transportation. As shown in the following equation, the temperature $T$ of the body influences heat radiation.\cite{.2013} 
     \begin{equation}
     \label{eq:radiation}
         \dot{q} = \sigma T^4
@@ -93,12 +91,12 @@ This work is based on foundations, which are summarized in this chapter. This in
     
 \section{Lumped capacitance model}
 \label{section:modelling}
-For modelling the thermal behaviour of buildings, the lumped capacitance model is often used. With this approach, using the electrical analogy, building elements are represented by resistors $R$ and capacitors $C$. \cite{Kramer.2012}
+For modelling the thermal behaviour of buildings, the lumped capacitance model is often used. With this approach, using the electrical analogy, building elements are represented by resistors $R$ and capacitors $C$ \cite{Kramer.2012}. 
 
 \subsection{Electrical analogy}
 \label{electricalanalogy}
 
-    Similar to an electrical network, the potential is represented by the temperature at one node and the heat flux corresponds to the current. We can also use Ohm's law, which is formulated in a thermal way as:  
+    Similar to an electrical network, the potential is represented by the temperature at one node and the heat flux corresponds to the current. In analogy to the electric domain, we can describe the Ohm's law in heat transfer by:  
      \begin{equation}
     \label{eq:Ohm}
         \dot{Q} = \frac{\Delta T}{R} 
@@ -117,7 +115,7 @@ For modelling the thermal behaviour of buildings, the lumped capacitance model i
    %\captionof{figure}[]{}
     \begin{minipage}[t]{7cm}
     \vspace{0pt}
-    Thermal resistances can sum up to one thermal resistance, even if they are from different mechanisms of heat transfer. Based on an example in \autoref{fig:sampleWall}, the addition is explained. The figure shows a section of a wall with a heat flow $\dot{Q}$, the ambient temperature $T_\text{1}$ and $T_\text{2}$ separated by that wall. We have three thermal resistances $R_{\alpha\text{,1}}$, $R_{\alpha\text{,2}}$, and $R_\lambda$, which we sum to one thermal resistance $R = R_{\alpha\text{,1}} + R_\lambda + R_{\alpha\text{,2}}$. Now, we can calculate the heat flow $\dot{Q}= \frac{T_\text{2}-T_\text{1}}{R} $ according to \autoref{eq:Ohm}.
+    Thermal resistances can be summarised to one thermal resistance, even if they are from different mechanisms of heat transfer. Based on an example in \autoref{fig:sampleWall}, the addition is explained. The figure shows a section of a wall with a heat flow $\dot{Q}$, the ambient temperature $T_\text{1}$ and $T_\text{2}$ separated by that wall. We have three thermal resistances $R_{\alpha\text{,1}}$, $R_{\alpha\text{,2}}$, and $R_\lambda$, which we sum to one thermal resistance $R = R_{\alpha\text{,1}} + R_\lambda + R_{\alpha\text{,2}}$. Now, we can calculate the heat flow $\dot{Q}= \frac{T_\text{2}-T_\text{1}}{R} $ according to \autoref{eq:Ohm}.
     \end{minipage}
     \hfill
     \begin{minipage}[t]{7cm}
@@ -262,7 +260,7 @@ Dealing with constraints is one of the most important advantages of MPC. Thereby
 \label{section:building}
     Since this thesis is based on a real building, some necessary details about the building are described below.
     \newline
-    The building is located on the "Campus Nord" of the Karlsruhe Institute of Technology and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bathroom, five rooms and a technical room. For a better orientation, \autoref{fig:Bauplan} shows a part of the construction plan of the building. The building is designed as a single-family house, but for practical reasons, it is used as an office. The living area is around 100 $m^2$. The building offers two options to heat or cool with a ground-source heat pump or an air heat pump. The focus is on the air heat pump because the most commonly used heat pumps in Germany are air heat pumps \cite{bwp.2021}. In addition to the heat pump, there is a water reservoir for saving energy with stratified storage. The total volume is 1000 litres \cite{Oskar}. The heating system inside the building is provided as underground floor heating. However, the heating system is not completely installed yet. So using the heat pump, the water reservoir or the underground floor heating is not possible actual.
+    The building is located on the "Campus Nord" of the KIT and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bathroom, five rooms and a technical room. For a better orientation, \autoref{fig:Bauplan} shows a part of the construction plan of the building. The building is designed as a single-family house, but for practical reasons, it is used as an office. The living area is around 100 $m^2$. The building offers two options to heat or cool with a ground-source heat pump or an air heat pump. The focus is on the air heat pump because the most commonly used heat pumps in Germany are air heat pumps \cite{bwp.2021}. In addition to the heat pump, there is a water reservoir for saving energy with stratified storage. The total volume is 1000 litres \cite{Oskar}. The heating system inside the building is provided as underground floor heating. However, the heating system is not completely installed yet. So using the heat pump, the water reservoir or the underground floor heating is not possible actual.
     \newline
     One of the main features of the building is the number of sensors. The air temperature is measured in every room, as well as the temperature in the middle of the exterior wall, the screed temperature, the floor plate temperature, and the temperature of the inner wall between room three and room four (see \autoref{fig:Bauplan}). Furthermore, the consumption of the actual electrical power is also detected. Only the mentioned sensors are needed in this case, but there are many more sensors.
     %Himmelsrichtung noch beschreiben
