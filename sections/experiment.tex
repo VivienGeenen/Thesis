@@ -33,6 +33,7 @@ At first, we set up the household heater without a fan in room 1, the household 
      \begin{itemize}
      \item maximum power: $9000 W$
      \item closed-loop control
+     \item three phase
      \end{itemize}
      & \begin{itemize}
      \item switch symbol: \begin{tikzpicture} [thick, scale=0.3]
@@ -62,20 +63,18 @@ Only the HoHeF is controlled open-loop and heats constantly with $750 W$ the roo
     \end{figure}
 \section{Experiment 2}
 \label{sec:Experiment2}
-Experiment 2 roots also on the general assumption of changing the entire electrical power to heat. In contrast to experiment 1, we can now remotely control the switching on and off of the heaters due to an update in the building. Therefore, we can generate more training data by controlling heating periods on working days during the night and on the weekend. In order not to burden the occupants during the working day, we heat at night and heat the kitchen that is not in use. In addition, we can use another measuring point for the electrical consumption during the working days, where the electrical car charging is not considered. 
-
-The experimental period starts on Monday, 26. July 2021 and ends on Sunday night, 1. August 2021. In this configuration, 
-
-Programmable logic controller (PLC)
+Experiment 2 roots also on the general assumption of changing the entire electrical power to heat, and starts on Monday, 26. July 2021 and ends on Sunday night, 1. August 2021. We use also the heaters explained in \autoref{tab:HeatersData}. In contrast to experiment 1, we can now remotely control the switching on and off of the heaters due to an update in the building. Therefore, we can generate more training data by controlling heating periods on working days during the night and on the weekend. In order not to burden the occupants during the working day, we heat at night and only heat with the HoHeF the kitchen that is not in use. In addition, we can use another measuring point for the electrical consumption during the working days, where the electric car charging is not considered. Only for the weekend, we need both measuring points (the one only used in experiment 1 and the new one used during the working days in experiment 2) to measure the whole energy consumption because of the three-phase connection of the IH, which is measured at the same point as car charging. So, we have to ensure no car charging during the weekend. Besides, the heaters are in the same rooms as in experiment 1 over the weekend. \autoref{tab:Experiment2app} or the data describe the incidences during experiment 2, which is explained in detail in the next section. 
 
 \subsection{Data of the experiment 2}
 \label{subsec:Data of the experiment 2}
-\begin{figure}
+\autoref{fig:P_elTemperatureExperiment2} presents the needed electrical consumption and the air temperatures of the interesting rooms during experiment 2. Especially, the air temperature of the kitchen is showed over the whole experimental phase because in the first days only this room is heated for reasons explained above. The heating periods are remarked by horizontal lines.
+\begin{figure}[h]
             \centering
             %\def\svgwidth{100pt}
             \includegraphics[width=0.85\textwidth]{figure/Trainingsdaten_P_el_und_Raumtemperaturen_latex.eps}
            \caption{Electrical consumption of the building and air temperature inside the rooms during the experiment 1}
-           \label{fig:P_elTemperatureExperiment1}
+           \label{fig:P_elTemperatureExperiment2}
     \end{figure}
 \section{Findings of the experiments}
 \label{sec:findings of the experiments}
+Programmable logic controller (PLC)
