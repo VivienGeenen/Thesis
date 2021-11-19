@@ -1,15 +1,15 @@
 \chapter{Modelling}
 \label{ch:modelling}
-After explaining thermal basics and the electrical analogy, the foundations are used in this chapter. The creation of the thermal model of the reference building and the resulting thermal model are presented. Later, the model is needed for the MPC to predict the thermal reactions of the building.
+After explaining thermal basics and the electrical analogy, these foundations are used in this chapter. The development process and the results of the thermal model of the reference building will be presented. Later, the model is needed for the MPC to predict the thermal reactions of the building.
 \newline
     
-    The focus of this work is on the MPC part, so a simple thermal model is required. Nevertheless, no necessary information must be missing. Therefore, the thermal storage possibilities, the temperature inside of the building, and the heating system's influence have to be represented in the model. The storage allows to heat during the grid has too much power and to save energy in the building during the grid requires power. Hence, this enables the MPC's objective of grid services. The output of the model needs to be the temperature inside since the MPC aims to be in a pleasant temperature range to ensure customer comfort. Last, the influence of the heating system must be recognisable in the model, as it is the input of the plant.
+    The focus of this work is on the MPC part, so a simple thermal model is required. Nevertheless, no necessary information should be missing: (i) the thermal storage possibilities, (ii)the temperature inside of the building, and (iii) the influence of the heating system. The storage allows heating during the grid has too much power and saving energy in the building, during the grid requires power. This achieves the MPC's goal of providing grid services. The output of the model needs to be the temperature inside since the MPC aims to be in a pleasant temperature range to ensure customer comfort. Finaly, the influence of the heating system must be visible in the model, as it is the input of the system.
     \newline
-    The thermal model records the thermal conditions of the reference building. Therefore, the inner energy of the water reservoir and the air temperature inside the building are modelled. The water reservoir and the building behaviour are modelled according to different modelling strategies. The following chapters describe the partial models water reservoir and building model, the kind of modelling, and the conclusion of the partial models.
+    The thermal model reflects the thermal conditions of the reference building. Therefore, the inner energy of the water reservoir and the air temperature inside the building are modelled. The water reservoir and the building behaviour are modelled according to different modelling strategies. The following chapters describe the submodels water reservoir and building model, the kind of modelling, and the conclusion of the submodels.
     
     \section{The modelling strategies}
     \label{ModellingStrategies}
-    Creating a model can be made with three types of models, the so-called white-box models, grey-box models or black-box models. White-box models describe the real system only physically. Black-box models, on the other hand, have no physical description. They are created with data. And grey-box models are in between these two options \cite{Statusseminar.ForschungfurEnergieoptimiertesBauen.2009}. All possibilities are used in the thermal modelling of buildings \cite{Kramer.2012}.
+    We can create a model according to three approaches, the so-called white-box models, grey-box models or black-box models. White-box models describe the system only physically. Black-box models, on the other hand, have no physical description. They are created with data. And grey-box models are in between these two options \cite{Statusseminar.ForschungfurEnergieoptimiertesBauen.2009}. All approaches are used in the thermal modelling of buildings \cite{Kramer.2012}.
     \newline
     The chosen approach for the MPC is the \textbf{grey-box model} for two reasons: First, this approach combines the advantages of white-box models and black-box models \cite{EstradaFlores.2006}. Second, there is the possibility to generate the required data from the reference building with the available measurement equipment at KIT. According to Coakley et al., further advantages and disadvantages are among other things\cite{Coakley.2014}:
     \begin{table}[h!]
@@ -34,11 +34,10 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         \caption {Advantages and disadvantages of grey-box modelling}
     \end{table}
     \newline
-    However, the water reservoir and the heating system are not in use yet. So, no data are available for training a grey-box model. That's the reason why a part of the model needs to create as \textbf{white-box model}.
+    However, the water reservoir and the heating system are not in use, yet. So, no data are available for training a grey-box model. Thus, this submodel needs to be designed as a \textbf{white-box model}.
     \newline
-    But also, white-box models have some pros and cons (see the following Table \cite{EstradaFlores.2006}).
-    \begin{table}[]
-    \label{tab:wihte-boxpro}
+    The benefits and challenges of white-box models are presented in \autoref{tab:wihte-boxpro} \cite{EstradaFlores.2006}).
+    \begin{table}[h!]
         \centering
         \begin{tabular}{p{7.3cm} | p{7.3cm}}
         \hline
@@ -57,6 +56,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         \end{itemize}\\
         \end{tabular}
         \caption {Advantages and disadvantages of white-box modelling}
+        \label{tab:wihte-boxpro}
     \end{table}
 
     \section{The water reservoir model}
@@ -67,7 +67,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
         \frac{d U_\text{WR}}{d t}= -\dot{Q}_\text{heating} + \dot{Q}_\text{HP} - \dot{Q}_\text{loss}
     \end{equation}
     
-    \begin{figure}
+    \begin{figure}[H]
         \centering
         \def\svgwidth{120pt}
         \input{figure/Wasserspeicher.pdf_tex}
@@ -141,7 +141,7 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     As above, we need some material parameters for the calculation of the capacitance $C_\text{floor}$ and $C_\text{interior}$. The material of the floor is reinforced concrete and the interior' material is aerated concrete. The previously unnamed material parameters are the density ($2500 kg/m^3$) \cite{AntonSchweizer.12.10.2021} and the capacity ($880 J/(kg K)$) \cite{AntonSchweizer.12.10.2021b} of reinforced concrete.\newline
      
     Summarising, \autoref{fig:structureThermalModel} illustrates the building model with all its connections according to the RC- analogy.
-    \begin{figure}
+    \begin{figure}[h]
             \centering
             \def\svgwidth{410pt}
             \input{figure/meinModel2.pdf_tex}
@@ -152,16 +152,17 @@ After explaining thermal basics and the electrical analogy, the foundations are 
     \subsection{Parameter identification}
     \label{WorkflowModel}
     
-     \begin{figure}
+    \autoref{fig:workflowModel} explains the procedure, how to generate the grey-box model from the physical building model.\newline 
+    \begin{figure}[h]
             \centering
             \def\svgwidth{400pt}
             \input{figure/workflow greybox modelling.pdf_tex}
             \caption{Work flow of grey-box modelling with Matlab}
             \label{fig:workflowModel}
     \end{figure}
-    \autoref{fig:workflowModel} explains the procedure, how to generate the grey-box model from the physical building model.\newline 
     The used toolbox from Matlab is the "System Identification Toolbox". For this application, the most important commands are "idgrey" and "greyest".
-    With the idgrey-command, we can specify the building model as the initial model for the grey-box estimation in state-space formulation. That means the thermal resistances and capacitance, which we determined above, are the initial values for the estimation and they are the values, which the estimator from Matlab can vary. We add also the parameters $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ for estimating because we model in the simplest way the heat flow of the sun isolation $\dot{Q}_\text{sun,envelope}$ and $\dot{Q}_\text{sun,inside}$ with the measured diffuse insolation $I_\text{sun}$ (see the following equation). 
+    With the idgrey-command, we can specify the building model as the initial model for the grey-box estimation in state-space formulation. That means the thermal resistances and capacitance, which we determined above, are the initial values for the estimation and they are the values, which the estimator from Matlab can vary.
+    We add also the parameters $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ for estimating because we model in the simplest way the heat flow of the sun isolation $\dot{Q}_\text{sun,envelope}$ and $\dot{Q}_\text{sun,inside}$ with the measured diffuse insolation $I_\text{sun}$ (see the following equation). 
     \begin{align}
        \label{eq:sun}
         \dot{Q}_\text{sun,inside} &= f_\text{sol,inside} I_\text{sun} \\
