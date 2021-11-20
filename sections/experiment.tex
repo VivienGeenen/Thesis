@@ -68,13 +68,18 @@ Experiment 2 roots also on the general assumption of changing the entire electri
 \subsection{Data of the experiment 2}
 \label{subsec:Data of the experiment 2}
 \autoref{fig:P_elTemperatureExperiment2} presents the needed electrical consumption and the air temperatures of the interesting rooms during experiment 2. Especially, the air temperature of the kitchen is showed over the whole experimental phase because in the first days only this room is heated for reasons explained above. The heating periods are remarked by horizontal lines.
-\begin{figure}[h]
+    \begin{figure}[h]
             \centering
             %\def\svgwidth{100pt}
             \includegraphics[width=0.85\textwidth]{figure/Trainingsdaten_P_el_und_Raumtemperaturen_latex.eps}
-           \caption{Electrical consumption of the building and air temperature inside the rooms during the experiment 1}
+           \caption{Electrical consumption of the building and air temperature inside the rooms during the experiment 2}
            \label{fig:P_elTemperatureExperiment2}
     \end{figure}
+The visible horizontal curves of the air temperatures arise from the breakdown of the programmable logic controller (PLC) \nomenclature[A]{PLC}{Programmable Logic Controller}. During this breakdown, no temperature data can be recorded. In every heating period with a working PLC, the increasing temperatures are conspicuous. Notice the third period: The rising temperature is visible from the point at closing the door in the kitchen (compare \autoref{tab:Experiment2app}). When the door is open, the heat spreads in the building and, a smaller temperature rise is visible in the kitchen.  In this experiment, also, the different heaters have the same effect on the air temperatures and the HoHeF is moved from room 2 to the kitchen to avoid too high temperatures at the weekend.
+
 \section{Findings of the experiments}
 \label{sec:findings of the experiments}
-Programmable logic controller (PLC)
+All influences on the building are noticeable in the data, as we expected before. The heating of a room directly increases the air temperature and with a time delay the wall and screed temperatures; the room temperature rises more slowly through open inner doors; the temperature curves show whether the heating is heating or not; and opening all windows and doors lead to a decreasing temperature at the end of the experiments. \newline
+No temperature data can be recorded during the PLC breakdown. This degrades the quality of the data used to estimate the model. Especially during this time, it is partially heated. Recording the data here would be particularly important to determine the influence of the heating. To reduce the negative impact on the data, it is important to switch off the heaters quickly in case of PLC breakdown, which is possible with remote access for the household heaters. This does not apply to the IH, as it has no remote control due to its three-phase connection and thus heats for longer periods without temperature detection.\newline
+In a look back, the use of different measuring points for electrical consumption is disadvantageous. If it seemed advantageous when considering experiment 2 that no consideration has to be given to the car charging, this actually means that the same combination of measuring points has to be used for the verification data from experiment 1, which was not planned, at first.\newline
+The laboratory of the Energy Lab 2.0 is daily improved, so these mistakes will be avoided in future.
