@@ -58,7 +58,7 @@
     \put(0.50953155,0.15033154){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Estimation\end{tabular}}}}%
     \put(0.82193546,0.16465445){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Identified\\model\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{workflow greybox modelling.pdf}}%
-    \put(0.37444744,0.35215387){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Initial\\values\end{tabular}}}}%
+    \put(0.37444744,0.35215387){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Start\\values\end{tabular}}}}%
     \put(0.68961212,0.35271334){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}State-space\\formulation\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{workflow greybox modelling.pdf}}%
     \put(0.59982746,0.06251413){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Trainings\\data\end{tabular}}}}%
