@@ -61,7 +61,7 @@ After explaining thermal basics and the electrical analogy, these foundations ar
 
     \section{The water reservoir model}
     \label{waterModel}
-    First, all heat flows are regarded for modelling the water reservoir (WR) \nomenclature[A]{WR}{Water Reservoir} , which influence the water reservoir (see \autoref{fig:Figure of the water reservoir with the heat flows}). The heat pump (HP) \nomenclature[A]{HP}{Heat Pump} feeds the water reservoir with heat flow $\dot{Q}_\text{HP}$. The service water (SW) \nomenclature[A]{SW}{Service Water} and the water for the heating circuit are taken from the storage. Since no service water is currently connected to the reference building, the heat flow $\dot{Q}_\text{SW}$ will be set to zero in the following. The heat losses $\dot{Q}_\text{loss}$ and the heating heat flow  $\dot{Q}_\text{heating}$ are consequently the discharged heat flows. The resulting energy balance according to \autoref{eq:1HS} follows below.
+    For the modelling of the water reservoir (WR) \nomenclature[A]{WR}{Water Reservoir}, all heat flows that influence the water reservoir are first considered (see \autoref{fig:Figure of the water reservoir with the heat flows}). The heat pump (HP) \nomenclature[A]{HP}{Heat Pump} feeds the water reservoir with heat flow $\dot{Q}_\text{HP}$. The service water (SW) \nomenclature[A]{SW}{Service Water} and the water for the heating circuit are removed from the storage. Since no service water is currently connected to the reference building, the heat flow $\dot{Q}_\text{SW}$ will be set to zero in the following. The heat losses $\dot{Q}_\text{loss}$ and the heating heat flow  $\dot{Q}_\text{heating}$ are consequently the discharged heat flows. The resulting energy balance according to \autoref{eq:1HS} follows below.
     \begin{equation}
         \label{waterReservoir}
         \frac{d U_\text{WR}}{d t}= -\dot{Q}_\text{heating} + \dot{Q}_\text{HP} - \dot{Q}_\text{loss}
@@ -74,25 +74,25 @@ After explaining thermal basics and the electrical analogy, these foundations ar
         \caption{Figure of the water reservoir with the heat flows}
         \label{fig:Figure of the water reservoir with the heat flows}
     \end{figure}
-    Since the model are referred to a real building, the size of the heat flows and the inner energy are limited according to the devices of the building. The heating heat flow moves in a range according to the calculations of the heating system \cite{Roth_Auslegung.2020} and can also have negative values when cooling is required (then according to the calculations of the cooling load \cite{SEFIngenieurgesellschaftMBH.2019}). The heat losses and the heat pump heat range are taken from the technical data \cite{Oskar}, \cite{TUM}.\newline
-    Since the reference water reservoir is a stratified storage we determine the maximum inner energy in assumption of two heat layers. According to \autoref{eq:innerEnergy}, we need material parameters of water ($c_\text{v,w}$, $\rho_\text{w}$), the size of the water reservoir ($m = \rho_\text{w} V$), both is known, and a temperature difference, which we define for both layers. We assume that we heat up the storage from ambient temperature $T_\text{amb}$ around 20°C in both layers. Even with negative outside temperatures, the characteristic diagram of the heat pump provides the maximum inlet temperature of 55 °C, which should be the maximum temperature of the upper layer in the water reservoir $T_\text{max,1}$. The maximum temperature of the lower layer $T_\text{max,2}$ orients towards the inlet temperature of the underfloor heating and lies by 35 °C. After that, we calculate the sum of the inner energy as follows.
+    Since the model relates to a real building, the size of the heat flows and the inner energy are limited according to the devices of the building. The heating heat flow is in a range according to the calculations of the heating system \cite{Roth_Auslegung.2020} and can also have negative values when cooling is required (then according to the calculations of the cooling load \cite{SEFIngenieurgesellschaftMBH.2019}). The heat losses and the heat pump heat range are taken from the technical data \cite{Oskar}, \cite{TUM}.\newline
+    Since the reference water reservoir is a stratified storage we determine the maximum inner energy in assumption of two heat layers. According to \autoref{eq:innerEnergy}, we need material parameters of water ($c_\text{v,w}$, $\rho_\text{w}$), the size of the water reservoir ($m = \rho_\text{w} V$), both is known, and a temperature difference, which we define for both layers. We assume that we heat the storage from ambient temperature $T_\text{amb}$ around 20°C in both layers. Even with negative outside temperatures, the characteristic diagram of the heat pump provides the maximum inlet temperature of 55 °C, which should be the maximum temperature of the upper layer in the water reservoir $T_\text{max,1}$. The maximum temperature of the lower layer $T_\text{max,2}$ is based on the inlet temperature of the underfloor heating and lies by 35 °C. After that, we calculate the sum of the inner energy as follows.
     \begin{equation}
         \label{eq:max.Energie}
-        U = \rho_\text{w} c_\text{v,w} ((T_\text{max,1}-T_\text{amb})*\frac{V}{2} + (T_\text{max,2}-T_\text{amb})*\frac{V}{2}) 
+        U = \rho_\text{w} c_\text{v,w} ((T_\text{max,1}-T_\text{amb})\cdot \frac{V}{2} + (T_\text{max,2}-T_\text{amb})\cdot \frac{V}{2}) 
     \end{equation}
 
     \section{The building model}
     \label{sec:building model}
-    First, a physical description of the thermal dynamics of the building must be created. To obtain the condition of a simple model, we model the building as a single zone, as often practised in the literature \cite{Park.2011}, \cite{Hazyuk.2012}. Single zone means that we sum all relevant values of the rooms, such as air temperature or wall temperature, by averaging to one value. 
+    First, the thermal dynamics of the building must be described physically. To comply with the requirement of a simple model, we model the building as a single zone, as often practised in the literature \cite{Park.2011}, \cite{Hazyuk.2012}. Single zone means that we sum the values of interest of the rooms, such as air temperature or wall temperature, by averaging to one value. 
     \newline
     We consider the air temperature, the temperature of the outer walls, the temperature of the inner walls and floors in the first floor, and the temperature of the floor in the model. In the following, these temperatures are called: inside temperature  $T_\text{inside}$, envelope temperature $T_\text{envelope}$, interior temperature $T_\text{interior}$, and floor temperature $T_\text{floor}$. 
-    Using the state-space formulation (see \autoref{subsection:dynamics}), the temperatures are states in this model. According to the RC-analogy (see \autoref{electricalanalogy}), the model is built and nearly explained in the following for every state. \newline%
+    Using the state-space formulation (see \autoref{subsection:dynamics}), the temperatures are states in this model. According to the RC-analogy (see \autoref{electricalanalogy}), the model is built and explained in more detail in the following for every state. \newline
     
     \textbf{Inside temperature:}\newline
-    One focus lies on the accuracy of the inside temperature since this temperature will be controlled in the later prepared MPC. Therefore, a more precise description of the dynamics is required (see the following equation). We consider the influence of the sun $\dot{Q}_\text{sun,inside}$, the heating system $\dot{Q}_\text{heating}$ and the other states in the way shown in the following equation. $\dot{Q}_\text{heating}$  links the water reservoir model and the building model because the heat flow is the same but leaves the water reservoir model and enters the building model. 
+    The accuracy of the inside temperature is focused since this temperature will be controlled in the later prepared MPC. Therefore, a more precise description of the dynamics is required (see the following equation). We consider the influence of the sun $\dot{Q}_\text{sun,inside}$, the heating system $\dot{Q}_\text{heating}$ and the other states in the way shown in the following equation. $\dot{Q}_\text{heating}$ links the water reservoir model and the building model because the heat flow is the same but leaves the water reservoir model and enters the building model. 
     \begin{align}
         \label{eq:1.state}
-        C_\text{inside}*\frac{d T_\text{inside}}{d t} &=& \dot{Q}_\text{heating} + \dot{Q}_\text{sun,inside} - \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}} - \frac{T_\text{inside}-T_\text{outside}}{R_\text{window}} \\
+        C_\text{inside}\cdot \frac{d T_\text{inside}}{d t} &=& \dot{Q}_\text{heating} + \dot{Q}_\text{sun,inside} - \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}} - \frac{T_\text{inside}-T_\text{outside}}{R_\text{window}} \\
        & &-\frac{T_\text{inside}-T_\text{interior}}{R_\text{interior}}-\frac{T_\text{inside}-T_\text{floor}}{R_\text{floor}}\nonumber
     \end{align}
     The detailed explanation for the composition of the thermal resistance and capacitance is in \autoref{electricalanalogy}. In the following table, the special material and state dependant values are explained.
@@ -111,19 +111,15 @@ After explaining thermal basics and the electrical analogy, these foundations ar
     \end{table}
     
     \textbf{Envelope Temperature:}\newline
-    The sun, the contact of the walls with the inner air temperature and with the outside temperature influence the envelope temperature. The sun affects the air temperature in another area ratio than the outer walls. Therefore, we difference the influence of the sun on the inner air temperature and the envelope, and we consider here $\dot{Q}_\text{sun,envelope}$.  
+    The envelope temperature is influenced by the sun, the contact of the walls with the inner air temperature and with the outside temperature. The sun affects the air temperature differently than the outer walls. Therefore, we difference the influence of the sun on the inner air temperature and the envelope, and we consider here $\dot{Q}_\text{sun,envelope}$.  
     \begin{equation}
     \label{eq:diffEnvelope}
-        C_\text{envelope}*\frac{d T_\text{envelope}}{d t} = \dot{Q}_\text{sun,envelope} - \frac{T_\text{envelope}-T_\text{outside}}{R_\text{envelope}} + \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}}
+        C_\text{envelope}\cdot \frac{d T_\text{envelope}}{d t} = \dot{Q}_\text{sun,envelope} - \frac{T_\text{envelope}-T_\text{outside}}{R_\text{envelope}} + \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}}
     \end{equation}
     \begin{table}[H]
         \centering
         \begin{tabular}{l p{13cm}}
-        $R_\text{envelope}$ & The outer wall resistance $R_\text{envelope}$ contains a heat conductivity of aerated concrete ($0,133 W/(m K)$ \cite{GhaziWakili.2015}) and the heat transfer coefficient for air perpendicular to the wall outside $\alpha_\text{envelope}$ according to the rules of thumb from Schweizer-fn \cite{Schweizer-fnalpha}
-    \begin{equation}
-        \alpha_\text{envelope} = 3,96 (v / L)^0,5 = 1,669 W/(m^2 K)
-    \end{equation}
-    with the average wind velocity of Karlsruhe $v$ \cite{AbteilungKlimaundUmweltberatung.2004} and the length of the building wall.  \\
+        $R_\text{envelope}$ & The outer wall resistance $R_\text{envelope}$ contains a heat conductivity of aerated concrete ($0,133 W/(m K)$ \cite{GhaziWakili.2015}) and the heat transfer coefficient for air perpendicular to the wall outside $\alpha_\text{envelope}$ according to the rules of thumb from Schweizer-fn $\alpha_\text{envelope} = 3.96 (v / L)^{0.5} = 1.669 W/(m^2 K)$ \cite{Schweizer-fnalpha} with the average wind velocity of Karlsruhe $v$ \cite{AbteilungKlimaundUmweltberatung.2004} and the length of the building wall.\\
         $C_\text{envelope}$ & To determine the capacitance $C_\text{envelope}$, we need the volume of the outer walls from the construction plan \cite{Bauplan}, the density of aerated concrete ($485 kg/m^3$) and the capacity (1000 $J/(kg K)$) \cite{GhaziWakili.2015}. 
         \end{tabular}
         \caption{Explanation of the special material and state dependant values of the differential equation of the envelope temperature}
@@ -131,14 +127,14 @@ After explaining thermal basics and the electrical analogy, these foundations ar
     \end{table}
    
     \textbf{Interior and floor temperature:}\newline
-    The differential equations for the interior and the floor temperature are as simple as possible. Both states have just an impact on the inside temperature. 
-    Hazyuk et al. models for example also the ground floor as one state \cite{Hazyuk.2012}. The explanation is that the ground floor has no convective contact with the environment. Therefore, he is not modelled with the envelope for holding the physical structure, where the wind has an impact on the outer walls.
-    The interior is extra modelled to improve the accuracy of the inside temperature equations because the capacitance of the inner walls is specially collected.
+    The differential equations for the interior and the floor temperature are the simplest one. Both states have just an impact on the inside temperature. 
+    Hazyuk et al. \cite{Hazyuk.2012} models also the ground floor as one state. The explanation is that the ground floor has no convective contact with the environment. Therefore, the ground floor is not modelled with the envelope for holding the physical structure, where the wind has an impact on the outer walls.
+    The interior is modelled to improve the accuracy of the inside temperature equations because of the special collection of the capacitance of the inner walls.
     \begin{align}
-    C_\text{interior} \frac{d T_\text{interior}}{d t} &= \frac{T_\text{inside}-T_\text{interior}}{R_\text{interior}} \\
-       C_\text{floor} \frac{d T_\text{floor}}{d t} &= \frac{T_\text{inside}-T_\text{floor}}{R_\text{floor}} \nonumber\\
+    C_\text{interior}\cdot \frac{d T_\text{interior}}{d t} &= \frac{T_\text{inside}-T_\text{interior}}{R_\text{interior}} \\
+       C_\text{floor} \cdot \frac{d T_\text{floor}}{d t} &= \frac{T_\text{inside}-T_\text{floor}}{R_\text{floor}} \nonumber\\
     \end{align}
-    As above, we need some material parameters for the calculation of the capacitance $C_\text{floor}$ and $C_\text{interior}$. The material of the floor is reinforced concrete and the interior' material is aerated concrete. The previously unnamed material parameters are the density ($2500 kg/m^3$) \cite{AntonSchweizer.12.10.2021} and the capacity ($880 J/(kg K)$) \cite{AntonSchweizer.12.10.2021b} of reinforced concrete.\newline
+    As above, we have to determine the material parameters of the capacitance $C_\text{floor}$ and $C_\text{interior}$. The material of the floor is reinforced concrete and the interior' material is aerated concrete. The previously unnamed material parameters are the density ($2500 kg/m^3$) \cite{AntonSchweizer.12.10.2021} and the capacity ($880 J/(kg K)$) \cite{AntonSchweizer.12.10.2021b} of reinforced concrete.\newline
      
     Summarising, \autoref{fig:structureThermalModel} illustrates the building model with all its connections according to the RC- analogy.
     \begin{figure}[h]
@@ -161,17 +157,17 @@ After explaining thermal basics and the electrical analogy, these foundations ar
             \label{fig:workflowModel}
     \end{figure}
     The used toolbox from Matlab is the "System Identification Toolbox". For this application, the most important commands are "idgrey" and "greyest".
-    With the idgrey-command, we can specify the building model as the initial model for the grey-box estimation in state-space formulation. That means the thermal resistances and capacitance, which we determined above, are the initial values for the estimation and they are the values, which the estimator from Matlab can vary.
-    We add also the parameters $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ for estimating because we model in the simplest way the heat flow of the sun isolation $\dot{Q}_\text{sun,envelope}$ and $\dot{Q}_\text{sun,inside}$ with the measured diffuse insolation $I_\text{sun}$ (see the following equation). 
+    With the idgrey-command, we can specify the building model as the initial model for the grey-box estimation in state-space formulation. That means the thermal resistances and capacitance, which we determined above, are the start values for the estimation and they are the values, which the estimator from Matlab can vary.
+    We also identify the parameters $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ because we model in the simplest way the heat flow of the sun isolation $\dot{Q}_\text{sun,envelope}$ and $\dot{Q}_\text{sun,inside}$ with the measured diffuse insolation $I_\text{sun}$ (see the following equation). 
     \begin{align}
        \label{eq:sun}
         \dot{Q}_\text{sun,inside} &= f_\text{sol,inside} I_\text{sun} \\
         \dot{Q}_\text{sun,envelope} &= f_\text{sol,envelope} I_\text{sun} \nonumber 
     \end{align}
-    The initial values for $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ are chosen as $0.25$ according to Harb et al. \cite{Harb.2016}. And, we replace in the differential equation of the envelope temperature from \autoref{eq:diffEnvelope} the thermal resistance $R_\text{inside}$ to $R_\text{in}$. The initial values of $R_\text{inside}$ and $R_\text{in}$ are the same, but we obtain more flexibility in the grey-box model, if we estimate both values.\newline
+    The start values for $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ are chosen as $0.25$ according to Harb et al. \cite{Harb.2016}. And, we replace in the differential equation of the envelope temperature from \autoref{eq:diffEnvelope} the thermal resistance $R_\text{inside}$ to $R_\text{in}$. The start values of $R_\text{inside}$ and $R_\text{in}$ are the same, but we obtain more flexibility in the grey-box model, if we estimate both values.\newline
     After that, we look for the data from the reference building. The data are generated in an experiment, but this is explained in a subsequent chapter. When we have the data, they are separated into training data and verification data. The training data are used for the estimation. From the reference building, we obtain the room temperatures, which we average with the capacitance of each room to one value, the inside temperature. The same procedure is adopted for the outer wall temperature, except that the outer wall temperatures are averaged with their own capacitance. The interior and the floor temperatures are determined in the same way. Also, we obtain data of the heating system for $\dot{Q}_\text{heating}$ and the weather specially the outside temperature $T_\text{outside}$ and the diffuse insolation $I_\text{sun}$ for determining $\dot{Q}_\text{sun,envelope}$ or $\dot{Q}_\text{sun,inside}$. \newline
     Now, the greyest-command executes the parameter identification with the training data. The used search method of the greyest-command is subspace Gauss-Newton least squares search. The table below summarizes the modelling parameters for the estimation. The states $T_\text{inside}$ and $T_\text{envelope}$ are also defined as the output to be optimized. For the later MPC, $T_\text{inside}$ is the only relevant output. However, we expect better results for the whole model during optimizing the two states with the more complex differential equations. 
-    At last, we obtain the ready model (see in \autoref{sec:appendix:Modelvalues} the initial values and the identified values).
+    At last, we obtain the ready model (see in \autoref{sec:appendix:Modelvalues} the start values and the identified values).
      
     \begin{table}[]
         \centering
@@ -230,10 +226,10 @@ After explaining thermal basics and the electrical analogy, these foundations ar
     \section{The state-space formulation}
     \label{holeModel}
     The white-box model of the water reservoir and the grey-box model of the building behaviour have now been prepared. In the next step, we put them together in the state-space formulation, which we introduced in \autoref{subsection:dynamics}, just as the MPC requires.\newline
-    The separation in control signal $\textbf{u}$ and disturbances $\textbf{d}$ is important for this. The control signals are the heat flow of the heating system and the heat pump in the reference building. The main disturbances are the weather and, especially for the water reservoir, heat losses. Therefore, the state-space formulation looks as follows: 
+    The separation in control signal $\textbf{u}$ and disturbances $\textbf{d}$ is important for this. The control signals are the heat flow of the heating system $\dot{Q}_\text{heating}$ and the heat pump in the reference building $\dot{Q}_\text{HP}$. The main disturbances are the weather and, especially for the water reservoir, heat losses. Therefore, the state-space formulation results as follows: 
   \begin{align}
 	    \label{eq:ZRD Modell}
-	 \left(\begin{array}{c} \frac{d T_{inside}}{d t} \\ \frac{d T_{envelope}}{d t} \\ \frac{d T_{interior}}{d t}\\ \frac{d T_{floor}}{d t}\\ \frac{d U_{WR}}{d t} \end{array}\right) &= A \left(\begin{array}{c} T_{inside} \\ T_{envelope} \\ T_{interior}\\ T_{floor}\\ U_{WR} \end{array}\right) + B_\text{1} \left(\begin{array}{c} \dot{Q}_{heating} \\ \dot{Q}_{HP} \end{array}\right) + B_\text{2} \left(\begin{array}{c} I_{sun,inside}\\ I_{sun,envelope}\\ T_{outside} \\ \dot{Q}_{loss} \end{array}\right) \\
-	 T_{inside} &= C \left(\begin{array}{c} T_{inside} \\ T_{envelope} \\ T_{interior}\\ T_{floor}\\ U_{WR} \end{array}\right) \nonumber
+	 \left(\begin{array}{c} \frac{d T_\text{inside}}{d t} \\ \frac{d T_\text{envelope}}{d t} \\ \frac{d T_\text{interior}}{d t}\\ \frac{d T_\text{floor}}{d t}\\ \frac{d U_\text{WR}}{d t} \end{array}\right) &= A \left(\begin{array}{c} T_\text{inside} \\ T_\text{envelope} \\ T_\text{interior}\\ T_\text{floor}\\ U_\text{WR} \end{array}\right) + B_\text{1} \left(\begin{array}{c} \dot{Q}_\text{heating} \\ \dot{Q}_\text{HP} \end{array}\right) + B_\text{2} \left(\begin{array}{c} I_\text{sun,inside}\\ I_\text{sun,envelope}\\ T_\text{outside} \\ \dot{Q}_\text{loss} \end{array}\right) \\
+	 T_\text{inside} &= C \left(\begin{array}{c} T_\text{inside} \\ T_\text{envelope} \\ T_\text{interior}\\ T_\text{floor}\\ U_\text{WR} \end{array}\right) \nonumber
 	\end{align}	
-    The hole matrices $A$, $B_\text{1}$, $B_\text{2}$, and $C$ are in \autoref{sec:appendix:Matrizen}. We have no pass-through matrices because neither control signals nor disturbances have a direct impact on the output. 
+    The complete matrices $A$, $B_\text{1}$, $B_\text{2}$, and $C$ are presented in \autoref{sec:appendix:Matrizen}. We have no pass-through matrices $D_\text{1}$ or $D_\text{2}$ because neither control signals nor disturbances have a direct impact on the output. 
