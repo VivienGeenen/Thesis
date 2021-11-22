@@ -1,15 +1,23 @@
 \chapter{Model predictive control}
 \label{ch:mpc}
-\begin{figure}[h]
-            \centering
-            \def\svgwidth{400pt}
-            \input{figure/workflowMPC.pdf_tex}
-            \caption{Work flow of the MPC-script}
-            \label{fig:workflowMPC}
-    \end{figure}
-\section{Optimization}
-\label{section:optimization}
+In this chapter, the framework conditions of the MPC are described by answering the questions: (i) what is controlled? (ii) How is controlled? (iii) Which curves are controlled? What data are used? Also, the constraints, the cost function, and the workflow of the MPC script are introduced.  
+
+\section{Framework conditions of the MPC}
+\label{section:FrameworkMPC}
+
 \section{Constrains}
 \label{section:constrains}
 \section{Cost function}
 \label{section:costfunction}
+\begin{equation}
+    \text{minimize} \sum_{k=1}^{N-1} w_\text{1}\cdot (y-y_\text{track})^2 + w_\textbf{2}\cdot(u_\text{2}\cdot grid)^2 + w_\text{3} \cdot \eta^2
+\end{equation}
+\section{Workflow of the MPC script}
+\label{section:costfunction}
+\begin{figure}[h]
+            \centering
+            \def\svgwidth{0.6\textwidth}
+            \input{figure/workflowMPC.pdf_tex}
+            \caption{Workflow of the MPC script}
+            \label{fig:workflowMPC}
+    \end{figure}
