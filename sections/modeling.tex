@@ -165,8 +165,9 @@ After explaining thermal basics and the electrical analogy, these foundations ar
         \dot{Q}_\text{sun,envelope} &= f_\text{sol,envelope} I_\text{sun} \nonumber 
     \end{align}
     The start values for $f_\text{sol,inside}$ and $f_\text{sol,envelope}$ are chosen as $0.25$ according to Harb et al. \cite{Harb.2016}. And, we replace in the differential equation of the envelope temperature from \autoref{eq:diffEnvelope} the thermal resistance $R_\text{inside}$ to $R_\text{in}$. The start values of $R_\text{inside}$ and $R_\text{in}$ are the same, but we obtain more flexibility in the grey-box model, if we estimate both values.\newline
-    After that, we look for the data from the reference building. The data are generated in an experiment, but this is explained in a subsequent chapter. When we have the data, they are separated into training data and verification data. The training data are used for the estimation. From the reference building, we obtain the room temperatures, which we average with the capacitance of each room to one value, the inside temperature. The same procedure is adopted for the outer wall temperature, except that the outer wall temperatures are averaged with their own capacitance. The interior and the floor temperatures are determined in the same way. Also, we obtain data of the heating system for $\dot{Q}_\text{heating}$ and the weather specially the outside temperature $T_\text{outside}$ and the diffuse insolation $I_\text{sun}$ for determining $\dot{Q}_\text{sun,envelope}$ or $\dot{Q}_\text{sun,inside}$. \newline
-    Now, the greyest-command executes the parameter identification with the training data. The used search method of the greyest-command is subspace Gauss-Newton least squares search. The table below summarizes the modelling parameters for the estimation. The states $T_\text{inside}$ and $T_\text{envelope}$ are also defined as the output to be optimized. For the later MPC, $T_\text{inside}$ is the only relevant output. However, we expect better results for the whole model during optimizing the two states with the more complex differential equations. 
+    After that, 
+    After that, we look for the data from the reference building. The data are generated in an experiment, as explained in a subsequent chapter. When we have the data, they are separated into training data and verification data. The training data are used for the estimation. From the reference building, we obtain the room temperatures, which we average with the capacitance of each room to one value, the inside temperature. The same procedure is adopted for the outer wall temperature, except that the outer wall temperatures are averaged with their own capacitance. The interior and the floor temperatures are determined in the same way. Also, we obtain data of the heating system for $\dot{Q}_\text{heating}$ and the weather (the outside temperature $T_\text{outside}$ and the diffuse insolation $I_\text{sun}$). \newline
+    Now, the greyest-command executes the parameter identification with the training data. The used search method of the greyest-command is subspace Gauss-Newton least squares search, an algorithm which minimises non-linear functions \cite{Jarre.2019}. The table below summarises the modelling parameters for the estimation. The states $T_\text{inside}$ and $T_\text{envelope}$ are also defined as the output to be optimised. For the later MPC, $T_\text{inside}$ is the only relevant output. However, when optimising the two states with the more complex differential equations, we expect better results for the overall model due to the better physical description.
     At last, we obtain the ready model (see in \autoref{sec:appendix:Modelvalues} the start values and the identified values).
      
     \begin{table}[]
@@ -176,7 +177,7 @@ After explaining thermal basics and the electrical analogy, these foundations ar
         &\\
         Inputs & $\dot{Q}_\text{heating}, I_\text{sun}, T_\text{outside}$\\
         &\\
-        Outputs to be optimized & $T_\text{inside}, T_\text{envelope}$
+        Outputs to be optimised & $T_\text{inside}, T_\text{envelope}$
         \end{tabular}
         \caption{Conclusion of relevant information about the grey-box model}
         \label{tab:Greybox}
@@ -185,20 +186,20 @@ After explaining thermal basics and the electrical analogy, these foundations ar
     \subsection{Training and verification of the thermal model}
     \label{verificationthermalmodel}
     The training data set comprise twelve days from 23 July to 4 August 2021, including a heating period from 26 July to 1 August 2021. The verification data set is half the size of the training data set (from 13 July to 19 July 2021), also including a heating period from 16 July to 18 July 2021. \newline
-    \begin{figure}
+    \begin{figure}[h]
             \centering
             %\def\svgwidth{100pt}
             \includegraphics[width=7cm,height=5cm]{figure/Verlauf_inside_ValidierungModell.eps}
            \caption{Verification of the building model}
            \label{fig:verificationModel}
     \end{figure}
-   \autoref{fig:verificationModel} shows the curve of the inside temperature of the simulated and the measured values. It is noticeable that the model reflects the dynamic of reality sufficiently. In addition, the Root Mean Square Error (RMSE) \nomenclature[A]{RMSE}{Root Mean Square Error} and the maximum residual ($\mathrm{R}_\text{max}$) is used as verification measure of the model.\newline
+   \autoref{fig:verificationModel} shows the curve of the inside temperature of the simulated and the measured values. The use of data from a occupied building leads to the difference between the model and the measured inside temperature. The required simple model can not consider random influences such as opening doors and windows, the number of occupants, and the electric consumption in the building. Nevertheless, it is noticeable that the model reflects the dynamic of reality sufficiently. In addition, the Root Mean Square Error (RMSE) \nomenclature[A]{RMSE}{Root Mean Square Error} and the maximum residual ($\mathrm{R}_\text{max}$) is used as verification measure of the model.\newline
     The RMSE is calculated with the quadratic difference of the simulated output $y_\text{sim}$ and the measured output $y_\text {meas}$ as follows \cite{Barnston.1992}: 
     \begin{equation}
         RMSE = \sqrt{\frac{1}{N} \sum \limits_1^N (y_\text{sim} - y_\text {meas})^2}
     \end{equation}
     Here is $N$ the number of measurements or simulated values.
-    Based on the \autoref{tab:RMSEundR} presented RSME and $\mathrm{R}_\text{max}$, it can be shown that during the training and verification period, the magnitudes of the RSME and $\mathrm{R}_\text{max}$ are similar. The results of the RMSE and the $\mathrm{R}_\text{max}$ are listed for the two optimized outputs after the training and the verification period.
+    Based on the \autoref{tab:RMSEundR} presented RSME and $\mathrm{R}_\text{max}$, it can be shown that during the training and verification period, the magnitudes of the RSME and $\mathrm{R}_\text{max}$ are similar. The results of the RMSE and the $\mathrm{R}_\text{max}$ are listed for the two optimised outputs after the training and the verification period.
      \begin{figure}[h]
     \begin{minipage}[t]{0.5\textwidth}
     \vspace{0pt}
@@ -221,7 +222,7 @@ After explaining thermal basics and the electrical analogy, these foundations ar
     \caption{RMSE and $\mathrm{R}_\text{max}$ of the output for training and verification period}
     \label{tab:RMSEundR}
     \end{figure}
-    The maximum difference between the training and verification period for the RMSE lies by 0.3 K and for the $\mathrm{R}_\text{max}$ by 0.19 K. As a result, we can verify the building model.  
+    The maximum difference between the training and verification period for the RMSE lies by 0.3 K and for the $\mathrm{R}_\text{max}$ by 0.19 K. As a result, we can verify the building model. \newline
 
     \section{The state-space formulation}
     \label{holeModel}
