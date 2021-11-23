@@ -188,12 +188,17 @@ After explaining thermal basics and the electrical analogy, these foundations ar
     The training data set comprise twelve days from 23 July to 4 August 2021, including a heating period from 26 July to 1 August 2021. The verification data set is half the size of the training data set (from 13 July to 19 July 2021), also including a heating period from 16 July to 18 July 2021. \newline
     \begin{figure}[h]
             \centering
-            %\def\svgwidth{100pt}
-            \includegraphics[width=7cm,height=5cm]{figure/Verlauf_inside_ValidierungModell.eps}
+            \includegraphics[width=14cm,height=5.5cm]{figure/Training_inside.eps}
+           \caption{Training of the building model}
+           \label{fig:trainingModel}
+    \end{figure}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width=7cm,height=5cm]{figure/Validation_inside.eps}
            \caption{Verification of the building model}
            \label{fig:verificationModel}
     \end{figure}
-   \autoref{fig:verificationModel} shows the curve of the inside temperature of the simulated and the measured values. The use of data from a occupied building leads to the difference between the model and the measured inside temperature. The required simple model can not consider random influences such as opening doors and windows, the number of occupants, and the electric consumption in the building. Nevertheless, it is noticeable that the model reflects the dynamic of reality sufficiently. In addition, the Root Mean Square Error (RMSE) \nomenclature[A]{RMSE}{Root Mean Square Error} and the maximum residual ($\mathrm{R}_\text{max}$) is used as verification measure of the model.\newline
+   \autoref{fig:trainingModel} and \autoref{fig:verificationModel} show the curve of the inside temperature of the simulated and the measured values for the training and verification period. The use of data from a occupied building leads to the difference between the model and the measured inside temperature. The required simple model can not consider random influences such as opening doors and windows, the number of occupants, and the electric consumption in the building. Nevertheless, it is noticeable that the model reflects the dynamic of reality sufficiently. In addition, the Root Mean Square Error (RMSE) \nomenclature[A]{RMSE}{Root Mean Square Error} and the maximum residual ($\mathrm{R}_\text{max}$) is used as verification measure of the model.\newline
     The RMSE is calculated with the quadratic difference of the simulated output $y_\text{sim}$ and the measured output $y_\text {meas}$ as follows \cite{Barnston.1992}: 
     \begin{equation}
         RMSE = \sqrt{\frac{1}{N} \sum \limits_1^N (y_\text{sim} - y_\text {meas})^2}
@@ -206,8 +211,8 @@ After explaining thermal basics and the electrical analogy, these foundations ar
         \begin{tabular}{c|c|c|c|c}
              & \multicolumn{2}{|c}{$T_\text{inside}$} & \multicolumn{2}{|c}{$T_\text{envelope}$} \\
              \hline
-            RMSE & \cellcolor{gray} 0.61 K & \cellcolor{gray90} 0.59 K & \cellcolor{gray} 0.49 K & \cellcolor{gray90} 0.52 K \\
-            $\mathrm{R}_\text{max}$ &\cellcolor{gray} 1.45 K & \cellcolor{gray90} 1.62 K & \cellcolor{gray} 1.22 K & \cellcolor{gray90} 1.03 K
+            RMSE & \cellcolor{gray} 0.52 K & \cellcolor{gray90} 0.84 K & \cellcolor{gray} 0.49 K & \cellcolor{gray90} 0.51 K \\
+            $\mathrm{R}_\text{max}$ &\cellcolor{gray} 1.66 K & \cellcolor{gray90} 1.92 K & \cellcolor{gray} 1.21 K & \cellcolor{gray90} 1.00 K
         \end{tabular}
     \end{minipage}
     \hfill
@@ -222,7 +227,7 @@ After explaining thermal basics and the electrical analogy, these foundations ar
     \caption{RMSE and $\mathrm{R}_\text{max}$ of the output for training and verification period}
     \label{tab:RMSEundR}
     \end{figure}
-    The maximum difference between the training and verification period for the RMSE lies by 0.3 K and for the $\mathrm{R}_\text{max}$ by 0.19 K. As a result, we can verify the building model. \newline
+    The maximum difference between the training and verification period for the RMSE lies by 0.32 K and for the $\mathrm{R}_\text{max}$ by 0.26 K. As a result, we can verify the building model. \newline
 
     \section{The state-space formulation}
     \label{holeModel}
