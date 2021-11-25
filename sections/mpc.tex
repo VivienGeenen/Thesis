@@ -42,7 +42,7 @@ The constraints depend on the physical limitations of the installations in the b
 
 \textbf{Constraints of the control signals:}\newline
 The producer's specifications restrict $\dot{Q}_\text{HP}$ the maximum and minimum heat flow of the heat pump for nominal power by heating with the inlet temperature of 55°C and by cooling with the inlet temperature of 18°C \cite{TUM}. The maximum $\dot{Q}_\text{heating}$  is limited according to the underground floor heating calculation, where the set power of every room is counted and we sum it for the complete building \cite{Roth_Auslegung.2020}. The computation of the required cooling power predicts 2246 W needed power by 34.5°C outside temperature in July \cite{SEFIngenieurgesellschaftMBH.2019}. To be more flexible with higher outside temperatures, we round the minimum $\dot{Q}_\text{heating}$ to 2300 W.\newline
-Further, we define a constraint to avoid simultaneous heating of building and cooling of the water reservoir or reversed. %hier noch die ERklärung + in Menge einfügen
+Further, we define a constraint to avoid simultaneous heating of building and cooling of the water reservoir or reversed. That would be energy waste. The constraint defines that  % hier noch die ERklärung + in Menge einfügen
 The set $\mathbb{U_k}$ summarise mathematically the constraints.
 \begin{equation}
     \label{ConstraintU}
