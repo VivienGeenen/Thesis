@@ -70,32 +70,34 @@ The calculation of the water reservoirs maximal inner energy $U_\text{WR}$ is ex
 \end{equation}
 A further constraint, which relates to the states, is the integration method as discussed below.
 
-\subsection{Constraint of the integration method}
+\subsection{Integration method and its constraint}
 \label{COnstaintIntegration}
 As an integration method, we use a explicit single-step method,which means that we need the values of the actual time step $k$ to compute the next. Possible methods are the Heun's method, the Euler and the Runge-Kutta method. The decision is made in favor of the Runge-Kutta method because the fourth order makes it more precise than the methods mentioned. The following equation shows the calculation for the next time step using the Runge-Kutta method with the sample time $T_\text{s}$ and the function $f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) = \mathbf{\dot{x}_\text{k}}$ according the state-space formulation (see \autoref{eq:statespace}) \cite{KaiFurmansMarcusGeimerBalazsPritzCarstenProppe.WS1920}.
-\begin{align}
-    \label{Runke-Kutta}
-    a_k^{(1)} = T_s \cdot f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) \\
-    a_k^{(2)} = T_s \cdot f(\mathbf{x_k}+\frac{a_k^{(1)}}{2},t_k+\frac{T_s}{2},\mathbf{u_k},\mathbf{d_k})\nonumber\\
-    a_k^{(3)} = T_s \cdot f(\mathbf{x_k}+\frac{a_k^{(2)}}{2},t_k+\frac{T_s}{2},\mathbf{u_k},\mathbf{d_k})\nonumber\\
-    a_k^{(4)} = T_s \cdot f(\mathbf{x_k}+a_k^{(3)},t_k+T_s,\mathbf{u_k},\mathbf{d_k})\nonumber\\
-    \nonumber\\
-    \mathbf{x_{k+1}} = \mathbf{x_k} + \frac{1}{6}\cdot (a_k^{(1)} + 2 a_k^{(2)} + 2 a_k^{(3)} + a_k^{(4)})\nonumber
-\end{align}
+
+    \begin{align}
+        \label{Runke-Kutta}
+        a_k^{(1)} = T_s \cdot f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) \\
+        a_k^{(2)} = T_s \cdot f(\mathbf{x_k}+\frac{a_k^{(1)}}{2},t_k+\frac{T_s}{2},\mathbf{u_k},\mathbf{d_k})\nonumber\\
+        a_k^{(3)} = T_s \cdot f(\mathbf{x_k}+\frac{a_k^{(2)}}{2},t_k+\frac{T_s}{2},\mathbf{u_k},\mathbf{d_k})\nonumber\\
+        a_k^{(4)} = T_s \cdot f(\mathbf{x_k}+a_k^{(3)},t_k+T_s,\mathbf{u_k},\mathbf{d_k})\nonumber\\
+        \nonumber\\
+        \mathbf{x_{k+1}} = \mathbf{x_k} + \frac{1}{6}\cdot (a_k^{(1)} + 2 a_k^{(2)} + 2 a_k^{(3)} + a_k^{(4)})\nonumber
+    \end{align}
     
-
-
-
-
+Das Integrationsverfahren wird in den Constraints eingebunden, damit der folgenden Zeitschritt nach dem thermischen Modell berechnet wird.  
+Wichtig zu beachten ist, dass die Schrittweiten der integration entsprechend der diskretisierung des models gewählt wird. So wird das Model mit mit diskreten werten aus dem reference gebäude geschätzt, wobei die Messstellen alle zwei Minuten abgetastet werden. Um beispielsweise eine Ts von einer Stunde zu erhalten, wird die Ts als 30 *2 min beschrieben. Die zwei minuten sind durch die schätzung bereits im modell enthalten, wir müssen das $\mathbf{\dot{x}_\text{k}}$ folglich nur mit 30 multiplizieren um einen Zeitschritt von einer Stunde weiterzukommen. Es ist wichtig zu beachten, dass das thermische modell aus zwei untermodellen zusammengesetzt ist. Das untermodell water reservoir, welches nach dem white-box ansatz modelliert wurde, benötigt eine andere Umrechnung um einen Zeitschritt von einer Stunde vorran zu gehen. Hier rechnen wir W in J pro Stunde um. In der MPC wirde dieser Unterschied direkt in der State-space formulation des modells durch einen faktor ausgeglichen.
 
 \section{The Cost function}
 \label{section:thecostfunction}
+
+The cost function penalise the deviation from the desired requirements. On the one hand, we have to guaranty thermal occupant comfort in the building. On the other hand, we prefer to heat with the heat pump during convenient grid service. Both subjects are represented in the cost function below.
     \begin{equation}
         \text{minimize} \sum_{k=1}^{N-1} w_\text{1}\cdot (y-y_\text{track})^2 + w_\textbf{2}\cdot(u_\text{2}\cdot dP)^2 + w_\text{3} \cdot \eta^2
     \end{equation}
+A pleasant air temperature is 22°C in rooms following the operative temperature in \cite{}. Therefore, the desired temperature is $y_track = 22$°C.
     %Erklären warum netzkurve verschoben werden musste: positive/neagtives Stellsignal und pos/neg Preis --> Auswrikungen durch quartrierung
     
-    %hier erklären, wann gewicht = 0 ist
+    %hier erklären, wann gewicht = 0 flexibilität und energy sparen ist und Faktor 1/4 erklären
 \section{Workflow of the MPC script}
 \label{section:workflowMPC}
 \begin{figure}[h]
