@@ -4,9 +4,10 @@ In this chapter, the framework conditions of the MPC are described by answering 
 
 \section{Framework conditions of the MPC}
 \label{section:FrameworkMPC}
-The objective of the MPC is to optimise the control signal of the reference building $\mathbf{u} = (u_1 \enspace u_2)^T = (\dot{Q}_\text{heating} \enspace \dot{Q}_\text{HP})^T$. Thereby, we consider the heat flows of the building in the MPC simulation but, we calculate with a characteristic diagram of the heat pump the electrical control signal $P_\text{HP}$ later. The controlled output is the inside temperature $\mathbf{y} = T_\text{inside}$, which we calculate with the thermal model from \autoref{holeModel}. The desired curves of the $\mathbf{y}$ depend on the presents of occupants, which is determined on an occupancy schedule. Past data of the weather and the dynamic price of the electricity $dP$ \nomenclature[P]{dP}{dynamic Price of the electricity } is used for the simulation environment. \newline
+The objective of the MPC is to optimise the control signal of the reference building $\mathbf{u} = (u_1 \enspace u_2)^T = (\dot{Q}_\text{heating} \enspace \dot{Q}_\text{HP})^T$. Thereby, we consider the heat flows of the building in the MPC simulation but, we calculate with a characteristic diagram of the heat pump the electrical control signal $P_\text{HP}$ later. The controlled output is the inside temperature $\mathbf{y} = T_\text{inside}$, which we calculate with the thermal model from \autoref{holeModel}. The desired curves of the $\mathbf{y}$ depend on the presents of occupants, which is determined on an occupancy schedule. Past data of the weather and the dynamic price of the electricity $dP$ \nomenclature[P]{dP}{dynamic Price of the electricity } is used for the simulation environment. 
 
-\textbf{Characteristic diagram of the heat pump:}\newline
+\subsection{Characteristic diagram of the heat pump}
+\label{subsec:charcteristicDiagramHP}
 The characteristic diagram of the heat pump is interpolated with the characteristic values specified by the producer \cite{TUM}. We assume an operation at the nominal power of the heat pump. As \autoref{fig:HeatpumpKennfeld} shows, the electrical power $P_\text{HP}$ depends on the outside temperature $T_\text{outside}$ and the required heat flow $\dot{Q}_\text{HP}$. Further, the heat pump can generate negative $\dot{Q}_\text{HP}$ when cooling is desired. The optimisation of the MPC computed the $\dot{Q}_\text{HP}$, and the $T_\text{outside}$ is known at every time step, then the characteristics of the heat pump are used to calculate the $P_\text{HP}$. 
     \begin{figure}[h]
             \centering
@@ -15,7 +16,8 @@ The characteristic diagram of the heat pump is interpolated with the characteris
            \label{fig:HeatpumpKennfeld}
     \end{figure}
     
-\textbf{Occupancy schedule:}\newline
+\subsection{Occupancy schedule}
+\label{subsec:OccupancySchedule}
 The \autoref{fig:OccupancySchedule} presents the occupancy schedule. It summarises the working time of occupants with a green bar. We assume that persons are in the reference building from Monday to Thursday from 6 am to 7 pm and on Friday from 6 to 6 pm. The assumption is made according to experience values and means that there is a high probability that persons will be in the building during this time.  
     \begin{figure}[h]
             \centering
@@ -24,7 +26,8 @@ The \autoref{fig:OccupancySchedule} presents the occupancy schedule. It summaris
            \label{fig:OccupancySchedule}
     \end{figure}
 
-\textbf{Past data:}\newline
+\subsection{Past data}
+\label{subsec:PastData}
     The data used are from the same period as the training data for the model estimation. As a disturbance variable, we use the recording of diffuse radiation and outside temperature in Energy Lab 2.0. The MPC is simulated over nine days, a little more than a week, to consider the occupancy schedule at least  once.\newline
     The dynamic price of the electricity  $dP$ is made available on the website of the Bundesnetzagentur \cite{Bundesnetzagentur-smard}. Here we use the wholesale prices on the stock exchange as an indicator of grid services. The price is an intersection between supply and demand. Consequently, when the price is low, we can assume an excess of electricity on the grid. It is precisely then that it is particularly suitable to operate our heat pump to obtain electricity from the grid. In the opposite case, the same applies: If the price is high, it is unfavourable to operate the heat pump. At such a time, it is particularly suitable to supply power from the grid. In the opposite case, the same applies: if the price is high, it is unfavourable to operate the heat pump. \newline
     However, negative prices can also arise in retail. Negative prices would undesirably change the costs of the cost function, which will be explained in more detail later at a suitable time. To avoid negative prices, we sum the absolute minimum value of the $dP$ to every value of $dP$. Thus, we shift the curve of $dP$ into positive, as shown in \autoref{fig:Gridverschiebung}.
@@ -38,35 +41,53 @@ The \autoref{fig:OccupancySchedule} presents the occupancy schedule. It summaris
 \section{The Constraints}
 \label{section:theconstraints}
 
-The constraints depend on the physical limitations of the installations in the building, such as the heat pump, the underground floor heating, and the water reservoir, or of comfortable reasons. Also, the integration method of the model is included in the constraints. The subsequent section gives an overview of the constraints.\newline
+The constraints depend on the physical limitations of the installations in the building, such as the heat pump, the underground floor heating, and the water reservoir, or of comfortable reasons. Also, the integration method of the model is included in the constraints. The subsequent section gives an overview of the constraints.
 
-\textbf{Constraints of the control signals:}\newline
+\subsection{Constraints of the control signals}
+\label{subsec:COnstraintU}
 The producer's specifications restrict $\dot{Q}_\text{HP}$ the maximum and minimum heat flow of the heat pump for nominal power by heating with the inlet temperature of 55°C and by cooling with the inlet temperature of 18°C \cite{TUM}. The maximum $\dot{Q}_\text{heating}$  is limited according to the underground floor heating calculation, where the set power of every room is counted and we sum it for the complete building \cite{Roth_Auslegung.2020}. The computation of the required cooling power predicts 2246 W needed power by 34.5°C outside temperature in July \cite{SEFIngenieurgesellschaftMBH.2019}. To be more flexible with higher outside temperatures, we round the minimum $\dot{Q}_\text{heating}$ to 2300 W.\newline
-Further, we define a constraint to avoid simultaneous heating of building and cooling of the water reservoir or reversed. That would be energy waste. The constraint defines that  % hier noch die ERklärung + in Menge einfügen
+Further, we define a constraint $u_1 \cdot u_2 \geq 0$ to avoid simultaneous heating of building and cooling of the water reservoir or reversed. That would be energy waste.
 The set $\mathbb{U_k}$ summarise mathematically the constraints.
 \begin{equation}
     \label{ConstraintU}
-    \mathbb{U_k} = \{\mathbf{u_k}| -2300 W \prec \dot{Q}_\text{heating} \prec 5283 W \wedge -9340 W \prec \dot{Q}_\text{HP} \prec 8010 W\} 
+    \mathbb{U_k} = \{\mathbf{u_k}| -2300 W \prec \dot{Q}_\text{heating} \prec 5283 W \wedge -9340 W \prec \dot{Q}_\text{HP} \prec 8010 W | u_1 \cdot u_2 \geq 0\} 
 \end{equation}
 
-\textbf{Constraints of the states:}\newline
-The calculation of the water reservoirs maximal inner energy $U_\text{WR}$ is explained in \autoref{waterModel} with \autoref{eq:max.Energie}. The minimum $U_\text{WR}$ lies by 0 J. The set $\mathbb{X}_{5,k}$ describes the constraint.
+\subsection{Constraint of output}
+\label{subsec:constrainY}
+The Umweltbundesamt \cite{Umweltbundesamt.7.10.2021} recommends an inside temperature of 18°C for some rooms, such as the kitchen. We expand the recommendation to a minimum $T_\text{inside}$ of 18°C for all rooms. The maximum inside temperature refers to the German technical rules for workplaces \cite{Bund.2021}, wherein a maximum of 26°C as room temperature is prescribed. The slack variable $\eta_\text{k}$ allows a variance of the given temperature range during a penalty in the cost function. Thus, we have a soft constraint, and we can obtain the feasibility of the optimisation problem during a deviation of the temperature range \cite{Drgona.2020}. The constraint is represented in the set $\mathbb{Y_k}$ as follows:  
+\begin{equation}
+    \label{ConstraintY}
+    \mathbb{Y_k} = \{\mathbf{y_k}| 18 \text{°C} - \eta_k \prec T_\text{inside} \prec 26 \text{°C}+ \eta_k\} 
+\end{equation}
+
+\subsection{Constraints of the states}
+\label{ConstraintX}
+The calculation of the water reservoirs maximal inner energy $U_\text{WR}$ is explained in \autoref{waterModel} with \autoref{eq:max.Energie}. The minimum $U_\text{WR}$ lies by 0 J. The set $\mathbb{X}_{5,k}$ describes the constraint for the fifth element of the state vector.
 \begin{equation}
     \label{ConstraintX5}
     \mathbb{X}_{5,k} = \{x_\text{5,k}| 0 J \prec U_\text{WR} \prec 96370000 J\} 
 \end{equation}
+A further constraint, which relates to the states, is the integration method as discussed below.
 
-\textbf{Constraint of output:}\newline
-The Umweltbundesamt \cite{Umweltbundesamt.7.10.2021} recommends an inside temperature of 18°C for some rooms, such as the kitchen. We expand the recommendation to a minimum $T_\text{inside}$ of 18°C for all rooms. The maximum inside temperature refers to the German technical rules for workplaces \cite{Bund.2021}, wherein a maximum of 26°C as room temperature is prescribed. The slack variable $\eta_\text{k}$ allows a variance of the given temperature range during a penalty in the cost function. Thus, we have a soft constraint, and we can obtain the feasibility of the optimisation problem during a deviation of the temperature range \cite{Drgona.2020}. The constraint is represented in the set $\mathbb{Y_k}$ as follows:  
-\begin{equation}
-    \label{ConstraintX5}
-    \mathbb{Y_k} = \{\mathbf{y_k}| 18 \text{°C} - \eta_k \prec T_\text{inside} \prec 26 \text{°C}+ \eta_k\} 
-\end{equation}
+\subsection{Constraint of the integration method}
+\label{COnstaintIntegration}
+As an integration method, we use a explicit single-step method,which means that we need the values of the actual time step $k$ to compute the next. Possible methods are the Heun's method, the Euler and the Runge-Kutta method. The decision is made in favor of the Runge-Kutta method because the fourth order makes it more precise than the methods mentioned. The following equation shows the calculation for the next time step using the Runge-Kutta method with the sample time $T_\text{s}$ and the function $f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) = \mathbf{\dot{x}_\text{k}}$ according the state-space formulation (see \autoref{eq:statespace}) \cite{KaiFurmansMarcusGeimerBalazsPritzCarstenProppe.WS1920}.
+\begin{align}
+    \label{Runke-Kutta}
+    a_k^{(1)} = T_s \cdot f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) \\
+    a_k^{(2)} = T_s \cdot f(\mathbf{x_k}+\frac{a_k^{(1)}}{2},t_k+\frac{T_s}{2},\mathbf{u_k},\mathbf{d_k})\nonumber\\
+    a_k^{(3)} = T_s \cdot f(\mathbf{x_k}+\frac{a_k^{(2)}}{2},t_k+\frac{T_s}{2},\mathbf{u_k},\mathbf{d_k})\nonumber\\
+    a_k^{(4)} = T_s \cdot f(\mathbf{x_k}+a_k^{(3)},t_k+T_s,\mathbf{u_k},\mathbf{d_k})\nonumber\\
+    \nonumber\\
+    \mathbf{x_{k+1}} = \mathbf{x_k} + \frac{1}{6}\cdot (a_k^{(1)} + 2 a_k^{(2)} + 2 a_k^{(3)} + a_k^{(4)})\nonumber
+\end{align}
+    
 
-\textbf{Constraint of heating or cooling:}\newline
-%vllt in die Menge von U einschließen
-\textbf{Constraint of the integration method:}\newline
-The used integration method is the Runge-Kutta method because of its 
+
+
+
+
 \section{The Cost function}
 \label{section:thecostfunction}
     \begin{equation}
