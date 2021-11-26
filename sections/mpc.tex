@@ -83,23 +83,34 @@ As an integration method, we use a explicit single-step method,which means that 
         \nonumber\\
         \mathbf{x_{k+1}} = \mathbf{x_k} + \frac{1}{6}\cdot (a_k^{(1)} + 2 a_k^{(2)} + 2 a_k^{(3)} + a_k^{(4)})\nonumber
     \end{align}
-    
-Das Integrationsverfahren wird in den Constraints eingebunden, damit der folgenden Zeitschritt nach dem thermischen Modell berechnet wird.  
-Wichtig zu beachten ist, dass die Schrittweiten der integration entsprechend der diskretisierung des models gewählt wird. So wird das Model mit mit diskreten werten aus dem reference gebäude geschätzt, wobei die Messstellen alle zwei Minuten abgetastet werden. Um beispielsweise eine Ts von einer Stunde zu erhalten, wird die Ts als 30 *2 min beschrieben. Die zwei minuten sind durch die schätzung bereits im modell enthalten, wir müssen das $\mathbf{\dot{x}_\text{k}}$ folglich nur mit 30 multiplizieren um einen Zeitschritt von einer Stunde weiterzukommen. Es ist wichtig zu beachten, dass das thermische modell aus zwei untermodellen zusammengesetzt ist. Das untermodell water reservoir, welches nach dem white-box ansatz modelliert wurde, benötigt eine andere Umrechnung um einen Zeitschritt von einer Stunde vorran zu gehen. Hier rechnen wir W in J pro Stunde um. In der MPC wirde dieser Unterschied direkt in der State-space formulation des modells durch einen faktor ausgeglichen.
+The constraints accommodate the integration method for calculating the next time step according to the determined thermal model.
+Important to note is that the time step of the integration is chosen in accordance with the discretization of the model. The model is estimated with the discrete values of the reference building, where the measuring points are sampled every two minutes. For example, to achieve a $T_\text{s}$ of one hour, the $T_\text{s}$ is described as $30 \cdot 2 min$. The two minutes are already included in the model by estimation. The two minutes are already included in the model due to the estimation. Therefore, we multiply the $\mathbf{\dot{x}_\text{k}}$ by 30 to bring forward a time step of one hour. It is considered that the thermal model is composed of two submodels. The water reservoir sub-model, which is modelled using the white-box approach, requires a different conversion to advance one hour. Here we convert watts to joules per hour. In the MPC, this difference is compensated by a factor directly in the state-space formulation of the model.
 
 \section{The Cost function}
 \label{section:thecostfunction}
 
 The cost function penalise the deviation from the desired requirements. On the one hand, we have to guaranty thermal occupant comfort in the building. On the other hand, we prefer to heat with the heat pump during convenient grid service. Both subjects are represented in the cost function below.
     \begin{equation}
-        \text{minimize} \sum_{k=1}^{N-1} w_\text{1}\cdot (y-y_\text{track})^2 + w_\textbf{2}\cdot(u_\text{2}\cdot dP)^2 + w_\text{3} \cdot \eta^2
+        \text{minimize} \sum_{k=1}^{N-1} w_\text{1}\cdot (y_\text{k}-y_\text{track})^2 + w_\textbf{2}\cdot(u_\text{2,k}\cdot dP_\text{k})^2 + w_\text{3} \cdot \eta_\text{k}^2
+        \label{eq:costfunctatsächlich}
     \end{equation}
-A pleasant air temperature is 22°C in rooms following the operative temperature in \cite{}. Therefore, the desired temperature is $y_track = 22$°C.
-    %Erklären warum netzkurve verschoben werden musste: positive/neagtives Stellsignal und pos/neg Preis --> Auswrikungen durch quartrierung
-    
-    %hier erklären, wann gewicht = 0 flexibilität und energy sparen ist und Faktor 1/4 erklären
+A pleasant air temperature is 22°C for living rooms, working rooms, and the bathroom \cite{Umweltbundesamt.7.10.2021}. As discussed in \autoref{ch:modelling}, we model the reference building as a single-zone building, wherein most rooms are working rooms. We decide to use the median temperature of all rooms of the recommended temperatures for the complete building. Thus, the desired temperature is $y_\text{track} = 22$°C.\newline
+The expression $(y_\text{k}-y_\text{track})^2$ represents the comfort requirement in the cost function. The squaring of $(y_\text{k}-y_\text{track})$ avoid a minimising of the cost function due to negative $y_\text{k}$ values. The same proceeding is with the expression of the grid service $(u_\text{2,k}\cdot dP_\text{k})^2$. We exclude negative values of $dP_\text{k}$ (how is explained in \autoref{subsec:PastData}) because we would generate the wrong effect with a negative $dP_\text{k}$. After squaring, the expression would maximise the cost function during a appropriate time for grid services. Without a squaring, we would support energy consumption while its not needed or we would penalise a cooling by we having a negative $u_\text{2,k}$.\newline
+We can adjust the preference of the requirements by the weightings $w_\text{1}$ and $w_\text{1}$. How much deviation is allowed from the temperature range in the soft constraint is determined by the weighting $w_\text{3}$.\newline
+Occupant comfort is only necessary if persons are present in the building. Therefore, we consider the cost function during absence without the comfort therm by setting $w_\text{1}$ to zero according to the occupancy schedule, which results in the following simplification of the cost function.
+    \begin{equation}
+        \text{minimize} \sum_{k=1}^{N-1} w_\textbf{2}\cdot(u_\text{2,k}\cdot dP_\text{k})^2 + w_\text{3} \cdot \eta_\text{k}^2
+        \label{eq:costfunctionAbwesenheit}
+    \end{equation}
+The procedure aims to generate more flexibility for the objective of grid services. %Weshalb so energie sparen erklären
+
 \section{Workflow of the MPC script}
 \label{section:workflowMPC}
+Die Vorgehensweise im MPC script ist durch die Verwendung des Tools CasAdi bestimmt. Casadi ist open-source tool for nonlinear optimization and algorithmic differentiation und zeichnet sich durch die symbolische Rechnungen aus. Wir können CasAdi durch einen einfachen import mit matlab kombinieren Quelle CasAdi.\newline
+Zunächst erstellen wir unsere Parameter, alle bekannten Größen, und optimierungsvariabeln symbolisch. Diese setzen wir dann nach den Constraints über einen horizont zusammen. Die Kostenfunktion wird ebenfalls symbolisch für einen Horizont bestimmt.
+Danach bestimmen wir die initialen Werte für den Optimierer. Der gewählte Optimierer ist ipopt.
+Nun wird in jeder schleife... Zeitschritt... Bla bla...
+Neuberechnung initiale werte mit otimiertem u runge kutta verfahren
 \begin{figure}[h]
             \centering
             \def\svgwidth{0.6\textwidth}
@@ -110,3 +121,4 @@ A pleasant air temperature is 22°C in rooms following the operative temperature
     
 \section{Choice of weightings and horizon}
 \label{Choise of weigtings and horizon}
+%hier erklären warum 1/4 bei gewicht davor steht oder doch vorne, wenn hier nicht so viele diagramme gefordert sind/ weiß nicht mehr genau was ich geplottet hab
