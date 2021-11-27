@@ -67,7 +67,7 @@
     \put(0,0){\includegraphics[width=\unitlength,page=5]{workflowMPC2.pdf}}%
     \put(0.46327981,0.14568842){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}MPC optimisation\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{workflowMPC2.pdf}}%
-    \put(0.51725353,0.03874728){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Optimal \textbf{u_\text{k}}\end{tabular}}}}%
+    \put(0.51725353,0.03874728){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Optimal $\textbf{u_k}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{workflowMPC2.pdf}}%
     \put(0.01591924,0.0617444){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Energy price \&\\weather at k\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{workflowMPC2.pdf}}%
