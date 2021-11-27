@@ -106,15 +106,11 @@ The procedure aims to generate more flexibility for the objective of grid servic
 
 \section{Workflow of the MPC script}
 \label{section:workflowMPC}
-The approach in the MPC script is determined by the use of the tool CasAdi. Casadi is an open-source tool for nonlinear optimisation and algorithmic differentiation and is characterised by a symbolic framework. Especially, mixed integer optimal control problems, such as an MPC, are of particular interest \cite{JoelA.E.Andersson.2018}. We can combine CasAdi with MATLAB through a simple import.\newline
-The figure below gives an overview of the workflow of the MPC script. 
-Zunächst erstellen wir unsere Parameter, alle bekannten Größen, und optimierungsvariabeln symbolisch. Diese setzen wir dann nach den Constraints über einen horizont zusammen. Die Kostenfunktion wird ebenfalls symbolisch für einen Horizont bestimmt.
-Danach bestimmen wir die initialen Werte für den Optimierer. Der gewählte Optimierer ist ipopt.
-Nun wird in jeder schleife... Zeitschritt... Bla bla...
-Neuberechnung initiale werte mit otimiertem u runge kutta verfahren
-\begin{figure}[h]
+The approach in the MPC script is determined by the use of the tool CasAdi. CasADi is an open-source tool for nonlinear optimisation and algorithmic differentiation and is characterised by a symbolic framework. Especially, mixed-integer optimal control problems, such as an MPC, are of particular interest \cite{JoelA.E.Andersson.2018}. We can combine CasAdi with MATLAB through a simple import.\newline
+The figure below gives an overview of the workflow of the MPC script. First, we create the parameter, all known sizes, and the optimisation variables symbolically. Then the inequalities of the constraints are set in a loop over the prediction horizon with the symbolic variables. The cost function is also indicated symbolically for the horizon. Afterwards, the initial values for the optimiser are determined. To specify the initial state for the first MPC step, we choose a constant control signal $\mathbf{u_k} = [0\enspace0]^T$, a state $\mathbf{x}$ within the temperature range, and determine with the Runge-Kutta method the curve over the horizon. We pass the values of the initial state of the optimisation variations and the parameters to the solver. Then, the optimisation problem is solved with the Ipopt (\textbf{I}nterior \textbf{P}oint \textbf{Opt}imiser) solver, which is appropriate for large and sparse nonlinear programming \cite{JoelA.E.Andersson.2018}. As a result, we obtain the optimised $\mathbf{u_k}$ over the horizon. Now, after each time step, a new initial state is calculated with the curves of the states and the output from the new disturbance variables and the optimum $\mathbf{u_k}$ over the horizon.
+    \begin{figure}[h]
             \centering
-            \def\svgwidth{0.6\textwidth}
+            \def\svgwidth{0.75\textwidth}
             \input{figure/workflowMPC2.pdf_tex}
             \caption{Workflow of the MPC script}
             \label{fig:workflowMPC}
