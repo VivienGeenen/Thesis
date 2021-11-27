@@ -97,12 +97,12 @@ The cost function penalise the deviation from the desired requirements. On the o
 A pleasant air temperature is 22°C for living rooms, working rooms, and the bathroom \cite{Umweltbundesamt.7.10.2021}. As discussed in \autoref{ch:modelling}, we model the reference building as a single-zone building, wherein most rooms are working rooms. We decide to use the median temperature of all rooms of the recommended temperatures for the complete building. Thus, the desired temperature is $y_\text{track} = 22$°C.\newline
 The expression $(y_\text{k}-y_\text{track})^2$ represents the comfort requirement in the cost function. The squaring of $(y_\text{k}-y_\text{track})$ avoid a minimising of the cost function due to negative $y_\text{k}$ values. The same proceeding is with the expression of the grid service $(u_\text{2,k}\cdot dP_\text{k})^2$. We exclude negative values of $dP_\text{k}$ (how is explained in \autoref{subsec:PastData}) because we would generate the wrong effect with a negative $dP_\text{k}$. After squaring, the expression would maximise the cost function during a appropriate time for grid services. Without a squaring, we would support energy consumption while its not needed or we would penalise a cooling by we having a negative $u_\text{2,k}$.\newline
 We can adjust the preference of the requirements by the weightings $w_\text{1}$ and $w_\text{1}$. How much deviation is allowed from the temperature range in the soft constraint is determined by the weighting $w_\text{3}$.\newline
-Occupant comfort is only necessary if persons are present in the building. Therefore, we consider the cost function during absence without the comfort therm by setting $w_\text{1}$ to zero according to the occupancy schedule, which results in the following simplification of the cost function.
+Occupant comfort is only necessary if persons are present in the building. Therefore, we consider the cost function during absence without the comfort therm by setting $w_\text{1}$ to zero according to the occupancy schedule, which results in the following simplification of the cost function during absence.
     \begin{equation}
         \text{minimize} \sum_{k=1}^{N-1} w_\textbf{2}\cdot(u_\text{2,k}\cdot dP_\text{k})^2 + w_\text{3} \cdot \eta_\text{k}^2
         \label{eq:costfunctionAbwesenheit}
     \end{equation}
-The procedure aims to generate more flexibility for the objective of grid services. %Weshalb so energie sparen erklären
+The procedure aims to generate more flexibility for the objective of grid services. This scenario with the changing cost function is the basic scenario for this thesis.  %Weshalb so energie sparen erklären
 
 \section{Workflow of the MPC script}
 \label{section:workflowMPC}
@@ -118,4 +118,19 @@ The figure below gives an overview of the workflow of the MPC script. First, we 
     
 \section{Choice of weightings and horizon}
 \label{Choise of weigtings and horizon}
+In the following, we analyse the horizon length and the effects of the weightings on the requirement of occupancy comfort and grid services for the basic scenario. For a better comparison we define an average comfort AC \nomenclature[A]{AC}{Average Comfort}, which is a size of the average deviation of the $y$ from the $y_\text{track}$ over the simulation time only during presence of occupants, expressed by $y_\text{k,occ} - y_track$. The calculation of AC is described in the following equation with the number of time steps with occupants $n_\text{occ}$.
+\begin{equation}
+    \label{eq:average comfort}
+    AC = \frac{\sum_{k,occ}^{n_\text{occ}} y_\text{k,occ} - y_\text{track}}{n_\text{occ}}
+\end{equation}
+On the other hand, we define the costs for grid services GS \nomenclature[A]{GS}{Costs for grid services} over the complete simulation time (with the number of time steps $n$) as the sum of the control signal of the heat pump $u_\text{2,k}$ multiplied with the dynamic price of electricity $dP_\text{k}$:
+\begin{equation}
+    GS = \sum_{k}^n u_\text{2,k}\cdot dP_\text{k}
+\end{equation}
+In theoretical considerations, we should obtain a higher level of AC with a less weighting of comfort and a higher level of GS with a less weighting of grid services. Furthermore, a larger horizon should result in less costs for both requirements. The theoretical considerations are inspected in the following sections for the basic scenario over the simulation time of nine days.   
+
+\subsection{Average comfort and grid services over the weightings}
+\label{subsec:Average comfort and grid services over the weightings}
 %hier erklären warum 1/4 bei gewicht davor steht oder doch vorne, wenn hier nicht so viele diagramme gefordert sind/ weiß nicht mehr genau was ich geplottet hab
+\subsection{Choice of the horizon}
+\label{subsec:ChoiceHorizon}
