@@ -106,7 +106,8 @@ The procedure aims to generate more flexibility for the objective of grid servic
 
 \section{Workflow of the MPC script}
 \label{section:workflowMPC}
-Die Vorgehensweise im MPC script ist durch die Verwendung des Tools CasAdi bestimmt. Casadi ist open-source tool for nonlinear optimization and algorithmic differentiation und zeichnet sich durch die symbolische Rechnungen aus. Wir können CasAdi durch einen einfachen import mit matlab kombinieren Quelle CasAdi.\newline
+The approach in the MPC script is determined by the use of the tool CasAdi. Casadi is an open-source tool for nonlinear optimisation and algorithmic differentiation and is characterised by a symbolic framework. Especially, mixed integer optimal control problems, such as an MPC, are of particular interest \cite{JoelA.E.Andersson.2018}. We can combine CasAdi with MATLAB through a simple import.\newline
+The figure below gives an overview of the workflow of the MPC script. 
 Zunächst erstellen wir unsere Parameter, alle bekannten Größen, und optimierungsvariabeln symbolisch. Diese setzen wir dann nach den Constraints über einen horizont zusammen. Die Kostenfunktion wird ebenfalls symbolisch für einen Horizont bestimmt.
 Danach bestimmen wir die initialen Werte für den Optimierer. Der gewählte Optimierer ist ipopt.
 Nun wird in jeder schleife... Zeitschritt... Bla bla...
@@ -114,7 +115,7 @@ Neuberechnung initiale werte mit otimiertem u runge kutta verfahren
 \begin{figure}[h]
             \centering
             \def\svgwidth{0.6\textwidth}
-            \input{figure/workflowMPC.pdf_tex}
+            \input{figure/workflowMPC2.pdf_tex}
             \caption{Workflow of the MPC script}
             \label{fig:workflowMPC}
     \end{figure}
