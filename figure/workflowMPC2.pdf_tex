@@ -53,23 +53,23 @@
   \begin{picture}(1,0.78424111)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0.50240864,0.53555306){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Constraints\end{tabular}}}}%
-    \put(0.48615337,0.42861192){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Cost function\end{tabular}}}}%
-    \put(0.77167925,0.09197835){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Solver: Ipopt\end{tabular}}}}%
+    \put(0.50240864,0.53555301){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Constraints\end{tabular}}}}%
+    \put(0.48615337,0.42861185){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Cost function\end{tabular}}}}%
+    \put(0.77167925,0.09197823){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Solver: Ipopt\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{workflowMPC2.pdf}}%
-    \put(0.32940828,0.73386472){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Optimisation variable \& parameter\end{tabular}}}}%
+    \put(0.32940828,0.73386492){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Optimisation variable \& parameter\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{workflowMPC2.pdf}}%
-    \put(0.39378547,0.67296274){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CasADi: symbolic framework\end{tabular}}}}%
+    \put(0.39378547,0.67296287){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CasADi: symbolic framework\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{workflowMPC2.pdf}}%
-    \put(0.39378481,0.3705057){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CasADi: symbolic framework\end{tabular}}}}%
+    \put(0.39378481,0.37050582){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}CasADi: symbolic framework\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{workflowMPC2.pdf}}%
-    \put(0.46158855,0.25037669){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Initial  state k\end{tabular}}}}%
+    \put(0.46158855,0.25037664){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Initial  state k\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{workflowMPC2.pdf}}%
-    \put(0.46327981,0.14568842){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}MPC optimisation\end{tabular}}}}%
+    \put(0.46327981,0.14568845){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}MPC optimisation\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{workflowMPC2.pdf}}%
-    \put(0.51725353,0.03874728){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Optimal $\mathbf{u_k}$\end{tabular}}}}%
+    \put(0.51725353,0.03874731){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Optimal $\mathbf{u_k}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{workflowMPC2.pdf}}%
-    \put(0.01591924,0.0617444){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Energy price \&\\weather at k\end{tabular}}}}%
+    \put(0.01591924,0.06174464){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Energy price \&\\weather at k\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{workflowMPC2.pdf}}%
   \end{picture}%
 \endgroup%
