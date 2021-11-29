@@ -97,24 +97,20 @@ The cost function penalise the deviation from the desired requirements. On the o
 A pleasant air temperature is 22°C for living rooms, working rooms, and the bathroom \cite{Umweltbundesamt.7.10.2021}. As discussed in \autoref{ch:modelling}, we model the reference building as a single-zone building, wherein most rooms are working rooms. We decide to use the median temperature of all rooms of the recommended temperatures for the complete building. Thus, the desired temperature is $y_\text{track} = 22$°C.\newline
 The expression $(y_\text{k}-y_\text{track})^2$ represents the comfort requirement in the cost function. The squaring of $(y_\text{k}-y_\text{track})$ avoid a minimising of the cost function due to negative $y_\text{k}$ values. The same proceeding is with the expression of the grid service $(u_\text{2,k}\cdot dP_\text{k})^2$. We exclude negative values of $dP_\text{k}$ (how is explained in \autoref{subsec:PastData}) because we would generate the wrong effect with a negative $dP_\text{k}$. After squaring, the expression would maximise the cost function during a appropriate time for grid services. Without a squaring, we would support energy consumption while its not needed or we would penalise a cooling by we having a negative $u_\text{2,k}$.\newline
 We can adjust the preference of the requirements by the weightings $w_\text{1}$ and $w_\text{1}$. How much deviation is allowed from the temperature range in the soft constraint is determined by the weighting $w_\text{3}$.\newline
-Occupant comfort is only necessary if persons are present in the building. Therefore, we consider the cost function during absence without the comfort therm by setting $w_\text{1}$ to zero according to the occupancy schedule, which results in the following simplification of the cost function.
+Occupant comfort is only necessary if persons are present in the building. Therefore, we consider the cost function during absence without the comfort therm by setting $w_\text{1}$ to zero according to the occupancy schedule, which results in the following simplification of the cost function during absence.
     \begin{equation}
         \text{minimize} \sum_{k=1}^{N-1} w_\textbf{2}\cdot(u_\text{2,k}\cdot dP_\text{k})^2 + w_\text{3} \cdot \eta_\text{k}^2
         \label{eq:costfunctionAbwesenheit}
     \end{equation}
-The procedure aims to generate more flexibility for the objective of grid services. %Weshalb so energie sparen erklären
+The procedure aims to generate more flexibility for the objective of grid services. This scenario with the changing cost function is the basic scenario for this thesis.  %Weshalb so energie sparen erklären
 
 \section{Workflow of the MPC script}
 \label{section:workflowMPC}
-The approach in the MPC script is determined by the use of the tool CasAdi. Casadi is an open-source tool for nonlinear optimisation and algorithmic differentiation and is characterised by a symbolic framework. Especially, mixed integer optimal control problems, such as an MPC, are of particular interest \cite{JoelA.E.Andersson.2018}. We can combine CasAdi with MATLAB through a simple import.\newline
-The figure below gives an overview of the workflow of the MPC script. 
-Zunächst erstellen wir unsere Parameter, alle bekannten Größen, und optimierungsvariabeln symbolisch. Diese setzen wir dann nach den Constraints über einen horizont zusammen. Die Kostenfunktion wird ebenfalls symbolisch für einen Horizont bestimmt.
-Danach bestimmen wir die initialen Werte für den Optimierer. Der gewählte Optimierer ist ipopt.
-Nun wird in jeder schleife... Zeitschritt... Bla bla...
-Neuberechnung initiale werte mit otimiertem u runge kutta verfahren
-\begin{figure}[h]
+The approach in the MPC script is determined by the use of the tool CasAdi. CasADi is an open-source tool for nonlinear optimisation and algorithmic differentiation and is characterised by a symbolic framework. Especially, mixed-integer optimal control problems, such as an MPC, are of particular interest \cite{JoelA.E.Andersson.2018}. We can combine CasAdi with MATLAB through a simple import.\newline
+The figure below gives an overview of the workflow of the MPC script. First, we create the parameter, all known sizes, and the optimisation variables symbolically. Then the inequalities of the constraints are set in a loop over the prediction horizon with the symbolic variables. The cost function is also indicated symbolically for the horizon. Afterwards, the initial values for the optimiser are determined. To specify the initial state for the first MPC step, we choose a constant control signal $\mathbf{u_k} = [0\enspace0]^T$, a state $\mathbf{x}$ within the temperature range, and determine with the Runge-Kutta method the curve over the horizon. We pass the values of the initial state of the optimisation variations and the parameters to the solver. Then, the optimisation problem is solved with the Ipopt (\textbf{I}nterior \textbf{P}oint \textbf{Opt}imiser) solver, which is appropriate for large and sparse nonlinear programming \cite{JoelA.E.Andersson.2018}. As a result, we obtain the optimised $\mathbf{u_k}$ over the horizon. Now, after each time step, a new initial state is calculated with the curves of the states and the output from the new disturbance variables and the optimum $\mathbf{u_k}$ over the horizon.
+    \begin{figure}[h]
             \centering
-            \def\svgwidth{0.6\textwidth}
+            \def\svgwidth{0.75\textwidth}
             \input{figure/workflowMPC2.pdf_tex}
             \caption{Workflow of the MPC script}
             \label{fig:workflowMPC}
@@ -122,4 +118,19 @@ Neuberechnung initiale werte mit otimiertem u runge kutta verfahren
     
 \section{Choice of weightings and horizon}
 \label{Choise of weigtings and horizon}
+In the following, we analyse the horizon length and the effects of the weightings on the requirement of occupancy comfort and grid services for the basic scenario. For a better comparison we define an average comfort AC \nomenclature[A]{AC}{Average Comfort}, which is a size of the average deviation of the $y$ from the $y_\text{track}$ over the simulation time only during presence of occupants, expressed by $y_\text{k,occ} - y_track$. The calculation of AC is described in the following equation with the number of time steps with occupants $n_\text{occ}$.
+\begin{equation}
+    \label{eq:average comfort}
+    AC = \frac{\sum_{k,occ}^{n_\text{occ}} y_\text{k,occ} - y_\text{track}}{n_\text{occ}}
+\end{equation}
+On the other hand, we define the costs for grid services GS \nomenclature[A]{GS}{Costs for grid services} over the complete simulation time (with the number of time steps $n$) as the sum of the control signal of the heat pump $u_\text{2,k}$ multiplied with the dynamic price of electricity $dP_\text{k}$:
+\begin{equation}
+    GS = \sum_{k}^n u_\text{2,k}\cdot dP_\text{k}
+\end{equation}
+In theoretical considerations, we should obtain a higher level of AC with a less weighting of comfort and a higher level of GS with a less weighting of grid services. Furthermore, a larger horizon should result in less costs for both requirements. The theoretical considerations are inspected in the following sections for the basic scenario over the simulation time of nine days.   
+
+\subsection{Average comfort and grid services over the weightings}
+\label{subsec:Average comfort and grid services over the weightings}
 %hier erklären warum 1/4 bei gewicht davor steht oder doch vorne, wenn hier nicht so viele diagramme gefordert sind/ weiß nicht mehr genau was ich geplottet hab
+\subsection{Choice of the horizon}
+\label{subsec:ChoiceHorizon}
