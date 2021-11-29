@@ -30,7 +30,7 @@ The \autoref{fig:OccupancySchedule} presents the occupancy schedule. It summaris
 \label{subsec:PastData}
     The data used are from the same period as the training data for the model estimation. As a disturbance variable, we use the recording of diffuse radiation and outside temperature in Energy Lab 2.0. The MPC is simulated over nine days, a little more than a week, to consider the occupancy schedule at least  once.\newline
     The dynamic price of the electricity  $dP$ is made available on the website of the Bundesnetzagentur \cite{Bundesnetzagentur-smard}. Here we use the wholesale prices on the stock exchange as an indicator of grid services. The price is an intersection between supply and demand. Consequently, when the price is low, we can assume an excess of electricity on the grid. It is precisely then that it is particularly suitable to operate our heat pump to obtain electricity from the grid. In the opposite case, the same applies: If the price is high, it is unfavourable to operate the heat pump. At such a time, it is particularly suitable to supply power from the grid. In the opposite case, the same applies: if the price is high, it is unfavourable to operate the heat pump. \newline
-    However, negative prices can also arise in retail. Negative prices would undesirably change the costs of the cost function, which will be explained in more detail later at a suitable time. To avoid negative prices, we sum the absolute minimum value of the $dP$ to every value of $dP$. Thus, we shift the curve of $dP$ into positive, as shown in \autoref{fig:Gridverschiebung}.
+    However, negative prices can also arise in retail. Negative prices would undesirably change the costs of the cost function, which will be explained in more detail later at a suitable time. To avoid negative prices, we sum the absolute minimum value of the $dP$ to every value of $dP$. Thus, we shift the curve of $dP$ into positive, as shown in \autoref{fig:Gridverschiebung}. In the later use, we calculate with the dynamic price of electricity $dP$ in the unit of $\frac{\text{\euro}}{Wh}$.
     \begin{figure}[h]
             \centering
             \includegraphics[width=15cm,height=8cm]{figure/Grid_data_Verschiebung.eps}
@@ -97,6 +97,16 @@ The cost function penalise the deviation from the desired requirements. On the o
 A pleasant air temperature is 22°C for living rooms, working rooms, and the bathroom \cite{Umweltbundesamt.7.10.2021}. As discussed in \autoref{ch:modelling}, we model the reference building as a single-zone building, wherein most rooms are working rooms. We decide to use the median temperature of all rooms of the recommended temperatures for the complete building. Thus, the desired temperature is $y_\text{track} = 22$°C.\newline
 The expression $(y_\text{k}-y_\text{track})^2$ represents the comfort requirement in the cost function. The squaring of $(y_\text{k}-y_\text{track})$ avoid a minimising of the cost function due to negative $y_\text{k}$ values. The same proceeding is with the expression of the grid service $(u_\text{2,k}\cdot dP_\text{k})^2$. We exclude negative values of $dP_\text{k}$ (how is explained in \autoref{subsec:PastData}) because we would generate the wrong effect with a negative $dP_\text{k}$. After squaring, the expression would maximise the cost function during a appropriate time for grid services. Without a squaring, we would support energy consumption while its not needed or we would penalise a cooling by we having a negative $u_\text{2,k}$.\newline
 We can adjust the preference of the requirements by the weightings $w_\text{1}$ and $w_\text{1}$. How much deviation is allowed from the temperature range in the soft constraint is determined by the weighting $w_\text{3}$.\newline
+The size of the cost for the requirements are different. When considering the constraints, $y_\text{k}-y_\text{track}$ can reach a maximum deviation of 4 K (without soft constraint), while $u_\text{2,k}\cdot dP_\text{k}$ is in a lower order of size due to the unit $\frac{\text{\euro}}{Wh}$. To compensate this, a factor is introduced that gives the comfort requirement a weaker weighting in the cost function. The factor is integrated into the weighing $w_\text{1}$ as shown in the following table. In general, we vary the weights $w_\text{1}$ and $w_\text{2}$ of the cost function from $ i= 0$ to 1 in 0.1 steps. As shown in table \autoref{tab:weighting factor}, the comfort with $w_\text{1}$ and the grid service with $w_\text{2}$ are always weighted in opposite directions.\newline
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c}
+         $w_\text{1}$ & $w_\text{2}$ & $w_\text{3}$ \\
+        $\frac{1}{4} \cdot i$ & $i=1-j$ & 0.001
+    \end{tabular}
+    \caption{Weighting factor}
+    \label{tab:weighting factor}
+\end{table}
 Occupant comfort is only necessary if persons are present in the building. Therefore, we consider the cost function during absence without the comfort therm by setting $w_\text{1}$ to zero according to the occupancy schedule, which results in the following simplification of the cost function during absence.
     \begin{equation}
         \text{minimize} \sum_{k=1}^{N-1} w_\textbf{2}\cdot(u_\text{2,k}\cdot dP_\text{k})^2 + w_\text{3} \cdot \eta_\text{k}^2
@@ -107,7 +117,7 @@ The procedure aims to generate more flexibility for the objective of grid servic
 \section{Workflow of the MPC script}
 \label{section:workflowMPC}
 The approach in the MPC script is determined by the use of the tool CasAdi. CasADi is an open-source tool for nonlinear optimisation and algorithmic differentiation and is characterised by a symbolic framework. Especially, mixed-integer optimal control problems, such as an MPC, are of particular interest \cite{JoelA.E.Andersson.2018}. We can combine CasAdi with MATLAB through a simple import.\newline
-The figure below gives an overview of the workflow of the MPC script. First, we create the parameter, all known sizes, and the optimisation variables symbolically. Then the inequalities of the constraints are set in a loop over the prediction horizon with the symbolic variables. The cost function is also indicated symbolically for the horizon. Afterwards, the initial values for the optimiser are determined. To specify the initial state for the first MPC step, we choose a constant control signal $\mathbf{u_k} = [0\enspace0]^T$, a state $\mathbf{x}$ within the temperature range, and determine with the Runge-Kutta method the curve over the horizon. We pass the values of the initial state of the optimisation variations and the parameters to the solver. Then, the optimisation problem is solved with the Ipopt (\textbf{I}nterior \textbf{P}oint \textbf{Opt}imiser) solver, which is appropriate for large and sparse nonlinear programming \cite{JoelA.E.Andersson.2018}. As a result, we obtain the optimised $\mathbf{u_k}$ over the horizon. Now, after each time step, a new initial state is calculated with the curves of the states and the output from the new disturbance variables and the optimum $\mathbf{u_k}$ over the horizon.
+The figure below gives an overview of the workflow of the MPC script. First, we create the parameter, all known sizes, and the optimisation variables symbolically. Then the inequalities of the constraints are set in a loop over the prediction horizon with the symbolic variables. The cost function is also indicated symbolically for the horizon. Afterwards, the initial values for the optimiser are determined. To specify the initial state for the first MPC step, we choose a constant control signal $\mathbf{u_k} = [0\enspace0]^T$, a state $\mathbf{x}$ within the temperature range, and determine with the Runge-Kutta method the curve over the horizon. A half charged water reservoir is a further assumption for the initial state. We pass the values of the initial state of the optimisation variations and the parameters to the solver. Then, the optimisation problem is solved with the Ipopt (\textbf{I}nterior \textbf{P}oint \textbf{Opt}imiser) solver, which is appropriate for large and sparse nonlinear programming \cite{JoelA.E.Andersson.2018}. As a result, we obtain the optimised $\mathbf{u_k}$ over the horizon. Now, after each time step, a new initial state is calculated with the curves of the states and the output from the new disturbance variables and the optimum $\mathbf{u_k}$ over the horizon.
     \begin{figure}[h]
             \centering
             \def\svgwidth{0.75\textwidth}
@@ -127,17 +137,51 @@ On the other hand, we define the costs for grid services GS \nomenclature[A]{GS}
 \begin{equation}
     GS = \sum_{k}^n P_{HP,k}\cdot dP_\text{k}
 \end{equation}
-In theoretical considerations, we should obtain a higher level of AC with less weighting of comfort and a higher level of GS with less weighting of grid services. Furthermore, a larger or shorter horizon $N$ differs in computation time and finding the optimal solution. While a longer N requires more computation time and may not find a solution, a shorter N may not find the optimal solution. Due to finding the optimal solution a larger horizon should result in less costs for the requirements. In general, the horizon should depict the dynamics of the controlled system. \newline
+In theoretical considerations, we should obtain a higher level of AC with less weighting of comfort and a higher level of GS with less weighting of grid services. Furthermore, a larger or shorter horizon $N$ differs in computation time and finding the optimal solution. While a longer N requires more computation time and may not find a solution, a shorter $N$ may not find the optimal solution. Due to finding the optimal solution a larger horizon should result in less costs for the requirements. In general, the horizon should depict the dynamics of the controlled system. \newline
 The theoretical considerations are inspected in the subsequent sections for the basic scenario over the simulation time of nine days.   
 
 \subsection{Average comfort and grid services over the weightings}
 \label{subsec:Average comfort and grid services over the weightings}
-%hier erklären warum 1/4 bei gewicht davor steht oder doch vorne, wenn hier nicht so viele diagramme gefordert sind/ weiß nicht mehr genau was ich geplottet hab
+The following figure presents the behaviour of the AC and GS for the different weightings $w_\text{1}$ and $w_\text{2}$ with $N = 24h$. We compare the behaviour also for different horizon $N$ to verify the feasibility and the expected behaviour. The corresponding figures are showed in \autoref{sec:Average comfort and grid services} and the values of AC and GS for different horizons exposed in the following tables.\newline
+We notice a monotone behaviour of the average comfort and the grid services according to their weightings and feasible solutions. The less costs with increasing horizon length is only for the average comfort notable, expecting the case $w_\text{1}=0$. In this case, we consider not the comfort in the cost function. Therefore, the values of AC are coincidental, also relating to the horizon length.\newline
+An explanation for higher cost in GS with longer horizon is that the thermal reaction of the building is known over a longer time and the control signal reacts early for a better adaption of the comfort.
     \begin{figure}[h]
             \centering
-            \includegraphics[width=15cm,height=8cm]{figure/AC.eps}
-           \caption{}
-            \label{fig:Gridverschiebung}
+            \includegraphics[width=15cm,height=8cm]{figure/AC_und_GS_24h.eps}
+           \caption{AC and GS for N = 24h}
+            \label{fig:AC_und_GS_24h}
     \end{figure}
+    
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c}
+         weighting factor i&0&0.1&0.2&0.3&0.4&0.5&0.6&0.7&0.8&0.9&1  \\
+         \hline
+         AC by N = 12 h&\\
+         AC by N = 18 h&\\
+         AC by N = 24 h&\\
+         AC by N = 30 h&\\
+    \end{tabular}
+    \caption{AC for different N}
+    \label{tab:AC for different N}
+    \end{table}
+    
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c}
+         weighting factor i&0&0.1&0.2&0.3&0.4&0.5&0.6&0.7&0.8&0.9&1  \\
+         \hline
+         GS by N = 12 h&\\
+         GS by N = 18 h&\\
+         GS by N = 24 h&\\
+         GS by N = 30 h&\\
+    \end{tabular}
+    \caption{GS for different N}
+    \label{tab:GS for different N}
+\end{table}
+    
+
+     
+    
 \subsection{Choice of the horizon}
 \label{subsec:ChoiceHorizon}
