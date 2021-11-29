@@ -102,7 +102,7 @@ The size of the cost for the requirements are different. When considering the co
     \centering
     \begin{tabular}{c|c|c}
          $w_\text{1}$ & $w_\text{2}$ & $w_\text{3}$ \\
-        $\frac{1}{4} \cdot i$ & $i=1-j$ & 0.01
+        $\frac{1}{4} \cdot i$ & $i=1-j$ & 0.001
     \end{tabular}
     \caption{Weighting factor}
     \label{tab:weighting factor}
@@ -117,7 +117,7 @@ The procedure aims to generate more flexibility for the objective of grid servic
 \section{Workflow of the MPC script}
 \label{section:workflowMPC}
 The approach in the MPC script is determined by the use of the tool CasAdi. CasADi is an open-source tool for nonlinear optimisation and algorithmic differentiation and is characterised by a symbolic framework. Especially, mixed-integer optimal control problems, such as an MPC, are of particular interest \cite{JoelA.E.Andersson.2018}. We can combine CasAdi with MATLAB through a simple import.\newline
-The figure below gives an overview of the workflow of the MPC script. First, we create the parameter, all known sizes, and the optimisation variables symbolically. Then the inequalities of the constraints are set in a loop over the prediction horizon with the symbolic variables. The cost function is also indicated symbolically for the horizon. Afterwards, the initial values for the optimiser are determined. To specify the initial state for the first MPC step, we choose a constant control signal $\mathbf{u_k} = [0\enspace0]^T$, a state $\mathbf{x}$ within the temperature range, and determine with the Runge-Kutta method the curve over the horizon. We pass the values of the initial state of the optimisation variations and the parameters to the solver. Then, the optimisation problem is solved with the Ipopt (\textbf{I}nterior \textbf{P}oint \textbf{Opt}imiser) solver, which is appropriate for large and sparse nonlinear programming \cite{JoelA.E.Andersson.2018}. As a result, we obtain the optimised $\mathbf{u_k}$ over the horizon. Now, after each time step, a new initial state is calculated with the curves of the states and the output from the new disturbance variables and the optimum $\mathbf{u_k}$ over the horizon.
+The figure below gives an overview of the workflow of the MPC script. First, we create the parameter, all known sizes, and the optimisation variables symbolically. Then the inequalities of the constraints are set in a loop over the prediction horizon with the symbolic variables. The cost function is also indicated symbolically for the horizon. Afterwards, the initial values for the optimiser are determined. To specify the initial state for the first MPC step, we choose a constant control signal $\mathbf{u_k} = [0\enspace0]^T$, a state $\mathbf{x}$ within the temperature range, and determine with the Runge-Kutta method the curve over the horizon. A half charged water reservoir is a further assumption for the initial state. We pass the values of the initial state of the optimisation variations and the parameters to the solver. Then, the optimisation problem is solved with the Ipopt (\textbf{I}nterior \textbf{P}oint \textbf{Opt}imiser) solver, which is appropriate for large and sparse nonlinear programming \cite{JoelA.E.Andersson.2018}. As a result, we obtain the optimised $\mathbf{u_k}$ over the horizon. Now, after each time step, a new initial state is calculated with the curves of the states and the output from the new disturbance variables and the optimum $\mathbf{u_k}$ over the horizon.
     \begin{figure}[h]
             \centering
             \def\svgwidth{0.75\textwidth}
@@ -142,12 +142,46 @@ The theoretical considerations are inspected in the subsequent sections for the 
 
 \subsection{Average comfort and grid services over the weightings}
 \label{subsec:Average comfort and grid services over the weightings}
-
+The following figure presents the behaviour of the AC and GS for the different weightings $w_\text{1}$ and $w_\text{2}$ with $N = 24h$. We compare the behaviour also for different horizon $N$ to verify the feasibility and the expected behaviour. The corresponding figures are showed in \autoref{sec:Average comfort and grid services} and the values of AC and GS for different horizons exposed in the following tables.\newline
+We notice a monotone behaviour of the average comfort and the grid services according to their weightings and feasible solutions. The less costs with increasing horizon length is only for the average comfort notable, expecting the case $w_\text{1}=0$. In this case, we consider not the comfort in the cost function. Therefore, the values of AC are coincidental, also relating to the horizon length.\newline
+An explanation for higher cost in GS with longer horizon is that the thermal reaction of the building is known over a longer time and the control signal reacts early for a better adaption of the comfort.
     \begin{figure}[h]
             \centering
             \includegraphics[width=15cm,height=8cm]{figure/AC_und_GS_24h.eps}
            \caption{AC and GS for N = 24h}
             \label{fig:AC_und_GS_24h}
     \end{figure}
+    
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c}
+         weighting factor i&0&0.1&0.2&0.3&0.4&0.5&0.6&0.7&0.8&0.9&1  \\
+         \hline
+         AC by N = 12 h&\\
+         AC by N = 18 h&\\
+         AC by N = 24 h&\\
+         AC by N = 30 h&\\
+    \end{tabular}
+    \caption{AC for different N}
+    \label{tab:AC for different N}
+    \end{table}
+    
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c}
+         weighting factor i&0&0.1&0.2&0.3&0.4&0.5&0.6&0.7&0.8&0.9&1  \\
+         \hline
+         GS by N = 12 h&\\
+         GS by N = 18 h&\\
+         GS by N = 24 h&\\
+         GS by N = 30 h&\\
+    \end{tabular}
+    \caption{GS for different N}
+    \label{tab:GS for different N}
+\end{table}
+    
+
+     
+    
 \subsection{Choice of the horizon}
 \label{subsec:ChoiceHorizon}
