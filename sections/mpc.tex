@@ -102,7 +102,7 @@ The size of the cost for the requirements are different. When considering the co
     \centering
     \begin{tabular}{c|c|c}
          $w_\text{1}$ & $w_\text{2}$ & $w_\text{3}$ \\
-        $\frac{1}{4} \cdot i$ & $i=1-j$ & 0.001
+        $\frac{1}{4} \cdot i$ & $i=1-j$ & 0.01
     \end{tabular}
     \caption{Weighting factor}
     \label{tab:weighting factor}
@@ -112,7 +112,7 @@ Occupant comfort is only necessary if persons are present in the building. There
         \text{minimize} \sum_{k=1}^{N-1} w_\textbf{2}\cdot(u_\text{2,k}\cdot dP_\text{k})^2 + w_\text{3} \cdot \eta_\text{k}^2
         \label{eq:costfunctionAbwesenheit}
     \end{equation}
-The procedure aims to generate more flexibility for the objective of grid services. This scenario with the changing cost function is the basic scenario for this thesis.  %Weshalb so energie sparen erklären
+The procedure aims to generate more flexibility for the objective of grid services. We define this scenario with the changing cost function as the basic scenario for this thesis.  %Weshalb so energie sparen erklären
 
 \section{Workflow of the MPC script}
 \label{section:workflowMPC}
@@ -144,7 +144,7 @@ The theoretical considerations are inspected in the subsequent sections for the 
 \label{subsec:Average comfort and grid services over the weightings}
 The following figure presents the behaviour of the AC and GS for the different weightings $w_\text{1}$ and $w_\text{2}$ with $N = 24h$. We compare the behaviour also for different horizon $N$ to verify the feasibility and the expected behaviour. The corresponding figures are showed in \autoref{sec:Average comfort and grid services} and the values of AC and GS for different horizons exposed in the following tables.\newline
 We notice a monotone behaviour of the average comfort and the grid services according to their weightings until small discrepancies. A possibility for discrepancies could be that the optimiser find not the global optimum. We obtain feasible solutions until for $N=12 h$ and both weightings are $0.5$. The less costs with increasing horizon length is only for the average comfort notable, expecting the case $w_\text{1}=0$. In this case, we consider not the comfort in the cost function. Therefore, the values of AC are coincidental, also relating to the horizon length.\newline
-An explanation for higher cost in GS with longer horizon is that the thermal reaction of the building is known over a longer time and the control signal reacts early for a better adaption of the comfort.
+The explanation for higher cost in GS with longer horizon is that the thermal reaction of the building is known over a longer time and the control signal reacts early for a better adaption of the comfort.
     \begin{figure}[H]
             \centering
             \includegraphics[width=15cm,height=8cm]{figure/AC_und_GS_24h.eps}
@@ -182,3 +182,19 @@ An explanation for higher cost in GS with longer horizon is that the thermal rea
     
 \subsection{Choice of the horizon}
 \label{subsec:ChoiceHorizon}
+The literature recommends that the predictive horizon should depict the dynamics of the system. In this case, the temperature curves inside the reference building. Therefore, the following figure shows the $T_\text{inside}$ of the building over three days determined from the measurements as a single-zone building as explained in \autoref{ch:modelling}. We notice around every 24 h a periodic wave in the temperature curve, which is highlighted with vertical lines.\newline
+    \begin{figure}[H]
+            \centering
+            \includegraphics[width=15cm,height=5cm]{figure/Plot_T_inside_Prediction_zeigen.eps}
+           \caption{Measured data of the reference building: $T_\text{inside}$ over three days}
+            \label{fig:Plot_T_inside_Prediction_zeigen}
+    \end{figure}
+According to \autoref{fig:Plot_T_inside_Prediction_zeigen}, its suggested to choose the predictive horizon over one day. We examine this consideration by comparing costs over different horizons for an exemplary weighting. The following figure shows the curve of costs over the simulation period. The costs here are the sum of comfort and grid services. Here, the comfort according to the occupancy schedule is only considered when the occupants are in the building. Therefore, the peaks are recognizable, and from day four to the beginning of six, there are almost no costs, as this is the weekend.
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width=15cm,height=5cm]{figure/Gesamtkosten_Vergleich_horizonte.eps}
+           \caption{Curve of the sum of cost over simulation time for different $N$}
+            \label{fig:Gesamtkosten_Vergleich_horizonte}
+    \end{figure}
+The distinctions in costs at different horizons are as expected. The horizon $N = 12 h$ has the highest costs, while with the longer predictions, the costs decrease.\newline 
+We choose the horizon of 24 h because it represents the dynamic of the reference building and the costs are partly very similar to the next longer horizon of 30 h, e.g. in the last simulation days.
