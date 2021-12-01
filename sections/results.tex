@@ -1,24 +1,39 @@
 \chapter{Results}
 \label{ch:results}
-In this chapter, different scenarios are considered to answer the research question. Several scenarios are supposed to explain how the occupancy schedule affects energy consumption, grid service and comfort: (i) a scenario with an occupancy schedule, in which the MPC has to comply with fewer restrictions during the absence of occupants; (ii) a scenario that also has a lower temperature specification during the absence; and (iii) a scenario without an occupancy schedule. In the last section, the results are evaluated, and an answer to the research question is found.
+In this chapter, different scenarios are considered to answer the research question focusing on grid services. Several scenarios are supposed to explain how the occupancy schedule affects energy consumption, grid service and comfort: (i) a scenario with an occupancy schedule, in which the MPC has to comply with fewer restrictions during the absence of occupants; (ii) a scenario that also has a lower temperature specification during the absence; and (iii) a scenario without an occupancy schedule. In the last section, the results are evaluated, and an answer to the research question is found.
 
 \section{Results of the scenarios}
 \label{sec:ResultsScenarios}
-In diesem Kaptitel wird Umsetztung der verschiedenen Szenarien und die Temperaturverläufe/Ergebnisse präsentiert.
+In this section, the implementation of the different scenarios is explained and the results of the temperature and control signal curves are presented. Furthermore, energy consumption, comfort and grid services are evaluated.  
 
 \subsection{Presentation of the scenarios}
 \label{subsec:Presentation of the scenarios}
 
+\textbf{(i) The basic scenario:}\newline
+The first considered scenario is the basic scenario, which is explained in detail in \autoref{ch:mpc}. Summarised, we desire the $T_\text{inside}$ during the presence of occupants as 22°C. And we leave the optimiser free to find an optimal temperature in the specified temperature range during the absence realised by neglecting the comfort requirement in the cost function.\newline
+
+\textbf{(ii) Scenario 2:}\newline
+The Umweltbundesamt \cite{Umweltbundesamt.7.10.2021} recommends during the absence of persons a room temperature of 17°C. Therefore, we consider scenario 2 with the desired $T_\text{inside}$ during the presence of occupants with 22°C and during absence with 17°C. In the opposite to the basic scenario, we do not change the cost function \ref{eq:costfunctatsächlich} during presence and absence but the $y_\text{track}$. Using one more symbolic parameter in the optimisation, which is set by the occupancy schedule to $y_\text{track,day}$ or $y_\text{track,night}$ we achieve the implementation of scenario 2. In addition, the temperature range needs to enlarge because the lower bound requires to be under the requested temperature. Thus, we choose 16.5°C as a lower bound. The set of constraints changes to:
+\begin{equation}
+    \label{ConstraintYScenario2}
+    \mathbb{Y_k} = \{\mathbf{y_k}| 16.5 \text{°C} - \eta_k \prec T_\text{inside} \prec 26 \text{°C}+ \eta_k\} 
+\end{equation}
+The MPC algorithm has to handle significant fluctuations of the desired temperature. Therefore we reduce the weighting $w_\text{3}$ to minimum needed depending on the $w_\text{1}$ and $w_\text{2}$. In this way, we allow more deviations of the desired temperature to obtain a feasible solution of the MPC. \newline 
+
+\textbf{(iii) Scenario 3:}\newline
+Scenario 3 is for the optimisation problem the simplest one. The desired $T_\text{inside}$ is the 22°C over the complete simulation time. This case does also not consider the occupancy schedule. We can use the cost function \ref{eq:costfunctatsächlich} without changes during the time.
+
 \subsection{Results of the scenarios}
 \label{subsec:Results of the scenarios}
 
-
+%Verlauf temperatur und Stellgrößen, Angabe zu Energieverbrauch, Komfort und Grid services + nach verschiedenen Gewichten
 \section{Discussion}
 \label{sec:discussion}
 
 \subsection{Comparison of the scenarios}
 \label{subsec:Comparison fo the scenarios}
 
+ % Nur wegen Netzdienlichkeit Scenario 2 überhaupt interessant. 
 \subsection{General discussion about the approach}
 \label{subsec:General discussion about the approach}
 
