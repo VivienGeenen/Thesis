@@ -102,7 +102,7 @@ The magnitude of the costs of the requirements are different. When considering t
     \centering
     \begin{tabular}{c|c|c}
          $w_\text{1}$ & $w_\text{2}$ & $w_\text{3}$ \\
-        $\frac{1}{4} \cdot i$ & $i=1-j$ & 0.01
+        $\frac{1}{4} \cdot i_\text{1}$ & $i_\text{2}=1-i_\text{1}$ & 0.01
     \end{tabular}
     \caption{Weighting factor}
     \label{tab:weighting factor}
@@ -143,7 +143,7 @@ The theoretical considerations are inspected in the subsequent sections for the 
 \subsection{Average comfort and grid services over the weightings}
 \label{subsec:Average comfort and grid services over the weightings}
 The following figure presents the behaviour of AC and GS for the different weightings $w_\text{1}$ and $w_\text{2}$ with $N = 24h$. We also compare the behaviour for different horizon $N$ to verify the feasibility and the expected behaviour. The corresponding figures are shown in \autoref{sec:Average comfort and grid services} and the values of AC and GS for different horizons are displayed in the following tables.\newline
-We notice a monotone behaviour of the average comfort and the grid services according to their weightings apart from small discrepancies. A possibility for discrepancies could be that the optimiser find not the global optimum. We obtain feasible solutions apart from $N=12 h$ and both weightings are $0.5$. The less costs with increasing horizon length is only for the average comfort notable, expecting the case $w_\text{1}=0$. In this case, we consider not the comfort in the cost function. Therefore, the values of AC are coincidental, also relating to the horizon length.\newline
+We notice a monotone behaviour of the average comfort and the grid services according to their weightings apart from small discrepancies. A possibility for discrepancies could be that the optimiser find not the global optimum. We obtain feasible solutions apart from $N=12 h$ and both weightings are $0.5$. The lower costs with increasing horizon length are only for the average comfort notable, expecting the case $w_\text{1}=0$. In this case, we consider not the comfort in the cost function. Therefore, the values of AC are random, also relating to the horizon length.\newline
 The explanation for higher cost in GS with longer horizon is that the thermal reaction of the building is known over a longer time and the control signal reacts early for a better adaption of the comfort.
     \begin{figure}[H]
             \centering
