@@ -54,19 +54,19 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{HP_grid2.pdf}}%
-    \put(0.723432,0.77187757){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.1 \& i_2 = 0.9 \end{tabular}}}}%
-    \put(0.723432,0.757954){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.9 \& i_2 = 0.1 \end{tabular}}}}%
-    \put(0.72381695,0.74316015){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Electricity price in €/Wh\end{tabular}}}}%
+    \put(0.723432,0.77187757){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P_\text{HP}: i_\text{1} = 0.1 \& i_\text{2} = 0.9$ \end{tabular}}}}%
+    \put(0.723432,0.757954){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P_\text{HP}: i_\text{1} = 0.9 \& i_\text{2} = 0.1$ \end{tabular}}}}%
+    \put(0.72381695,0.74316015){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Electricity price in $\frac{\text{\euro}}{Wh}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{HP_grid2.pdf}}%
-    \put(0.74779827,0.16272063){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.1 \& i_2 = 0.9 \end{tabular}}}}%
-    \put(0.74779827,0.14879706){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.9 \& i_2 = 0.1 \end{tabular}}}}%
-    \put(0.74818322,0.13400321){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Electricity price in €/Wh\end{tabular}}}}%
+    \put(0.74779827,0.16272063){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P_\text{HP}: i_\text{1} = 0.1 \& i_\text{2} = 0.9$ \end{tabular}}}}%
+    \put(0.74779827,0.14879706){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P_\text{HP}: i_\text{1} = 0.9 \& i_\text{2} = 0.1$ \end{tabular}}}}%
+    \put(0.74818322,0.13400321){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Electricity price in $\frac{\text{\euro}}{Wh}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{HP_grid2.pdf}}%
-    \put(0.73155408,0.49236422){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.1 \& i_2 = 0.9 \end{tabular}}}}%
-    \put(0.73155408,0.47844065){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.9 \& i_2 = 0.1 \end{tabular}}}}%
-    \put(0.73193904,0.4636468){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Electricity price in €/Wh\end{tabular}}}}%
-    \put(0.72981363,0.16040003){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.1 \& i_2 = 0.9 \end{tabular}}}}%
-    \put(0.72981363,0.14647646){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.9 \& i_2 = 0.1 \end{tabular}}}}%
-    \put(0.73019859,0.13168261){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Electricity price in €/Wh\end{tabular}}}}%
+    \put(0.73155408,0.49236422){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P_\text{HP}: i_\text{1} = 0.1 \& i_\text{2} = 0.9$ \end{tabular}}}}%
+    \put(0.73155408,0.47844065){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P_\text{HP}: i_\text{1} = 0.9 \& i_\text{2} = 0.1$ \end{tabular}}}}%
+    \put(0.73193904,0.4636468){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Electricity price in$\frac{\text{\euro}}{Wh}$\end{tabular}}}}%
+    \put(0.72981363,0.16040003){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P_\text{HP}: i_\text{1} = 0.1 \& i_\text{2} = 0.9$ \end{tabular}}}}%
+    \put(0.72981363,0.14647646){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P_\text{HP}: i_\text{1} = 0.9 \& i_\text{2} = 0.1$ \end{tabular}}}}%
+    \put(0.73019859,0.13168261){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Electricity price in $\frac{\text{\euro}}{Wh}$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
