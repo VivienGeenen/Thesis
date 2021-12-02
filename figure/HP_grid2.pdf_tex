@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{491.70464881bp}%
+    \setlength{\unitlength}{461.70367262bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,162 +50,23 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.9821394)%
+  \begin{picture}(1,0.91247947)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{HP_grid2.pdf}}%
-    \put(0.12487673,0.69069017){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.21098561,0.69069017){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.29709451,0.69069017){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(0.3832034,0.69069017){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
-    \put(0.46931228,0.69069017){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
-    \put(0.55542113,0.69069017){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
-    \put(0.64153004,0.69069017){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}6\end{tabular}}}}%
-    \put(0.72763889,0.69069017){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}7\end{tabular}}}}%
-    \put(0.81374782,0.69069017){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8\end{tabular}}}}%
-    \put(0.89985667,0.69069017){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9\end{tabular}}}}%
+    \put(0.723432,0.77187757){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.1 \& i_2 = 0.9 \end{tabular}}}}%
+    \put(0.723432,0.757954){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.9 \& i_2 = 0.1 \end{tabular}}}}%
+    \put(0.72381695,0.74316015){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Electricity price in €/Wh\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{HP_grid2.pdf}}%
-    \put(0.1138841,0.70091429){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.09621739,0.72908198){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}200\end{tabular}}}}%
-    \put(0.09621739,0.75724966){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}400\end{tabular}}}}%
-    \put(0.09621739,0.78541734){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}600\end{tabular}}}}%
-    \put(0.09621739,0.81358501){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}800\end{tabular}}}}%
-    \put(0.08797292,0.84175269){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1000\end{tabular}}}}%
-    \put(0.08797292,0.86992036){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1200\end{tabular}}}}%
-    \put(0.08797292,0.89808804){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1400\end{tabular}}}}%
-    \put(0.08797292,0.92625571){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1600\end{tabular}}}}%
-    \put(0.08797292,0.95442339){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1800\end{tabular}}}}%
+    \put(0.74779827,0.16272063){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.1 \& i_2 = 0.9 \end{tabular}}}}%
+    \put(0.74779827,0.14879706){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.9 \& i_2 = 0.1 \end{tabular}}}}%
+    \put(0.74818322,0.13400321){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Electricity price in €/Wh\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{HP_grid2.pdf}}%
-    \put(0.91084928,0.70091429){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.91084928,0.73712988){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.2\end{tabular}}}}%
-    \put(0.91084928,0.77334546){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.4\end{tabular}}}}%
-    \put(0.91084928,0.80956105){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.6\end{tabular}}}}%
-    \put(0.91084928,0.84577663){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.8\end{tabular}}}}%
-    \put(0.91084928,0.88199222){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.91084928,0.91820781){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1.2\end{tabular}}}}%
-    \put(0.91084928,0.9544234){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1.4\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=4]{HP_grid2.pdf}}%
-    \put(0.91752339,0.96366206){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%
-    \put(0.9351901,0.96809662){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-4\end{tabular}}}}%
-    \put(0.45583372,0.9634773){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{B}\textbf{a}\textbf{s}\textbf{i}\textbf{c}\textbf{ }\textbf{s}\textbf{c}\textbf{e}\textbf{n}\textbf{a}\textbf{r}\textbf{i}\textbf{o}\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=5]{HP_grid2.pdf}}%
-    \put(0.72318951,0.8321034){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P\end{tabular}}}}%
-    \put(0.73378954,0.82766884){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}HP\end{tabular}}}}%
-    \put(0.75027848,0.8321034){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}: i\end{tabular}}}}%
-    \put(0.76205629,0.82766884){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.77305205,0.8321034){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}= 0.1 \& i\end{tabular}}}}%
-    \put(0.82565646,0.82766884){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(0.83665223,0.8321034){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}= 0.9\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=6]{HP_grid2.pdf}}%
-    \put(0.72318951,0.81510425){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P\end{tabular}}}}%
-    \put(0.73378954,0.81066969){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}HP\end{tabular}}}}%
-    \put(0.75027848,0.81510425){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}: i\end{tabular}}}}%
-    \put(0.76205629,0.81066969){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.77305205,0.81510425){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}= 0.9 \& i\end{tabular}}}}%
-    \put(0.82565646,0.81066969){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(0.83665223,0.81510425){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}= 0.1\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=7]{HP_grid2.pdf}}%
-    \put(0.12920215,0.3566659){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.21486115,0.3566659){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.30052015,0.3566659){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(0.38617914,0.3566659){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
-    \put(0.47183814,0.3566659){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
-    \put(0.55749713,0.3566659){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
-    \put(0.64315613,0.3566659){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}6\end{tabular}}}}%
-    \put(0.72881513,0.3566659){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}7\end{tabular}}}}%
-    \put(0.81447412,0.3566659){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8\end{tabular}}}}%
-    \put(0.90013312,0.3566659){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=8]{HP_grid2.pdf}}%
-    \put(0.11825032,0.36688276){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.10064915,0.39503042){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}200\end{tabular}}}}%
-    \put(0.10064915,0.42317807){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}400\end{tabular}}}}%
-    \put(0.10064915,0.45132573){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}600\end{tabular}}}}%
-    \put(0.10064915,0.47947338){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}800\end{tabular}}}}%
-    \put(0.09243528,0.50762103){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1000\end{tabular}}}}%
-    \put(0.09243528,0.53576868){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1200\end{tabular}}}}%
-    \put(0.09243528,0.56391634){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1400\end{tabular}}}}%
-    \put(0.09243528,0.59206398){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1600\end{tabular}}}}%
-    \put(0.09243528,0.62021164){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1800\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=9]{HP_grid2.pdf}}%
-    \put(0.91108494,0.36688276){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.91108494,0.4030726){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.2\end{tabular}}}}%
-    \put(0.91108494,0.43926244){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.4\end{tabular}}}}%
-    \put(0.91108494,0.47545228){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.6\end{tabular}}}}%
-    \put(0.91108494,0.51164212){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.8\end{tabular}}}}%
-    \put(0.91108494,0.54783196){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.91108494,0.5840218){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1.2\end{tabular}}}}%
-    \put(0.91108494,0.62021165){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1.4\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=10]{HP_grid2.pdf}}%
-    \put(0.91773428,0.62944374){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%
-    \put(0.93533545,0.63387515){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-4\end{tabular}}}}%
-    \put(0.47535888,0.62925911){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{S}\textbf{c}\textbf{e}\textbf{n}\textbf{a}\textbf{r}\textbf{i}\textbf{o}\textbf{ }\textbf{2}\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=11]{HP_grid2.pdf}}%
-    \put(0.73233536,0.53121418){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P\end{tabular}}}}%
-    \put(0.74289606,0.52678277){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}HP\end{tabular}}}}%
-    \put(0.75932381,0.53121418){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}: i\end{tabular}}}}%
-    \put(0.77105792,0.52678277){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.78201288,0.53121418){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}= 0.1 \& i\end{tabular}}}}%
-    \put(0.83442211,0.52678277){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(0.84537707,0.53121418){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}= 0.9\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=12]{HP_grid2.pdf}}%
-    \put(0.73233536,0.51422711){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P\end{tabular}}}}%
-    \put(0.74289606,0.5097957){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}HP\end{tabular}}}}%
-    \put(0.75932381,0.51422711){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}: i\end{tabular}}}}%
-    \put(0.77105792,0.5097957){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.78201288,0.51422711){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}= 0.9 \& i\end{tabular}}}}%
-    \put(0.83442211,0.5097957){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(0.84537707,0.51422711){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}= 0.1\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=13]{HP_grid2.pdf}}%
-    \put(0.125,0.01963499){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.21108491,0.01963499){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.29716981,0.01963499){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(0.38325472,0.01963499){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
-    \put(0.46933962,0.01963499){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
-    \put(0.55542453,0.01963499){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
-    \put(0.64150943,0.01963499){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}6\end{tabular}}}}%
-    \put(0.72759434,0.01963499){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}7\end{tabular}}}}%
-    \put(0.81367925,0.01963499){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8\end{tabular}}}}%
-    \put(0.89976415,0.01963499){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=14]{HP_grid2.pdf}}%
-    \put(0.11399371,0.02982065){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.09630503,0.05788233){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}200\end{tabular}}}}%
-    \put(0.09630503,0.08594401){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}400\end{tabular}}}}%
-    \put(0.09630503,0.11400569){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}600\end{tabular}}}}%
-    \put(0.09630503,0.14206736){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}800\end{tabular}}}}%
-    \put(0.08805031,0.17012904){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1000\end{tabular}}}}%
-    \put(0.08805031,0.19819071){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1200\end{tabular}}}}%
-    \put(0.08805031,0.22625239){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1400\end{tabular}}}}%
-    \put(0.08805031,0.25431406){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1600\end{tabular}}}}%
-    \put(0.08805031,0.28237574){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1800\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=15]{HP_grid2.pdf}}%
-    \put(0.91077042,0.02982065){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.91077042,0.06589994){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.2\end{tabular}}}}%
-    \put(0.91077042,0.10197924){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.4\end{tabular}}}}%
-    \put(0.91077042,0.13805854){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.6\end{tabular}}}}%
-    \put(0.91077042,0.17413784){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0.8\end{tabular}}}}%
-    \put(0.91077042,0.21021714){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.91077042,0.24629644){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1.2\end{tabular}}}}%
-    \put(0.91077042,0.28237575){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1.4\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=16]{HP_grid2.pdf}}%
-    \put(0.91745283,0.29157964){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%
-    \put(0.93514151,0.29599752){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-4\end{tabular}}}}%
-    \put(0.47287787,0.29139558){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{S}\textbf{c}\textbf{e}\textbf{n}\textbf{a}\textbf{r}\textbf{i}\textbf{o}\textbf{ }\textbf{3}\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=17]{HP_grid2.pdf}}%
-    \put(0.72641509,0.17303337){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P\end{tabular}}}}%
-    \put(0.7370283,0.1686155){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}HP\end{tabular}}}}%
-    \put(0.75353774,0.17303337){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}: i\end{tabular}}}}%
-    \put(0.76533019,0.1686155){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.77633962,0.17303337){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}= 0.1 \& i\end{tabular}}}}%
-    \put(0.82900943,0.1686155){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(0.84001887,0.17303337){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}= 0.9\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=18]{HP_grid2.pdf}}%
-    \put(0.72641509,0.15609819){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P\end{tabular}}}}%
-    \put(0.7370283,0.15168032){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}HP\end{tabular}}}}%
-    \put(0.75353774,0.15609819){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}: i\end{tabular}}}}%
-    \put(0.76533019,0.15168032){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.77633962,0.15609819){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}= 0.9 \& i\end{tabular}}}}%
-    \put(0.82900943,0.15168032){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(0.84001887,0.15609819){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}= 0.1\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=19]{HP_grid2.pdf}}%
+    \put(0.73155408,0.49236422){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.1 \& i_2 = 0.9 \end{tabular}}}}%
+    \put(0.73155408,0.47844065){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.9 \& i_2 = 0.1 \end{tabular}}}}%
+    \put(0.73193904,0.4636468){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Electricity price in €/Wh\end{tabular}}}}%
+    \put(0.72981363,0.16040003){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.1 \& i_2 = 0.9 \end{tabular}}}}%
+    \put(0.72981363,0.14647646){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}P_{HP}: i_1 = 0.9 \& i_2 = 0.1 \end{tabular}}}}%
+    \put(0.73019859,0.13168261){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Electricity price in €/Wh\end{tabular}}}}%
   \end{picture}%
 \endgroup%
