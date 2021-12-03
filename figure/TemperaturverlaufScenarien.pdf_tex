@@ -1,6 +1,6 @@
 %% Creator: Inkscape 1.0.2-2 (e86c870879, 2021-01-15), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'Temperaturverlauf Scenarien.pdf' (pdf, eps, ps)
+%% Accompanies image file 'TemperaturverlaufScenarien.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -53,7 +53,7 @@
   \begin{picture}(1,0.93677997)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{Temperaturverlauf Scenarien.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{TemperaturverlaufScenarien.pdf}}%
     \put(0.125,0.44288712){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
     \put(0.21106557,0.44288712){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
     \put(0.29713115,0.44288712){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
@@ -64,7 +64,7 @@
     \put(0.72745902,0.44288712){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}7\end{tabular}}}}%
     \put(0.81352459,0.44288712){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8\end{tabular}}}}%
     \put(0.89959016,0.44288712){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{Temperaturverlauf Scenarien.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{TemperaturverlaufScenarien.pdf}}%
     \put(0.09175774,0.45833677){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}292\end{tabular}}}}%
     \put(0.07673042,0.49295773){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}292.5\end{tabular}}}}%
     \put(0.09175774,0.52757868){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}293\end{tabular}}}}%
@@ -75,13 +75,13 @@
     \put(0.07673042,0.70068344){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}295.5\end{tabular}}}}%
     \put(0.09175774,0.7353044){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}296\end{tabular}}}}%
     \put(0.07673042,0.76992535){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}296.5\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{Temperaturverlauf Scenarien.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{TemperaturverlaufScenarien.pdf}}%
     \put(0.74302205,0.91150389){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Basic Scenario\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=4]{Temperaturverlauf Scenarien.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{TemperaturverlaufScenarien.pdf}}%
     \put(0.74302205,0.88430428){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 2\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=5]{Temperaturverlauf Scenarien.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{TemperaturverlaufScenarien.pdf}}%
     \put(0.74302205,0.85710466){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 3\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=6]{Temperaturverlauf Scenarien.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{TemperaturverlaufScenarien.pdf}}%
     \put(0.12431694,0.02420479){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
     \put(0.21038251,0.02420479){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
     \put(0.29644809,0.02420479){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
@@ -92,7 +92,7 @@
     \put(0.72677596,0.02420479){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}7\end{tabular}}}}%
     \put(0.81284153,0.02420479){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8\end{tabular}}}}%
     \put(0.8989071,0.02420479){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=7]{Temperaturverlauf Scenarien.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{TemperaturverlaufScenarien.pdf}}%
     \put(0.09107468,0.03965948){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}292\end{tabular}}}}%
     \put(0.07604736,0.07429169){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}292.5\end{tabular}}}}%
     \put(0.09107468,0.10892391){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}293\end{tabular}}}}%
@@ -103,6 +103,6 @@
     \put(0.07604736,0.282085){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}295.5\end{tabular}}}}%
     \put(0.09107468,0.31671722){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}296\end{tabular}}}}%
     \put(0.07604736,0.35134944){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}296.5\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=8]{Temperaturverlauf Scenarien.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{TemperaturverlaufScenarien.pdf}}%
   \end{picture}%
 \endgroup%
