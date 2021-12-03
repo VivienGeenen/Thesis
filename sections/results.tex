@@ -27,7 +27,7 @@ Scenario 3 is for the optimisation problem the simplest one. The desired $T_\tex
 \label{subsec:Results of the scenarios}
     \begin{figure}[h]
            \centering
-        \def\svgwidth{0.85\textwidth}
+        \def\svgwidth{1\textwidth}
         \input{figure/TemperaturverlaufScenarien.pdf_tex}
         \caption{}
          \label{fig:TemperaturverlaufScenarien}
@@ -35,7 +35,7 @@ Scenario 3 is for the optimisation problem the simplest one. The desired $T_\tex
     
     \begin{figure}[h]
            \centering
-        \def\svgwidth{1\textwidth}
+        \def\svgwidth{1.05\textwidth}
         \input{figure/HeizverlaufGewichte.pdf_tex}
         \caption{}
          \label{fig:HeizverlaufGewichte}
@@ -43,11 +43,35 @@ Scenario 3 is for the optimisation problem the simplest one. The desired $T_\tex
     
     \begin{figure}[h]
            \centering
-        \def\svgwidth{0.85\textwidth}
+        \def\svgwidth{0.9\textwidth}
         \input{figure/HP_grid2.pdf_tex}
         \caption{}
          \label{fig:HP_grid}
     \end{figure}
+    
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{c||c|c|c}
+          $i_\text{1}$  &  Basic scenario & Scenario 2 & Scenario 3\\
+          \hline  \hline
+             0.1 & 0.77 & 1.46 & 0.55\\
+             0.9 & 0.13 & 2.02 & 0.17\\
+        \end{tabular}
+        \caption{Caption}
+        \label{tab:AverageComfortScenarien}
+    \end{table}
+    
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{c||c|c|c}
+          $i_\text{2}$  &  Basic scenario & Scenario 2 & Scenario 3\\
+          \hline  \hline
+             0.1 & 9.00 & 6.36 & 4.57\\
+             0.9 & 2.85 & 9.00 & 10.40\\
+        \end{tabular}
+        \caption{Caption}
+        \label{tab:GridserviceScenarien}
+    \end{table}
 %Verlauf temperatur und Stellgrößen, Angabe zu Energieverbrauch, Komfort und Grid services + nach verschiedenen Gewichten
 \section{Discussion}
 \label{sec:discussion}
