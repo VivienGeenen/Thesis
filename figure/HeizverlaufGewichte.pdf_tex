@@ -50,7 +50,7 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.7452987)%
+  \begin{picture}(1,0.76559272)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{HeizverlaufGewichte.pdf}}%
@@ -72,11 +72,11 @@
     \put(0.08333333,0.60722628){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4000\end{tabular}}}}%
     \put(0.08333333,0.65918969){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}6000\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{HeizverlaufGewichte.pdf}}%
-    \put(0.74937192,0.73037787){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Basic Scenario\end{tabular}}}}%
+    \put(0.72695696,0.74483737){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Basic Scenario\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{HeizverlaufGewichte.pdf}}%
-    \put(0.74937192,0.71432176){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 2\end{tabular}}}}%
+    \put(0.72695696,0.72250279){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 2\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{HeizverlaufGewichte.pdf}}%
-    \put(0.74937192,0.69826565){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 3\end{tabular}}}}%
+    \put(0.72695696,0.70016822){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 3\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{HeizverlaufGewichte.pdf}}%
     \put(0.125,0.02061972){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
     \put(0.21109655,0.02061972){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
