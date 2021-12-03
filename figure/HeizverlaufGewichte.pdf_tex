@@ -1,0 +1,78 @@
+%% Creator: Inkscape 1.0.2-2 (e86c870879, 2021-01-15), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'HeizverlaufGewichte.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{430.01732452bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.80185458)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{HeizverlaufGewichte.pdf}}%
+    \put(0.12638479,0.43400732){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0123456789\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{HeizverlaufGewichte.pdf}}%
+    \put(0.08726466,0.44724727){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-3000\\-2000\\-10000\\1000\\2000\\3000\\4000\\5000\\6000\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{HeizverlaufGewichte.pdf}}%
+    \put(0.79051753,0.73350439){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Basic Scenario\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{HeizverlaufGewichte.pdf}}%
+    \put(0.79051753,0.71771216){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{HeizverlaufGewichte.pdf}}%
+    \put(0.79051753,0.70191993){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario3\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{HeizverlaufGewichte.pdf}}%
+    \put(0.12587413,0.02240024){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0123456789\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{HeizverlaufGewichte.pdf}}%
+    \put(0.08352758,0.03670193){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-3000\\-2000\\-10000\\1000\\2000\\3000\\4000\\5000\\6000\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{HeizverlaufGewichte.pdf}}%
+    \put(0.7992381,0.32189337){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Basic Scenario\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{HeizverlaufGewichte.pdf}}%
+    \put(0.7992381,0.30610114){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{HeizverlaufGewichte.pdf}}%
+    \put(0.7992381,0.29030892){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario3\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{HeizverlaufGewichte.pdf}}%
+  \end{picture}%
+\endgroup%
