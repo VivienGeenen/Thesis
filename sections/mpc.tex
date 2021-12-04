@@ -128,13 +128,14 @@ The approach in the MPC script is determined by the use of the tool CasAdi. CasA
     
 \section{Choice of weightings and horizon}
 \label{Choise of weigtings and horizon}
-In the following, we analyse the horizon length $N$ \nomenclature[P]{N}{ length of the predictive horizon} and the effects of the weightings on the requirement of occupancy comfort and grid services for the basic scenario. For a better comparison we define an average comfort AC \nomenclature[A]{AC}{Average Comfort}, which is the average deviation of $y$ from $y_\text{track}$ over the simulation time only during presence of occupants, expressed by $y_\text{k,occ} - y_\text{track}$. The calculation of AC is described in the following equation with the number of time steps with occupants $n_\text{occ}$.
+In the following, we analyse the horizon length $N$ \nomenclature[P]{N}{ length of the predictive horizon} and the effects of the weightings on the requirement of occupancy comfort and grid services for the basic scenario. For a better comparison we define an average comfort (AC) \nomenclature[A]{AC}{Average Comfort}, which is the average deviation of $y$ from $y_\text{track}$ over the simulation time only during presence of occupants, expressed by $y_\text{k,occ} - y_\text{track}$. The calculation of AC is described in the following equation with the number of time steps with occupants $n_\text{occ}$.
 \begin{equation}
     \label{eq:average comfort}
     AC = \frac{\sum_{k,occ}^{n_\text{occ}} |y_\text{k,occ} - y_\text{track}|}{n_\text{occ}}
 \end{equation}
-On the other hand, we define the costs for grid services GS \nomenclature[A]{GS}{Costs for grid services} over the whole simulation time (with the number of time steps $n$) as the sum of the electrical power of the heat pump $P_\text{HP,k}$ multiplied with the dynamic price of electricity $Pr_\text{k}$:
+On the other hand, we define the costs for grid services (GS) \nomenclature[A]{GS}{Costs for grid services} over the whole simulation time (with the number of time steps $n$) as the sum of the electrical power of the heat pump $P_\text{HP,k}$ multiplied with the dynamic price of electricity $Pr_\text{k}$:
 \begin{equation}
+\label{eq:GridService123}
     GS = \sum_{k}^n P_{HP,k}\cdot Pr_\text{k}
 \end{equation}
 In theoretical considerations, we should obtain a higher level of AC with less weighting of comfort and a higher level of GS with less weighting of grid services. Furthermore, a larger or shorter horizon $N$ differs in computation time and finding the optimal solution. While a longer N requires more computation time and may not find a solution, a shorter $N$ may not find the optimal solution. Due to finding the optimal solution a larger horizon should result in less costs for the requirements. In general, the horizon should depict the dynamics of the controlled system. \newline
