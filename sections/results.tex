@@ -25,7 +25,7 @@ Scenario 3 is the simplest optimisation problem. The desired $T_\text{inside}$ i
 
 \subsection{Results of the scenarios}
 \label{subsec:Results of the scenarios}
-To point out the influence of the weightings in the cost function, all results are presented for two representative weights, which enables to focus on the requirements comfort or grid services. The chosen weightings are $i_\text{1} = 0.1 \vee 0.9$ and $i_\text{2} = 0.9 \vee 0.1$. In the following the resulting inside temperature $T_\text{inside}$, the heat flow $\dot{Q}_\text{heating}$, and the electrical consumption of the heat pump $P_\text{HP}$ are shown over the simulation period, as well as the AC and GS for every scenario.\newline
+To point out the influence of the weightings in the cost function, all results are presented for two representative weights, which enables to focus on the requirements comfort or grid services. The chosen weightings are $i_\text{1} = 0.1 \vee 0.9$ and $i_\text{2} = 0.9 \vee 0.1$. In the following the resulting inside temperature $T_\text{inside}$, the control signals  $\dot{Q}_\text{heating}$ and $\dot{Q}_\text{HP}$, and the electrical consumption of the heat pump $P_\text{HP}$ are shown over the simulation period, as well as the AC and GS for every scenario.\newline
 
 \autoref{fig:TemperaturverlaufScenarien} shows the curves of $T_\text{inside}$ of the three different scenarios over nine days, the simulation period. The chosen unit for temperatures is Kelvin. According to a conversion of the tracking temperatures in Kelvin, we obtain $y_\text{track} = 295.15 K$, $y_\text{track,presence} = 295.15 K$, and $y_\text{track,absence} = 290.15 K$. We separate between the higher grid service $i_\text{2} = 0.9$ and lower comfort requirement $i_\text{1} = 0.1$ in the above diagram and the lower grid service $i_\text{1} = 0.1$ and higher comfort requirement $i_\text{1} = 0.9$ in the below diagram.\newline 
 The inside temperature curve of scenario 2 runs below $T_\text{inside}$ of both other scenarios. Scenario 3 is closer to the $y_\text{track}$ than the basic scenario. 
@@ -46,11 +46,13 @@ In \autoref{fig:HeizverlaufGewichte}, $\dot{Q}_\text{heating}$ is depicted over 
          \label{fig:HeizverlaufGewichte}
     \end{figure}
     
+\autoref{fig:HPwaermestroeme} illustrates the heat flow $\dot{Q}_\text{HP}$ for all scenarios over the simulation time with both weightings. We notice that scenario 2 differs stronger of the other scenarios and the basic scenario has a constant period during from day three to five. The values are in both diagrams positive and negative and we see higher absolute values in the second diagram with $i_\text{1} = 0.9 and i_\text{2} = 0.1$.
+
     \begin{figure}[H]
            \centering
         \def\svgwidth{1\textwidth}
         \input{figure/HPwaermestroeme.pdf_tex}
-        \caption{}
+        \caption{$\dot{Q}_\text{HP}$ for the three scenarios for $i_\text{1} = 0.1 and i_\text{2} = 0.9$ and $i_\text{1} = 0.9 and i_\text{2} = 0.1$}
          \label{fig:HPwaermestroeme}
     \end{figure}
     
@@ -62,7 +64,8 @@ In the following \autoref{fig:HP_grid} the structure for the comparison between 
         \caption{}
          \label{fig:HP_grid}
     \end{figure}
-\autoref{tab:AverageComfortScenarien} presents the average comfort (AC) of the scenarios calculated according to \autoref{eq:average comfort}. We also differentiate the weighting of comfort with $i_\text{1} =$ 0.1 or 0.9. 
+    
+\autoref{tab:AverageComfortScenarien} presents the average comfort (AC) of the scenarios calculated according to \autoref{eq:average comfort}. We also differentiate the weighting of comfort with $i_\text{1} =$ 0.1 or 0.9. Scenario 2 has the highest values of AC and the basic scenario and scenario 3 changes the order with the weighting. Only scenario 2 has a high AC with higher weighting of comfort.  
     \begin{table}[H]
         \centering
         \begin{tabular}{c||c|c|c}
@@ -71,10 +74,11 @@ In the following \autoref{fig:HP_grid} the structure for the comparison between 
              0.1 & 0.77 & 1.46 & 0.55\\
              0.9 & 0.13 & 2.02 & 0.17\\
         \end{tabular}
-        \caption{Caption}
+        \caption{AC of the scenarios according to $i_\text{1}$}
         \label{tab:AverageComfortScenarien}
     \end{table}
-\autoref{tab:GridserviceScenarien} shows the equivalent of the table above but grid services (GS) is of interest, also with two weightings  $i_\text{2} =$ 0.1 or 0.9. The values of GS are presented for every scenario calculated according to \autoref{eq:GridService123}.
+    
+\autoref{tab:GridserviceScenarien} shows the equivalent of the table above but grid services (GS) is of interest, also with two weightings  $i_\text{2} =$ 0.1 or 0.9. The values of GS are presented for every scenario calculated according to \autoref{eq:GridService123}. Apart from the basic scenario, the higher values of the other scenarios depend on higher weighting. 
     \begin{table}[H]
         \centering
         \begin{tabular}{c||c|c|c}
@@ -83,10 +87,23 @@ In the following \autoref{fig:HP_grid} the structure for the comparison between 
              0.1 & 9.00 & 6.36 & 4.57\\
              0.9 & 2.85 & 9.00 & 10.40\\
         \end{tabular}
-        \caption{Caption}
+        \caption{GS of the scenarios according to $i_\text{2}$}
         \label{tab:GridserviceScenarien}
     \end{table}
-%Verlauf temperatur und Stellgrößen, Angabe zu Energieverbrauch, Komfort und Grid services + nach verschiedenen Gewichten
+    
+\autoref{tab:EnergyConsumpScenarien} depicts the energy consumption in kWh as the sum of the power of $P_\text{HP}$ over the simulation period. We separate the weighting consideration of every scenario. All scenarios have higher energy consumption with higher weighting on the comfort requirement in the cost function. The basic scenario has the lowest values. 
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{c||c|c|c}
+          $i_\text{1} \ \& \  i_\text{2}$  &  Basic scenario & Scenario 2 & Scenario 3\\
+          \hline  \hline
+             0.1 \& 0.9 & 237.46 kWh & 648.85 kWh & 411.09 kWh\\
+             0.9 \& 0.1 & 772.22 kWh & 986.10 kWh & 875.61 kWh\\
+        \end{tabular}
+        \caption{Energy consumption of the scenarios according to the weighting}
+        \label{tab:EnergyConsumptionScenarien}
+    \end{table}
+
 \section{Discussion}
 \label{sec:discussion}
 
