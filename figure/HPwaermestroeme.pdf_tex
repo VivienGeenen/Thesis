@@ -1,0 +1,99 @@
+%% Creator: Inkscape 1.0.2-2 (e86c870879, 2021-01-15), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'HPwaermestroeme.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{472.49997619bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.91345069)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{HPwaermestroeme.pdf}}%
+    \put(0.12380952,0.44835983){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
+    \put(0.20987655,0.44835983){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.29594356,0.44835983){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0.3820106,0.44835983){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
+    \put(0.46807758,0.44835983){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
+    \put(0.55414462,0.44835983){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
+    \put(0.64021166,0.44835983){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}6\end{tabular}}}}%
+    \put(0.72627864,0.44835983){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}7\end{tabular}}}}%
+    \put(0.81234568,0.44835983){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8\end{tabular}}}}%
+    \put(0.89841269,0.44835983){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{HPwaermestroeme.pdf}}%
+    \put(0.0594709,0.46825399){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-10000\end{tabular}}}}%
+    \put(0.07058201,0.51243388){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-8000\end{tabular}}}}%
+    \put(0.07058201,0.55661378){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-6000\end{tabular}}}}%
+    \put(0.07058201,0.60079367){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-4000\end{tabular}}}}%
+    \put(0.07058201,0.64497356){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-2000\end{tabular}}}}%
+    \put(0.11026455,0.68915346){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
+    \put(0.07693122,0.73333335){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2000\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{HPwaermestroeme.pdf}}%
+    \put(0.6874517,0.88255384){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Basic scenario\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{HPwaermestroeme.pdf}}%
+    \put(0.6874517,0.84914212){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{HPwaermestroeme.pdf}}%
+    \put(0.6874517,0.8157304){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 3\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{HPwaermestroeme.pdf}}%
+    \put(0.12380952,0.03248677){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
+    \put(0.20987655,0.03248677){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.29594356,0.03248677){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0.3820106,0.03248677){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}%
+    \put(0.46807758,0.03248677){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
+    \put(0.55414462,0.03248677){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
+    \put(0.64021166,0.03248677){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}6\end{tabular}}}}%
+    \put(0.72627864,0.03248677){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}7\end{tabular}}}}%
+    \put(0.81234568,0.03248677){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}8\end{tabular}}}}%
+    \put(0.89841269,0.03248677){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}9\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{HPwaermestroeme.pdf}}%
+    \put(0.0594709,0.05238095){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-10000\end{tabular}}}}%
+    \put(0.07058201,0.14175103){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-5000\end{tabular}}}}%
+    \put(0.11026455,0.23112114){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
+    \put(0.07693122,0.32049124){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5000\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{HPwaermestroeme.pdf}}%
+  \end{picture}%
+\endgroup%
