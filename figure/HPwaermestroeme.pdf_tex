@@ -86,11 +86,11 @@
     \put(0.11237564,0.64957389){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
     \put(0.08217114,0.74194972){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5000\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{HPwaermestroeme.pdf}}%
-    \put(0.76188777,0.84921334){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Basic scenario\end{tabular}}}}%
+    \put(0.74049718,0.84921334){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Basic scenario\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{HPwaermestroeme.pdf}}%
-    \put(0.76188777,0.82284942){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 2\end{tabular}}}}%
+    \put(0.74049718,0.82284942){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 2\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{HPwaermestroeme.pdf}}%
-    \put(0.76188777,0.79648559){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 3\end{tabular}}}}%
+    \put(0.74049718,0.79648559){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 3\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{HPwaermestroeme.pdf}}%
   \end{picture}%
 \endgroup%
