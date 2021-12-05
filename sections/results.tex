@@ -78,20 +78,20 @@ In the following \autoref{fig:HP_grid} the structure for the comparison between 
         \label{tab:AverageComfortScenarien}
     \end{table}
     
-\autoref{tab:GridserviceScenarien} shows the equivalent of the table above but grid services (GS) is of interest, also with two weightings  $i_\text{2} =$ 0.1 or 0.9. The values of GS are presented for every scenario calculated according to \autoref{eq:GridService123}. Apart from the basic scenario, the higher values of the other scenarios depend on higher weighting. 
+\autoref{tab:GridserviceScenarien} shows the equivalent of the table above but grid services (GS) is of interest, also with two weightings  $i_\text{2} =$ 0.1 or 0.9. The values of GS are presented for every scenario calculated according to \autoref{eq:GridService123}. The lower values of GS depend on higher weighting of grid services. 
     \begin{table}[H]
         \centering
         \begin{tabular}{c||c|c|c}
           $i_\text{2}$  &  Basic scenario & Scenario 2 & Scenario 3\\
           \hline  \hline
-             0.1 & 9.00 & 6.36 & 4.57\\
-             0.9 & 2.85 & 9.00 & 10.40\\
+             0.1 & 9.00 & 10.40 & 9.69 \\
+             0.9 & 2.85 & 6.36 & 4.57\\
         \end{tabular}
         \caption{GS of the scenarios according to $i_\text{2}$}
         \label{tab:GridserviceScenarien}
     \end{table}
     
-\autoref{tab:EnergyConsumpScenarien} depicts the energy consumption in kWh as the sum of the power of $P_\text{HP}$ over the simulation period. We separate the weighting consideration of every scenario. All scenarios have higher energy consumption with higher weighting on the comfort requirement in the cost function. The basic scenario has the lowest values. 
+\autoref{tab:EnergyConsumptionScenarien} depicts the energy consumption in kWh as the sum of the power of $P_\text{HP}$ over the simulation period. We separate the weighting consideration of every scenario. All scenarios have higher energy consumption with higher weighting on the comfort requirement in the cost function. The basic scenario has the lowest values. 
     \begin{table}[H]
         \centering
         \begin{tabular}{c||c|c|c}
@@ -106,11 +106,18 @@ In the following \autoref{fig:HP_grid} the structure for the comparison between 
 
 \section{Discussion}
 \label{sec:discussion}
+The presented results from \autoref{subsec:Results of the scenarios} are explained and analysed in this section. In addition, the general realisation of this thesis is discussed.
 
 \subsection{Comparison of the scenarios}
 \label{subsec:Comparison fo the scenarios}
+To compare the different scenarios, we use the results in the section above. We comment every Figure and Table from \autoref{subsec:Results of the scenarios}.
 
- % Nur wegen Netzdienlichkeit Scenario 2 überhaupt interessant. 
+Im Vergleich der Temperaturverläufe der Scenarien ist zu erkennen, dass der die gewünschte Zieltemperatur aller Scenarien nicht konstant gehalten werden kann. An Hand der konstanten maximalen und minimalen Werte des Wärmestroms $\dot{Q}_{heating}$ aus \autoref{fig:HPwaermestroeme} ist zu erkennen, dass diese Stellgröße häufig in die Beschränkung läuft. Obwohl die Stellgröße maximal ist genügt es nicht aus die gewünschte Temperatur einzuhalten. Dies ist ein Hinweis darauf, dass das Model nicht stark genug auf die gegebenen Stellgrößen reagiert.\newline
+Bei Scenario 2 wechselt die Zieltemperatur für den optimierer zwischen 290.15 K und 295.15 K. Da der Komfort bei Anwesenheit und Abwesenheit von Personen in diesem Scenario gleich gewichtet ist, unterscheidet der optimierer nicht zwischen diesen beiden Fällen und versucht für beide Fälle das best mögliche zu generieren. Daraus folgt dann der schlechteste mittere Komfort aus \autoref{tab:AverageComfortScenarien} im Vergleich den anderen Secenarien. Besonders ist der Effect, dass hier eine stärkere Gewichtung des Komforts in der Kostenfunktion, einen schlechteren mittleren Komfort generiert. Dies liegt an dem gleichen Grund wie auch schon das ergebnis eines schlechten mittleren komforts.
+Allgemein ist die Phase der Abwesenheit von Personen größer als die Phase der anwesenheit. Dies liegt vor allen dingen am Wochenende. Fokusieren wir den Komfort in Scenario 2 stärker, wird die Abweichung der innentemperatur von der gewünschten Temperatur bei abwesenheit geringer, welche auch die längere zeitperiode ist. allerdings reichen die Stellgrößenwerte nicht aus um ebenfalls bei anwesenheit einen besseren mittleren komfort zu erzielen.\newline
+Die innentemperatur vom Basic Scenario und Scenario 3 verlaufen recht nah beieinander, wobei scenario 3 immer näher an der zieltemperatur von 295.15 K liegt. Die Zieltemperatur über den Tagesverlauf konstant zu lassen, wirkt sich folglich positiv auf den Komfort aus. In \autoref{tab:AverageComfortScenarien} ist dies auch für die geringer gewichtung an hand des AC zu erkennen. Ebenfalls bemerkbar ist in Tabelle und Figure, dass die Höhere Gewichtung des Komforts auch die gewünschte verbesserung des Komforts bewirkt. Hier ist anzumerken, dass Scenario 3 einen geringfügig (um 0.04 K) schlechteren AC bei $i_\text{2}$ aufweist als das basic scenario. Dies liegt an der Berechnung des AC. AC fasst nur die temperaturabweichungen zusammen, welche in anwesenheit von Personen passieren. Bei der betrachtung ohne einen belegungsplan wird davon ausgegangen, dass die anforderung komfort immer eingehalten werden muss und daher summieren sich bei scenario 3 mehr temperaturabweichungen zusammen, die folglich auch durch einen größeren WErt N geteilt werden. Dennoch kann hierdurch die geringfüge verschlechterung des AC im vergleich zum basic scenario bei dieser Gewichtung passieren.\newline
+
+ % Nur wegen Netzdienlichkeit Scenario 2 überhaupt interessant. Auch wenn modell nicht so gut ist, trotzdem die gewünschte fragestellung beantwortbar
 \subsection{General discussion about the approach}
 \label{subsec:General discussion about the approach}
 
