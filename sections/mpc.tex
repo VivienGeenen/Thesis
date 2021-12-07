@@ -65,7 +65,7 @@ The Umweltbundesamt \cite{Umweltbundesamt.7.10.2021} recommends an inside temper
 
 \subsection{Constraints of the states}
 \label{ConstraintX}
-
+We only have to constrain the state of the water reservoir because of its physical limitation. Therefore, we use a hard constraint.
 The calculation of the water reservoirs maximal inner energy $U_\text{WR}$ is explained in \autoref{waterModel} with \autoref{eq:max.Energie}. The minimum $U_\text{WR}$ is 0 J. The set $\mathbb{X}_{5,k}$ describes the constraint for the fifth element of the state vector.
 \begin{equation}
     \label{ConstraintX5}
@@ -87,7 +87,7 @@ As an integration method, we use a explicit single-step method, which means that
         \mathbf{x_{k+1}} = \mathbf{x_k} + \frac{1}{6}\cdot (a_k^{(1)} + 2 a_k^{(2)} + 2 a_k^{(3)} + a_k^{(4)})\nonumber
     \end{align}
 The constraints accommodate the integration method for calculating the next time step according to the determined thermal model.
-Important to note is that the time step of the integration is chosen in accordance with the discretization of the model. The model is estimated with the discrete values of the reference building, where the measuring points are sampled every two minutes. For example, to achieve a $T_\text{s}$ of one hour, $T_\text{s}$ is described as $30 \cdot 2 min$. The two minutes are already included in the model by estimation. The two minutes are already included in the model due to the estimation. Therefore, we multiply $\mathbf{\dot{x}_\text{k}}$ by 30 to bring forward a time step of one hour. It is considered that the thermal model is composed of two submodels. The water reservoir sub-model, which is modelled using the white-box approach, requires a different conversion to advance one hour. Here we convert watts to joules per hour. In the MPC, this difference is compensated by a factor directly in the state-space formulation of the model.
+Important to note is that the time step of the integration is chosen in accordance with the discretization of the model. The model is estimated with the discrete values of the reference building, where the measuring points are sampled every two minutes. For example, to achieve a $T_\text{s}$ of one hour, $T_\text{s}$ is described as $30 \cdot 2 min$. The two minutes are already included in the model by estimation. Therefore, we multiply $\mathbf{\dot{x}_\text{k}}$ by 30 to bring forward a time step of one hour. It is considered that the thermal model is composed of two submodels. The water reservoir sub-model, which is modelled using the white-box approach, requires a different conversion to advance one hour. Here we convert watts to joules per hour. In the MPC, this difference is compensated by a factor directly in the state-space formulation of the model.
 
 \section{The Cost function}
 \label{section:thecostfunction}
