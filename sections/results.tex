@@ -1,4 +1,4 @@
-\chapter{Results}
+\chapter{Results and discussion}
 \label{ch:results}
 In this chapter, different scenarios are considered to answer the research question focusing on grid services. Several scenarios are supposed to explain how the occupancy schedule affects energy consumption, grid service and comfort: (i) a scenario with an occupancy schedule, in which the MPC has to comply with fewer restrictions during the absence of occupants; (ii) a scenario that also has a lower temperature specification during the absence; and (iii) a scenario without an occupancy schedule. In the last section, the results are evaluated, and an answer to the research question is found.
 
@@ -122,7 +122,13 @@ We can summarise the comparing of the scenarios and analysis of the results. Eve
 
 \subsection{General discussion about the approach}
 \label{subsec:General discussion about the approach}
+In this subsection, we comment further issues affecting all scenarios to give an analysis over the used approach and clarify the limitations.\newline
 
+\textbf{feasible problem}\newline
+During the implementation of the MPC, es hat sich herausgestellt, dass einfache veränderungen im Code schnell zu unlösbaren problemen führt. Das Modell, die constraints und die Gewichte der Kostenfunktion haben hier großen einfluss auf das finden einer lösung.
+
+\textbf{cooling and heating}\newline
+The approach enables cooling and heating of the reference building. Damit kann mit einem modell winter und sommer abgedeckt werden. Jedoch muss das Modell winter und sommer ausreichend gut modellieren. Das in diesem Ansatz gewählte modell wurde nur für den Sommer verifiziert. Durch das erlauben von kühlen und heizen gewinnt der optimierer mehr freiheitsgrade, wodurch ein nutzverhalten entsteht wie es bei einem manuellen anwender nicht vorkommen würde. es wird innerhalb eines Tages geheizt und gekühlt. 
 %This chapter is supposed to discuss your results. Point out what your results mean.
 %What are the limitations of your approach, managerial implications or future impact?
 %
