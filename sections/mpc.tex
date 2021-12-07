@@ -41,7 +41,7 @@ Since the reference building is used as an office, the occupancy schedule descri
     
 \section{The Constraints}
 \label{section:theconstraints}
-We generally define in \autoref{subsection:constraints} constraints. Further, we differ soft and hard constraints in the following. The hard constraints depend on the physical limitations of the installations in the building, such as the heat pump, the underground floor heating, and the water reservoir. The used soft constraint in this MPC smooths deviations of a comfortable temperature. Further, the integration method of the model is included in the constraints to calculate the future states over one horizon. The subsequent section gives an overview of the constraints regarding the control signal, the output, the states, and an introduction of the integration method.
+We generally define in \autoref{subsection:constraints} constraints. Further, we differ soft and hard constraints in the following. The hard constraints depend on the physical limitations of the installations in the building, such as the heat pump, the underground floor heating, and the water reservoir. The used soft constraint in this MPC smooths deviations of a comfortable temperature range. Further, the integration method of the model is included in the constraints to calculate the future states over one horizon. The subsequent section gives an overview of the constraints regarding the control signal, the output, the states, and an introduction of the integration method.
 
 \subsection{Constraints of the control signals}
 \label{subsec:COnstraintU}
@@ -54,8 +54,9 @@ The set $\mathbb{U_k}$ summarise mathematically the constraints.
     \mathbb{U_k} = \{\mathbf{u_k}| -2300 W \prec \dot{Q}_\text{heating} \prec 5283 W \wedge -9340 W \prec \dot{Q}_\text{HP} \prec 8010 W | u_1 \cdot u_2 \geq 0\} 
 \end{equation}
 
-\subsection{Constraint of output}
+\subsection{Constraint of the output}
 \label{subsec:constrainY}
+We specify a comfortable temperature range with the soft constraint of the output. The following explains the range of a comfortable temperature.\newline
 The Umweltbundesamt \cite{Umweltbundesamt.7.10.2021} recommends an inside temperature of 18°C for some rooms, such as the kitchen. We expand the recommendation to a minimum $T_\text{inside}$ of 18°C for all rooms. The maximum inside temperature refers to the German technical rules for workplaces \cite{Bund.2021}, wherein a maximum of 26°C as room temperature is prescribed. The slack variable $\eta_\text{k}$ allows a variance of the given temperature range during a penalty in the cost function. Thus, we have a soft constraint, and we can obtain the feasibility of the optimisation problem during a deviation of the temperature range \cite{Drgona.2020}. The constraint is represented in the set $\mathbb{Y_k}$ as follows:  
 \begin{equation}
     \label{ConstraintY}
@@ -64,6 +65,7 @@ The Umweltbundesamt \cite{Umweltbundesamt.7.10.2021} recommends an inside temper
 
 \subsection{Constraints of the states}
 \label{ConstraintX}
+
 The calculation of the water reservoirs maximal inner energy $U_\text{WR}$ is explained in \autoref{waterModel} with \autoref{eq:max.Energie}. The minimum $U_\text{WR}$ is 0 J. The set $\mathbb{X}_{5,k}$ describes the constraint for the fifth element of the state vector.
 \begin{equation}
     \label{ConstraintX5}
@@ -90,7 +92,7 @@ Important to note is that the time step of the integration is chosen in accordan
 \section{The Cost function}
 \label{section:thecostfunction}
 
-The cost function penalises the deviation from the desired requirements. On the one hand, we have to guaranty thermal occupant comfort in the building. On the other hand, we prefer to heat with the heat pump during convenient grid service. Both subjects are represented in the cost function below.
+The cost function penalises the deviation from the desired requirements. On the one hand, we have to guaranty thermal occupant comfort in the building. On the other hand, we prefer to heat with the heat pump during convenient grid service. Both subjects are represented in the cost function below with the weightings $w_\text{1}$ and $w_\text{1}$, which relate to the requirements comfort and grid services.
     \begin{equation}
         \text{minimize} \sum_{k=1}^{N-1} w_\text{1}\cdot (y_\text{k}-y_\text{track})^2 + w_\textbf{2}\cdot(u_\text{2,k}\cdot Pr_\text{k})^2 + w_\text{3} \cdot \eta_\text{k}^2
         \label{eq:costfunctatsächlich}
@@ -129,28 +131,28 @@ The approach in the MPC script is determined by the use of the tool CasAdi. CasA
     
 \section{Choice of weightings and horizon}
 \label{Choise of weigtings and horizon}
-In the following, we analyse the horizon length $N$ \nomenclature[P]{N}{ length of the predictive horizon} and the effects of the weightings on the requirement of occupancy comfort and grid services for the basic scenario. For a better comparison we define an average comfort (AC) \nomenclature[A]{AC}{Average Comfort}, which is the average deviation of $y$ from $y_\text{track}$ over the simulation time only during presence of occupants, expressed by $y_\text{k,occ} - y_\text{track}$. The calculation of AC is described in the following equation with the number of time steps with occupants $n_\text{occ}$.
+In the following, we analyse the horizon length $N$ \nomenclature[P]{N}{ length of the predictive horizon} and the effects of the weightings on the requirement of occupancy comfort and grid services for the basic scenario. For a better comparison we define an average comfort $\Delta \overline{y}$ \nomenclature[P]{$\Delta \overline{y}$}{Average comfort}, which is the average deviation of $y$ from $y_\text{track}$ over the simulation time only during presence of occupants, expressed by $y_\text{k,occ} - y_\text{track}$. The calculation of $\Delta \overline{y}$ is described in the following equation with the number of time steps with occupants $n_\text{occ}$.
 \begin{equation}
     \label{eq:average comfort}
-    AC = \frac{\sum_{k,occ}^{n_\text{occ}} |y_\text{k,occ} - y_\text{track}|}{n_\text{occ}}
+    \Delta \overline{y} = \frac{\sum_{k,occ}^{n_\text{occ}} |y_\text{k,occ} - y_\text{track}|}{n_\text{occ}}
 \end{equation}
 On the other hand, we define the costs for grid services (GS) \nomenclature[A]{GS}{Costs for grid services} over the whole simulation time (with the number of time steps $n$) as the sum of the electrical power of the heat pump $P_\text{HP,k}$ multiplied with the dynamic price of electricity $Pr_\text{k}$:
 \begin{equation}
 \label{eq:GridService123}
     GS = \sum_{k}^n P_{HP,k}\cdot Pr_\text{k}
 \end{equation}
-In theoretical considerations, we should obtain a higher value of AC with less weighting of comfort and a higher value of GS with less weighting of grid services. Furthermore, a larger or shorter horizon $N$ differs in computation time and finding the optimal solution. While a longer N requires more computation time and may not find a solution, a shorter $N$ may not find the optimal solution. Due to finding the optimal solution a larger horizon should result in less costs for the requirements. In general, the horizon should depict the dynamics of the controlled system. \newline
+In theoretical considerations, we should obtain a higher value of $\Delta \overline{y}$ with less weighting of comfort and a higher value of GS with less weighting of grid services. Furthermore, a larger or shorter horizon $N$ differs in computation time and finding the optimal solution. While a longer N requires more computation time and may not find a solution, a shorter $N$ may not find the optimal solution. Due to finding the optimal solution a larger horizon should result in less costs for the requirements. In general, the horizon should depict the dynamics of the controlled system. \newline
 The theoretical considerations are inspected in the subsequent sections for the basic scenario over the simulation time of nine days.   
 
 \subsection{Average comfort and grid services over the weightings}
 \label{subsec:Average comfort and grid services over the weightings}
-The following figure presents the behaviour of AC and GS for the different weightings $w_\text{1}$ and $w_\text{2}$ with $N = 24h$. We also compare the behaviour for different horizon $N$ to verify the feasibility and the expected behaviour. The corresponding figures are shown in \autoref{sec:Average comfort and grid services} and the values of AC and GS for different horizons are displayed in the following tables.\newline
-We notice a monotone behaviour of the average comfort and the grid services according to their weightings apart from small discrepancies. A possibility for discrepancies could be that the optimiser find not the global optimum. We obtain feasible solutions apart from $N=12 h$ and both weightings are $0.5$. The lower costs with increasing horizon length are only for the average comfort notable, expecting the case $w_\text{1}=0$. In this case, we consider not the comfort in the cost function. Therefore, the values of AC are random, also relating to the horizon length.\newline
+The following figure presents the behaviour of $\Delta \overline{y}$ and GS for the different weightings $w_\text{1}$ and $w_\text{2}$ with $N = 24h$. We also compare the behaviour for different horizon $N$ to verify the feasibility and the expected behaviour. The corresponding figures are shown in \autoref{sec:Average comfort and grid services} and the values of $\Delta \overline{y}$ and GS for different horizons are displayed in the following tables.\newline
+We notice a monotone behaviour of the average comfort and the grid services according to their weightings apart from small discrepancies. A possibility for discrepancies could be that the optimiser find not the global optimum. We obtain feasible solutions apart from $N=12 h$ and both weightings are $0.5$. The lower costs with increasing horizon length are only for the average comfort notable, expecting the case $w_\text{1}=0$. In this case, we consider not the comfort in the cost function. Therefore, the values of $\Delta \overline{y}$ are random, also relating to the horizon length.\newline
 The explanation for higher cost in GS with longer horizon is that the thermal reaction of the building is known over a longer time and the control signal reacts early for a better adaption of the comfort.
     \begin{figure}[h]
             \centering
             \includegraphics[width=15cm,height=8cm]{figure/AC_und_GS_24h.eps}
-           \caption{AC and GS for N = 24h}
+           \caption{$\Delta \overline{y}$ and GS for N = 24h}
             \label{fig:AC_und_GS_24h}
     \end{figure}
     
@@ -159,12 +161,12 @@ The explanation for higher cost in GS with longer horizon is that the thermal re
     \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c}
          weighting factor i&0&0.1&0.2&0.3&0.4&0.5&0.6&0.7&0.8&0.9&1  \\
          \hline
-         AC by N = 12 h& 1.11 & 0.89 & 0.77 & 0.64 & 0.54 &  & 0.40 & 0.28 & 0.24 & 0.22 & 0.22\\
-         AC by N = 18 h& 1.14 & 0.80 & 0.72 & 0.54 & 0.43 & 0.35 & 0.41 & 0.24 & 0.17 & 0.16 & 0.14\\
-         AC by N = 24 h&  1.16 & 0.77 & 0.60 & 0.49 & 0.37 & 0.28 & 0.29 & 0.18 & 0.15 & 0.14 & 0.20\\
-         AC by N = 30 h& 1.16 & 0.75 & 0.55 & 0.42 & 0.31 & 0.25 & 0.22 & 0.18 & 0.16 & 0.14 & 0.16\\
+         $\Delta \overline{y}$ by N = 12 h& 1.11 & 0.89 & 0.77 & 0.64 & 0.54 &  & 0.40 & 0.28 & 0.24 & 0.22 & 0.22\\
+         $\Delta \overline{y}$ by N = 18 h& 1.14 & 0.80 & 0.72 & 0.54 & 0.43 & 0.35 & 0.41 & 0.24 & 0.17 & 0.16 & 0.14\\
+         $\Delta \overline{y}$ by N = 24 h&  1.16 & 0.77 & 0.60 & 0.49 & 0.37 & 0.28 & 0.29 & 0.18 & 0.15 & 0.14 & 0.20\\
+         $\Delta \overline{y}$ by N = 30 h& 1.16 & 0.75 & 0.55 & 0.42 & 0.31 & 0.25 & 0.22 & 0.18 & 0.16 & 0.14 & 0.16\\
     \end{tabular}
-    \caption{AC for different N}
+    \caption{$\Delta \overline{y}$ for different N}
     \label{tab:AC for different N}
     \end{table}
     
