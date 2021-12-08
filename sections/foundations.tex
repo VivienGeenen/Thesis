@@ -13,40 +13,44 @@ The issue of this thesis is to create a thermal model of a real building and to 
         \label{eq:1HS}
         \sum_i \dot{Q_\text{i}} + \sum_j \dot{W_\text{j}} + \sum_k \dot{m_\text{k}}\cdot (h + \frac{c^2}{2} + gz)_\text{k} = \frac{d}{dt} \sum_l U_\text{l}
     \end{equation}
-    
-    In terms of a building, we set the work $\dot{W}$ to zero according to the relationship $W =\int Pdt - \int pdV$ \cite{Baehr.2016b} because a building can't change the volume $V$, and we have no additional mechanical power $P$. If we have no mass flow $\dot{m}$ in our system, we obtain a closed system. Regarding buildings, mass flows could be airflow through the window, for example. Then we also consider the enthalpy $h$, the fluid velocity $c$, the high $z$ and the gravitational acceleration $g$.
-    \newline
-    Since we do not consider airflow, we use the closed system with the heat flows $\dot{Q_\text{i}}$ and the inner energy $U_\text{l}$.
+    The energy balance considers the sum of the heat flows $\sum_i \dot{Q_\text{i}}$ and the sum of the work $\sum_j \dot{W_\text{j}}$ related to a investigated area. Further, the mass flow $\dot{m}$, the enthalpy $h$, the fluid velocity $c$, the high $z$ and the gravitational acceleration $g$ are represented in the energy balance. On the other side of the equation is the inner energy $U_\text{l}$. \newline
+    The definition of the heat flow calculation depends on the physical phenomenon, which is explained in special subsections because of its relevance on thermal modelling. While the relationship of $\dot{W}$ follows as  
+    \begin{equation}
+        \label{eq:workinEnergyBalance}
+        W =\int Pdt - \int pdV
+    \end{equation}
+    with the integral of mechanical power $P$ over time $t$ and the integral of pressure $p$ over the volume $V$ \cite{Baehr.2016b}.\newline
+    In terms of buildings, we assume some simplifications to the energy balance from \autoref{eq:1HS}.
+    We set the work $\dot{W}$ to zero because a building can't change the volume $V$, and we have no additional mechanical power $P$. Furthermore, regarding buildings, mass flows $\dot{m}$ could be an airflow through the window, for example. Since we do not consider airflow, we obtain the following simplified energy balance with the heat flows $\dot{Q_\text{i}}$ and the inner energy $U_\text{l}$.
      \begin{equation}
         \label{eq:1HSkurz}
         \sum_i \dot{Q_\text{i}}  = \frac{d}{dt} \sum_l U_\text{l}
     \end{equation}
-    The deduction of the inner energy $U$ \nomenclature[P]{$U$}{inner energy\nomunit{$J$}} starts with the complete differential description of the specific inner energy $du$ as \cite{Baehr.2016b}:
+    The deduction of the inner energy $U$ \nomenclature[P]{$U$}{inner energy\nomunit{$J$}} starts with the complete differential description of the specific inner energy $du$ as \cite{Cerbe.2021}:
     \begin {equation} 
     \label{eq:spezificinnerEnergy}
     du = (\frac{\partial u}{\partial T})_\text{v} dT + (\frac{\partial u}{\partial v})_\text{T} dv
     \end{equation}
-    The specific volume $dv$ is negligible in buildings, and the specific heat capacity during constant volume has the expression $c_\text{v} = (\frac{\partial u}{\partial T})_\text{v}$ \cite{Baehr.2016b}. After replacing the specific values by volume, we obtain the relation for the inner energy $U$, with the mass $m$. 
+    The specific volume $dv$ is negligible since the volume of the building is constant. And, the specific heat capacity for constant volume has the expression $c_\text{v} = (\frac{\partial u}{\partial T})_\text{v}$ \cite{Baehr.2016b}. After replacing the specific values by mass $m$, we obtain the relation for the inner energy $U$. 
         \begin{equation}
         \label{eq:innerEnergy}
         d U = m c_\text{v} d T
     \end{equation}
-    
-    It applies to substances with a specific volume regardless of the pressure that $c_\text{v}=c_\text{p}=c$.\newline
+    For substances with a specific volume, which is independent of the pressure, $c_\text{v}=c_\text{p}=c$ applies.\newline
     
     We account for different heat flows and for the inner energy in the energy balance in \autoref{eq:1HS}.
-    However, there are three mechanisms of heat transfer, which are explained in the following sections: Heat conduction, heat convection, and heat radiation \cite{.2013}. Thermal modelling of buildings requires all of these mechanisms. For example, conduction is the primary part of heat transfer through walls or floors. Convection occurs on the inside and the outside of the building between the walls and the air. To integrated the impact of the sun, radiation is needed, for example.
+    But, there are three mechanisms of heat transfer, which are explained in the following sections: Heat conduction, heat convection, and heat radiation \cite{.2013}. Thermal modelling of buildings requires all of these mechanisms. For example, conduction is the primary part of heat transfer through walls or floors. Convection occurs on the inside and the outside of the building between the walls and the air. To integrated the impact of the sun, radiation is needed, for example.
 
 \subsection{Conduction}
 \label{subsection:conduction}
 
-    Conduction means that heat energy is directed in a solid or fluid. Molecules within the solid or fluid have higher energy when the temperature is higher. They transfer the energy to neighbouring molecules with smaller energy. Without a heat source, the temperature difference between a hot and a cold location of the molecules decreases.\cite{Kuchling.2007}
+    Conduction means that heat energy is directed in a solid or fluid. Molecules within the solid or fluid have higher energy when the temperature is higher. They transfer the energy to neighbouring molecules with smaller energy. Without a heat source, the temperature difference between a hot and a cold location of the molecules decreases \cite{Kuchling.2007}.
     \newline The equation
     \begin{equation}
     \label{eq:fourier}
         \dot{\textbf{q}} = - \lambda \nabla T
     \end{equation}
-    describes the conduction according to Fourier \cite{.2013}. $\lambda$ is \nomenclature[G]{$\lambda$}{thermal conductivity\nomunit{$W/(m K)$}} the thermal conductivity with the assumption of being constant and $\dot{\textbf{q}}$ and $T$ represent the specific heat flux and the temperature. The thermal conductivity is dependent on the material, such as concrete, wood or bricks. 
+    describes conduction according to Fourier \cite{.2013}. $\lambda$ is \nomenclature[G]{$\lambda$}{thermal conductivity\nomunit{$W/(m K)$}} the thermal conductivity with the assumption of being constant and $\dot{\textbf{q}}$ and $T$ are the specific heat flux and the temperature. The thermal conductivity is dependent on the material, such as concrete, wood or bricks. 
     \newline
     To know the heat flux $\dot{Q}$, it is necessary to expand the above equation with the area $A$, the thickness of the conductive medium $d$ and a temperature difference $\Delta T$ \nomenclature[P]{$\Delta T$}{temperature difference \nomunit{$K$}} assuming one significant direction of the heat flux $\dot{Q}$ to:
     \begin{equation}
@@ -66,13 +70,13 @@ The issue of this thesis is to create a thermal model of a real building and to 
         \dot{Q} = \alpha A (T_w - T_\infty)
     \end{equation}
     with the heat transfer coefficient $\alpha$ \nomenclature[G]{$\alpha$}{heat transfer coefficient\nomunit{$W/(m^2 K)$}}, especially for building modelling the wall temperature $T_w$ and the environment temperature $T_\infty$ \cite{Griesinger.2019}
-    . There are two possibilities to determine the heat transfer coefficient. Both require a temperature difference $\Delta T$ and either a temperature gradient $\partial T/\partial x$ \nomenclature[P]{$\partial T/\partial x$}{temperature gradient\nomunit{$K/m$}} or a heat flux $\dot{Q}$.
+    . There are two possibilities to determine mathematically the heat transfer coefficient. Both require a temperature difference $\Delta T$ and either a temperature gradient $\partial T/\partial x$ \nomenclature[P]{$\partial T/\partial x$}{temperature gradient\nomunit{$K/m$}} or a heat flux $\dot{Q}$.
     \cite{.2013} 
 
 \subsection{Radiation}
 \label{subsection:radiation}
 
-    Every body emits heat radiation to the environment with electromagnetic waves. Heat radiation does not need matter for energy transportation. As shown in the following equation, the temperature $T$ of the body influences heat radiation.\cite{.2013} 
+    Every body emits heat radiation to the environment with electromagnetic waves. Heat radiation does not need matter for energy transportation. As shown in the following equation, the temperature $T$ of the body influences heat radiation \cite{.2013}. 
     \begin{equation}
     \label{eq:radiation}
         \dot{q} = \sigma T^4
@@ -94,7 +98,23 @@ For modelling the thermal behaviour of buildings, the lumped capacitance model i
 \subsection{Electrical analogy}
 \label{electricalanalogy}
 
-    Similar to an electrical network, the potential is represented by the temperature at one node and the heat flux corresponds to the current. In analogy to the electric domain, we can describe the Ohm's law in heat transfer by:  
+    Similar to an electrical network, the potential is represented by the temperature at one node and the heat flux corresponds to the current. \autoref{tab:RC-analogy} summarise the analogy in an overview about the equivalents.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{l c l}
+             electrical value & &thermal equivalent\\
+             \hline
+             Potential & $\rightarrow$ & Temperature $T$\\
+             Current & $\rightarrow$ & Heat flow $\dot{Q}$\\
+             Voltage & $\rightarrow$& Temperature difference $\Delta T$\\
+             Resistor & $\rightarrow$& Thermal resistance $R$\\
+             Capacitor & $\rightarrow$& Thermal capacitance $C$\\
+        \end{tabular}
+        \caption{Summarising of the electrical analogy}
+        \label{tab:RC-analogy}
+    \end{table}
+    
+    In analogy to the electric domain, we can describe Ohm's law in heat transfer by:  
      \begin{equation}
     \label{eq:Ohm}
         \dot{Q} = \frac{\Delta T}{R} 
@@ -104,7 +124,7 @@ For modelling the thermal behaviour of buildings, the lumped capacitance model i
     \label{eq:r_lambda}
         R_\lambda = \frac{d}{A\lambda}
     \end{equation}
-   and in convective cases as\cite{Griesinger.2019}:
+   and in convective cases as \cite{Griesinger.2019}:
     \begin{equation}
         R_\alpha = \frac{1}{\alpha A}
     \end{equation}
@@ -125,7 +145,7 @@ For modelling the thermal behaviour of buildings, the lumped capacitance model i
     \end{minipage}
     \end{figure}
     
-    In sum, the thermal resistances $R$ comply with electrical resistors.
+    In sum, the thermal resistances $R$ are the equivalent of electrical resistors.
     Further for modelling thermal networks, the thermal capacitance $C$ is needed. It is calculated from the specific heat capacity $c$ multiplied by the mass $m$ ($C=cm$).
     \newline
     For a better explanation of the structure of a thermal network, a simple example is depicted in \autoref{fig:sampleRCnetwork}. It represents a heated wall of a building.
@@ -136,10 +156,10 @@ For modelling the thermal behaviour of buildings, the lumped capacitance model i
     \caption{Sample RC- network}
     \label{fig:sampleRCnetwork}
     \end{figure}
-    The heat flux $\dot{Q}$, for example from a radiator, influences the temperature $T_\text{wall}$, as well as the capacitance $C$. And the temperature $T_\text{wall}$ affects the temperature inside and outside $T_\text{inside}$ and $T_\text{outside}$ with their resistances $R_{\alpha \text{,inside}}$ and $R_{\alpha \text{,outside}}$. The example shows that all connections in the network influence each other.
-    To model the dynamics of the wall in differential equations, Kirchhoff's Current Law is required. It states that the sum of the flowing current to the node is equal to the sum of the flowing current of the node 
+    The heat flux $\dot{Q}$, for example from a radiator, influences the temperature $T_\text{wall}$, as well as the state of the capacitance $C$. And the temperature $T_\text{wall}$ affects the temperature inside and outside $T_\text{inside}$ and $T_\text{outside}$ with their resistances $R_{\alpha \text{,inside}}$ and $R_{\alpha \text{,outside}}$. The example shows that all connections in the network influence each other.
+    To model the dynamics of the wall in differential equations, Kirchhoff's Current Law is required. It states that the sum of the flowing current to the node is equal to the sum of the flowing current from the node 
     \cite{Kuchling.2007}. 
-    Because of the thermal analogy of electrical laws, the current is replaced by heat flux. The following differential equation results for the node  $T_\text{wall}$ using Ohm's law ($\dot{Q}=\Delta T/R$) and the first low of thermodynamics as deduced in \autoref{eq:1HSkurz} with the inner energy from \autoref{eq:innerEnergy}.     
+    Because of the thermal analogy of electrical laws, the current is replaced by heat flux. The following differential equation results for the node  $T_\text{wall}$ using Ohm's law ($\dot{Q}=\Delta T/R$) and the first law of thermodynamics as deduced in \autoref{eq:1HSkurz} with the inner energy from \autoref{eq:innerEnergy}.     
     \begin{equation}
     \label{eq:sampledifferential}
     C \frac{d T_\text{wall}}{d t} = \dot{Q} + \frac{T_\text{inside}-T_\text{wall}}{R_{\alpha \text{,inside}}} - \frac{T_\text{wall}-T_\text{outside}}{R_{\alpha\text{,outside}}}
@@ -154,12 +174,12 @@ For modelling the thermal behaviour of buildings, the lumped capacitance model i
     \label{eq:resistancesparallel}
         \frac{1}{R_\text{sum}} = \frac{1}{R_\text{wall}} + \frac{1}{R_\text{window}}
     \end{equation}
-    In terms of needed more capacitances for describing the thermal model, the summary capacitance is added in a parallel circuitry as: 
+    When more capacitances are needed for describing the thermal model, the overall capacitance is added in a parallel circuitry as: 
     \begin{equation}
     \label{eq:capacityparallel}
         C_\text{sum} = \sum \limits_1^i C_\text{i} 
     \end{equation}
-    The serial circuitry of capacitances is calculated as follows:
+    The serial connection of capacitances is calculated as follows:
     \begin{equation}
     \label{eq:capacityseriell}
        \frac{1}{C_\text{sum}} = \sum \limits_1^i \frac{1}{C_i} 
@@ -171,8 +191,8 @@ For modelling the thermal behaviour of buildings, the lumped capacitance model i
 \section{Model predictive control (MPC)}
 \label{section:mpc}
 
-Model predictive control exploits models of the plant to predict and optimise the behaviour of the plant \cite{Grune.2017}.
-Applied to thermal control of a building with the aim of grid-supporting, a model of the thermal behaviour of the building is required to predict the reaction of the system behaviour in the next $N$ time steps, called the prediction horizon. Every time step $k$, the current state $\mathbf{x_k}$, the output $\mathbf{y_k}$ is measured, and the future system behaviour is obtained by computation. The computation of the future system behaviour may include measurable disturbances $\mathbf{d_k}$  such as weather forecast, occupancy schedule and the optimisation of the control signal $\mathbf{u_k}$ over the optimisation horizon $\mathbf{u_{k+N}}$. However, only the first calculated control signal is adopted as input for the plant.
+Model predictive control employs models of the plant to predict and optimise the behaviour of the plant \cite{Grune.2017}.
+Applied to thermal control of a building with the aim of grid-support, a model of the thermal behaviour of the building is required to predict the reaction of the system behaviour in the next $N$ time steps, called the prediction horizon. At every time step $k$, the current state $\mathbf{x_k}$, the output $\mathbf{y_k}$ is measured, and the future system behaviour is computed. The computation of the future system behaviour may include measurable disturbances $\mathbf{d_k}$  such as weather forecast, occupancy schedule and the optimisation of the control signal $\mathbf{u_k}$ over the optimisation horizon $\mathbf{u_{k+N}}$. However, only the first calculated control signal $\mathbf{u_1}$ is adopted as input for the plant.
 Then, the calculations are repeated at every time step. \autoref{fig:sampleMPC} visualises the MPC control loop.
  \begin{figure}[h]
     \centering
@@ -182,9 +202,9 @@ Then, the calculations are repeated at every time step. \autoref{fig:sampleMPC} 
     \label{fig:sampleMPC}
     \end{figure}
 \newline
-Concluded, the MPC is "an iterative online optimisation over the predictions"
+Summarising, the MPC is "an iterative online optimisation over the predictions"
 \cite{Grune.2017} 
-compiled by the thermal model of the building. Mathematically explained, the optimizer needs to minimize the following equation according to
+created by the thermal model of the building. Mathematically explained, the following equation is optimised according to
 \cite{Kouvaritakis.2018}
 and
 \cite{Oldewurtel.2012}:
@@ -194,33 +214,33 @@ and
 \end{align}
 subject to 
 \begin{align*}
+\forall k \in [0,N-1]\\
 \textrm{Current state} && \mathbf{x_0} &=& \mathbf{x} \\	
 \textrm{Dynamics} && \mathbf{x_{k+1}}&=& f(\mathbf{x_k,u_k,d_k}),		&&	\mathbf{y_k} = g(\mathbf{x_k,u_k,d_k})\\				
 \textrm{Constraints} && \mathbf{y_{min}}&\leq& \mathbf{y_k} \leq \mathbf{y_{max}}\\		
 \textrm{} && \mathbf{u_{min}}&\leq& \mathbf{u_k} \leq \mathbf{u_{max}}	
 \end{align*}
-$c_\text{k}$ represents the cost function, which is explained in detail in \autoref{subsection:costfunction}
+$\sum_{k=1}^{N-1} c_\text{k}$ represents the cost function, which is explained in detail in \autoref{subsection:costfunction}
 . In terms of building control, $y$ is the internal temperature.
 %Störungen noch erklären
 
 \subsection{Cost function}
 \label{subsection:costfunction}
 
-    Generally, the cost function $c_\text{k}$ assigns a cost to the control signal $\mathbf{u_k}$ and the current state $\mathbf{x_k}$, which is mathematically described in
+    Generally, the cost function assigns a cost to the control signal $\mathbf{u_k}$ and the current state $\mathbf{x_k}$, which is mathematically described in
     \autoref{eq:costfunc}
     , with:
     \begin{equation}
     \label{eq:c_k}
     c_\text{k} = (\mathbf{x_k^T}Q\mathbf{x_k}+\mathbf{u_k^T}R\mathbf{u_k})
     \end{equation}
-    Here $Q$ and $R$ are matrices over which individual elements of the state vector or control signal vector can be weighted differently.  
-    \cite{Kouvaritakis.2016}
+    Here $Q$ and $R$ are matrices over which individual elements of the state vector or control signal vector can be weighted differently \cite{Kouvaritakis.2016}.
     Especially for every application, the cost function has an individual form to reach the aims of the MPC.
     
 \subsection{Dynamics}
 \label{subsection:dynamics}
     
-    The state-space formulation (SSF) is an alternative representation of a linear differential equation, which models a physical system. In this work, it is used for the formulation of the thermal model, which is required for the MPC. The SSF consists of the state $\textbf{x}$, the control signal $\textbf{u}$, the disturbances $\textbf{d}$ and the output of the system $\textbf{y}$ are represented in \autoref{eq:statespace}. The system matrix is $A$, $B_\text{1}$ and $B_\text{2}$ are called the input matrices, $C$ is the output matrix, $D_\text{1}$ and $D_\text{2}$ are the pass-through matrices. The \autoref{tab:matrixDim} lists the dimensions of the matrices m x n with m rows and n columns.   
+    The state-space formulation (SSF) is a representation of a linear differential equation, which models a physical system. In this work, it is used for the formulation of the thermal model, which is required for the MPC. The SSF consists of the state $\textbf{x}$, the control signal $\textbf{u}$, the disturbances $\textbf{d}$ and the output of the system $\textbf{y}$ are represented in \autoref{eq:statespace}. The system matrix is $A$, $B_\text{1}$ and $B_\text{2}$ are called the input matrices, $C$ is the output matrix, $D_\text{1}$ and $D_\text{2}$ are the pass-through matrices. The \autoref{tab:matrixDim} lists the dimensions of the matrices m x n with m rows and n columns.   
     \begin{align}
     \label{eq:statespace}
     \dot{\textbf{x}}=A\textbf{x}+B_1\textbf{u}+B_2\textbf{d}\\
@@ -242,22 +262,20 @@ $c_\text{k}$ represents the cost function, which is explained in detail in \auto
         \caption{dimensions of the matrices}
         \label{tab:matrixDim}
     \end{table}
-    Every differential equation needs initial values for solving. Therefore, initial states $\mathbf{x_0}$, initial control signals $\mathbf{u_0}$, and initial disturbances $\mathbf{d_0}$ must be given.
-    In a thermal model of a building, some authors (\cite{Hazyuk.2012}, \cite{Siroky.2011}) use the state as a vector of some temperatures, the control signal as a signal for the heating system, the disturbances can describe the influence by the weather or occupants and the output of the system contains frequently the temperature inside of the building.
+    Every differential equation needs initial values for the existence of a solution. Therefore, initial states $\mathbf{x_0}$, initial control signals $\mathbf{u_0}$, and initial disturbances $\mathbf{d_0}$ must be given.
+    In a thermal model of a building, some authors (\cite{Hazyuk.2012}, \cite{Siroky.2011}) use the state as a vector of temperatures, the control signal as a signal for the heating system. The disturbances can describe the influence by the weather or occupants and the output of the system contains frequently the temperature inside of the building.
     
 
 
 \subsection{Constraints}
 \label{subsection:constraints}
 
-Dealing with constraints is one of the most important advantages of MPC. Thereby, constraints can be used for the state, the output, and the input. In terms of building control, output constraints and input constraints are reasonable, as mathematically described in the \autoref{eq:costfunc}. That means, the output constraints could be a temperature range, which feels comfortable for occupants. And the constraints for the input are given as minimal (= 0) and maximal values of the possible performances. General, logical and physical ranges are constrained. There are different forms of constraints, but linear constraints are frequently used for MPC because they simplify the optimisation problem. Constraints can also be time dependant. This is beneficial for embedding diverse temperature ranges during the night and the day or during the working time of occupants when they are not at home.
-\cite{Siroky.2011}
-%es gibt harte und weiche constraints. wichtig ist, dass man nicht auf beiden seiten harte constraints einstellt. konvexe Constraints bei bedarf
+The inclusion of constraints into the control problem is one of the most important advantages of MPC. Thereby, constraints are imposed on the state, the output, and the input. In terms of building control, output constraints and input constraints are reasonable, as mathematically described in the \autoref{eq:costfunc}. That means, the output constraints are a temperature range, which feels comfortable for occupants. And the constraints for the input are given as minimal (= 0) and maximal values of the possible performances. General, logical and physical ranges are constrained. There are different forms of constraints, but linear constraints are frequently used for MPC because they simplify the optimisation problem \cite{Siroky.2011}. In addition, we differ between soft and hard constraints. While hard constraints cannot be exceeded, soft constraints allow a pass over the limits with a penalising in the cost function.
 
 \section{The reference building}
 \label{section:building}
     Since this thesis is based on a real building, the necessary details about the building will be described below.
-    The building is located on the "Campus Nord" of the KIT and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bathroom, five rooms and a technical room. For a better orientation, \autoref{fig:Bauplan} shows a part of the construction plan of the building. The building is designed as a single-family house, but for practical reasons, it is used as an office. The living area is around 100 $m^2$. The building offers two options to heat or cool with a ground-source heat pump or an air heat pump. The focus is on the air heat pump because the most commonly used heat pumps in Germany are air heat pumps \cite{bwp.2021}. In addition to the heat pump, there is a water reservoir for saving energy with stratified storage. The total volume is 1000 litres \cite{Oskar}. The heating system inside the building is provided as underground floor heating. However, the heating system is not completely installed yet. So using the heat pump, the water reservoir or the underground floor heating is not possible, yet.
+    The building is located on the "Campus Nord" of the KIT and is part of the "Energy Lab 2.0", "a research infrastructure for renewable energy"\cite{KIT.2021}. It is equipped with a kitchen, a bathroom, five rooms and a technical room. For a better orientation, \autoref{fig:Bauplan} shows a part of the construction plan of the building. The building is designed as a single-family house, but for practical reasons, it is used as an office. The living area is around 100 $m^2$. The building offers two options to heat or cool with a ground-source heat pump or an air heat pump. The focus is on the air heat pump because the most commonly used heat pumps in Germany are air heat pumps \cite{bwp.2021}. In addition to the heat pump, there is a water reservoir for storing energy with stratified storage. The total volume is 1000 litres \cite{Oskar}. The heating system inside the building is provided as underground floor heating. However, the heating system is not completely installed yet. So using the heat pump, the water reservoir or the underground floor heating is not possible, yet. Further, electric cars can be charged at a charge station next to the building.
     \newline
     One of the main features of the building is the number of sensors. The air temperature is measured in every room, as well as the temperature in the middle of the exterior walls, the screed temperature, the floor plate temperature, and the temperature of the inner wall between room three and room four (see \autoref{fig:Bauplan}). Furthermore, the consumption of the actual electrical power is also detected. Only the mentioned sensors are needed in this case, but there are many more sensors.
     
