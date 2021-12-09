@@ -131,7 +131,7 @@ The approach in the MPC script is determined by the use of the tool CasAdi. CasA
     
 \section{Choice of weightings and horizon}
 \label{Choise of weigtings and horizon}
-In the following, we analyse the horizon length $N$ \nomenclature[P]{N}{ length of the predictive horizon} and the effects of the weightings on the requirement of occupancy comfort and grid services for the basic scenario. For a better comparison we define an average comfort $\Delta \overline{y}$ \nomenclature[P]{$\Delta \overline{y}$}{Average comfort}, which is the average deviation of $y$ from $y_\text{track}$ over the simulation time only during presence of occupants, expressed by $y_\text{k,occ} - y_\text{track}$. The calculation of $\Delta \overline{y}$ is described in the following equation with the number of time steps with occupants $n_\text{occ}$.
+In the following, we analyse the horizon length $N$ \nomenclature[P]{N}{Length of the predictive horizon} and the effects of the weightings on the requirement of occupancy comfort and grid services for the basic scenario. For a better comparison we define an average comfort $\Delta \overline{y}$ \nomenclature[P]{$\Delta \overline{y}$}{Average comfort}, which is the average deviation of $y$ from $y_\text{track}$ over the simulation time only during presence of occupants, expressed by $y_\text{k,occ} - y_\text{track}$. The calculation of $\Delta \overline{y}$ is described in the following equation with the number of time steps with occupants $n_\text{occ}$.
 \begin{equation}
     \label{eq:average comfort}
     \Delta \overline{y} = \frac{\sum_{k,occ}^{n_\text{occ}} |y_\text{k,occ} - y_\text{track}|}{n_\text{occ}}
@@ -141,7 +141,7 @@ On the other hand, we define the costs for grid services (GS) \nomenclature[A]{G
 \label{eq:GridService123}
     GS = \sum_{k}^n P_{HP,k}\cdot Pr_\text{k}
 \end{equation}
-In theoretical considerations, we should obtain a higher value of $\Delta \overline{y}$ with less weighting of comfort and a higher value of GS with less weighting of grid services. Furthermore, a larger or shorter horizon $N$ differs in computation time and finding the optimal solution. While a longer N requires more computation time and may not find a solution, a shorter $N$ may not find the optimal solution. Due to finding the optimal solution a larger horizon should result in less costs for the requirements. In general, the horizon should depict the dynamics of the controlled system. \newline
+In theoretical considerations, we should obtain a higher value of $\Delta \overline{y}$ with less weighting of comfort and a higher value of GS with less weighting of grid services. Furthermore, a larger or shorter horizon $N$ differs in computation time and finding the optimal solution. While a longer N requires more computation time and may not find a solution, a shorter $N$ find only the optimal solution over the short horizon neglecting later influences. Therefore, a larger horizon should result in less costs for the requirements because of including later influences. In general, the horizon should depict the dynamics of the controlled system. \newline
 The theoretical considerations are inspected in the subsequent sections for the basic scenario over the simulation time of nine days.   
 
 \subsection{Average comfort and grid services over the weightings}
@@ -194,7 +194,7 @@ A predictive horizon should depict the dynamics of the system, in this case, the
             \label{fig:Plot_T_inside_Prediction_zeigen}
     \end{figure}
 The wavy profile occurs by day and night fluctuations of the weather. Therefore, \autoref{fig:Plot_T_inside_Prediction_zeigen} seems to be an indicator for the dynamics of the system, but the reaction of $T_\text{inside}$ to a control signal is not illustrated. Nevertheless, we propose a predictive horizon of one day in order to consider complete day and night fluctuations in the predictions. We examine this consideration by comparing costs over different horizons for an exemplary weighting. The following figure shows the curve of costs over the simulation period. The costs here are the sum of comfort and grid services. Here, the comfort according to the occupancy schedule is only considered when the occupants are in the building. Therefore, the peaks are recognizable, and from day four to the beginning of six, there are almost no costs, as this is the weekend.
-    \begin{figure}[h]
+    \begin{figure}[H]
             \centering
             \includegraphics[width=15cm,height=5cm]{figure/Gesamtkosten_Vergleich_horizonte.eps}
            \caption{Curve of the sum of cost over simulation time for different $N$}
@@ -202,3 +202,26 @@ The wavy profile occurs by day and night fluctuations of the weather. Therefore,
     \end{figure}
 The distinctions in costs at different horizons are as expected. The horizon $N = 12 h$ has the highest costs, while with the longer predictions, the costs decrease.\newline 
 We choose the horizon of 24 h because it represents the dynamic of the reference building and the costs are partly very similar to the next longer horizon of 30 h, e.g. in the last simulation days.
+
+\section{Mathematical description of the MPC}
+\label{sec:mathematicalDescriptionMPC}
+The following equation summarises mathematically the above explained MPC according to the foundations from \autoref{section:mpc}. Comparing the foundations and \autoref{eq:MPCsum}, it is notable that here the cost function from \autoref{section:thecostfunction}, the constraints from \autoref{section:theconstraints} and the determined predictive horizon $N = 24h$ is depicted, furthermore $f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) = \dot{x}_\text{k}$ according to \autoref{eq:ZRD Modell} and $g(\mathbf{x_k})$ corresponts to \autoref{y}.  
+\begin{align}
+\label{eq:MPCsum}
+\textrm{Cost function} && \text{minimize} \sum_{k} w_\text{1}\cdot (y_\text{k}-y_\text{track})^2 + w_\textbf{2}\cdot(u_\text{2,k}\cdot Pr_\text{k})^2 + w_\text{3} \cdot \eta_\text{k}^2
+\end{align}
+subject to 
+\begin{align*}
+\forall k \in [0,24-1]\\
+\textrm{Current state} && \mathbf{x_0} = \mathbf{x} \\	
+\textrm{Dynamics} && a_k^{(1)} = T_s \cdot f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) \\
+        && a_k^{(2)} = T_s \cdot f(\mathbf{x_k}+\frac{a_k^{(1)}}{2},t_k+\frac{T_s}{2},\mathbf{u_k},\mathbf{d_k})\\
+        && a_k^{(3)} = T_s \cdot f(\mathbf{x_k}+\frac{a_k^{(2)}}{2},t_k+\frac{T_s}{2},\mathbf{u_k},\mathbf{d_k})\\
+        && a_k^{(4)} = T_s \cdot f(\mathbf{x_k}+a_k^{(3)},t_k+T_s,\mathbf{u_k},\mathbf{d_k})\\
+        \\
+        && \mathbf{x_{k+1}} = \mathbf{x_k} + \frac{1}{6}\cdot (a_k^{(1)} + 2 a_k^{(2)} + 2 a_k^{(3)} + a_k^{(4)})\\
+&&	\mathbf{y_k} = g(\mathbf{x_k})\\				
+\textrm{Constraints} && x_\text{5,k} \in \mathbb{X}_{5,k} \\		
+ && \mathbf{y_k} \in \mathbb{Y_k}\\
+ && \mathbf{u_k} \in \mathbb{U_k}\\
+\end{align*}
