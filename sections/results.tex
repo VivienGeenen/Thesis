@@ -23,6 +23,14 @@ The MPC algorithm has to handle significant fluctuations of the desired temperat
 \textbf{(iii) Scenario 3:}\newline
 Scenario 3 is the simplest optimisation problem. The desired $T_\text{inside}$ is 22°C over the whole simulation time. This case does also not consider the occupancy schedule. We can use the cost function \ref{eq:costfunctatsächlich} without changes during this time and all constraints discussed in \autoref{section:theconstraints}.
 
+    \begin{figure}[H]
+           \centering
+        \def\svgwidth{1\textwidth}
+        \input{figure/TemperaturverlaufScenarien.pdf_tex}
+        \caption{$T_\text{inside}$ for the three scenarios for $i_\text{1} = 0.1$ and $i_\text{2} = 0.9$ and $i_\text{1} = 0.9$ and $i_\text{2} = 0.1$}
+         \label{fig:TemperaturverlaufScenarien}
+    \end{figure}
+
 \subsection{Results of the scenarios}
 \label{subsec:Results of the scenarios}
 To point out the influence of the weightings in the cost function, all results are presented for two representative weights, which enables to focus on the comfort requirements or grid services. The chosen weightings are $i_\text{1} = 0.1 \vee 0.9$ and $i_\text{2} = 0.9 \vee 0.1$. In the following the resulting inside temperature $T_\text{inside}$, the control signals  $\dot{Q}_\text{heating}$ and $\dot{Q}_\text{HP}$, and the electrical consumption of the heat pump $P_\text{HP}$ are shown over the simulation period, as well as the $\Delta \overline{y}$ and GS for every scenario.\newline
@@ -33,7 +41,7 @@ The inside temperature curve of scenario 2 runs below $T_\text{inside}$ of both 
            \centering
         \def\svgwidth{1\textwidth}
         \input{figure/TemperaturverlaufScenarien.pdf_tex}
-        \caption{$T_\text{inside}$ for the three scenarios for $i_\text{1} = 0.1 and i_\text{2} = 0.9$ and $i_\text{1} = 0.9 and i_\text{2} = 0.1$}
+        \caption{$T_\text{inside}$ for the three scenarios for $i_\text{1} = 0.1$ and $i_\text{2} = 0.9$ and $i_\text{1} = 0.9$ and $i_\text{2} = 0.1$}
          \label{fig:TemperaturverlaufScenarien}
     \end{figure}
  
@@ -42,17 +50,17 @@ In \autoref{fig:HeizverlaufGewichte}, $\dot{Q}_\text{heating}$ is depicted over 
            \centering
         \def\svgwidth{1.05\textwidth}
         \input{figure/HeizverlaufGewichte.pdf_tex}
-        \caption{$\dot{Q}_\text{heating}$ for the three scenarios for $i_\text{1} = 0.1 and i_\text{2} = 0.9$ and $i_\text{1} = 0.9 and i_\text{2} = 0.1$}
+        \caption{$\dot{Q}_\text{heating}$ for the three scenarios for $i_\text{1} = 0.1$ and $i_\text{2} = 0.9$ and $i_\text{1} = 0.9$ and $i_\text{2} = 0.1$}
          \label{fig:HeizverlaufGewichte}
     \end{figure}
     
-\autoref{fig:HPwaermestroeme} illustrates the heat flow $\dot{Q}_\text{HP}$ for all scenarios over the simulation time with both weightings. We notice that scenario 2 differs stronger from the other scenarios and the basic scenario has a constant period from day three to five. The values are in both diagrams positive and negative and we see higher absolute values in the second diagram with $i_\text{1} = 0.9 and i_\text{2} = 0.1$.
+\autoref{fig:HPwaermestroeme} illustrates the heat flow $\dot{Q}_\text{HP}$ for all scenarios over the simulation time with both weightings. We notice that scenario 2 differs stronger from the other scenarios and the basic scenario has a constant period from day three to five. The values are in both diagrams positive and negative and we see higher absolute values in the second diagram with $i_\text{1} = 0.9$ and $i_\text{2} = 0.1$.
 
     \begin{figure}[H]
            \centering
         \def\svgwidth{1.01\textwidth}
         \input{figure/HPwaermestroeme.pdf_tex}
-        \caption{$\dot{Q}_\text{HP}$ for the three scenarios for $i_\text{1} = 0.1 and i_\text{2} = 0.9$ and $i_\text{1} = 0.9 and i_\text{2} = 0.1$}
+        \caption{$\dot{Q}_\text{HP}$ for the three scenarios for $i_\text{1} = 0.1$ and $i_\text{2} = 0.9$ and $i_\text{1} = 0.9$ and $i_\text{2} = 0.1$}
          \label{fig:HPwaermestroeme}
     \end{figure}
     
@@ -61,7 +69,7 @@ In the following \autoref{fig:HP_grid} the structure for the comparison between 
            \centering
         \def\svgwidth{0.9\textwidth}
         \input{figure/HP_grid2.pdf_tex}
-        \caption{$P_\text{HP}$ and $Pr$ for the three scenarios for $i_\text{1} = 0.1 and i_\text{2} = 0.9$ and $i_\text{1} = 0.9 and i_\text{2} = 0.1$}
+        \caption{$P_\text{HP}$ and $Pr$ for the three scenarios for $i_\text{1} = 0.1$ and $i_\text{2} = 0.9$ and $i_\text{1} = 0.9$ and $i_\text{2} = 0.1$}
          \label{fig:HP_grid}
     \end{figure}
     
@@ -97,8 +105,8 @@ In the following \autoref{fig:HP_grid} the structure for the comparison between 
         \begin{tabular}{c||c|c|c}
           $i_\text{1} \ \& \  i_\text{2}$  &  Basic scenario & Scenario 2 & Scenario 3\\
           \hline  \hline
-             0.1 \& 0.9 & 5,699 kWh & 15,572 kWh & 9,866 kWh\\
-             0.9 \& 0.1 & 18,533 kWh & 23,666 kWh & 21,015 kWh\\
+             0.1 \& 0.9 & 5.7 MWh & 15.6 MWh & 9.9 MWh\\
+             0.9 \& 0.1 & 18.5 MWh & 23.7 MWh & 21.0 MWh\\
         \end{tabular}
         \caption{Energy consumption of the scenarios according to the weighting}
         \label{tab:EnergyConsumptionScenarien}
