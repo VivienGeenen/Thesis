@@ -1,10 +1,10 @@
 \chapter{Model predictive control}
 \label{ch:mpc}
-In this chapter, the framework conditions of the MPC are described by answering the questions: (i) what is controlled? (ii) How is it controlled? (iii) Which curves are controlled? (iii) What data is used? Additionally, the constraints, the cost function, and the workflow of the MPC script are introduced. The objective of this investigation is to obtain a control signal for the heat pump of the reference building that considers grid services and occupancy comfort. There, the investigation stays in a simulation environment. \newline
+In this chapter, the framework conditions of the MPC are described by answering the questions: (i) What is controlled? (ii) How is it controlled? (iii) What is the desired output? (iii) What data is used? Additionally, the constraints, the cost function, and the workflow of the MPC script are introduced. The objective of this investigation is to obtain a control signal for the heat pump of the reference building that considers grid services and occupancy comfort. In the present work, the controller is not applied to the real building, but is tested by simulation. \newline
 
 \section{Framework conditions of the MPC}
 \label{section:FrameworkMPC}
-The objective of the MPC is to optimise the control signal of the reference building \newline $\mathbf{u} = (u_1 \enspace u_2)^T = (\dot{Q}_\text{heating} \enspace \dot{Q}_\text{HP})^T$. Thereby, we consider the heat flows of the building in the MPC simulation. To investigate DSM, we require an impact on the grid of the control signal. Therefore, we subsequently calculate the electrical control signal $P_\text{HP}$ using the characteristic diagram of the heat pump from the $\dot{Q}_\text{HP}$. The controlled output is the inside temperature $\mathbf{y} = T_\text{inside}$, which we calculate with the thermal model from \autoref{holeModel}. The desired curves of $\mathbf{y}$ depend on the presence of occupants, which is determined by an occupancy schedule. To obtain a simulation environment, we use past data of the weather as the disturbances $d_\text{k}$ and the dynamic price of the electricity $Pr$ \nomenclature[P]{Pr}{dynamic Price of the electricity } as an indicator for the grid balance. The characteristic diagram, the occupancy schedule, and the used data are introduced in the following subsections.    
+The objective of the MPC is to optimise the control signal of the reference building \newline $\mathbf{u} = (u_1 \enspace u_2)^T = (\dot{Q}_\text{heating} \enspace \dot{Q}_\text{HP})^T$. To this end, we consider the heat flows of the building in the MPC simulation. To investigate DSM, we want to achieve an impact of the control signal on the grid. Therefore, we calculate the electrical control signal $P_\text{HP}$ using the characteristic diagram of the heat pump from the optimised $\dot{Q}_\text{HP}$. The controlled output is the inside temperature $\mathbf{y} = T_\text{inside}$, which we calculate with the thermal model from \autoref{holeModel}. The desired trajectories of $\mathbf{y}$ depend on the presence of occupants, which is determined by an occupancy schedule. To obtain a simulation environment, we use past data of the weather as the disturbances $d_\text{k}$ and the dynamic price of the electricity $Pr$ \nomenclature[P]{Pr}{dynamic Price of the electricity } as an indicator for the grid balance. The characteristic diagram, the occupancy schedule, and the used data are introduced in the following subsections.    
 
 \subsection{Characteristic diagram of the heat pump}
 \label{subsec:charcteristicDiagramHP}
@@ -28,10 +28,10 @@ Since the reference building is used as an office, the occupancy schedule descri
 
 \subsection{Used data}
 \label{subsec:PastData}
-    In a real applied MPC, we would use weather forecast as the disturbances $d_\text{k}$ in the state-space formulation for calculating the future behaviour of the system with the optimal control signal. Since we only simulate the behaviour of the building, we can use past data of the weather as $d_\text{k}$.\newline
+    In a real world application of an MPC, we would use weather forecast as the disturbances $d_\text{k}$ in the state-space formulation for calculating the future behaviour of the system with the optimal control signal. Since we only simulate the behaviour of the building, we can use past data of the weather as $d_\text{k}$.\newline
     The data used is from the same period as the training data for the model estimation. As the disturbance variable, we use the recording of diffuse radiation and outside temperature in Energy Lab 2.0. The MPC is simulated over nine days, to consider the full occupancy schedule at least once.\newline
-    The dynamic price of the electricity  $Pr$ is made available on the website of the Bundesnetzagentur \cite{Bundesnetzagentur-smard}. Here we use the wholesale prices on the stock exchange as an indicator of grid services. The price is an intersection between supply and demand. Consequently, when the price is low, we can assume an excess of electricity in the grid. Then it is particularly suitable to operate our heat pump to obtain electricity from the grid. In the opposite case, the same applies: If the price is high, it is unfavourable to operate the heat pump. At such times, it is particularly suitable to supply power from the grid. \newline
-    However, negative prices can also arise in retail. Negative prices would undesirably change the cost function, which will be explained in detail later with reference to the cost function. To avoid negative prices, we add the absolute minimum value of $Pr$ to every value of $Pr$. Thus, we shift the curve of $Pr$ into positive, as shown in \autoref{fig:Gridverschiebung}. Henceforth, we will utilise the dynamic price of electricity $Pr$ in the unit of $\frac{\text{\euro}}{Wh}$.
+    The dynamic price of the electricity  $Pr$ is made available on the website of the Bundesnetzagentur \cite{Bundesnetzagentur-smard}. Here we use the wholesale prices on the stock exchange as an indicator of grid services. The price is formed by supply and demand. Consequently, when the price is low, we can assume an excess of electricity in the grid. Then it is particularly suitable to operate our heat pump to obtain electricity from the grid. In the opposite case, the same applies: If the price is high, it is unfavourable to operate the heat pump. At such times, it is particularly unsuitable to supply power from the grid. \newline
+    However, negative prices can also arise in retail. Negative prices would undesirably change the cost function, which will be explained in detail later with reference to the cost function. To avoid negative prices, we add the absolute minimum value of $Pr$ to every value of $Pr$. Thus, we shift the curve of $Pr$ into positive and obtain as minimum $Pr = 0 \frac{\text{\euro}}{kWh}$ , as shown in \autoref{fig:Gridverschiebung}. Henceforth, we will utilise the dynamic price of electricity $Pr$ in the unit of $\frac{\text{\euro}}{Wh}$.
     \begin{figure}[h]
             \centering
             \includegraphics[width=15cm,height=8cm]{figure/Grid_data_Verschiebung.eps}
@@ -41,41 +41,41 @@ Since the reference building is used as an office, the occupancy schedule descri
     
 \section{The Constraints}
 \label{section:theconstraints}
-We generally define in \autoref{subsection:constraints} constraints. Further, we differ soft and hard constraints in the following. The hard constraints depend on the physical limitations of the installations in the building, such as the heat pump, the underground floor heating, and the water reservoir. The used soft constraint in this MPC smooths deviations of a comfortable temperature range. Further, the integration method of the model is included in the constraints to calculate the future states over one horizon. The subsequent section gives an overview of the constraints regarding the control signal, the output, the states, and an introduction of the integration method.
+We generally define in \autoref{subsection:constraints} constraints. Further, we differ soft and hard constraints in the following. The hard constraints depend on the physical limitations of the installations in the building, such as the heat pump, the underground floor heating, and the water reservoir. The used soft constraint in this MPC are smoothed constraints on the temperature range. Further, the integration method of the model is included in the constraints to calculate the future states over one horizon. The subsequent section gives an overview of the constraints regarding the control signal, the output, the states, and an introduction of the integration method.
 
 \subsection{Constraints of the control signals}
 \label{subsec:COnstraintU}
-The control signals are hard constrained by the physical limitations of the heat pump, the underfloor heating and the cooling configurations.\newline
+The control signals are constrained by the physical limitations of the heat pump, the underfloor heating and the cooling configurations.\newline
 The producer's specifications restrict $\dot{Q}_\text{HP}$ for nominal power by an inlet temperature of 55°C in case of heating and by an inlet temperature of 18°C in case of cooling \cite{TUM}. The maximum $\dot{Q}_\text{heating}$ is limited according to the underground floor heating calculation, where the set power of every room is counted and summed for the complete building \cite{Roth_Auslegung.2020}. The computation of the required cooling power predicts 2246 W needed power in case of 34.5°C outside temperature in July \cite{SEFIngenieurgesellschaftMBH.2019}. To be more flexible with higher outside temperatures, we round the minimum $\dot{Q}_\text{heating}$ to 2300 W.\newline
 Further, we define a constraint $u_1 \cdot u_2 \geq 0$ to avoid simultaneous heating of building and cooling of the water reservoir or reversed as this would waste energy needlessly.
 The set $\mathbb{U_k}$ summarise mathematically the constraints.
 \begin{equation}
     \label{ConstraintU}
-    \mathbb{U_k} = \{\mathbf{u_k}| -2300 W \prec \dot{Q}_\text{heating} \prec 5283 W \wedge -9340 W \prec \dot{Q}_\text{HP} \prec 8010 W | u_1 \cdot u_2 \geq 0\} 
+    \mathbb{U_k} = \{\mathbf{u_k}| -2300 W \leq \dot{Q}_\text{heating} \leq 5283 W \wedge -9340 W \leq \dot{Q}_\text{HP} \leq 8010 W | u_1 \cdot u_2 \geq 0\} 
 \end{equation}
 
 \subsection{Constraint of the output}
 \label{subsec:constrainY}
-We specify a comfortable temperature range with the soft constraint of the output. The following explains the range of a comfortable temperature.\newline
-The Umweltbundesamt \cite{Umweltbundesamt.7.10.2021} recommends an inside temperature of 18°C for some rooms, such as the kitchen. We expand the recommendation to a minimum $T_\text{inside}$ of 18°C for all rooms. The maximum inside temperature refers to the German technical rules for workplaces \cite{Bund.2021}, wherein a maximum of 26°C as room temperature is prescribed. The slack variable $\eta_\text{k}$ allows a variance of the given temperature range during a penalty in the cost function. Thus, we have a soft constraint, and we can obtain the feasibility of the optimisation problem during a deviation of the temperature range \cite{Drgona.2020}. The constraint is represented in the set $\mathbb{Y_k}$ as follows:  
+We specify a comfortable temperature range with a soft constraint of the output. The following explains the range of a comfortable temperature.\newline
+The Umweltbundesamt \cite{Umweltbundesamt.7.10.2021} recommends an inside temperature of 18°C as comfortable temperature for some rooms, such as the kitchen. We expand the recommendation to a minimum $T_\text{inside}$ of 18°C for all rooms. The maximum inside temperature refers to the German technical rules for workplaces \cite{Bund.2021}, wherein a maximum of 26°C as room temperature is prescribed. The slack variable $\eta_\text{k}$ allows a variance of the given temperature range with a simultaneous penalty in the cost function. Thus, we have a soft constraint, and we can maintain the feasibility of the optimisation problem during a deviation of the temperature range \cite{Drgona.2020}. The constraint is represented by the set $\mathbb{Y_k}$ as follows:  
 \begin{equation}
     \label{ConstraintY}
-    \mathbb{Y_k} = \{\mathbf{y_k}| 18 \text{°C} - \eta_k \prec T_\text{inside} \prec 26 \text{°C}+ \eta_k\} 
+    \mathbb{Y_k} = \{\mathbf{y_k}| 18 \text{°C} - \eta_k \leq T_\text{inside} \leq 26 \text{°C}+ \eta_k\} 
 \end{equation}
 
-\subsection{Constraints of the states}
+\subsection{Constraints on the states}
 \label{ConstraintX}
 We only have to constrain the state of the water reservoir because of its physical limitation. Therefore, we use a hard constraint.
 The calculation of the water reservoirs maximal inner energy $U_\text{WR}$ is explained in \autoref{waterModel} with \autoref{eq:max.Energie}. The minimum $U_\text{WR}$ is 0 J. The set $\mathbb{X}_{5,k}$ describes the constraint for the fifth element of the state vector.
 \begin{equation}
     \label{ConstraintX5}
-    \mathbb{X}_{5,k} = \{x_\text{5,k}| 0 J \prec U_\text{WR} \prec 96370000 J\} 
+    \mathbb{X}_{5,k} = \{x_\text{5,k}| 0 J \leq U_\text{WR} \leq 96370000 J\} 
 \end{equation}
 A further constraint, which relates to the states, is the integration method as discussed below.
 
-\subsection{Integration method and its constraint}
+\subsection{Integration method and the corresponding constraint}
 \label{COnstaintIntegration}
-As an integration method, we use a explicit single-step method, which means that we only need the values of the current time step $k$ to compute the next. Possible methods are the Heun's method, the Euler and the Runge-Kutta method. The decision is made in favor of the fourth-order Runge-Kutta method because the fourth order makes it more precise at a given step size than the other methods mentioned above. The following equation shows the integration scheme using the Runge-Kutta method with the sample time $T_\text{s}$ and the function $f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) = \mathbf{\dot{x}_\text{k}}$ according the state-space formulation (see \autoref{eq:statespace}) \cite{KaiFurmansMarcusGeimerBalazsPritzCarstenProppe.WS1920}.
+As an integration method, we use an explicit single-step method, which means that we only need the values of the current time step $k$ to compute the next. Possible methods are the Heun's method, the Euler and the Runge-Kutta method. The decision is made in favor of the fourth-order Runge-Kutta method because the fourth order makes it more precise at a given step size than the other methods mentioned above. The following equation shows the integration scheme using the Runge-Kutta method with the sample time $T_\text{s}$ and the function $f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) = \mathbf{\dot{x}_\text{k}}$ according the state-space formulation (see \autoref{eq:statespace}) \cite{KaiFurmansMarcusGeimerBalazsPritzCarstenProppe.WS1920}.
 
     \begin{align}
         \label{Runke-Kutta}
@@ -87,14 +87,14 @@ As an integration method, we use a explicit single-step method, which means that
         \mathbf{x_{k+1}} = \mathbf{x_k} + \frac{1}{6}\cdot (a_k^{(1)} + 2 a_k^{(2)} + 2 a_k^{(3)} + a_k^{(4)})\nonumber
     \end{align}
 The constraints accommodate the integration method for calculating the next time step according to the determined thermal model.
-Important to note is that the time step of the integration is chosen in accordance with the discretization of the model. The model is estimated with the discrete values of the reference building, where the measuring points are sampled every two minutes. For example, to achieve a $T_\text{s}$ of one hour, $T_\text{s}$ is described as $30 \cdot 2 min$. The two minutes are already included in the model by estimation. Therefore, we multiply $\mathbf{\dot{x}_\text{k}}$ by 30 to bring forward a time step of one hour. It is considered that the thermal model is composed of two submodels. The water reservoir sub-model, which is modelled using the white-box approach, requires a different conversion to advance one hour. Here we convert watts to joules per hour. In the MPC, this difference is compensated by a factor directly in the state-space formulation of the model.
+Important to note is that the time step of the integration is chosen in accordance with the discretization of the model. The model is estimated with the discrete values of the reference building, where the measuring points are sampled every two minutes. For example, to achieve a $T_\text{s}$ of one hour, $T_\text{s}$ is described as $30 \cdot 2 min$. The two minutes are already included in the model by estimation. Therefore, we multiply $\mathbf{\dot{x}_\text{k}}$ by 30 to go one time step by one hour further. It is considered that the thermal model is composed of two submodels. The water reservoir sub-model, which is modelled using the white-box approach, requires a different conversion to advance one hour. Here we convert watts to joules per hour. In the MPC, this difference is compensated by a factor directly in the state-space formulation of the model.
 
 \section{The Cost function}
 \label{section:thecostfunction}
 
-The cost function penalises the deviation from the desired requirements. On the one hand, we have to guaranty thermal occupant comfort in the building. On the other hand, we prefer to heat with the heat pump during convenient grid service. Both subjects are represented in the cost function below with the weightings $w_\text{1}$ and $w_\text{1}$, which relate to the requirements comfort and grid services.
+The cost function penalises the deviation from the desired requirements. On the one hand, we have to guaranty thermal occupant comfort in the building. On the other hand, we prefer to heat with the heat pump when grid service is favourable. Both subjects are represented in the cost function below with the weightings $w_\text{1}$ and $w_\text{1}$, which relate to the requirements comfort and grid services.
     \begin{equation}
-        \text{minimize} \sum_{k=1}^{N-1} w_\text{1}\cdot (y_\text{k}-y_\text{track})^2 + w_\textbf{2}\cdot(u_\text{2,k}\cdot Pr_\text{k})^2 + w_\text{3} \cdot \eta_\text{k}^2
+        \text{minimize} \sum_{k} w_\text{1}\cdot (y_\text{k}-y_\text{track})^2 + w_\textbf{2}\cdot(u_\text{2,k}\cdot Pr_\text{k})^2 + w_\text{3} \cdot \eta_\text{k}^2
         \label{eq:costfunctatsächlich}
     \end{equation}
 At first, we determine the desired temperature $y_\text{track}$ of the comfort requirement in the cost function. A pleasant air temperature is 22°C for living rooms, working rooms, and the bathroom \cite{Umweltbundesamt.7.10.2021}. As discussed in \autoref{ch:modelling}, we model the reference building as a single-zone building, wherein most rooms are working rooms. We decide to use the median temperature of all rooms of the recommended temperatures for the complete building. Thus, the desired temperature is $y_\text{track} = 22$°C.\newline
@@ -115,12 +115,12 @@ Occupant comfort is only necessary if persons are present in the building. There
         \text{minimize} \sum_{k=1}^{N-1} w_\textbf{2}\cdot(u_\text{2,k}\cdot Pr_\text{k})^2 + w_\text{3} \cdot \eta_\text{k}^2
         \label{eq:costfunctionAbwesenheit}
     \end{equation}
-The procedure aims to generate more flexibility for the objective of grid services. We define this scenario with the changing cost function as the basic scenario for this thesis, which is needed in the following chapter.  %Weshalb so energie sparen erklären
+The procedure aims to generate more flexibility for the objective of grid services. We define this scenario with the changing cost function as the basic scenario for this thesis, which is needed in the following chapter. 
 
 \section{Workflow of the MPC script}
 \label{section:workflowMPC}
-The approach in the MPC script is determined by the use of the tool CasAdi. CasADi is an open-source tool for nonlinear optimisation and algorithmic differentiation and is characterised by a symbolic framework. Mixed-integer optimal control problems, such as an MPC, are of particular interest \cite{JoelA.E.Andersson.2018}. We can combine CasAdi with MATLAB through a simple import.\newline
-\autoref{fig:workflowMPC} gives an overview of the workflow of the MPC script. First, we declare the parameter, all known sizes, and the optimisation variables symbolically. Then the inequalities of the constraints are set in a loop over the prediction horizon with the symbolic variables. The cost function is also indicated symbolically for the horizon. Afterwards, the initial values for the optimiser are determined. To specify the initial state for the first MPC step, we choose a constant control signal $\mathbf{u_k} = [0\enspace0]^T$, a state $\mathbf{x}$ within the temperature range, and determine with the Runge-Kutta method the curve over the horizon. A half charged water reservoir constitutes a further assumption for the initial state. We pass the values of the initial state of the optimisation variations and the parameters to the solver. Then, the optimisation problem is solved with the Ipopt (\textbf{I}nterior \textbf{P}oint \textbf{Opt}imiser) solver \cite{JoelA.E.Andersson.2018}. As a result, we obtain the optimised $\mathbf{u_k}$ over the horizon. Now, after each time step, a new initial state is calculated with the curves of the states and the output from the new disturbance variables and the optimum $\mathbf{u_k}$ over the horizon.
+The approach in the MPC script is determined by the use of the tool CasAdi. CasADi is an open-source tool for nonlinear optimisation and algorithmic differentiation and is characterised by a symbolic framework. Optimal control problems, such as an MPC, are of particular interest \cite{JoelA.E.Andersson.2018}. We can combine CasAdi with MATLAB through a simple import.\newline
+\autoref{fig:workflowMPC} gives an overview of the workflow of the MPC script. First, we declare the parameter, all known dimensions, and the optimisation variables symbolically. Then the inequalities of the constraints are set in a loop over the prediction horizon with the symbolic variables. The cost function is also indicated symbolically for the horizon. Afterwards, the initial values for the optimiser are determined. To specify the initial state for the first MPC step, we choose a constant control signal $\mathbf{u_k} = [0\enspace0]^T$, a state $\mathbf{x}$ within the temperature range, and determine with the Runge-Kutta method the trajectory over the horizon. A half charged water reservoir constitutes a further assumption for the initial state. We pass the values of the initial state of the optimisation variations and the parameters to the solver. Then, the optimisation problem is solved with the Ipopt (\textbf{I}nterior \textbf{P}oint \textbf{Opt}imiser) solver \cite{JoelA.E.Andersson.2018}. As a result, we obtain the optimised $\mathbf{u_k}$ over the horizon. Now, after each time step, a new initial state is calculated with the curves of the states and the output from the new disturbance variables and the optimum $\mathbf{u_k}$ over the horizon before.
     \begin{figure}[h]
             \centering
             \def\svgwidth{0.75\textwidth}
@@ -131,7 +131,7 @@ The approach in the MPC script is determined by the use of the tool CasAdi. CasA
     
 \section{Choice of weightings and horizon}
 \label{Choise of weigtings and horizon}
-In the following, we analyse the horizon length $N$ \nomenclature[P]{N}{ length of the predictive horizon} and the effects of the weightings on the requirement of occupancy comfort and grid services for the basic scenario. For a better comparison we define an average comfort $\Delta \overline{y}$ \nomenclature[P]{$\Delta \overline{y}$}{Average comfort}, which is the average deviation of $y$ from $y_\text{track}$ over the simulation time only during presence of occupants, expressed by $y_\text{k,occ} - y_\text{track}$. The calculation of $\Delta \overline{y}$ is described in the following equation with the number of time steps with occupants $n_\text{occ}$.
+In the following, we analyse the horizon length $N$ \nomenclature[P]{N}{Length of the predictive horizon} and the effects of the weightings on the requirement of occupancy comfort and grid services for the basic scenario. For a better comparison we define an average comfort $\Delta \overline{y}$ \nomenclature[P]{$\Delta \overline{y}$}{Average comfort}, which is the average deviation of $y$ from $y_\text{track}$ over the simulation time only during presence of occupants, expressed by $y_\text{k,occ} - y_\text{track}$. The calculation of $\Delta \overline{y}$ is described in the following equation with the number of time steps with occupants $n_\text{occ}$.
 \begin{equation}
     \label{eq:average comfort}
     \Delta \overline{y} = \frac{\sum_{k,occ}^{n_\text{occ}} |y_\text{k,occ} - y_\text{track}|}{n_\text{occ}}
@@ -141,12 +141,12 @@ On the other hand, we define the costs for grid services (GS) \nomenclature[A]{G
 \label{eq:GridService123}
     GS = \sum_{k}^n P_{HP,k}\cdot Pr_\text{k}
 \end{equation}
-In theoretical considerations, we should obtain a higher value of $\Delta \overline{y}$ with less weighting of comfort and a higher value of GS with less weighting of grid services. Furthermore, a larger or shorter horizon $N$ differs in computation time and finding the optimal solution. While a longer N requires more computation time and may not find a solution, a shorter $N$ may not find the optimal solution. Due to finding the optimal solution a larger horizon should result in less costs for the requirements. In general, the horizon should depict the dynamics of the controlled system. \newline
+In theoretical considerations, we should obtain a higher value of $\Delta \overline{y}$ with less weighting of comfort and a higher value of GS with less weighting of grid services. Furthermore, a larger or shorter horizon $N$ differs in computation time and finding the optimal solution. While a longer N requires more computation time and may not find a solution, a shorter $N$ find only the optimal solution over the short horizon neglecting later influences. Therefore, a larger horizon should result in less costs for the requirements because of including later influences. In general, the horizon should depict the dynamics of the controlled system. \newline
 The theoretical considerations are inspected in the subsequent sections for the basic scenario over the simulation time of nine days.   
 
 \subsection{Average comfort and grid services over the weightings}
 \label{subsec:Average comfort and grid services over the weightings}
-The following figure presents the behaviour of $\Delta \overline{y}$ and GS for the different weightings $w_\text{1}$ and $w_\text{2}$ with $N = 24h$. We also compare the behaviour for different horizon $N$ to verify the feasibility and the expected behaviour. The corresponding figures are shown in \autoref{sec:Average comfort and grid services} and the values of $\Delta \overline{y}$ and GS for different horizons are displayed in the following tables.\newline
+The following figure presents the behaviour of $\Delta \overline{y}$ and GS for the different weightings $w_\text{1}$ and $w_\text{2}$ with $N = 24h$. We also compare the behaviour for different horizons $N$ to verify the feasibility and the expected behaviour. The corresponding figures are shown in \autoref{sec:Average comfort and grid services} and the values of $\Delta \overline{y}$ and GS for different horizons are displayed in the following tables.\newline
 We notice a monotone behaviour of the average comfort and the grid services according to their weightings apart from small discrepancies. A possibility for discrepancies could be that the optimiser find not the global optimum. We obtain feasible solutions apart from $N=12 h$ and both weightings are $0.5$. The lower costs with increasing horizon length are only for the average comfort notable, expecting the case $w_\text{1}=0$. In this case, we consider not the comfort in the cost function. Therefore, the values of $\Delta \overline{y}$ are random, also relating to the horizon length.\newline
 The explanation for higher cost in GS with longer horizon is that the thermal reaction of the building is known over a longer time and the control signal reacts early for a better adaption of the comfort.
     \begin{figure}[h]
@@ -194,7 +194,7 @@ A predictive horizon should depict the dynamics of the system, in this case, the
             \label{fig:Plot_T_inside_Prediction_zeigen}
     \end{figure}
 The wavy profile occurs by day and night fluctuations of the weather. Therefore, \autoref{fig:Plot_T_inside_Prediction_zeigen} seems to be an indicator for the dynamics of the system, but the reaction of $T_\text{inside}$ to a control signal is not illustrated. Nevertheless, we propose a predictive horizon of one day in order to consider complete day and night fluctuations in the predictions. We examine this consideration by comparing costs over different horizons for an exemplary weighting. The following figure shows the curve of costs over the simulation period. The costs here are the sum of comfort and grid services. Here, the comfort according to the occupancy schedule is only considered when the occupants are in the building. Therefore, the peaks are recognizable, and from day four to the beginning of six, there are almost no costs, as this is the weekend.
-    \begin{figure}[h]
+    \begin{figure}[H]
             \centering
             \includegraphics[width=15cm,height=5cm]{figure/Gesamtkosten_Vergleich_horizonte.eps}
            \caption{Curve of the sum of cost over simulation time for different $N$}
@@ -202,3 +202,26 @@ The wavy profile occurs by day and night fluctuations of the weather. Therefore,
     \end{figure}
 The distinctions in costs at different horizons are as expected. The horizon $N = 12 h$ has the highest costs, while with the longer predictions, the costs decrease.\newline 
 We choose the horizon of 24 h because it represents the dynamic of the reference building and the costs are partly very similar to the next longer horizon of 30 h, e.g. in the last simulation days.
+
+\section{Mathematical description of the MPC}
+\label{sec:mathematicalDescriptionMPC}
+The following equation summarises mathematically the above explained MPC according to the foundations from \autoref{section:mpc}. Comparing the foundations and \autoref{eq:MPCsum}, it is notable that here the cost function from \autoref{section:thecostfunction}, the constraints from \autoref{section:theconstraints} and the determined predictive horizon $N = 24h$ is depicted, furthermore $f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) = \dot{x}_\text{k}$ according to \autoref{eq:ZRD Modell} and $g(\mathbf{x_k})$ corresponts to \autoref{y}.  
+\begin{align}
+\label{eq:MPCsum}
+\textrm{Cost function} && \text{minimize} \sum_{k} w_\text{1}\cdot (y_\text{k}-y_\text{track})^2 + w_\textbf{2}\cdot(u_\text{2,k}\cdot Pr_\text{k})^2 + w_\text{3} \cdot \eta_\text{k}^2
+\end{align}
+subject to 
+\begin{align*}
+\forall k \in [0,24-1]\\
+\textrm{Current state} && \mathbf{x_0} = \mathbf{x} \\	
+\textrm{Dynamics} && a_k^{(1)} = T_s \cdot f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) \\
+        && a_k^{(2)} = T_s \cdot f(\mathbf{x_k}+\frac{a_k^{(1)}}{2},t_k+\frac{T_s}{2},\mathbf{u_k},\mathbf{d_k})\\
+        && a_k^{(3)} = T_s \cdot f(\mathbf{x_k}+\frac{a_k^{(2)}}{2},t_k+\frac{T_s}{2},\mathbf{u_k},\mathbf{d_k})\\
+        && a_k^{(4)} = T_s \cdot f(\mathbf{x_k}+a_k^{(3)},t_k+T_s,\mathbf{u_k},\mathbf{d_k})\\
+        \\
+        && \mathbf{x_{k+1}} = \mathbf{x_k} + \frac{1}{6}\cdot (a_k^{(1)} + 2 a_k^{(2)} + 2 a_k^{(3)} + a_k^{(4)})\\
+&&	\mathbf{y_k} = g(\mathbf{x_k})\\				
+\textrm{Constraints} && x_\text{5,k} \in \mathbb{X}_{5,k} \\		
+ && \mathbf{y_k} \in \mathbb{Y_k}\\
+ && \mathbf{u_k} \in \mathbb{U_k}\\
+\end{align*}

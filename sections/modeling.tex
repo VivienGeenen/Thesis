@@ -235,6 +235,6 @@ After explaining thermal basics and the electrical analogy, these foundations ar
   \begin{align}
 	    \label{eq:ZRD Modell}
 	 \left(\begin{array}{c} \frac{d T_\text{inside}}{d t} \\ \frac{d T_\text{envelope}}{d t} \\ \frac{d T_\text{interior}}{d t}\\ \frac{d T_\text{floor}}{d t}\\ \frac{d U_\text{WR}}{d t} \end{array}\right) &= A \left(\begin{array}{c} T_\text{inside} \\ T_\text{envelope} \\ T_\text{interior}\\ T_\text{floor}\\ U_\text{WR} \end{array}\right) + B_\text{1} \left(\begin{array}{c} \dot{Q}_\text{heating} \\ \dot{Q}_\text{HP} \end{array}\right) + B_\text{2} \left(\begin{array}{c} I_\text{sun,inside}\\ I_\text{sun,envelope}\\ T_\text{outside} \\ \dot{Q}_\text{loss} \end{array}\right) \\
-	 T_\text{inside} &= C \left(\begin{array}{c} T_\text{inside} \\ T_\text{envelope} \\ T_\text{interior}\\ T_\text{floor}\\ U_\text{WR} \end{array}\right) \nonumber
+	 T_\text{inside} &= C \left(\begin{array}{c} T_\text{inside} \\ T_\text{envelope} \\ T_\text{interior}\\ T_\text{floor}\\ U_\text{WR} \end{array}\right) \label{y}
 	\end{align}	
     The complete matrices $A$, $B_\text{1}$, $B_\text{2}$, and $C$ are presented in \autoref{sec:appendix:Matrizen}. We have no pass-through matrices $D_\text{1}$ or $D_\text{2}$ because neither control signals nor disturbances have a direct impact on the output. 
