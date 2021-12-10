@@ -21,13 +21,14 @@ The Umweltbundesamt \cite{Umweltbundesamt.7.10.2021} recommends a room temperatu
 The MPC algorithm has to handle significant fluctuations of the desired temperature. Therefore, we reduce the weighting $w_\text{3}$ to minimum needed depending on the $w_\text{1}$ and $w_\text{2}$ and adjust the soft constraint. In this way, we allow more deviations of the desired temperature to obtain a feasible solution of the MPC. \newline 
 
 \textbf{(iii) Scenario 3:}\newline
-Scenario 3 is the simplest optimisation problem. The desired $T_\text{inside}$ is 22°C over the whole simulation time. This case does also not consider the occupancy schedule. We can use the cost function \ref{eq:costfunctatsächlich} without changes during this time and all constraints discussed in \autoref{section:theconstraints}.
+Scenario 3 is the simplest optimisation problem. The desired $T_\text{inside}$ is 22°C over the whole simulation time. This case does also not consider the occupancy schedule. We can use the cost function \ref{eq:costfunctatsächlich} without changes during this time and all constraints discussed in \autoref{section:theconstraints}.\newline
 
+To summarise the different desired behaviours of the scenarios the desired temperatures are pictured in the following Figure.
     \begin{figure}[H]
            \centering
         \def\svgwidth{1.1\textwidth}
         \input{figure/Solltemperaturverlauf.pdf_tex}
-        \caption{}
+        \caption{Desired temperature trajectories of the scenarios}
          \label{fig:Solltemperaturverlauf}
     \end{figure}
 
