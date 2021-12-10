@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{492.38485124bp}%
+    \setlength{\unitlength}{570.14739584bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,13 +50,13 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.20760116)%
+  \begin{picture}(1,1.17654965)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{HP_grid2.pdf}}%
-    \put(0.63599054,1.18203627){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P_\text{HP}: i_\text{1}= 0.1 \& i_\text{2}=0.9$\end{tabular}}}}%
-    \put(0.63597989,1.15487639){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P_\text{HP}: i_\text{1}= 0.9 \& i_\text{2}=0.1$\end{tabular}}}}%
-    \put(0.63658394,1.12356222){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Dynamic price of the electricity Pr $\frac{\text{\euro}}{kWh}$\end{tabular}}}}%
+    \put(0.58478752,1.15433066){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P_{HP}: i_\text{1}= 0.1 \& i_\text{2}=0.9$\end{tabular}}}}%
+    \put(0.58477832,1.13087512){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$P_{HP}: i_\text{1}= 0.9 \& i_\text{2}=0.1$\end{tabular}}}}%
+    \put(0.58529999,1.1038319){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Dynamic price of the \\electricity Pr $\frac{\text{\euro}}{kWh}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{HP_grid2.pdf}}%
   \end{picture}%
 \endgroup%
