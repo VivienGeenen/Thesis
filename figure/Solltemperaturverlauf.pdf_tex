@@ -50,15 +50,15 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.42968541)%
+  \begin{picture}(1,0.40270069)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{Solltemperaturverlauf.pdf}}%
-    \put(0.75765497,0.40076462){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 1\end{tabular}}}}%
+    \put(0.78227339,0.38153801){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 1\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{Solltemperaturverlauf.pdf}}%
-    \put(0.75765497,0.36964334){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 2\end{tabular}}}}%
+    \put(0.78227339,0.35876512){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 2\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{Solltemperaturverlauf.pdf}}%
-    \put(0.75765497,0.33852206){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 3\end{tabular}}}}%
+    \put(0.78227339,0.33599223){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Scenario 3\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{Solltemperaturverlauf.pdf}}%
     \put(0.12545676,0.02732489){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
     \put(0.21153066,0.02732489){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
