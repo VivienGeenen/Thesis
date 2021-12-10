@@ -205,7 +205,7 @@ We choose the horizon of 24 h because it represents the dynamic of the reference
 
 \section{Mathematical description of the MPC}
 \label{sec:mathematicalDescriptionMPC}
-The following equation summarises mathematically the above explained MPC according to the foundations from \autoref{section:mpc}. Comparing the foundations and \autoref{eq:MPCsum}, it is notable that here the cost function from \autoref{section:thecostfunction}, the constraints from \autoref{section:theconstraints} and the determined predictive horizon $N = 24h$ is depicted, furthermore $f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) = \dot{x}_\text{k}$ according to \autoref{eq:ZRD Modell} and $g(\mathbf{x_k})$ corresponts to \autoref{y}.  
+The following equation summarises mathematically the above explained MPC according to the foundations from \autoref{section:mpc}. Comparing the foundations and \autoref{eq:MPCsum}, it is notable that here the cost function from \autoref{section:thecostfunction}, the constraints from \autoref{section:theconstraints} and the determined predictive horizon $N = 24h$ is depicted, furthermore $f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) = \dot{x}_\text{k}$ according to \autoref{eq:ZRD Modell} and $g(\mathbf{x_k})$ corresponds to \autoref{y}.  
 \begin{align}
 \label{eq:MPCsum}
 \textrm{Cost function} && \text{minimize} \sum_{k} w_\text{1}\cdot (y_\text{k}-y_\text{track})^2 + w_\textbf{2}\cdot(u_\text{2,k}\cdot Pr_\text{k})^2 + w_\text{3} \cdot \eta_\text{k}^2
