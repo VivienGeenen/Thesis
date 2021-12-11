@@ -10,9 +10,12 @@ At last, scenarios are investigated concerning comfort, grid service and energy 
 
 \section{Outlook}
 \label{sec:outlook}
-- Erstellen eines models aus daten vom Energy lab während heizperiode ohne ein künstlichen aufbau
-- HVAC system verbinden und reaction als regelreserve nutzen. Bei einen Gebäude ohne die möglichkeit strom einzuspeisen sind nach den Reglen nur secundäre und tertiäre regelreserve möglich.
-- vergleich mit Ansatz mit speziell sommer und wintermodel 
+In future, the heating system of the reference building will be readily installed, and sensors will measure the heat flow from the heating in the building. This enables a new estimation of the grey-box model with data from an ordinary heat period. To generate the new data, no artificial heating is necessary in an experiment, but we can use the recorded data of habitual office days. The intention is to create a more representative model.\newline
+Furthermore, a comparison of the advantages and disadvantages between an MPC with one model for winter and summer and an MPC with different models for winter and summer is engaging. Therefore, an MPC with two models can be prepared and compared with the approach in this thesis.\newline
+A further interesting issue is the investigation of the advancement of the MPC for the use of heat pumps in buildings as a control reserve of the grid. Günther et al. \cite{WPimBestand.2020} already investigate the integration of heat pumps at the grid, but without an MPC approach. 
+
+
+%A building without its own power generation can only draw negative power from the grid. Therefore, only the secondary and tertiary control reserves are of interest, which means that according to the rules for control reserves, a connection is only possible with negative power.
 
 %Repeat the problem and its relevance, as well as the contribution (plus quantitative results). 
 %Look back at what you have written in the introduction.
