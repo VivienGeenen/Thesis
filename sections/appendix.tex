@@ -25,22 +25,38 @@
     \begin{tabular}{c|c|c}
          &  Start values & Identified values\\
          \hline
-        $C_\text{inside}$& 400425 $J/W$ & 1198069 $J/W$\\
-        $C_\text{envelope}$ & 24999045 $J/W$ & 24998057 $J/W$\\
-        $C_\text{interior}$& 22960754 $J/W$ & 22960750 $J/W$\\
-        $C_\text{floor}$ & 26118734 $J/W$ & 26118731 $J/W$\\
-        $R_\text{inside}$ & 191 $K/W$ & 0,66 $K/W$\\
-        $R_\text{window}$ & 34 $K/W$ & 0.0025 $K/W$\\
+        $C_\text{inside}$& 407532 $J/W$ & 1109738 $J/W$\\
+        $C_\text{envelope}$ & 24999045 $J/W$ & 24998602 $J/W$\\
+        $C_\text{interior}$& 22960754 $J/W$ & 23859585 $J/W$\\
+        $C_\text{floor}$ & 26118734 $J/W$ & 26079959 $J/W$\\
+        $R_\text{inside}$ & 191 $K/W$ & 1.08710 $K/W$\\
+        $R_\text{window}$ & 34 $K/W$ & 0.00251 $K/W$\\
         $R_\text{envelope}$ & 287 $K/W$ & 0,00008 $K/W$\\
-        $R_\text{interior}$& 77 $K/W$ & 28001 $K/W$\\
-        $R_\text{floor}$ & 749 $K/W$ & 2719 $K/W$\\
+        $R_\text{interior}$& 77 $K/W$ & 54602 $K/W$\\
+        $R_\text{floor}$ & 749 $K/W$ & 2731 $K/W$\\
         $R_\text{in}$ & 191 $K/W$ & 191 $K/W$\\
-        $f_\text{sol,inside}$ & 0,25 & 7.80685 $K/W$\\
-        $f_\text{sol,envelope}$ &0,25 & -7.30632 $K/W$\\
+        $f_\text{sol,inside}$ & 0,25 & 6.53161 $K/W$\\
+        $f_\text{sol,envelope}$ &0,25 & -7.30656 $K/W$\\
     \end{tabular}
     \caption{Start and identified values of the model parameters}
-    \label{tab:my_label}
+    \label{tab:StartwerteSchätzung}
 \end{table}
+
+\section{Further training and verification diagrams}
+\label{sec:appendix:Modelvalues}
+\begin{figure}[h]
+            \centering
+            \includegraphics[width=14cm,height=5.5cm]{figure/Training.eps}
+           \caption{Training of $T_\text{envelope}$ of the building model}
+           \label{fig:trainingModelenvelope}
+    \end{figure}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width=7cm,height=5cm]{figure/Validation_inside.eps}
+           \caption{Verification of $T_\text{envelope}$ of the building model}
+           \label{fig:verificationModelenvelpe}
+    \end{figure}
+    
 \section{Matrices of state-space formulation}
 \label{sec:appendix:Matrizen}
     
