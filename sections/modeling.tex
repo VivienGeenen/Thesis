@@ -75,7 +75,7 @@ After explaining thermal basics and the electrical analogy, these foundations ar
         \label{fig:Figure of the water reservoir with the heat flows}
     \end{figure}
     Since the model is based on a real building, the size of the heat flows and the inner energy are limited according to the devices of the building, e.g. the heat pump. Further, we have to consider that the heat flows $\dot{Q}_\text{HP}$ and $\dot{Q}_\text{heating}$ can also have negative values when cooling is required. The heat losses and the heat pump heat range are taken from the technical data \cite{Oskar}, \cite{TUM}.\newline
-    Since the reference water reservoir is stratified storage we determine the maximum inner energy under the assumption of two heat layers. According to \autoref{eq:innerEnergy}, we need material parameters of water ($c_\text{v,w}$, $\rho_\text{w}$), the size of the water reservoir ($m = \rho_\text{w} V$), both are known, and a temperature difference, which we define for both layers. To determine the temperature difference, we define two temperatures at the time one and two. At the time one, we assume that the storage has ambient temperature $T_\text{amb}$ of 20°C in both layers. At the time two, we differentiate the temperatures in the layers. The maximum temperature of the upper layer in the water reservoir $T_\text{max,1}$ is the maximum inlet temperature of 55 °C of the heat pump provided by the characteristic diagram. The maximum temperature of the lower layer $T_\text{max,2}$ is based on the inlet temperature of the underfloor heating at 35 °C. We calculate the sum of the inner energy as follows.
+    Since the reference water reservoir is stratified storage we determine the maximum inner energy under the assumption of two heat layers. According to \autoref{eq:innerEnergy}, we need material parameters of water ($c_\text{v,w}$, $\rho_\text{w}$)\nomenclature[G]{$\rho$}{Density\nomunit{$\frac{kg}{m^3}$}}, the size of the water reservoir ($m = \rho_\text{w} V$)\nomenclature[P]{m}{mass\nomunit{$kg$}}\nomenclature[P]{V}{volume\nomunit{$m^3$}}\nomenclature[P]{c}{specific heat capacitance\nomunit{$\frac{J}{kg K}$}}, both are known, and a temperature difference, which we define for both layers. To determine the temperature difference, we define two temperatures at the time one and two. At the time one, we assume that the storage has ambient temperature $T_\text{amb}$ of 20°C in both layers. At the time two, we differentiate the temperatures in the layers. The maximum temperature of the upper layer in the water reservoir $T_\text{max,1}$ is the maximum inlet temperature of 55 °C of the heat pump provided by the characteristic diagram. The maximum temperature of the lower layer $T_\text{max,2}$ is based on the inlet temperature of the underfloor heating at 35 °C. We calculate the sum of the inner energy as follows.\nomenclature[P]{T}{temperature\nomunit{$K$}} \nomenclature[P]{$\dot{Q}$}{heat flow\nomunit{$J$}}
     \begin{equation}
         \label{eq:max.Energie}
         U = \rho_\text{w} c_\text{v,w} ((T_\text{max,1}-T_\text{amb})\cdot \frac{V}{2} + (T_\text{max,2}-T_\text{amb})\cdot \frac{V}{2}) 
@@ -95,7 +95,7 @@ After explaining thermal basics and the electrical analogy, these foundations ar
         C_\text{inside}\cdot \frac{d T_\text{inside}}{d t} &=& \dot{Q}_\text{heating} + \dot{Q}_\text{sun,inside} - \frac{T_\text{inside}-T_\text{envelope}}{R_\text{inside}} - \frac{T_\text{inside}-T_\text{outside}}{R_\text{window}} \\
        & &-\frac{T_\text{inside}-T_\text{interior}}{R_\text{interior}}-\frac{T_\text{inside}-T_\text{floor}}{R_\text{floor}}\nonumber
     \end{align}
-    The detailed explanation for the composition of the thermal resistance and capacitance is in \autoref{electricalanalogy}. In the following table, the material and state dependant values are explained:
+    The detailed explanation for the composition of the thermal resistance and capacitance is in \autoref{electricalanalogy} and further the parameters of the used material are summarised in \autoref{tab:Summarising of material parameters}. In the following table, the special material and state dependant values are explained:
     \begin{table}[H]
         \centering
         \begin{tabular}{l p{13cm}}
@@ -103,7 +103,6 @@ After explaining thermal basics and the electrical analogy, these foundations ar
             $R_\text{inside}$ & The thermal resistance $R_\text{inside}$ includes a convective part with the transfer coefficient $\alpha = 0.9 W/(m^2 K)$ for air perpendicular to the wall in buildings with the assumption of one Kelvin temperature difference between the wall and air \cite{Schweizer-fnalpha}.\\
             $R_\text{window}$ & The window resistance $R_\text{window}$ is determined with the window area and the assumption of a heat transmission coefficient $u = 1 W/(m^2 K)$ \cite{ThorbenFrahm.2021}.\\
             $R_\text{floor}$ & Heat conductivity and heat convection are the regarded mechanisms to determine the floor resistance $R_\text{floor}$. The floor material is reinforced concrete with the thermal conductivity of $2.3 W/(m K)$ \cite{AntonSchweizer.12.10.2021}.\\
-            $R_\text{inside}$ & For the convection inside the building, the same assumptions are made as for $R_\text{inside}$.\\
             $R_\text{interior}$ & The interior resistance $R_\text{interior}$ is also calculated with the heat transfer coefficient inside.
         \end{tabular}
         \caption{Explanation of the special material and state dependant values of the differential equation of the inside temperature}
@@ -120,7 +119,7 @@ After explaining thermal basics and the electrical analogy, these foundations ar
         \centering
         \begin{tabular}{l p{13cm}}
         $R_\text{envelope}$ & The outer wall resistance $R_\text{envelope}$ contains a heat conductivity of aerated concrete ($0,133 W/(m K)$ \cite{GhaziWakili.2015}) and the heat transfer coefficient for air perpendicular to the wall outside $\alpha_\text{envelope}$ according to the rules of thumb from Schweizer-fn $\alpha_\text{envelope} = 3.96 (v / L)^{0.5} = 1.669 W/(m^2 K)$ \cite{Schweizer-fnalpha} with the average wind velocity of Karlsruhe $v$ \cite{AbteilungKlimaundUmweltberatung.2004} and the length of the building wall.\\
-        $C_\text{envelope}$ & To determine the capacitance $C_\text{envelope}$, we need the volume of the outer walls from the construction plan \cite{Bauplan}, the density of aerated concrete ($485 kg/m^3$) and the capacity (1000 $J/(kg K)$) \cite{GhaziWakili.2015}. 
+        $C_\text{envelope}$ & To determine the capacitance $C_\text{envelope}$, we need the volume of the outer walls from the construction plan \cite{Bauplan}, the density of aerated concrete ($485 kg/m^3$) and the capacity (1000 $J/(kg K)$) \cite{GhaziWakili.2015}.
         \end{tabular}
         \caption{Explanation of the special material and state dependant values of the differential equation of the envelope temperature}
         \label{tab:valuesOfEnvelopeTemperature}
@@ -237,4 +236,6 @@ After explaining thermal basics and the electrical analogy, these foundations ar
 	 \left(\begin{array}{c} \frac{d T_\text{inside}}{d t} \\ \frac{d T_\text{envelope}}{d t} \\ \frac{d T_\text{interior}}{d t}\\ \frac{d T_\text{floor}}{d t}\\ \frac{d U_\text{WR}}{d t} \end{array}\right) &= A \left(\begin{array}{c} T_\text{inside} \\ T_\text{envelope} \\ T_\text{interior}\\ T_\text{floor}\\ U_\text{WR} \end{array}\right) + B_\text{1} \left(\begin{array}{c} \dot{Q}_\text{heating} \\ \dot{Q}_\text{HP} \end{array}\right) + B_\text{2} \left(\begin{array}{c} I_\text{sun,inside}\\ I_\text{sun,envelope}\\ T_\text{outside} \\ \dot{Q}_\text{loss} \end{array}\right) \\
 	 T_\text{inside} &= C \left(\begin{array}{c} T_\text{inside} \\ T_\text{envelope} \\ T_\text{interior}\\ T_\text{floor}\\ U_\text{WR} \end{array}\right) \label{y}
 	\end{align}	
-    The complete matrices $A$, $B_\text{1}$, $B_\text{2}$, and $C$ are presented in \autoref{sec:appendix:Matrizen}. We have no pass-through matrices $D_\text{1}$ or $D_\text{2}$ because neither control signals nor disturbances have a direct impact on the output. 
+    The complete matrices $A$, $B_\text{1}$, $B_\text{2}$, and $C$ are presented in \autoref{sec:appendix:Matrizen}. We have no pass-through matrices $D_\text{1}$ or $D_\text{2}$ because neither control signals nor disturbances have a direct impact on the output.
+    \nomenclature[P]{R}{thermal resistance\nomunit{$\frac{K}{W}$}}
+    \nomenclature[P]{P}{power\nomunit{$W$}}
