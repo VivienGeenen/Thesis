@@ -205,7 +205,7 @@ We choose the horizon of 24 h because it represents the dynamic of the reference
 
 \section{Mathematical description of the MPC}
 \label{sec:mathematicalDescriptionMPC}
-The following equation summarises mathematically the above explained MPC according to the foundations from \autoref{section:mpc}. Comparing the foundations and \autoref{eq:MPCsum}, it is notable that here the cost function from \autoref{section:thecostfunction}, the constraints from \autoref{section:theconstraints} and the determined predictive horizon $N = 24h$ is depicted, furthermore $f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) = \dot{x}_\text{k}$ according to \autoref{eq:ZRD Modell} and $g(\mathbf{x_k})$ corresponds to \autoref{y}.  
+The following equation summarises the above explained MPC mathematically according to the foundations from \autoref{section:mpc}. Comparing the foundations and \autoref{eq:MPCsum}, it is notable that here the cost function from \autoref{section:thecostfunction}, the constraints from \autoref{section:theconstraints} and the determined predictive horizon $N = 24h$ is depicted, furthermore $f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) = \dot{x}_\text{k}$ according to \autoref{eq:ZRD Modell} and $g(\mathbf{x_k}) = y$ corresponds to \autoref{y}. The current state is represented as $\mathbf{x_\text{t}}$ which is measured in a real-world application and simulated in this thesis. \newpage 
 \begin{align}
 \label{eq:MPCsum}
 \textrm{Cost function} && \text{minimize} \sum_{k} w_\text{1}\cdot (y_\text{k}-y_\text{track})^2 + w_\textbf{2}\cdot(u_\text{2,k}\cdot Pr_\text{k})^2 + w_\text{3} \cdot \eta_\text{k}^2
@@ -213,15 +213,15 @@ The following equation summarises mathematically the above explained MPC accordi
 subject to 
 \begin{align*}
 \forall k \in [0,24-1]\\
-\textrm{Current state} && \mathbf{x_0} = \mathbf{x} \\	
+\textrm{Current state} && \mathbf{x_0} = \mathbf{x_\text{t}} \\	
 \textrm{Dynamics} && a_k^{(1)} = T_s \cdot f(\mathbf{x_k},t_\text{k},\mathbf{u_k},\mathbf{d_k}) \\
         && a_k^{(2)} = T_s \cdot f(\mathbf{x_k}+\frac{a_k^{(1)}}{2},t_k+\frac{T_s}{2},\mathbf{u_k},\mathbf{d_k})\\
         && a_k^{(3)} = T_s \cdot f(\mathbf{x_k}+\frac{a_k^{(2)}}{2},t_k+\frac{T_s}{2},\mathbf{u_k},\mathbf{d_k})\\
         && a_k^{(4)} = T_s \cdot f(\mathbf{x_k}+a_k^{(3)},t_k+T_s,\mathbf{u_k},\mathbf{d_k})\\
         \\
         && \mathbf{x_{k+1}} = \mathbf{x_k} + \frac{1}{6}\cdot (a_k^{(1)} + 2 a_k^{(2)} + 2 a_k^{(3)} + a_k^{(4)})\\
-&&	\mathbf{y_k} = g(\mathbf{x_k})\\				
-\textrm{Constraints} && x_\text{5,k} \in \mathbb{X}_{5,k} \\		
+\textrm{Constraints}&&	\mathbf{y_k} = g(\mathbf{x_k})\\				
+&& x_\text{5,k} \in \mathbb{X}_{5,k} \\		
  && \mathbf{y_k} \in \mathbb{Y_k}\\
  && \mathbf{u_k} \in \mathbb{U_k}\\
 \end{align*}
